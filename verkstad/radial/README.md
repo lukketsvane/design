@@ -1,10 +1,34 @@
-# Ribbe, radiale finnar (arbeidsnamn)
+# Ribbe (arbeidsnamn), etter Ivers celadon-referanse
 
-> Ny retning, starta etter Ivers referansebilete (celadon-porselen,
-> vertebra/gjelle-struktur, 2026-07-06). Radiale finnar som byggjer ein
-> porøs kule, med djupe glipor som teiknar skuggen. Svaret på Skavl-funnet
-> at blendbandet kapslar porøsiteten: her ER glipene mellom finnane
-> opningane, og dei kan vere så store me vil.
+> Starta 2026-07-06 etter Ivers referansebilete (celadon-porselen). To
+> tolkingar er prøvde; **gitteret (`lattice.py`) er den rette.**
+
+## To tolkingar (og kva som var feil)
+
+Fyrste forsøk (`radial.py`) las referansen som **skjel på ei kule**:
+radiale finnar med vertebra-skjel. Det vart ei lukka «kongle», ikkje
+referansen. Med klårare referansebilete synte det seg at strukturen er
+eit **vove gitter av runda rør**: bølgjande vertikale ribber i motfase som
+klemmer seg saman og opnar augeforma hol mellom seg, alt runda og
+samansmelta som korall/bein, holt og ope. Det er `lattice.py`.
+
+Lærdomen: eg jaga overflate-tekstur (skjel) når strukturen var eit
+**gitter av rør med hol**. Sjå bygg-loggen; skjel-varianten er bevart som
+`radial.py` (ikkje sletta), men gitteret er retninga vidare.
+
+## lattice.py (gjeldande)
+
+Eit nodegrid på ein tønneflate (n_col ribber x n_row rader). Ribbene
+bølgjar i theta, nabo-ribber i motfase så dei klemmer seg saman (smeltar)
+og bular ut, og opnar augeforma hol mellom seg. Kvart ribbesegment er ein
+kapsel (sylinder + kuleledd); tuppane over/under randa splayar ut til ein
+krone/fot. Tre søsken: korall (medium), rev (fin/tett), søyle (høg/grov).
+Køyr `python3 lattice.py`, render `python3 ../render.py --lattice`.
+
+## Bakgrunn (den opphavlege radiale finn-ideen)
+
+> Svaret på Skavl-funnet at blendbandet kapslar porøsiteten: her ER glipene
+> mellom finnane opningane, og dei kan vere så store me vil.
 
 ## Kva ligg her
 

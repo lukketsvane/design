@@ -29,16 +29,16 @@ from shapely.geometry import Polygon
 # open core, so the assembly reads as separate see-through blades (the
 # reference) rather than a closed grooved onion.
 VARIANTS = {
-    "leaf": dict(n_fin=22, H=190.0, r_max=94.0, hub_r=8.0, t=2.8,
-                 foot=0.45, taper=0.34, twist_deg=0.0,
+    "leaf": dict(n_fin=22, H=190.0, r_max=94.0, hub_r=8.0, t=3.6,
+                 foot=0.45, taper=0.34, twist_deg=0.0, stagger=0.0,
                  lobes=0, neck=0.0, tip_out=0.0, hook=0.0, lobe_p=0.8, K=200),
-    "vertebra": dict(n_fin=26, H=196.0, r_max=90.0, hub_r=9.0, t=2.6,
+    "vertebra": dict(n_fin=26, H=196.0, r_max=90.0, hub_r=9.0, t=5.0,
                      foot=0.42, taper=0.30, twist_deg=0.0, stagger=0.5,
-                     lobes=8, neck=0.09, tip_out=8.0, hook=0.55, lobe_p=0.78,
+                     lobes=8, neck=0.09, tip_out=9.0, hook=0.55, lobe_p=0.78,
                      K=280),
-    "spiral": dict(n_fin=24, H=192.0, r_max=93.0, hub_r=8.0, t=2.7,
+    "spiral": dict(n_fin=24, H=192.0, r_max=93.0, hub_r=8.0, t=5.0,
                    foot=0.44, taper=0.33, twist_deg=42.0, stagger=0.38,
-                   lobes=8, neck=0.09, tip_out=7.0, hook=0.6, lobe_p=0.80,
+                   lobes=8, neck=0.09, tip_out=9.0, hook=0.6, lobe_p=0.80,
                    K=280),
 }
 

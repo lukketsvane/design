@@ -50,13 +50,17 @@ FILAMENT = {         # warm off-white printed plastic, per family
     "knagg": np.array([0.83, 0.81, 0.77]),
     "repsett": np.array([0.88, 0.55, 0.14]),   # kintsugi gold-orange (signal)
     "radial": np.array([0.66, 0.83, 0.77]),    # celadon porcelain
+    "lattice": np.array([0.66, 0.83, 0.77]),   # celadon porcelain
 }
 # families whose 3MF files are not named "{family}-{name}.3mf"
-FILE_PREFIX = {"repsett": "skoeytehylse", "radial": "ribbe"}
-# glossier sheen for the porcelain-read radial family
-FAMILY_SHEEN = {"radial": 0.26}
+FILE_PREFIX = {"repsett": "skoeytehylse", "radial": "ribbe",
+               "lattice": "lattice"}
+# families whose print/ dir differs from the family name
+FAMILY_DIR = {"lattice": "radial"}
+# glossier sheen for the porcelain-read families
+FAMILY_SHEEN = {"radial": 0.26, "lattice": 0.30}
 # families rendered with the soft porcelain studio rig + grey backdrop
-PORCELAIN_FAMILIES = {"radial"}
+PORCELAIN_FAMILIES = {"radial", "lattice"}
 
 # two directional lights (world direction the light TRAVELS, i.e. toward the
 # object) and their radiances; no ambient term
@@ -102,7 +106,8 @@ def load_oriented(family, name):
     """Load the 3MF and rotate it into presentation orientation, resting on
     the floor plane z = 0, centred over the origin in x and y."""
     prefix = FILE_PREFIX.get(family, family)
-    path = os.path.join(HERE, family, "print", f"{prefix}-{name}.3mf")
+    fdir = FAMILY_DIR.get(family, family)
+    path = os.path.join(HERE, fdir, "print", f"{prefix}-{name}.3mf")
     mesh = trimesh.load(path, force="mesh", process=False)
 
     if family == "repsett":
@@ -365,6 +370,8 @@ FAMILY_INFO = {
                  ("torsjon-d10", "torsjon d10")]),
     "radial": ("Ribbe, radiale finnar, tre søsken", "radial",
                [("leaf", "blad"), ("vertebra", "virvel"), ("spiral", "spiral")]),
+    "lattice": ("Ribbe, vove gitter med augehol, tre søsken", "lattice",
+                [("coral", "korall"), ("reef", "rev"), ("column", "søyle")]),
 }
 # v0.3 lamp models (tall layer-direction slots), rendered via --v03
 V03_MODELS = [("skavl", "a-roleg-v03"), ("skavl", "b-open-v03"),
@@ -375,6 +382,9 @@ REPSETT_MODELS = [("repsett", "boey-d08"), ("repsett", "boey-d12"),
 # radial-fin (ribbe) family, rendered via --radial
 RADIAL_MODELS = [("radial", "leaf"), ("radial", "vertebra"),
                  ("radial", "spiral")]
+# lattice (woven eye-hole) family, rendered via --lattice
+LATTICE_MODELS = [("lattice", "coral"), ("lattice", "reef"),
+                  ("lattice", "column")]
 FONT_DIR = "/usr/share/fonts/truetype/dejavu"
 
 
@@ -461,6 +471,8 @@ def main():
                     help="render the reparasjonssett couplers and family strip")
     ap.add_argument("--radial", action="store_true",
                     help="render the radial-fin (ribbe) lamps and family strip")
+    ap.add_argument("--lattice", action="store_true",
+                    help="render the woven eye-hole lattice lamps + family")
     args = ap.parse_args()
 
     out_dir = os.path.join(HERE, "renders")
@@ -477,7 +489,8 @@ def main():
 
     models = (V03_MODELS if args.v03 else
               REPSETT_MODELS if args.repsett else
-              RADIAL_MODELS if args.radial else MODELS)
+              RADIAL_MODELS if args.radial else
+              LATTICE_MODELS if args.lattice else MODELS)
     for family, name in models:
         if args.only and args.only not in f"{family}/{name}":
             continue
@@ -491,7 +504,7 @@ def main():
         # lamps carry a fine porous window band; give them extra supersampling
         # so the lace resolves cleanly instead of blocky
         ss = args.ss if args.ss else (SS_LAMP if family == "skavl" else SS)
-        el = 6 if family == "radial" else 16       # eye-level for the porcelain
+        el = 5 if family in PORCELAIN_FAMILIES else 16   # eye-level porcelain
         render_png(mesh, family, hero, ss=ss, el_deg=el)
         print(f"hero  {family}-{name}: {os.path.relpath(hero, HERE)} (ss={ss})")
 
@@ -504,6 +517,9 @@ def main():
     if args.radial:
         out = build_family("radial", out_dir)
         print(f"family radial: {os.path.relpath(out, HERE)}")
+    if args.lattice:
+        out = build_family("lattice", out_dir)
+        print(f"family lattice: {os.path.relpath(out, HERE)}")
 
 
 if __name__ == "__main__":
