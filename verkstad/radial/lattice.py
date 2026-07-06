@@ -22,13 +22,16 @@ import trimesh
 VARIANTS = {
     "coral": dict(n_col=22, n_row=22, H=176.0, r_max=90.0, waist=0.34,
                   strut=6.2, wave=0.5, wavef=4.0, ribphase=0.5,
-                  taper_top=0.62, rungs=True, crown=16.0),
+                  taper_top=0.62, rungs=True, crown=16.0,
+                  seed=7, ribvar=0.16, strut_var=0.07),
     "reef": dict(n_col=28, n_row=28, H=182.0, r_max=94.0, waist=0.32,
                  strut=4.6, wave=0.46, wavef=5.0, ribphase=0.5,
-                 taper_top=0.58, rungs=True, crown=13.0),
+                 taper_top=0.58, rungs=True, crown=13.0,
+                 seed=3, ribvar=0.12, strut_var=0.06),
     "column": dict(n_col=16, n_row=20, H=204.0, r_max=82.0, waist=0.20,
                    strut=7.4, wave=0.55, wavef=3.0, ribphase=0.5,
-                   taper_top=0.8, rungs=True, crown=20.0),
+                   taper_top=0.8, rungs=True, crown=20.0,
+                   seed=11, ribvar=0.16, strut_var=0.08),
 }
 
 
@@ -40,17 +43,35 @@ def barrel_R(zf, cfg):
     return cfg["r_max"] * bulge * crown
 
 
+def _rng(cfg, *key):
+    """Deterministic per-key rng, so the jitter is reproducible per seed."""
+    h = cfg.get("seed", 0) * 100003
+    for k in key:
+        h = h * 331 + int(k)
+    return np.random.default_rng(h % (2 ** 32))
+
+
 def node(c, r, cfg):
     N, M = cfg["n_col"], cfg["n_row"]
     zf = r / (M - 1)
     z = zf * cfg["H"]
     dtheta = 2.0 * math.pi / N
+    # per-rib variation (constant along the rib, so the rib stays smooth): its
+    # own wave amplitude, phase and radius, so the ribs and eye-holes are not
+    # identical, a hand-made read without kinking the tubes
+    rv = cfg.get("ribvar", 0.0)
+    amp, phi, rfac = cfg["wave"], 0.0, 1.0
+    if rv:
+        g = _rng(cfg, c)
+        amp *= 1.0 + g.normal(0, rv)
+        phi = g.normal(0, rv * 1.4)
+        rfac = 1.0 + g.normal(0, rv * 0.4)
     # adjacent ribs wave in antiphase so they pinch together (fuse) and bow
     # apart, opening lens/eye-shaped holes between them
-    wig = cfg["wave"] * dtheta * math.sin(
-        cfg["wavef"] * math.pi * zf + math.pi * (c % 2))
+    wig = amp * dtheta * math.sin(
+        cfg["wavef"] * math.pi * zf + math.pi * (c % 2) + phi)
     th = c * dtheta + wig
-    R = barrel_R(zf, cfg)
+    R = barrel_R(zf, cfg) * rfac
     return np.array([R * math.cos(th), R * math.sin(th), z])
 
 
@@ -67,20 +88,27 @@ def joint(p, r):
 def build(cfg, solid=False):
     N, M = cfg["n_col"], cfg["n_row"]
     sr = cfg["strut"]
+    sv = cfg.get("strut_var", 0.0)
+
+    def rad(*key):
+        return sr * (1.0 + (_rng(cfg, 9, *key).normal(0, sv) if sv else 0.0))
+
     P = {(c, r): node(c, r, cfg) for c in range(N) for r in range(M)}
-    parts = [joint(p, sr) for p in P.values()]
-    # vertical rib segments
+    parts = [joint(p, rad(c, r, 0)) for (c, r), p in P.items()]
+    # vertical rib segments (thickness varies a touch for a hand-made read)
     for c in range(N):
         for r in range(M - 1):
-            parts.append(strut(P[(c, r)], P[(c, r + 1)], sr))
+            parts.append(strut(P[(c, r)], P[(c, r + 1)], rad(c, r, 1)))
     # spiky crown + feet: extend each rib past the rims to a free tapering tip
     if cfg.get("crown"):
         for c in range(N):
             for end, sgn in ((M - 1, 1.0), (0, -1.0)):
                 base = P[(c, end)]
+                g = _rng(cfg, 5, c, end)
                 out = base.copy()
-                out[:2] *= 1.32                    # splay the tip outward
-                out[2] = base[2] + sgn * cfg["crown"]
+                out[:2] *= 1.32 + (g.normal(0, 0.06) if sv else 0.0)
+                out[2] = base[2] + sgn * cfg["crown"] * (
+                    1.0 + (g.normal(0, 0.22) if sv else 0.0))
                 parts.append(strut(base, out, sr * 0.8))
                 parts.append(joint(out, sr * 0.5))   # small beak
     # rungs: with antiphase ribs the ribs pinch and fuse on their own, so
