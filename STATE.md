@@ -1,25 +1,28 @@
 # STATE.md — loop-state
 
-**Iterasjon:** 1
+**Iterasjon:** 6
 **Sist oppdatert:** 2026-07-06
-**Status:** Aktiv loop-køyring.
+**Status:** Aktiv loop-køyring; 6 iterasjonar fullførte i fyrste økt.
 
-## Sist gjort (iterasjon 1 — Research: konkurransefristar)
+## Iterasjonshistorikk (denne økta)
 
-- Kartlagt fristar: **SaloneSatellite 2027: 30. aug 2026** (3 prototypar,
-  foto 16:9); **Greenhouse Stockholm 2027: 15. sep 2026** (CV + produkt-
-  presentasjon + standskisse, gratis); Statens kunstnarstipend ~1. sep
-  (fyrst relevant 2028); DOGA nykommar 2026-runden stengd → 2027.
-- Notat: `research/2026-07-06-konkurransefristar.md`
-- To nye 🔴-rader i Vegkart-databasen med reelle fristar.
-- **Retningsendring:** Salone-fristen komprimerer H0 — tre prototypar må
-  vere ferdige og fotograferte innan ~20. august. Backlog omprioritert.
+| # | Kategori | Kva |
+|---|---|---|
+| 0 | Grunnlegging | Notion-prosjekt + repo + loop-protokoll |
+| 1 | Research | Konkurransefristar: 🔴 Salone 30/8, 🔴 Greenhouse 15/9 → H0 komprimert |
+| 2 | Verkstad | Designbrief Knagg #1 (aksar kvantifisert, testplan, EN-skildring) |
+| 3 | Verkstad | Designbrief Skavl-lampe (generativ form, tre søsken) |
+| 4 | Verkstad | Designbrief Reparasjonssett (kintsugi for plast) + trio-grunngjeving |
+| 5 | Research | Norway Says → grammatikken er limet; exit-plan frå dag éin |
+| 6 | Skriving | Søknadspakke Salone+Greenhouse: sjekklister, EN-presentasjon, standkonsept «Le-sida» |
 
 ## Neste handling
 
-Iterasjon 2: designbrief Knagg #1 (no i teneste for Salone-søknaden).
+Iterasjon 7: «Manifest v1.0: Designopprøret» frå Revisjon til Klar
+(øvste attverande skrivetask), deretter Case #1-utkast.
 
-## Blokkert / treng Iver
+## Blokkert / treng Iver — VIKTIGAST FYRST
 
-- `[TRENG IVER]` Innsending SaloneSatellite (30. aug) og Greenhouse (15. sep).
-- Namneval — trengst FØR Salone-søknaden (namn står i skjemaet!).
+1. **Namneval** (Skavl/Fonn/Morene/Skare/Formlære) — står i Salone-skjemaet.
+2. **Start knaggen denne veka** (kortast printsyklus; kritisk sti til 20. aug).
+3. Innsending Salone (30. aug) og Greenhouse (15. sep).
