@@ -4,8 +4,9 @@
 **Sist oppdatert:** 2026-07-06
 **Status:** Aktiv loop-køyring, fleire økter parallelt («køyr til tokena
 er tomme», Ivers instruks 2026-07-06). All utvikling går direkte til
-`main`. Dagleg trigger aktiv: «FORMLÆRE dagleg loop»
-(trig_01DqhXRKkJof8qzmz8oHozmh, 05:00 UTC, ferskt miljø per køyring).
+`main`. Trigger aktiv kvar 4. time: «FORMLÆRE loop kvar 4. time»
+(trig_01DqhXRKkJof8qzmz8oHozmh, cron `11 */4 * * *` UTC, ferskt miljø per
+køyring, push-varsel) (Ivers instruks 2026-07-06: «auto run every 4 hours»).
 
 **Gjeldande styring frå Iver (2026-07-06):**
 1. Konkrete designprosjekt fyrst: algoritmisk modellering for fysiske
