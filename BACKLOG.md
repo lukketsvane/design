@@ -17,6 +17,10 @@ Loopen konsumerer ovanfrå. `[TRENG IVER]` = berre mennesket.
 6. [ ] `[TRENG IVER]` Foto 16:9 av prototypane innan ~20. aug.
 7. [ ] `[TRENG IVER]` Send Salone-skjema innan 30. aug; Greenhouse innan 15. sep.
 8. [ ] **Synk:** Spegl eventuelle Notion-endringar → git (løpande).
+9. [ ] **Research:** Produsentkartlegging #2: Eikund eller Northern
+   (same lest som Vestre-notatet).
+10. [ ] **Vegkart:** Overvak Vestre/DOGA for opne designkonkurransar
+    (Munch-modellen) — sjekk kvartalsvis.
 
 ## Gjort
 
@@ -34,3 +38,4 @@ Loopen konsumerer ovanfrå. `[TRENG IVER]` = berre mennesket.
 - [x] It. 11: Skavl-algoritme v0.1 → `briefs/skavl-algoritme.md` + Verkstad-sida
 - [x] It. 12: Studieløpet inn i vegkartet → `strategy/05-vegkart.md` + 05-sida i Notion
 - [x] It. 13: Brotmodus-taksonomi v0.1 → `research/2026-07-06-brotmodus-taksonomi.md` + Verkstad-sida
+- [x] It. 14: Produsent #1 Vestre → `research/2026-07-06-produsent-vestre.md`

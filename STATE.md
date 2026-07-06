@@ -1,6 +1,6 @@
 # STATE.md — loop-state
 
-**Iterasjon:** 13
+**Iterasjon:** 14
 **Sist oppdatert:** 2026-07-06
 **Status:** Aktiv loop-køyring, andre økt. All utvikling går no direkte
 til `main` (Ivers instruks). Dagleg trigger aktiv: «FORMLÆRE dagleg loop»
@@ -24,14 +24,12 @@ til `main` (Ivers instruks). Dagleg trigger aktiv: «FORMLÆRE dagleg loop»
 | 11 | Verkstad | Skavl-algoritme v0.1: kurve-stabel-arkitektur, pseudokode, 17 parametrar, metode-referansar; spegla på Verkstad-sida |
 | 12 | Vegkart | Studieløpet inn i H0/H1: 4. år = einaste utvekslingsår; frist vårutveksling = 15. sep (= Greenhouse!); spenning Salone×utveksling flagga |
 | 13 | Research | Brotmodus-taksonomi v0.1: 10 modusar frå ORA-data + snap-fit-litteratur; klips-protese opp som eiga delfamilie; PETG-tilråding |
+| 14 | Research | Produsent #1 Vestre: motmodellen til Case #1 (varigheit i staden for reklame); Munch-serien kom frå open konkurranse; Snøhetta-kopling |
 
 ## Neste handling
 
-Backloggen er tom for agent-køyrbare oppgåver — alt attverande er
-`[TRENG IVER]`. Neste loop-køyring (dagleg trigger 05:00 UTC) genererer
-arbeid frå iterasjonsmenyen i LOOP.md §4; kandidatar: djupdykk i éi
-teorikjelde frå Biblioteket, kartlegg éin produsent (Vestre/Eikund),
-eller Case #2-idéliste.
+Iterasjon 15 (frå menyen): Case #2-idéliste for Designopprøret (fôrar den
+månadlege tekst-rytmen), eller djupdykk i éi teorikjelde frå Biblioteket.
 
 ## Blokkert / treng Iver — VIKTIGAST FYRST
 
