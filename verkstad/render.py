@@ -49,12 +49,14 @@ FILAMENT = {         # warm off-white printed plastic, per family
     "skavl": np.array([0.90, 0.88, 0.84]),
     "knagg": np.array([0.83, 0.81, 0.77]),
     "repsett": np.array([0.88, 0.55, 0.14]),   # kintsugi gold-orange (signal)
-    "radial": np.array([0.60, 0.81, 0.73]),    # celadon porcelain
+    "radial": np.array([0.66, 0.83, 0.77]),    # celadon porcelain
 }
 # families whose 3MF files are not named "{family}-{name}.3mf"
 FILE_PREFIX = {"repsett": "skoeytehylse", "radial": "ribbe"}
 # glossier sheen for the porcelain-read radial family
-FAMILY_SHEEN = {"radial": 0.16}
+FAMILY_SHEEN = {"radial": 0.26}
+# families rendered with the soft porcelain studio rig + grey backdrop
+PORCELAIN_FAMILIES = {"radial"}
 
 # two directional lights (world direction the light TRAVELS, i.e. toward the
 # object) and their radiances; no ambient term
@@ -64,6 +66,20 @@ KEY_I = 1.10
 FILL_I = 0.62
 SHEEN = 0.035        # faint Blinn sheen so edges catch a little light
 SHEEN_POW = 22.0
+# the light rig; families that want a different look reassign this (e.g. the
+# porcelain preset below). Default is the two-light product rig.
+LIGHTS = [(KEY_DIR, KEY_I), (FILL_DIR, FILL_I)]
+# optional vertical grey backdrop (top_grey, bottom_grey) in 0..1; None = white
+BACKDROP = None
+
+
+def porcelain_lights():
+    """A softer, wrapping three-light studio rig for a glossy-ceramic read:
+    a broad key from upper front, two soft fills from the sides, higher fill
+    ratio so shadows stay open. Returns a LIGHTS list."""
+    return [(np.array([0.30, 0.55, -0.78]), 0.82),    # broad key, high front
+            (np.array([-0.85, 0.10, -0.30]), 0.52),   # soft fill left
+            (np.array([0.80, -0.20, -0.28]), 0.44)]   # soft fill right
 SMOOTH_COS = 0.83    # crease threshold (~34 deg): flatter corners stay flat
 
 # warm interior glow for the lamp: the inner shell reads as a lit source, so
@@ -169,11 +185,11 @@ def shade(normals, view_dirs, base_rgb, sheen=None):
     sheen = SHEEN if sheen is None else sheen
     n = normals * np.sign(np.sum(normals * view_dirs, axis=1))[:, None]
     col = np.zeros(n.shape[:1] + (3,))
-    for Ldir, I in ((KEY_DIR, KEY_I), (FILL_DIR, FILL_I)):
+    for i, (Ldir, I) in enumerate(LIGHTS):
         L = -Ldir / np.linalg.norm(Ldir)          # surface -> light
         ndl = np.clip(n @ L, 0.0, 1.0)
         col += (I * ndl)[:, None] * base_rgb[None, :]
-        if I == KEY_I and sheen > 0:
+        if i == 0 and sheen > 0:                   # spec off the key only
             H = L + view_dirs
             H /= np.linalg.norm(H, axis=1, keepdims=True) + 1e-9
             ndh = np.clip(np.sum(n * H, axis=1), 0.0, 1.0)
@@ -270,6 +286,18 @@ def shadow_mask(mesh, cam, W, H, yfov):
 def render_png(mesh, family, out_path, az_deg=38, el_deg=16,
                yfov=0.42, margin=1.16, ss=None):
     ss = SS if ss is None else ss
+    global LIGHTS, BACKDROP, SHEEN_POW
+    saved = (LIGHTS, BACKDROP, SHEEN_POW)
+    if family in PORCELAIN_FAMILIES:
+        LIGHTS, BACKDROP, SHEEN_POW = porcelain_lights(), (0.90, 0.82), 12.0
+    try:
+        return _render_png(mesh, family, out_path, az_deg, el_deg,
+                           yfov, margin, ss)
+    finally:
+        LIGHTS, BACKDROP, SHEEN_POW = saved
+
+
+def _render_png(mesh, family, out_path, az_deg, el_deg, yfov, margin, ss):
     W = H = SIZE * ss
     cam, centre, dist = place_camera(mesh, az_deg, el_deg, yfov, margin)
     eye = cam[0]
@@ -299,9 +327,14 @@ def render_png(mesh, family, out_path, az_deg=38, el_deg=16,
     keep = front[mesh.faces].any(axis=1)
     color, mask = rasterise(px, depth, mesh.faces[keep], lin[keep], W, H)
 
-    # composite: soft shadow on white, then the shaded object on top
+    # composite: soft shadow on the backdrop, then the shaded object on top
     shadow = shadow_mask(mesh, cam, W, H, yfov)
-    canvas = np.ones((H, W, 3))
+    if BACKDROP is None:
+        canvas = np.ones((H, W, 3))
+    else:
+        top, bot = BACKDROP
+        ramp = np.linspace(top, bot, H)[:, None] * np.ones((1, W))
+        canvas = np.repeat(ramp[..., None], 3, axis=2)
     canvas *= (1.0 - 0.34 * shadow[..., None])       # grey the shadow area
     srgb = np.clip(color, 0.0, 1.0) ** (1.0 / 2.2)   # gamma encode object
     canvas[mask] = srgb[mask]
@@ -458,7 +491,8 @@ def main():
         # lamps carry a fine porous window band; give them extra supersampling
         # so the lace resolves cleanly instead of blocky
         ss = args.ss if args.ss else (SS_LAMP if family == "skavl" else SS)
-        render_png(mesh, family, hero, ss=ss)
+        el = 6 if family == "radial" else 16       # eye-level for the porcelain
+        render_png(mesh, family, hero, ss=ss, el_deg=el)
         print(f"hero  {family}-{name}: {os.path.relpath(hero, HERE)} (ss={ss})")
 
     if args.v03:

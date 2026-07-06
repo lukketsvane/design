@@ -25,42 +25,48 @@ from shapely.geometry import Polygon
 
 
 # --------------------------------------------------------------- parameters
+# Fewer, deeper plates with an asymmetric organic-leaf profile and a small
+# open core, so the assembly reads as separate see-through blades (the
+# reference) rather than a closed grooved onion.
 VARIANTS = {
-    "leaf": dict(n_fin=30, H=185.0, r_max=88.0, hub_r=14.0, t=2.5,
-                 power=0.58, twist_deg=0.0, neck=0.0, bump_freq=0,
-                 tip_out=0.0, hook=0.0, lobe_p=0.65, K=170),
-    "vertebra": dict(n_fin=34, H=190.0, r_max=86.0, hub_r=15.0, t=2.4,
-                     power=0.56, twist_deg=0.0, neck=0.10, bump_freq=8,
-                     tip_out=7.0, hook=0.55, lobe_p=0.72, K=170),
-    "spiral": dict(n_fin=36, H=184.0, r_max=88.0, hub_r=14.0, t=2.3,
-                   power=0.56, twist_deg=34.0, neck=0.10, bump_freq=7,
-                   tip_out=8.0, hook=0.72, lobe_p=0.86, K=180),
+    "leaf": dict(n_fin=22, H=190.0, r_max=94.0, hub_r=8.0, t=2.8,
+                 foot=0.45, taper=0.34, twist_deg=0.0,
+                 lobes=0, neck=0.0, tip_out=0.0, hook=0.0, lobe_p=0.8, K=200),
+    "vertebra": dict(n_fin=26, H=196.0, r_max=90.0, hub_r=9.0, t=2.6,
+                     foot=0.42, taper=0.30, twist_deg=0.0, stagger=0.5,
+                     lobes=8, neck=0.09, tip_out=8.0, hook=0.55, lobe_p=0.78,
+                     K=280),
+    "spiral": dict(n_fin=24, H=192.0, r_max=93.0, hub_r=8.0, t=2.7,
+                   foot=0.44, taper=0.33, twist_deg=42.0, stagger=0.38,
+                   lobes=8, neck=0.09, tip_out=7.0, hook=0.6, lobe_p=0.80,
+                   K=280),
 }
 
 
-def envelope(z, cfg):
-    """Outer radius at height z: a ball (0 at the poles, r_max at the equator,
-    `power` < 1 fuller) with rounded vertebra lobes on the edge. Each lobe is
-    a smooth node with a deep neck below it; `hook` skews the node upward so
-    the tips beak up-and-out like scales."""
-    zf = np.clip(z / cfg["H"], 0.0, 1.0)
-    base = cfg["r_max"] * np.power(np.sin(np.pi * zf), cfg["power"])
-    if cfg["bump_freq"]:
-        p = (cfg["bump_freq"] * zf) % 1.0
+def envelope(z, cfg, phase=0.0):
+    """Outer radius of one blade: an asymmetric leaf (fuller foot, beaked
+    tip) with optional beaked vertebra scales on the edge. `phase` staggers
+    the scales between neighbouring blades so they interleave (woven) rather
+    than line up into saucer tiers."""
+    zf = np.clip(z / cfg["H"], 1e-4, 1.0 - 1e-4)
+    leaf = np.power(zf, cfg["foot"]) * np.power(1.0 - zf, cfg["taper"])
+    peak = cfg["foot"] / (cfg["foot"] + cfg["taper"])
+    norm = np.power(peak, cfg["foot"]) * np.power(1.0 - peak, cfg["taper"])
+    r = cfg["r_max"] * leaf / norm
+    if cfg["lobes"]:
+        p = (cfg["lobes"] * zf + phase) % 1.0
         if cfg["hook"]:
-            # skew the phase so the node rises slowly and drops fast (a beak)
             p = np.clip(p + cfg["hook"] * p * (1.0 - p), 0.0, 1.0)
         node = np.power(np.clip(np.sin(np.pi * p), 0.0, 1.0), cfg["lobe_p"])
-        base = base * (1.0 - cfg["neck"]) + (cfg["neck"] * base
-                                             + cfg["tip_out"]) * node
-    return base
+        r = r * (1.0 - cfg["neck"]) + (cfg["neck"] * r + cfg["tip_out"]) * node
+    return r
 
 
-def fin_polygon(cfg):
+def fin_polygon(cfg, phase=0.0):
     """Silhouette of one fin in (s, z); a leaf from the hub out to the
     envelope, existing only where the envelope clears the hub."""
     zs = np.linspace(0.0, cfg["H"], cfg["K"])
-    r_out = envelope(zs, cfg)
+    r_out = envelope(zs, cfg, phase)
     keep = r_out > cfg["hub_r"] + 0.8
     idx = np.flatnonzero(keep)
     lo, hi = idx[0], idx[-1] + 1
@@ -71,10 +77,10 @@ def fin_polygon(cfg):
     return Polygon(outer + inner)
 
 
-def build_fin(theta0, cfg):
+def build_fin(theta0, cfg, phase=0.0):
     """Extrude the fin silhouette to a thin wall and place it at angle theta0.
     With twist, the wall is sheared per height so it spirals."""
-    poly = fin_polygon(cfg)
+    poly = fin_polygon(cfg, phase)
     m = trimesh.creation.extrude_polygon(poly, cfg["t"])   # in XY, extr. Z=t
     # map (X=s, Y=z, Z=thickness) -> world (x=s, y=thickness, z=height)
     swap = np.array([[1., 0., 0., 0.],
@@ -107,24 +113,90 @@ def hub(cfg):
     return c
 
 
-def build(cfg):
-    parts = [build_fin(2.0 * math.pi * b / cfg["n_fin"], cfg)
+def build(cfg, solid=False):
+    parts = [build_fin(2.0 * math.pi * b / cfg["n_fin"], cfg,
+                       phase=b * cfg.get("stagger", 0.0))
              for b in range(cfg["n_fin"])]
     parts.append(hub(cfg))
-    mesh = trimesh.util.concatenate(parts)
+    mesh = (trimesh.boolean.union(parts) if solid
+            else trimesh.util.concatenate(parts))
     mesh.apply_translation([0, 0, -mesh.bounds[0][2]])     # rest on z = 0
     return mesh
 
 
+PLA_DENSITY = 1.24e-3           # g/mm^3
+OVERHENG_DEG = 45.0
+
+
+def validate(name, cfg, mesh):
+    rep = {"namn": name}
+    rep["vasstett"] = bool(mesh.is_watertight)
+    rep["masse_g"] = float(mesh.volume) * PLA_DENSITY
+    rep["trekantar"] = len(mesh.faces)
+    rep["hogd_mm"] = float(mesh.extents[2])
+    rep["breidd_mm"] = float(mesh.extents[0])
+    rep["vegg_mm"] = cfg["t"]
+    rep["finnar"] = cfg["n_fin"]
+    # overhang printed axis-vertical (the scale beaks are the risk)
+    nz = mesh.face_normals[:, 2]
+    down = np.clip(-nz, 0.0, 1.0)
+    ang = np.degrees(np.arcsin(down))
+    areas = mesh.area_faces
+    over = (ang > OVERHENG_DEG) & (down < 0.999)
+    rep["overheng_areal_pst"] = float(areas[over].sum() / areas.sum() * 100)
+    return rep
+
+
+def write_report(reports, path):
+    lines = ["# Ribbe (radiale finnar), valideringsrapport (av `radial.py --solid`)",
+             "",
+             "> Boolsk union av finnane + nav til éin vasstett solid. Massen er",
+             "> hoeg (djupe blad); for lampe vurder tynnare finnar/opnare kjerne.",
+             "> Overhenget er dei oppadnebbande skjeltuppane; anten support,",
+             "> orientering, eller mildare `hook` i neste steg.",
+             "",
+             "| Maaltal | " + " | ".join(r["namn"] for r in reports) + " |",
+             "|---|" + "---|" * len(reports)]
+
+    def row(label, fmt, key):
+        lines.append(f"| {label} | "
+                     + " | ".join(fmt.format(r[key]) for r in reports) + " |")
+
+    row("Vasstett solid", "{}", "vasstett")
+    row("Finnar", "{}", "finnar")
+    row("Vegg (finnetjukkleik)", "{:.1f} mm", "vegg_mm")
+    row("Hoegd", "{:.0f} mm", "hogd_mm")
+    row("Breidd", "{:.0f} mm", "breidd_mm")
+    row("Masse (PLA)", "{:.0f} g", "masse_g")
+    row("Overheng > 45 grader", "{:.1f} %", "overheng_areal_pst")
+    row("Trekantar", "{}", "trekantar")
+    with open(path, "w") as f:
+        f.write("\n".join(lines) + "\n")
+
+
 def main():
+    import argparse
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--solid", action="store_true",
+                    help="boolean-union into one watertight solid + validate")
+    args = ap.parse_args()
     here = os.path.dirname(os.path.abspath(__file__))
+    reports = []
     for name, cfg in VARIANTS.items():
-        mesh = build(cfg)
+        mesh = build(cfg, solid=args.solid)
         out = os.path.join(here, "print", f"ribbe-{name}.3mf")
         mesh.export(out)
-        print(f"{name}: tris={len(mesh.faces)} "
-              f"extent={[round(x, 1) for x in mesh.extents]} -> "
-              f"{os.path.relpath(out, here)}")
+        line = (f"{name}: tris={len(mesh.faces)} "
+                f"extent={[round(x, 1) for x in mesh.extents]}")
+        if args.solid:
+            rep = validate(name, cfg, mesh)
+            reports.append(rep)
+            line += (f" watertight={rep['vasstett']} "
+                     f"masse={rep['masse_g']:.0f}g "
+                     f"overheng={rep['overheng_areal_pst']:.1f}%")
+        print(line + f" -> {os.path.relpath(out, here)}")
+    if args.solid:
+        write_report(reports, os.path.join(here, "validering-v0.1.md"))
 
 
 if __name__ == "__main__":
