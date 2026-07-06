@@ -1,0 +1,83 @@
+{
+  "workspace": {
+    "id": "05231ce1-9814-40fd-a6f2-a5eb54882733",
+    "name": "JifUniversal's Notion"
+  },
+  "project_root": {
+    "title": "FORMLÆRE — program for norsk industridesign",
+    "page_id": "3951c681-5f78-8144-9d15-d496902dcc22",
+    "url": "https://app.notion.com/p/3951c6815f7881449d15d496902dcc22"
+  },
+  "pages": {
+    "01_grammatikken": {
+      "page_id": "3951c681-5f78-8111-a070-ee11faa29be7",
+      "url": "https://app.notion.com/p/3951c6815f788111a070ee11faa29be7",
+      "mirror": "strategy/01-grammatikken.md"
+    },
+    "02_estetisk_posisjon": {
+      "page_id": "3951c681-5f78-8199-8997-ff7381556a46",
+      "url": "https://app.notion.com/p/3951c6815f7881998997ff7381556a46",
+      "mirror": "strategy/02-estetisk-posisjon.md"
+    },
+    "03_etikk_omhug": {
+      "page_id": "3951c681-5f78-8158-b30a-c6ce79e9bf75",
+      "url": "https://app.notion.com/p/3951c6815f788158b30ac6ce79e9bf75",
+      "mirror": "strategy/03-etikk-omhug.md"
+    },
+    "04_posisjonering": {
+      "page_id": "3951c681-5f78-818e-a728-c52b67bf528f",
+      "url": "https://app.notion.com/p/3951c6815f78818ea728c52b67bf528f",
+      "mirror": "strategy/04-posisjonering.md"
+    },
+    "05_strategi_vegkart": {
+      "page_id": "3951c681-5f78-813d-a55f-c678320dac59",
+      "url": "https://app.notion.com/p/3951c6815f78813da55fc678320dac59",
+      "mirror": "strategy/05-vegkart.md"
+    }
+  },
+  "databases": {
+    "vegkart": {
+      "database_id": "71b175c5-bf2e-48ed-ac5d-20e57ced9c7f",
+      "data_source_id": "c3de4743-0810-4c4a-82d9-94bbb656373a",
+      "views": {
+        "horisont_board": "3951c681-5f78-81f5-850b-000c5e06333d",
+        "tidslinje": "3951c681-5f78-8156-a88c-000c1778e6e0"
+      }
+    },
+    "verkstad": {
+      "database_id": "4f5df096-a2a8-4d4b-8d4b-6be371d185b4",
+      "data_source_id": "0e151f91-7c86-4e5b-aa43-f61821902578",
+      "views": {
+        "fase_board": "3951c681-5f78-81e6-b720-000ce62fa2b0"
+      }
+    },
+    "skriveprosjekt": {
+      "database_id": "d6956a8b-1d84-4f22-b503-e22b8cdfe9c5",
+      "data_source_id": "39b98650-6a9d-48be-a045-e91e1d3968f9",
+      "views": {
+        "skrive_board": "3951c681-5f78-8176-aadf-000c6aca6def"
+      }
+    },
+    "bibliotek": {
+      "database_id": "ee5e4b7a-155c-4f98-abc1-80b9f1681b11",
+      "data_source_id": "37bc3b8f-49c2-4c73-872a-c02d2e51f35d"
+    },
+    "prinsipp": {
+      "database_id": "d57e294f-578f-4881-8d05-aba3919916df",
+      "data_source_id": "aac8d85c-2e33-4777-9c0f-8188cb8bd543"
+    },
+    "logg": {
+      "database_id": "95dfd924-7aef-4894-9224-debf9170c629",
+      "data_source_id": "a212687f-c714-4116-bef2-9ccb124d1fd2",
+      "loop_row_type": "Agent-loop"
+    }
+  },
+  "source_pages": {
+    "aho_hub": "541fbd4f-35f1-4e2f-9df7-39e5a85385a3",
+    "designopproret": "3051c681-5f78-80b2-8fdd-df5dcfd78f37",
+    "manifest_designopproret": "3051c681-5f78-81df-83f0-e419013118d2",
+    "kva_er_design": "30a1c681-5f78-81e0-a962-cb6b20762f05",
+    "formfabrikken": "31d1c681-5f78-812d-8a35-e03086c6a3f5",
+    "metode_sprak_modellar": "3121c681-5f78-813f-b4dc-ea5120d20e8e"
+  }
+}
