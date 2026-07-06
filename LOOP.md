@@ -64,8 +64,8 @@ Skriving, to Verkstad, éin Vegkart, éin Synk, maks éin Meta.
 3. Ved feil/lærdom: éi line i `LEARNINGS.md`.
 4. Commit med beskrivande melding; **verifiser at committen faktisk
    inneheld filendringar** (`git show --stat HEAD`) — ein tom commit er
-   ein feila persistence-port. Push med `git push -u origin <designert
-   branch>` (sjå CLAUDE.md; retry 2s/4s/8s/16s ved nettfeil).
+   ein feila persistence-port. Push med `git push -u origin main`
+   (Ivers instruks 2026-07-06; retry 2s/4s/8s/16s ved nettfeil).
 5. Skriv éi rad i Notion-databasen «Logg · iterasjonar & funn»
    (Type=Agent-loop, dato, samandrag, neste handling).
 

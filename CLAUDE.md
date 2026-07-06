@@ -12,10 +12,9 @@ i synk:
 ## Faste reglar
 
 - **Språk:** nynorsk i alt innhald (Ivers eigen målform). Kode/filnamn på engelsk er ok.
-- **Branch:** all utvikling på den branchen økta er designert til (per
-  2026-07-06: `claude/observer-planning-rdapid`; den førre,
-  `claude/norsk-design-strategy-plan-zgwmkm`, er merga via PR #1).
-  Aldri push til andre branchar enn den designerte.
+- **Branch:** all utvikling direkte på `main` (Ivers instruks 2026-07-06:
+  «push main direkte no og framover»). Ingen feature-branchar/PR-ar utan
+  at Iver ber om det.
 - **Aldri slett** innhald i Notion; arkiver/flytt heller. Ved tvil: legg til, ikkje erstatt.
 - **Kvalitet over volum:** eitt grundig research-notat slår ti tynne. Alt du skriv skal kunne lesast av Iver utan kontekst frå økta.
 - **Kjeldefest alt:** research-notat skal ha URL-ar; strategipåstandar skal peike på traktaten (proposisjonsnummer) eller ei ekstern kjelde.
