@@ -1,11 +1,19 @@
 # STATE.md — loop-state
 
-**Iterasjon:** 23
+**Iterasjon:** 25
 **Sist oppdatert:** 2026-07-06
-**Status:** Aktiv loop-køyring, tredje økt («køyr til tokena er tomme»,
-Ivers instruks 2026-07-06). All utvikling går direkte til `main`.
-Dagleg trigger aktiv: «FORMLÆRE dagleg loop»
+**Status:** Aktiv loop-køyring, fleire økter parallelt («køyr til tokena
+er tomme», Ivers instruks 2026-07-06). All utvikling går direkte til
+`main`. Dagleg trigger aktiv: «FORMLÆRE dagleg loop»
 (trig_01DqhXRKkJof8qzmz8oHozmh, 05:00 UTC, ferskt miljø per køyring).
+
+**Gjeldande styring frå Iver (2026-07-06):**
+1. Konkrete designprosjekt fyrst: algoritmisk modellering for fysiske
+   modellar Iver kan 3D-printe (Verkstad-tungt til ny beskjed).
+2. Skrivekonvensjonar: ingen tankestrekar, ikon eller emojiar, i alt
+   vidare arbeid (sjå CLAUDE.md).
+3. Djup omstrukturering av Notion: hovudside som dashbord, kanban,
+   kalender, tydelege databasar og lenkjer (neste store oppgåve).
 
 ## Iterasjonshistorikk (denne økta)
 
@@ -34,13 +42,18 @@ Dagleg trigger aktiv: «FORMLÆRE dagleg loop»
 | 20 | Verkstad | Alle tre briefane rulla til v1.1 mot brotmodus-taksonomien: knagg (test per lastretning, krypmåling, PETG/designa svak sone), lampe (termikk-modus, PETG-vurdering, snap-rot), repsett (fem delfamiliar, hylse i to variantar, 50 N per modus); spegla til Verkstad-sidene |
 | 21 | Research | Produsent #3 Northern: forlaget utan fabrikk; Northern Design Award (toårleg, studentar!) = døra inn for Skavl-lampa; Morten & Jonas som referansebane; flagga spenning utflagga produksjon vs. materialnærleik |
 | 22 | Vegkart | Produsentlandskapet inn i 05 (git + Notion): tre arketypar (Superfabrikken/Arven/Forlaget) med kvar si dør; månadsrytmen kopla til case-planen sep–des |
-| 23 | Research | Kjeldesveip: K4 (handlevogn), K5 (sparkesykkel, no 13/15) og K14 (LED, no 14/15 — delt topp) ankra; K7 fann ikkje kjelde. RETTING: Northern-prisen heiter Northern Lighting Student Design Award (årleg, est. 2013) — SNL-formuleringa var upresis; britiske «Northern Design Awards» er urelatert |
+| 23 | Verkstad | Skavl v0.2: pseudokoden implementert (`verkstad/skavl/skavl.py`), tre vasstette 3MF-søsken (107-120 g, overheng maks 45 grader, bru 7,9 mm, blendfri ved konstruksjon), valideringsrapport + silhuett-SVG. Funn: bru-budsjettet avgrensar porøsitet til 6-8 prosent (mål 30) og v0.3 = avlange slissar |
+| 24 | Research | Kjeldesveip (parallelløkt, committa som «it. 23»): K4 (handlevogn), K5 (sparkesykkel, no 13/15) og K14 (LED, no 14/15, delt topp) ankra; K7 fann ikkje kjelde. RETTING: Northern-prisen heiter Northern Lighting Student Design Award (årleg, est. 2013); britiske «Northern Design Awards» er urelatert |
+| 25 | Verkstad | Knagg #1 v0.1: tre hypotesar som printbar kode (`verkstad/knagg/knagg.py`): kraftlinje (moment-følgjande gods, PETG, 28 g, SF 9,0), kanalisert (kontroll, 27 g, SF 5,9), medvite-svak (designa brotsone, PLA, 26 g, predikert brotlast 10 kg). Vasstette 3MF liggjande på sida, validering + profil-SVG. Nye skrivekonvensjonar frå Iver inn i CLAUDE.md |
 
 ## Neste handling
 
-Iterasjon 24: Skriving — Helsenorge-research/utkast (Case #3, nov) eller
-motcase-utkast (Case #4, des). Alternativt Research: Fjordfiesta (#4)
-for å fullføre produsentkartet.
+Iterasjon 26 (Ivers instruks): djup omstrukturering av Notion:
+hovudsida som dashbord (prioritert/actionable øvst), kanban-views,
+kalender-view for fristar, databasar og lenkjer rydda og dokumenterte.
+Pluss konvensjonssveip (fjern tankestrekar/ikon/emojiar i eksisterande
+innhald, git og Notion). Deretter Verkstad: reparasjonssett-generator
+eller Skavl v0.3.
 
 ## Blokkert / treng Iver — VIKTIGAST FYRST
 

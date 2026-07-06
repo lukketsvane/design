@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Skavl lamp shade generator v0.2 — from pseudocode (briefs/skavl-algoritme.md)
+"""Skavl lamp shade generator v0.2, from pseudocode (briefs/skavl-algoritme.md)
 to watertight, printable geometry.
 
 Architecture: curve stack as a radius field r(theta, z) on a cylinder grid.
@@ -56,7 +56,7 @@ GLARE_BAND_DEG = (-5.0, 60.0)   # LED-ray elevation band with no windows
 BLEND_TIP_DEG = (-5.0, 35.0)    # elevation band where the wall tips inward
 RIM_RINGS = 4        # closed cell rows at bottom and top
 PLA_DENSITY = 1.24e-3           # g/mm^3
-PETG_DENSITY = 1.27e-3          # g/mm^3 — PETG-vurderinga i brief v1.1
+PETG_DENSITY = 1.27e-3          # g/mm^3, PETG-vurderinga i brief v1.1
 
 SIBLINGS = {
     # per pseudocode section 5: three weightings, one grammar
@@ -122,7 +122,7 @@ def elevation_deg(z, r):
 
 
 def cell_radius(r):
-    """Mean radius per cell (between rings i,i+1 and theta j,j+1) — the one
+    """Mean radius per cell (between rings i,i+1 and theta j,j+1), the one
     radius definition shared by mask generation and validation."""
     return 0.25 * (r[:-1, :] + r[1:, :]
                    + np.roll(r[:-1, :], -1, axis=1)
@@ -433,11 +433,11 @@ def main():
 
 def write_report(reports, path):
     lines = [
-        "# Skavl v0.2 — valideringsrapport (generert av `skavl.py`)",
+        "# Skavl v0.2, valideringsrapport (generert av `skavl.py`)",
         "",
         "> Pseudokode-steg 6 i `briefs/skavl-algoritme.md`: måltala før print.",
         "> Traktat 1.321: denne rapporten er projeksjonen som gjer flest",
-        "> seleksjonstrykk synlege — legg han ved kvar print.",
+        "> seleksjonstrykk synlege, legg han ved kvar print.",
         "",
         "| Måltal | Krav | " + " | ".join(r["namn"] for r in reports) + " |",
         "|---|---|" + "---|" * len(reports),
@@ -452,16 +452,16 @@ def write_report(reports, path):
     row("Masse (PLA 1,24 g/cm³)", "< 150 g", "{:.0f} g", "masse_g")
     row("Masse (PETG 1,27 g/cm³, jf. brief v1.1)", "< 150 g", "{:.0f} g", "masse_petg_g")
     row("Overheng, maks (skal)", f"< {OVERHENG_DEG}°", "{:.1f}°", "overheng_maks")
-    row("Overheng, p95", "—", "{:.1f}°", "overheng_p95")
+    row("Overheng, p95", "-", "{:.1f}°", "overheng_p95")
     row("Skalareal over budsjett", "< 1 %", "{:.2f} %", "overheng_brot_areal_pst")
     row("Bru, maks vindaugsspenn", f"≤ {BRU_MAKS} mm", "{:.1f} mm", "bru_maks_mm")
     row("Vindauge i blendbandet", "0", "{}", "blendceller")
-    row("Vindauge (celler)", "—", "{}", "vindauge_n_celler")
-    row("Opningsareal", "—", "{:.0f} mm²", "opningsareal_mm2")
+    row("Vindauge (celler)", "-", "{}", "vindauge_n_celler")
+    row("Opningsareal", "-", "{:.0f} mm²", "opningsareal_mm2")
     row("Opningsgrad lo-sida", "~30 % mål", "{:.0f} %", "opningsgrad_lo_pst")
     row("Største radius", f"≤ {R_MAKS} mm", "{:.1f} mm", "r_maks_mm")
-    row("Høgd", "—", "{:.0f} mm", "hogd_mm")
-    row("Fil", "—", "`{}`", "fil")
+    row("Høgd", "-", "{:.0f} mm", "hogd_mm")
+    row("Fil", "-", "`{}`", "fil")
     lines += [
         "",
         f"Blendfri ved konstruksjon: ingen vindaugscelle har siktline frå",

@@ -12,6 +12,11 @@ i synk:
 ## Faste reglar
 
 - **Språk:** nynorsk i alt innhald (Ivers eigen målform). Kode/filnamn på engelsk er ok.
+- **Skrivekonvensjonar (Ivers instruks 2026-07-06):** ingen tankestrekar
+  (em-dash/en-dash), ingen ikon og ingen emojiar, korkje i git, Notion,
+  commit-meldingar eller genererte rapportar. Bruk komma, kolon, punktum
+  eller vanleg bindestrek i staden. Talområde med bindestrek (60-80 mm).
+  Notion-sider skal ikkje ha emoji-ikon.
 - **Branch:** all utvikling direkte på `main` (Ivers instruks 2026-07-06:
   «push main direkte no og framover»). Ingen feature-branchar/PR-ar utan
   at Iver ber om det.

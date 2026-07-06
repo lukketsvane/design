@@ -2,7 +2,31 @@
 
 Loopen konsumerer ovanfrå. `[TRENG IVER]` = berre mennesket.
 
-## Kø
+**Styring (Iver, 2026-07-06):** algoritmisk modellering for 3D-printbare
+fysiske modellar fyrst; Verkstad-oppgåvene under er løfta over
+research/skriving til ny beskjed. Nye skrivekonvensjonar gjeld (sjå
+CLAUDE.md): ingen tankestrekar, ikon eller emojiar.
+
+## Kø — Verkstad og meta (prioritert av Iver)
+
+0. [ ] **Meta/Synk (FYRST, Ivers instruks 2026-07-06):** Notion-
+   omstrukturering: hovudsida som dashbord (prioritert/actionable
+   øvst), kanban-views, kalender-view for fristar, databasar og
+   lenkjer rydda og dokumenterte; konvensjonssveip (ingen
+   tankestrekar/ikon/emojiar) i git og Notion.
+1. [x] **Verkstad:** Knagg #1 som parametrisk, printbar modell → it. 25.
+2. [ ] **Verkstad:** Skavl v0.3: avlange slissar i lagretninga
+   (porøsitet 6-8 prosent, mål 30), jf. funn i `verkstad/skavl/README.md`;
+   evt. ekte differential growth (fråstøyt + ikkje-stjerneforma ringar).
+3. [ ] **Verkstad:** Reparasjonssett: parametrisk klips-protese-generator
+   kopla til brotmodus-taksonomien (`research/2026-07-06-brotmodus-taksonomi.md`),
+   PETG, start med modus «snap-fit-hake av».
+4. [ ] `[TRENG IVER]` Slice og testprint Skavl-søskena og knaggane
+   (`verkstad/skavl/print/*.3mf`, `verkstad/knagg/print/*.3mf`; sjå
+   slicing-notat i README-ane). For lampa: mål E27-fatninga og pæra
+   fyrst (R_SOKKEL/Z_LED). Timelapse frå fyrste print!
+
+## Kø — elles
 
 1. [ ] `[TRENG IVER]` Vel arbeidsnamn — trengst i Salone-skjemaet.
 2. [ ] `[TRENG IVER]` Start Knagg #1-printinga denne veka (kritisk sti).
@@ -57,4 +81,6 @@ Loopen konsumerer ovanfrå. `[TRENG IVER]` = berre mennesket.
 - [x] It. 20: Briefane rulla til v1.1 mot brotmodus-taksonomien → `briefs/*.md` + Verkstad-sidene
 - [x] It. 21: Produsent #3 Northern → `research/2026-07-06-produsent-northern.md`
 - [x] It. 22: Produsentlandskapet inn i vegkartet → `strategy/05-vegkart.md` + 05-sida
-- [x] It. 23: Kjeldesveip idélista (K4/K5/K14 ankra) + Northern-pris-retting → idéliste, produsentnotat, 05
+- [x] It. 23: Skavl v0.2 implementert og validert → `verkstad/skavl/` (3 x 3MF + rapport + silhuett)
+- [x] It. 24: Kjeldesveip idélista (K4/K5/K14 ankra) + Northern-pris-retting (parallelløkt, committa som «it. 23»)
+- [x] It. 25: Knagg #1 v0.1, tre hypotesar som printbare solidar → `verkstad/knagg/`
