@@ -20,8 +20,9 @@ Loopen konsumerer ovanfrå. `[TRENG IVER]` = berre mennesket.
    (Bjørvika/Oslo S) — til Case #2, sjå
    `writing/case-ideliste-designopproret.md`.
 9. [ ] **Synk:** Spegl eventuelle Notion-endringar → git (løpande).
-10. [ ] **Research:** Produsentkartlegging #2: Eikund eller Northern
-    (same lest som Vestre-notatet).
+10. [ ] **Research:** Produsentkartlegging #3: Northern (Oslo) eller
+    Fjordfiesta (Molde) — same lest; Northern trong djupare søk enn
+    fyrste forsøk gav.
 11. [ ] **Skriving:** Fullt utkast Case #2 «Benken du ikkje kan liggje på»
     etter 4-nivå-malen (kan skrivast før fotoet finst).
 12. [ ] **Research:** Verifiser kjeldespora for K4 (handlevogn), K5
@@ -50,3 +51,4 @@ Loopen konsumerer ovanfrå. `[TRENG IVER]` = berre mennesket.
 - [x] It. 15: Case-idébank → `writing/case-idebank.md`
 - [x] It. 16: Case-idéliste Designopprøret → `writing/case-ideliste-designopproret.md` + Skriveprosjekt-rad (Idé)
 - [x] It. 17: Konsolidering idébank+idéliste → v0.2 kanonisk (`writing/case-ideliste-designopproret.md`)
+- [x] It. 18: Produsent #2 Eikund → `research/2026-07-06-produsent-eikund.md`
