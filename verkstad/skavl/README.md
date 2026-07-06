@@ -81,3 +81,48 @@ juster `R_SOKKEL`/`Z_LED` før fyrste print.
   synlege; han vert generert på nytt ved kvar køyring.
 - **3.4/3.41:** om printane konvergerer mot sastrugi/trabekel utan at me
   teikna det: loggfør likskapen (uavhengig konvergens).
+
+---
+
+## Generator B: rotasjonsgrammatikken (v0.1, iterasjon 28)
+
+> Retningsendring frå Iver (referansebileta i `reference/formretning-2026-07/`,
+> analyse i `research/2026-07-06-formretning-rotasjonsgrammatikk.md`). Der
+> generator A veks eit kontinuerleg skal, byggjer generator B lampa av N
+> radiale, dropeforma lameller: éin profil kopiert kring aksen. Tromme-
+> topologi (som referanse 01, 02, 04), ikkje lukka kuppel: det er den lette,
+> print-vennlege forma.
+
+| Fil | Kva |
+|---|---|
+| `skavl_b.py` | Generator B: profil → rotasjonsarray → ringar → union → validering |
+| `print/skavl-lamell-roleg.3mf` | 24 finnar, roleg buk (frø 11), 115 g |
+| `print/skavl-lamell-open.3mf` | 18 finnar, opnast, feitast buk (frø 23), 115 g |
+| `print/skavl-lamell-rotor.3mf` | 30 finnar, 16° vriding (rotor, frø 37), 120 g |
+| `validering-b-v0.1.md` | Måltala, generert av scriptet |
+| `silhuett-b-v0.1.svg` | Éin lamell-profil kopiert kring aksen |
+
+Køyr: `python3 skavl_b.py` (treng `numpy`, `trimesh`, `shapely`,
+`manifold3d`, `rtree`; deterministisk per frø).
+
+### Kva passerer, og kva er ope funn
+
+Harde portar (alle tre søsken): vasstett solid, masse 115-120 g (< 150),
+overheng maks 45° (< 50, 0 % areal over budsjett). Rotasjonsarrayen gjev
+vertikale finneflankar (null overheng); den einaste overheng-kjelda,
+den flytande toppringen, har fasa underside på 45°.
+
+**Ope funn (blendaksen):** radiale finnar kring ei punktkjelde stengjer
+berre 13-16 % av blendbandet, ein stråle rett ut i gapet mellom to
+finnar slepp forbi. Målt ved strålecasting, ikkje gøymd. v0.2 må svare:
+(a) tynn indre diffusor-sylinder i blendbandet, (b) breiare/tettare
+lamellar med projeksjons-overlapp, eller (c) medviten retningslampe.
+Dette er generator B sitt v0.1-funn, parallellen til generator A sitt
+funn om at bru-budsjettet avgrensar porøsiteten.
+
+### Materialeksperiment #1 (glasur-analogen), ventar
+
+Referansens glasur poolar i dalane og tynnast på eggane, kurvatur vert
+farge. Print-analogen (silk-PETG laglys / to-farge kant-høglys / polert
+egg mot matt dal) er ikkje geometri men overflate, og høyrer til
+testprint-fasen `[TRENG IVER]`.

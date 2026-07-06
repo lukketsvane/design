@@ -1,6 +1,6 @@
 # STATE.md, loop-state
 
-**Iterasjon:** 29
+**Iterasjon:** 30
 **Sist oppdatert:** 2026-07-06
 **Status:** Aktiv loop-køyring, fleire økter parallelt («køyr til tokena
 er tomme», Ivers instruks 2026-07-06). All utvikling går direkte til
@@ -52,6 +52,8 @@ er tomme», Ivers instruks 2026-07-06). All utvikling går direkte til
 | 26 | Meta/Synk | Notion-omstrukturering (Ivers instruks): ny Oppgåver-database (17 rader, status/prioritet/frist/eigar) med kanban-, kalender- og Treng Iver-views; hovudsida bygd om til dashbord (No-seksjon øvst, Oppgåver inline, systemtabell nedst, alt gamalt bevart); konvensjonssveip i git (30 md-filer, tankestrekar og emojiar ute, kodeblokker urørte); manifest.json + notion/STRUKTUR.md |
 | 27 | Retningsendring | Ivers fire referansebilete (truleg Steven Edwards-porselen) analyserte til rotasjonsgrammatikken: éin profil × rotasjonsarray × stabling, glasuren som trykk-kart. Skavl får lamell-modus (generator B) som løyser blendingsaksen geometrisk; glasur-analog som materialeksperiment #1; Edwards i Biblioteket (Kjerne); keramikk-sporet attende (H1). Bilete i `reference/formretning-2026-07/`; analyse i `research/2026-07-06-formretning-rotasjonsgrammatikk.md` |
 | 28 | Verkstad | Skavl v0.3 vase-greina (= generator B / lamell-modus frå it. 27, no bygd): ny generator `verkstad/skavl/skavl_vase.py` med ribbe/slisse-grammatikk i staden for utstansa vindauge. Tre vasstette printbare søsken (d-vridd 44 ribber/112° twist, e-drope vertikale ribber/dropemunning, f-timeglas timeglas/115°); 89-98 g; opningsgrad 24-31 % (v0.2 sat fast på 6-8 %); ribberelieff står proud. Alle printfysikk-portar passerer. Twist klemt ned til FDM-printbar ribbekant (<50°) sidan ref er keramikk (flagga). 3D-render + validering + ref/README. Konvergens med it. 27-planen (parallelløkt): deira analyse, denne implementasjonen |
+| 29 | Verkstad | Skavl v0.3 fekk fjerde søsken `g-rotor` (referanse-d/flat rotor): 56 rette vertikale finner, relieff 7 mm, opning 30 %, ribbekant-drift 0° (mest printbare). Printbarheit-funn dokumentert: den flate rotorskåla har vassrette veggar = FDM-overheng, så den printbare kusinen er ei ståande finne-søyle (form følgjer fitness: FDM-landskapet ≠ keramikklandskapet). 4-opp render + ref/README-funn |
+| 30 | Verkstad | Generator B, LAMPE-greina (`verkstad/skavl/skavl_b.py`): rotasjonsgrammatikken som N radiale dropeforma lameller, tromme-topologi (komplementær til it. 28 vase-greina og it. 29 rotor: vase = ribberelieff/lukka botn, lampe = blendfokus/open lampeskjerm med E27-ring). Tre vasstette 3MF-søsken (roleg 24 finnar / open 18 / rotor 30 m/16° vriding), 115-120 g, overheng maks 45° (fasa toppring), alle harde portar passerte. Ope funn: radiale finnar stengjer berre 13-16 % av blendbandet (målt ved strålecasting), v0.2-arbeid. Silhuett-SVG + validering-b-v0.1.md + requirements.txt |
 
 ## Retning frå Iver (2026-07-06, kveld)
 
@@ -65,14 +67,19 @@ gjer kurvaturen lesbar. Analyse:
 `research/2026-07-06-formretning-rotasjonsgrammatikk.md`. Loopen køyrer
 kontinuerleg i tillegg til den daglege triggeren.
 
-| 29 | Verkstad | Skavl v0.3 fekk fjerde søsken `g-rotor` (referanse-d/flat rotor): 56 rette vertikale finner, relieff 7 mm, opning 30 %, ribbekant-drift 0° (mest printbare). Printbarheit-funn dokumentert: den flate rotorskåla har vassrette veggar = FDM-overheng, så den printbare kusinen er ei ståande finne-søyle (form følgjer fitness: FDM-landskapet ≠ keramikklandskapet). 4-opp render + ref/README-funn |
-
 ## Neste handling
 
-Iterasjon 30 (Verkstad-tungt): (a) vase-lampe-hybrid, arv slisse-
-grammatikken inn i `skavl.py` med blend/termikk-klemmene på; (b)
-materialeksperiment #1 (glasur-analog i print: silk-PETG laglys /
-to-farge kant-høglys); (c) reparasjonssett klips-protese-generator.
+Iterasjon 31 (Verkstad-tungt). Tre generator-B-greiner finst no: vase
+(`skavl_vase.py`, ribbe/slisse), rotor (`g-rotor`), og lampe
+(`skavl_b.py`, lamell/blend). Neste:
+(a) **lampe v0.2, løys blendaksen** (opent funn frå it. 30: radiale finnar
+stengjer berre 13-16 % av blendbandet): tynn indre diffusor-sylinder eller
+breiare/tettare lamellar med projeksjons-overlapp, re-mål til 100 %;
+(b) vase-lampe-hybrid: arv slisse-grammatikken frå vasen inn i lampa med
+blend/termikk-klemmene på;
+(c) materialeksperiment #1 (glasur-analog i print: silk-PETG laglys /
+to-farge kant-høglys);
+(d) reparasjonssett klips-protese-generator.
 Sekundært: konvensjonssveip Notion-undersider; Fjordfiesta (#4);
 Case #3 Helsenorge.
 

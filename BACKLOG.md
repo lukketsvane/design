@@ -16,21 +16,24 @@ rotasjonsgrammatikken frå referansebileta er den estetiske hovudretninga
    Attstår: konvensjonssveip i Notion-undersidene (01-05, Verkstad-sidene,
    Søknadspakke), og evt. namnebyte på sider/databasar med spesialteikn
    i titlane.
-1. [x] **Verkstad (RETNING):** Skavl generator B (lamell/rotor) implementert
-   i `verkstad/skavl/skavl_vase.py` ved sida av generator A, same
-   valideringsport, tre vasstette 3MF som testar rotasjonsgrammatikken
-   direkte → it. 28. Opningsgrad 24-31 prosent, ribberelieff, twist klemt
-   til FDM-printbar ribbekant.
-2. [x] **Verkstad (RETNING):** Rotor-familiemedlem `g-rotor` (referanse-d,
-   vertikale finner) → it. 29. Funn: den *flate* skåla er ei keramikk-form
-   (vassrette veggar = FDM-overheng); den printbare kusinen er ei ståande
-   finne-søyle. Ekte flat skål = eige resin/SLA-spor om Iver vil.
+1. [x] **Verkstad (RETNING):** Generator B bygd i tre komplementære greiner:
+   vase (`skavl_vase.py`, ribbe/slisse, opningsgrad 24-31 %, it. 28),
+   rotor (`g-rotor`, vertikale finner, it. 29) og lampe (`skavl_b.py`,
+   lamell/blend, E27-ring, it. 30). Alle vasstette og printbare. Funn
+   (rotor): den flate skåla har vassrette veggar = FDM-overheng, den
+   printbare kusinen er ei ståande finne-søyle (ekte flat skål = resin/SLA).
+2. [ ] **Verkstad (RETNING):** Lampe-greina v0.2, løys blendaksen (opent
+   funn it. 30: radiale finnar stengjer berre 13-16 % av blendbandet).
+   Kandidatar: tynn indre diffusor-sylinder i blendbandet, breiare/tettare
+   lamellar med projeksjons-overlapp, eller medviten retningslampe. Re-mål
+   strålecasting til mål 100 %. Sjå `verkstad/skavl/README.md`.
 3. [ ] **Verkstad (RETNING):** Materialeksperiment #1, glasur-analogen i
    print (silk-PETG laglys / to-farge kant-høglys / polert egg mot matt dal),
    testprotokoll for Knagg/Skavl-printane.
 4. [ ] **Verkstad:** Skavl-lampe-hybrid: arv slisse-grammatikken frå
-   vase-v0.3 inn i lampa (`skavl.py`) med blend- og termikk-klemmene på,
-   slik at lyskjelde-versjonen får same opningsgrad som vasane.
+   vase-v0.3 (`skavl_vase.py`) inn i lampa (`skavl.py`/`skavl_b.py`) med
+   blend- og termikk-klemmene på, slik at lyskjelde-versjonen får same
+   opningsgrad som vasane.
 5. [ ] **Verkstad:** Reparasjonssett: parametrisk klips-protese-generator
    kopla til brotmodus-taksonomien (`research/2026-07-06-brotmodus-taksonomi.md`),
    PETG, start med modus «snap-fit-hake av».
@@ -104,5 +107,6 @@ rotasjonsgrammatikken frå referansebileta er den estetiske hovudretninga
 - [x] It. 25: Knagg #1 v0.1, tre hypotesar som printbare solidar → `verkstad/knagg/`
 - [x] It. 26: Notion-omstrukturering + konvensjonssveip git → dashbord, Oppgåver-database, `notion/STRUKTUR.md`
 - [x] It. 27: Retningsendring, rotasjonsgrammatikken → `research/2026-07-06-formretning-rotasjonsgrammatikk.md` + lamell-modus i `briefs/skavl-algoritme.md` + referansebilete + Edwards i Bibliotek
-- [x] It. 28: Skavl v0.3 vase-greina (generator B bygd) → `verkstad/skavl/skavl_vase.py` + 3 vasstette 3MF + render + validering + ref/README
+- [x] It. 28: Skavl v0.3 vase-greina (generator B, ribbe/slisse) → `verkstad/skavl/skavl_vase.py` + 3 vasstette 3MF + render + validering + ref/README
 - [x] It. 29: Skavl `g-rotor` fjerde søsken + flat-rotor printbarheit-funn → `verkstad/skavl/` (4 vasstette 3MF)
+- [x] It. 30: Generator B lampe-greina (lamell/blend) → `verkstad/skavl/skavl_b.py` (3 vasstette 3MF, 115-120 g, blend-funn 13-16 %) + README + requirements.txt

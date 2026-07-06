@@ -116,6 +116,11 @@ rapport: histogram(overheng), okklusjonsgrad, masse, opningsareal
 
 ## Lamell-modus (generator B, retningsendring frå Iver 2026-07-06)
 
+> **→ v0.1 er implementert og validert:** sjå `verkstad/skavl/skavl_b.py`
+> og `verkstad/skavl/README.md` (iterasjon 28). Tromme-topologi, tre
+> vasstette 3MF-søsken (115-120 g, overheng maks 45°). Ope funn: radiale
+> finnar stengjer berre 13-16 % av blendbandet, sjå README.
+
 Referansebileta i `reference/formretning-2026-07/` (analyse:
 `research/2026-07-06-formretning-rotasjonsgrammatikk.md`) gjev ein
 enklare og visuelt sterkare arkitektur enn ringstabelen for blendings-

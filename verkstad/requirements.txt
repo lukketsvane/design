@@ -1,0 +1,8 @@
+# Verkstad-generatorane (skavl.py, skavl_b.py, knagg.py)
+numpy
+trimesh
+shapely        # skavl_b.py: lamell-profil som polygon
+manifold3d     # skavl_b.py: boolsk union av lameller + ringar
+rtree          # skavl_b.py: strålecasting for blend-måling
+networkx       # 3MF-eksport
+lxml           # 3MF-eksport
