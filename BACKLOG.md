@@ -19,18 +19,15 @@ Loopen konsumerer ovanfrå. `[TRENG IVER]` = berre mennesket.
 8. [ ] `[TRENG IVER]` Foto: benk med midtarmlene + lenebenk
    (Bjørvika/Oslo S) — til Case #2, sjå
    `writing/case-ideliste-designopproret.md`.
-9. [ ] **Synk:** Konsolider `writing/case-idebank.md` (it. 15) og
-   `writing/case-ideliste-designopproret.md` (it. 16) til éi kanonisk
-   liste — parallellkøyring gav to overlappande dokument; rydd òg
-   eventuelle doble rader i Skriveprosjekt-basen (arkiver, ikkje slett).
-10. [ ] **Synk:** Spegl eventuelle Notion-endringar → git (løpande).
-11. [ ] **Research:** Produsentkartlegging #2: Eikund eller Northern
+9. [ ] **Synk:** Spegl eventuelle Notion-endringar → git (løpande).
+10. [ ] **Research:** Produsentkartlegging #2: Eikund eller Northern
     (same lest som Vestre-notatet).
-12. [ ] **Skriving:** Fullt utkast Case #2 «Benken du ikkje kan liggje på»
+11. [ ] **Skriving:** Fullt utkast Case #2 «Benken du ikkje kan liggje på»
     etter 4-nivå-malen (kan skrivast før fotoet finst).
-13. [ ] **Research:** Verifiser kjeldespora for K4 (handlevogn), K5
-    (sparkesykkel), K7 (søppelkasse) i idélista før dei rykkjer opp.
-14. [ ] **Vegkart:** Overvak Vestre/DOGA for opne designkonkurransar
+12. [ ] **Research:** Verifiser kjeldespora for K4 (handlevogn), K5
+    (sparkesykkel), K7 (søppelkasse) og kandidatane K11–K16 i idélista
+    før dei rykkjer opp.
+13. [ ] **Vegkart:** Overvak Vestre/DOGA for opne designkonkurransar
     (Munch-modellen) — sjekk kvartalsvis.
 
 ## Gjort
@@ -52,3 +49,4 @@ Loopen konsumerer ovanfrå. `[TRENG IVER]` = berre mennesket.
 - [x] It. 14: Produsent #1 Vestre → `research/2026-07-06-produsent-vestre.md`
 - [x] It. 15: Case-idébank → `writing/case-idebank.md`
 - [x] It. 16: Case-idéliste Designopprøret → `writing/case-ideliste-designopproret.md` + Skriveprosjekt-rad (Idé)
+- [x] It. 17: Konsolidering idébank+idéliste → v0.2 kanonisk (`writing/case-ideliste-designopproret.md`)

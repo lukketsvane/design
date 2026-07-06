@@ -1,10 +1,25 @@
-# Case-idéliste · Designopprøret (v0.1)
+# Case-idéliste · Designopprøret (v0.2, kanonisk)
 
-> Loop-iterasjon 15, 2026-07-06. Fôr til den månadlege case-rytmen på
-> @designopproret. Kvar kandidat er vurdert mot fem kriterium og har
-> kjeldespor. Case #1 (leskuret) er utkast; denne lista peikar ut #2 og #3
-> og legg lager for resten av året. Speglar rad i Skriveprosjekt-basen
-> (Fase: Idé).
+> Loop-iterasjon 16, 2026-07-06; konsolidert med case-idébanken frå den
+> parallelle iterasjon 15 i loop-iterasjon 17 same dag. Dette er den
+> KANONISKE lista — `writing/case-idebank.md` er no berre ein peikar hit.
+> Fôr til den månadlege case-rytmen på @designopproret. Kvar kandidat er
+> vurdert mot fem kriterium og har kjeldespor. Speglar rad i
+> Skriveprosjekt-basen (Fase: Idé).
+
+## Månadsplan (frå idébanken, avstemt)
+
+| Mnd | Case | Kvifor denne no |
+|---|---|---|
+| Sep | #1 Leskuret (utkast klart) | Ferdig skriven; ventar berre på foto |
+| Okt | #2 Benken med midtarmlene (K1) | Held fram tråden «kroppen i offentleg rom»; sterkast omhug-kopling |
+| Nov | #3 Helsenorge/den digitale døra (K16) | Manifest-prinsipp 2 («du MÅ bruke») demonstrert digitalt |
+| Des | #4 Motcasen: gjort rett (K2) | Manifestløftet om å feire det gode; primærkandidat panteautomaten (ankra kjelder), sekundær Vestre/Munch-benken |
+
+Merk: v0.1 tilrådde panteautomaten som Case #3 i september; konsolideringa
+følgjer idébankens rytmeprinsipp (motcase kvar fjerde) og flyttar han til
+desember. Konflikten er dermed løyst i retning idébanken — flagga her, ikkje
+sletta.
 
 ## Metoden (kort)
 
@@ -142,15 +157,56 @@ alle skalaar), men treng eksplisitt grunngjeving i teksten om han skal
 brukast. **Kjeldespor (uverifisert):** kommunale brøyteinstruksar,
 TØI om vintermobilitet for eldre. **Skår:** 3·1·3·2·3 = **12/15**
 
-## Tilråding
+## Kandidatar frå idébanken (it. 15, uskårte kjelder → Kjelder 1)
 
-1. **Case #2 = K1 Benken** (skriv i august, publiser saman med Case #1
-   når leskur-fotoet er teke — dei to er eit naturleg par: *gløymd* omsorg
-   vs. *våpengjord* omsorg).
-2. **Case #3 = K2 Panteautomaten** (september; fyrste motmodell — held
-   kanalen ute av rein klagemodus og peikar mot FORMLÆRE sitt eige
-   byggjande spor).
-3. Deretter frå lageret etter nyheitsverdi: K10/K3/K5.
+### K11 · Standardrekkverket
+Galvanisert stålrøyr som defaultsvar i alle norske uterom; nivå 3 er
+vegnormal + rammeavtale (ingen teiknar det — det berre kjem). Sterk
+«kven valde dette? ingen»-historie. **Skår:** 3·1·3·2·3 = **12/15**
+
+### K12 · Parkeringsautomaten / betalingsappane
+Éin p-plass, fire appar, ingen mynt; skjerm uleseleg i regn. Nivå 3:
+fragmentert operatørmarknad + kommunale konsesjonar. Overlappar K9
+(betalingsterminalen) — slå saman ved utkast. **Skår:** 3·1·2·2·2 = **10/15**
+
+### K13 · Anleggsgjerdet som permanent tilstand
+Byggegjerde som står i årevis; nivå 3: ansvarspulverisering mellom
+utbyggjar, kommune og entreprenør. **Skår:** 3·1·2·2·3 = **11/15**
+
+### K14 · LED-gatelyset som blendar
+Høg fargetemperatur/blending i bustadgater; nivå 3: energikrav + innkjøp
+på lumen per krone, ikkje lys per menneske. Krysspeikar til Skavl-lampas
+blendfri-akse (verkstad ↔ kritikk). **Skår:** 3·1·3·3·3 = **13/15** ⭐
+
+### K15 · Skiltjungelen
+Éin gatestrekning, talde skilt; kvart skilt har éin rasjonell eigar,
+ingen eig summen. Rein teljing som empiri. **Skår:** 3·1·3·2·3 = **12/15**
+
+### K16 · Helsenorge / den digitale døra
+Éin konkret brukarreise («bestill fastlegetime for mor di utan BankID på
+mobil»); nivå 3: anbods- og forvaltingsregimet; nivå 2: ekskludering av
+eldre/ikkje-digitale. Manifest-prinsipp 2 (Spotify vel du; Helsenorge må
+du). Foto krevjande — karusell ber det. **Skår:** 1·1·3·3·2 = **10/15**
+
+*(Idébankens «søppelpunktet» er dekt av K7; «motcasen gjort rett» er K2.)*
+
+## Prinsipp for banken (frå idébanken)
+
+- Aldri to digitale casar på rad (kanalen lever av foto).
+- Kvar fjerde case bør vere ein motcase (feire det gode) — manifestløftet.
+- Kvar case skal kunne krysspeike til minst eitt verkstadobjekt eller
+  eitt traktat-omgrep — kritikk og bygging er same grammatikk.
+
+## Tilråding (v0.2, konsolidert)
+
+1. **Case #2 = K1 Benken** (utkast i august, publisering oktober;
+   naturleg par med leskuret: *gløymd* omsorg vs. *våpengjord* omsorg).
+2. **Case #3 = K16 Helsenorge** (november; fyrste digitale case — treng
+   kjelderesearch fyrst).
+3. **Case #4 = K2 Panteautomaten som motcase** (desember; manifestløftet).
+4. Lager for 2027, etter skår: K14 LED-gatelyset (13) → K10 vinterfortauet
+   (12, systemflagg) → K11 rekkverket (12) → K15 skiltjungelen (12) →
+   K3 sjølvbeteningskassa (12).
 
 ## Neste steg
 
