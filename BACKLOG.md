@@ -23,8 +23,10 @@ Loopen konsumerer ovanfrå. `[TRENG IVER]` = berre mennesket.
 10. [ ] **Research:** Produsentkartlegging #3: Northern (Oslo) eller
     Fjordfiesta (Molde) — same lest; Northern trong djupare søk enn
     fyrste forsøk gav.
-11. [ ] **Skriving:** Fullt utkast Case #2 «Benken du ikkje kan liggje på»
-    etter 4-nivå-malen (kan skrivast før fotoet finst).
+11. [ ] **Verkstad:** Rull dei tre designbriefane mot brotmodus-taksonomien
+    og Skavl-algoritmen: er testplanane à jour med det nyaste
+    research-materialet? Oppdater «Seleksjonstrykk»- og
+    «Traktat-kopling»-felta om noko har flytta seg.
 12. [ ] **Research:** Verifiser kjeldespora for K4 (handlevogn), K5
     (sparkesykkel), K7 (søppelkasse) og kandidatane K11–K16 i idélista
     før dei rykkjer opp.
@@ -52,3 +54,4 @@ Loopen konsumerer ovanfrå. `[TRENG IVER]` = berre mennesket.
 - [x] It. 16: Case-idéliste Designopprøret → `writing/case-ideliste-designopproret.md` + Skriveprosjekt-rad (Idé)
 - [x] It. 17: Konsolidering idébank+idéliste → v0.2 kanonisk (`writing/case-ideliste-designopproret.md`)
 - [x] It. 18: Produsent #2 Eikund → `research/2026-07-06-produsent-eikund.md`
+- [x] It. 19: Case #2 «Benken» fullt utkast → `writing/case-02-benken.md` + Skriveprosjekt-rad (Utkast)

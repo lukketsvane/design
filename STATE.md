@@ -1,6 +1,6 @@
 # STATE.md — loop-state
 
-**Iterasjon:** 18
+**Iterasjon:** 19
 **Sist oppdatert:** 2026-07-06
 **Status:** Aktiv loop-køyring, tredje økt («køyr til tokena er tomme»,
 Ivers instruks 2026-07-06). All utvikling går direkte til `main`.
@@ -30,11 +30,14 @@ Dagleg trigger aktiv: «FORMLÆRE dagleg loop»
 | 16 | Skriving | Case-idéliste Designopprøret: 10 kandidatar skåra mot 5 kriterium; tilrådd #2 = benken med midtarmlene (fiendtleg design), #3 = panteautomaten (motmodell); ny rad i Skriveprosjekt (Idé). NB: parallell med it. 15 — same konklusjon om benken |
 | 17 | Synk | Konsolidering: idébank (it. 15) + idéliste (it. 16) → éi kanonisk liste v0.2 (16 kandidatar, månadsplan sep–des, prinsipp); idebank-fila er peikar; Notion-rada oppdatert; motcase flytt til desember (flagga) |
 | 18 | Research | Produsent #2 Eikund: arven som forretningsmodell; gullalder-diagnosen stadfesta empirisk; flagga spenning «grammatikk eller museum»; inngang = «det manglande møbelet»; Northern/Fjordfiesta står att |
+| 19 | Skriving | Case #2 «Benken du ikkje kan liggje på» — fullt utkast: 4 nivå, trykktabell, Bjørvika-empiri (namngjevne kritikarar + Lynnebakken-avvisinga), Camden/Savić, 9 kjelder, karusell-skisse; Skriveprosjekt-rad (Utkast, frist 1. okt) |
 
 ## Neste handling
 
-Iterasjon 19: Fullt utkast Case #2 «Benken du ikkje kan liggje på»
-(backlog-post 11, 4-nivå-malen; kan skrivast før fotoet finst).
+Iterasjon 20: frå backloggen — Research: verifiser kjeldespor K4/K5/K7 +
+K11–K16 i case-idélista, ELLER Produsent #3 (Northern/Fjordfiesta).
+Balansesjekk: hugs Verkstad/Vegkart snart (sist Verkstad var it. 11,
+Vegkart it. 12).
 
 ## Blokkert / treng Iver — VIKTIGAST FYRST
 
