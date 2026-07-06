@@ -12,8 +12,8 @@ Loopen konsumerer ovanfrå. `[TRENG IVER]` = berre mennesket.
    for wet clay (strammare overheng/spenn enn PLA).
 5. [ ] **Verkstad:** Utvid skavl-algoritmen med «keramikk-modus»
    (strammare vinkel-clamp, ribbe-avstand ≥ 3× dyse).
-6. [ ] **Skriving:** Redo Case #1 (Designopprøret, 4-nivå) — feila under
-   Fable-grensa; køyr inline eller på nytt.
+6. [x] **Skriving:** Case #1 (Helseplattformen, 4-nivå) → Utkast.
+   `skriving/case-01-helseplattformen.md` (it. 11)
 7. [ ] **Research:** Brotmodus-taksonomi reparasjonssett — feila; køyr på nytt.
 8. [ ] **Research:** Celadon-kjemi + reduksjonsbrenning; norske keramikk-
    verkstader/residens (t.d. Statens verksteder, Bærum verk).

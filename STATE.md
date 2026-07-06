@@ -1,8 +1,15 @@
 # STATE.md — loop-state
 
-**Iterasjon:** 9
+**Iterasjon:** 11
 **Sist oppdatert:** 2026-07-06
-**Status:** Aktiv. STOR RETNINGSAVKLARING: formspråket funne.
+**Status:** Aktiv. Autonom Routine sett opp (kvar 4. time). It. 10–11 køyrde.
+
+## Sist gjort (it. 10–11)
+
+- It. 10: full designbrief Kråkebolle-skjerm (flaggskip, wet-clay-budsjett).
+- It. 11: Case #1 «Helseplattformen» (Riksrevisjon-granska innkjøpsfiasko +
+  UU-brot 12/14) → Utkast; fullt 4-nivå-case + 3 IG-slides. Første konkrete
+  Designopprør-kritikk ferdig i utkast.
 
 ## Retningsavklaring (iterasjon 9) — VIKTIGAST
 
