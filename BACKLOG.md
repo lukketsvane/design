@@ -30,10 +30,11 @@ rotasjonsgrammatikken frå referansebileta er den estetiske hovudretninga
 3. [ ] **Verkstad (RETNING):** Materialeksperiment #1, glasur-analogen i
    print (silk-PETG laglys / to-farge kant-høglys / polert egg mot matt dal),
    testprotokoll for Knagg/Skavl-printane.
-4. [ ] **Verkstad:** Skavl-lampe-hybrid: arv slisse-grammatikken frå
-   vase-v0.3 (`skavl_vase.py`) inn i lampa (`skavl.py`/`skavl_b.py`) med
-   blend- og termikk-klemmene på, slik at lyskjelde-versjonen får same
-   opningsgrad som vasane.
+4. [x] **Verkstad:** Skavl-lampe-hybrid → it. 30 (`skavl_b.py`, radiale
+   lameller, blend-funn 13-16 %) + it. 31 (`skavl_lampe.py`, rib/slisse med
+   glare-band lukka, blend=0, termisk klaring 74-79 mm, E27-sokkel, opning
+   15 %). To komplementaere geometriske svar paa blendaksen. Attstaar:
+   kombiner dei to til 100 % blend + hoegare opning (lagt i Neste handling).
 5. [ ] **Verkstad:** Reparasjonssett: parametrisk klips-protese-generator
    kopla til brotmodus-taksonomien (`research/2026-07-06-brotmodus-taksonomi.md`),
    PETG, start med modus «snap-fit-hake av».
@@ -110,3 +111,4 @@ rotasjonsgrammatikken frå referansebileta er den estetiske hovudretninga
 - [x] It. 28: Skavl v0.3 vase-greina (generator B, ribbe/slisse) → `verkstad/skavl/skavl_vase.py` + 3 vasstette 3MF + render + validering + ref/README
 - [x] It. 29: Skavl `g-rotor` fjerde søsken + flat-rotor printbarheit-funn → `verkstad/skavl/` (4 vasstette 3MF)
 - [x] It. 30: Generator B lampe-greina (lamell/blend) → `verkstad/skavl/skavl_b.py` (3 vasstette 3MF, 115-120 g, blend-funn 13-16 %) + README + requirements.txt
+- [x] It. 31: Skavl v0.4 lampe-hybrid (rib/slisse, glare-band lukka, blend=0) → `verkstad/skavl/skavl_lampe.py` + 2 vasstette lampe-3MF + render

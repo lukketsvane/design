@@ -1,6 +1,6 @@
 # STATE.md, loop-state
 
-**Iterasjon:** 30
+**Iterasjon:** 31
 **Sist oppdatert:** 2026-07-06
 **Status:** Aktiv loop-køyring, fleire økter parallelt («køyr til tokena
 er tomme», Ivers instruks 2026-07-06). All utvikling går direkte til
@@ -54,6 +54,7 @@ er tomme», Ivers instruks 2026-07-06). All utvikling går direkte til
 | 28 | Verkstad | Skavl v0.3 vase-greina (= generator B / lamell-modus frå it. 27, no bygd): ny generator `verkstad/skavl/skavl_vase.py` med ribbe/slisse-grammatikk i staden for utstansa vindauge. Tre vasstette printbare søsken (d-vridd 44 ribber/112° twist, e-drope vertikale ribber/dropemunning, f-timeglas timeglas/115°); 89-98 g; opningsgrad 24-31 % (v0.2 sat fast på 6-8 %); ribberelieff står proud. Alle printfysikk-portar passerer. Twist klemt ned til FDM-printbar ribbekant (<50°) sidan ref er keramikk (flagga). 3D-render + validering + ref/README. Konvergens med it. 27-planen (parallelløkt): deira analyse, denne implementasjonen |
 | 29 | Verkstad | Skavl v0.3 fekk fjerde søsken `g-rotor` (referanse-d/flat rotor): 56 rette vertikale finner, relieff 7 mm, opning 30 %, ribbekant-drift 0° (mest printbare). Printbarheit-funn dokumentert: den flate rotorskåla har vassrette veggar = FDM-overheng, så den printbare kusinen er ei ståande finne-søyle (form følgjer fitness: FDM-landskapet ≠ keramikklandskapet). 4-opp render + ref/README-funn |
 | 30 | Verkstad | Generator B, LAMPE-greina (`verkstad/skavl/skavl_b.py`): rotasjonsgrammatikken som N radiale dropeforma lameller, tromme-topologi (komplementær til it. 28 vase-greina og it. 29 rotor: vase = ribberelieff/lukka botn, lampe = blendfokus/open lampeskjerm med E27-ring). Tre vasstette 3MF-søsken (roleg 24 finnar / open 18 / rotor 30 m/16° vriding), 115-120 g, overheng maks 45° (fasa toppring), alle harde portar passerte. Ope funn: radiale finnar stengjer berre 13-16 % av blendbandet (målt ved strålecasting), v0.2-arbeid. Silhuett-SVG + validering-b-v0.1.md + requirements.txt |
+| 31 | Verkstad | Skavl v0.4 lampe-hybrid (`verkstad/skavl/skavl_lampe.py`), komplementaer til it. 30 skavl_b: rib/slisse-grammatikken fraa vasane paa lampa med glare/termikk paa att. To vasstette soesken (roleg/open), blend=0 ved konstruksjon (kvar slisse i glare-bandet lukka, oevre sone tett, konveksjonsslissar i nedre halvdel), termisk klaring 74-79 mm, E27-sokkel, opning 15 %. Alle portar. To ulike geometriske svar paa blendaksen: skavl_b lukkar 13-16 % med radiale finnar, skavl_lampe lukkar 100 % ved aa fjerne slissar i bandet |
 
 ## Retning frå Iver (2026-07-06, kveld)
 
@@ -69,18 +70,20 @@ kontinuerleg i tillegg til den daglege triggeren.
 
 ## Neste handling
 
-Iterasjon 31 (Verkstad-tungt). Tre generator-B-greiner finst no: vase
-(`skavl_vase.py`, ribbe/slisse), rotor (`g-rotor`), og lampe
-(`skavl_b.py`, lamell/blend). Neste:
-(a) **lampe v0.2, løys blendaksen** (opent funn frå it. 30: radiale finnar
-stengjer berre 13-16 % av blendbandet): tynn indre diffusor-sylinder eller
-breiare/tettare lamellar med projeksjons-overlapp, re-mål til 100 %;
-(b) vase-lampe-hybrid: arv slisse-grammatikken frå vasen inn i lampa med
-blend/termikk-klemmene på;
+Iterasjon 32 (Verkstad-tungt). Tre generator-B-greiner finst no: vase
+(`skavl_vase.py`), rotor (`g-rotor`), og TO lampe-tilnaerminger (it. 30
+`skavl_b.py` radiale lameller / it. 31 `skavl_lampe.py` rib-slisse med
+glare-band lukka). Neste:
+(a) **lampe blendaksen heilt loyst**: skavl_b lukkar berre 13-16 % av
+blendbandet med radiale finnar, skavl_lampe lukkar 100 % men mister opning
+i augelinja, kombiner dei (indre diffusor eller projeksjons-overlapp), maal
+til 100 % blend + hoegare opning;
+(b) samle Verkstad-oversyn: ein README for `verkstad/skavl/` som bind vase-,
+rotor- og dei to lampe-greinene;
 (c) materialeksperiment #1 (glasur-analog i print: silk-PETG laglys /
-to-farge kant-høglys);
+to-farge kant-hoeglys);
 (d) reparasjonssett klips-protese-generator.
-Sekundært: konvensjonssveip Notion-undersider; Fjordfiesta (#4);
+Sekundaert: konvensjonssveip Notion-undersider; Fjordfiesta (#4);
 Case #3 Helsenorge.
 
 ## Blokkert / treng Iver, VIKTIGAST FYRST
