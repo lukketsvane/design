@@ -1,9 +1,10 @@
 # STATE.md — loop-state
 
-**Iterasjon:** 15
+**Iterasjon:** 16
 **Sist oppdatert:** 2026-07-06
-**Status:** Aktiv loop-køyring, andre økt. All utvikling går no direkte
-til `main` (Ivers instruks). Dagleg trigger aktiv: «FORMLÆRE dagleg loop»
+**Status:** Aktiv loop-køyring, tredje økt («køyr til tokena er tomme»,
+Ivers instruks 2026-07-06). All utvikling går direkte til `main`.
+Dagleg trigger aktiv: «FORMLÆRE dagleg loop»
 (trig_01DqhXRKkJof8qzmz8oHozmh, 05:00 UTC, ferskt miljø per køyring).
 
 ## Iterasjonshistorikk (denne økta)
@@ -25,13 +26,14 @@ til `main` (Ivers instruks). Dagleg trigger aktiv: «FORMLÆRE dagleg loop»
 | 12 | Vegkart | Studieløpet inn i H0/H1: 4. år = einaste utvekslingsår; frist vårutveksling = 15. sep (= Greenhouse!); spenning Salone×utveksling flagga |
 | 13 | Research | Brotmodus-taksonomi v0.1: 10 modusar frå ORA-data + snap-fit-litteratur; klips-protese opp som eiga delfamilie; PETG-tilråding |
 | 14 | Research | Produsent #1 Vestre: motmodellen til Case #1 (varigheit i staden for reklame); Munch-serien kom frå open konkurranse; Snøhetta-kopling |
-| 15 | Skriving | Case-idébank: 9 kandidatar + månadsplan sep–des (benk m/midtarmlene → Helsenorge → motcase); prinsipp for banken |
+| 15 | Skriving | Case-idébank: 9 kandidatar + månadsplan sep–des (benk m/midtarmlene → Helsenorge → motcase); prinsipp for banken (parallelløkt) |
+| 16 | Skriving | Case-idéliste Designopprøret: 10 kandidatar skåra mot 5 kriterium; tilrådd #2 = benken med midtarmlene (fiendtleg design), #3 = panteautomaten (motmodell); ny rad i Skriveprosjekt (Idé). NB: parallell med it. 15 — same konklusjon om benken; konsolidering ligg i backloggen |
 
 ## Neste handling
 
-Neste loop-køyring (dagleg trigger): djupdykk i éi teorikjelde frå
-Biblioteket (menyens Research), eller Case #2-utkast («Benken med
-midtarmlene») om Iver har prioritert det.
+Iterasjon 17: **Synk** — konsolider idébanken (it. 15) og idélista
+(it. 16) til éi kanonisk liste i writing/ + Skriveprosjekt. Deretter:
+Produsentkartlegging #2 (Eikund/Northern) eller Case #2-utkast (benken).
 
 ## Blokkert / treng Iver — VIKTIGAST FYRST
 
