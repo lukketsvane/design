@@ -1,6 +1,6 @@
 # STATE.md — loop-state
 
-**Iterasjon:** 14
+**Iterasjon:** 15
 **Sist oppdatert:** 2026-07-06
 **Status:** Aktiv loop-køyring, andre økt. All utvikling går no direkte
 til `main` (Ivers instruks). Dagleg trigger aktiv: «FORMLÆRE dagleg loop»
@@ -25,11 +25,13 @@ til `main` (Ivers instruks). Dagleg trigger aktiv: «FORMLÆRE dagleg loop»
 | 12 | Vegkart | Studieløpet inn i H0/H1: 4. år = einaste utvekslingsår; frist vårutveksling = 15. sep (= Greenhouse!); spenning Salone×utveksling flagga |
 | 13 | Research | Brotmodus-taksonomi v0.1: 10 modusar frå ORA-data + snap-fit-litteratur; klips-protese opp som eiga delfamilie; PETG-tilråding |
 | 14 | Research | Produsent #1 Vestre: motmodellen til Case #1 (varigheit i staden for reklame); Munch-serien kom frå open konkurranse; Snøhetta-kopling |
+| 15 | Skriving | Case-idébank: 9 kandidatar + månadsplan sep–des (benk m/midtarmlene → Helsenorge → motcase); prinsipp for banken |
 
 ## Neste handling
 
-Iterasjon 15 (frå menyen): Case #2-idéliste for Designopprøret (fôrar den
-månadlege tekst-rytmen), eller djupdykk i éi teorikjelde frå Biblioteket.
+Neste loop-køyring (dagleg trigger): djupdykk i éi teorikjelde frå
+Biblioteket (menyens Research), eller Case #2-utkast («Benken med
+midtarmlene») om Iver har prioritert det.
 
 ## Blokkert / treng Iver — VIKTIGAST FYRST
 

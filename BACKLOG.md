@@ -39,3 +39,4 @@ Loopen konsumerer ovanfrå. `[TRENG IVER]` = berre mennesket.
 - [x] It. 12: Studieløpet inn i vegkartet → `strategy/05-vegkart.md` + 05-sida i Notion
 - [x] It. 13: Brotmodus-taksonomi v0.1 → `research/2026-07-06-brotmodus-taksonomi.md` + Verkstad-sida
 - [x] It. 14: Produsent #1 Vestre → `research/2026-07-06-produsent-vestre.md`
+- [x] It. 15: Case-idébank → `writing/case-idebank.md`
