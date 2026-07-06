@@ -8,7 +8,9 @@ Loopen konsumerer ovanfrå. `[TRENG IVER]` = berre mennesket.
 2. [ ] `[TRENG IVER]` Start Knagg #1-printinga denne veka (kritisk sti).
 3. [ ] `[TRENG IVER]` Fotografer eit konkret leskur (med adresse, helst i
    regn/vind) — trengst før Case #1 kan publiserast.
-4. [ ] **Research:** AHO-miljøet: rettleiarar/allierte for grammatikk-tilnærminga.
+4. [ ] `[TRENG IVER]` AHO-kontakt steg 1: meld deg som informant hjå
+   Trym Abrahamsen (Applied Formgiving-ph.d.) — sjå
+   `research/2026-07-06-aho-miljoet.md`.
 5. [ ] **Verkstad:** Grasshopper/Python-skisse for Skavl-lampe-algoritmen
    (pseudokode + parameterliste er nok — Iver implementerer).
 6. [ ] **Vegkart:** Kopla utveksling + semesterplan frå AhO-sida inn i H0/H1.
@@ -30,3 +32,4 @@ Loopen konsumerer ovanfrå. `[TRENG IVER]` = berre mennesket.
 - [x] It. 7: Manifest v1.0 Revisjon→Klar (i Notion; git-committen vart tom)
 - [x] It. 8: Synk/Meta — drift retta, branch-referansar oppdaterte etter PR #1
 - [x] It. 9: Case #1 «Leskuret som ikkje gjev le» → `writing/case-01-leskuret.md` + Notion (Fase: Utkast)
+- [x] It. 10: AHO-miljøet → `research/2026-07-06-aho-miljoet.md`
