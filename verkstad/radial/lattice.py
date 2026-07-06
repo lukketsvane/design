@@ -135,12 +135,17 @@ def build(cfg, solid=False):
             for end, sgn in ((M - 1, 1.0), (0, -1.0)):
                 base = P[(c, end)]
                 g = _rng(cfg, 5, c, end)
+                lv = g.normal(0, 0.34) if sv else 0.0    # varied tip length
+                mid = base.copy()
+                mid[:2] *= 1.16
+                mid[2] = base[2] + sgn * cfg["crown"] * 0.5 * (1 + 0.4 * lv)
                 out = base.copy()
-                out[:2] *= 1.32 + (g.normal(0, 0.06) if sv else 0.0)
-                out[2] = base[2] + sgn * cfg["crown"] * (
-                    1.0 + (g.normal(0, 0.22) if sv else 0.0))
-                parts.append(strut(base, out, sr * 0.8))
-                parts.append(joint(out, sr * 0.5))   # small beak
+                out[:2] *= 1.5 + (g.normal(0, 0.1) if sv else 0.0)
+                out[2] = base[2] + sgn * cfg["crown"] * (1.0 + lv)
+                parts.append(strut(base, mid, sr * 0.85))   # a curved, tapering
+                parts.append(strut(mid, out, sr * 0.62))    # beak splaying out
+                parts.append(joint(mid, sr * 0.72))
+                parts.append(joint(out, sr * 0.42))
     # rungs: with antiphase ribs the ribs pinch and fuse on their own, so
     # rungs are only needed at the rims for a clean mouth/foot (unless the
     # variant asks for a full ladder)
