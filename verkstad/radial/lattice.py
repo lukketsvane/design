@@ -24,8 +24,8 @@ VARIANTS = {
                   strut=6.2, wave=0.5, wavef=4.0, ribphase=0.5,
                   taper_top=0.62, rungs=True, crown=16.0,
                   seed=7, ribvar=0.16, strut_var=0.07),
-    "reef": dict(n_col=28, n_row=28, H=182.0, r_max=94.0, waist=0.32,
-                 strut=4.6, wave=0.46, wavef=5.0, ribphase=0.5,
+    "reef": dict(n_col=26, n_row=22, H=182.0, r_max=94.0, waist=0.32,
+                 strut=4.6, wave=0.46, wavef=4.5, ribphase=0.5,
                  taper_top=0.58, rungs=True, crown=13.0,
                  seed=3, ribvar=0.12, strut_var=0.06),
     "column": dict(n_col=16, n_row=20, H=204.0, r_max=82.0, waist=0.20,
@@ -75,8 +75,38 @@ def node(c, r, cfg):
     return np.array([R * math.cos(th), R * math.sin(th), z])
 
 
+def catmull_rom(pts, per=4):
+    """Smooth polyline through the nodes so the ribs read as continuous tubes
+    instead of a chain of straight segments (the bamboo look)."""
+    pts = np.asarray(pts)
+    n = len(pts)
+    out = []
+    for i in range(n - 1):
+        p0, p1, p2, p3 = (pts[max(i - 1, 0)], pts[i], pts[i + 1],
+                          pts[min(i + 2, n - 1)])
+        for t in np.linspace(0.0, 1.0, per, endpoint=False):
+            t2, t3 = t * t, t * t * t
+            out.append(0.5 * (2 * p1 + (-p0 + p2) * t
+                              + (2 * p0 - 5 * p1 + 4 * p2 - p3) * t2
+                              + (-p0 + 3 * p1 - 3 * p2 + p3) * t3))
+    out.append(pts[-1])
+    return out
+
+
 def strut(p0, p1, r):
     return trimesh.creation.cylinder(radius=r, segment=[p0, p1], sections=24)
+
+
+def tube(pts, r):
+    """A smooth tube along a point list: overlapping cylinders + joint balls."""
+    parts = []
+    for i in range(len(pts) - 1):
+        if np.linalg.norm(np.asarray(pts[i + 1]) - pts[i]) < 1e-6:
+            continue
+        parts.append(strut(pts[i], pts[i + 1], r))
+    for p in pts[::2]:
+        parts.append(joint(p, r))
+    return parts
 
 
 def joint(p, r):
@@ -94,11 +124,11 @@ def build(cfg, solid=False):
         return sr * (1.0 + (_rng(cfg, 9, *key).normal(0, sv) if sv else 0.0))
 
     P = {(c, r): node(c, r, cfg) for c in range(N) for r in range(M)}
-    parts = [joint(p, rad(c, r, 0)) for (c, r), p in P.items()]
-    # vertical rib segments (thickness varies a touch for a hand-made read)
+    parts = []
+    # smooth vertical ribs (spline through the nodes -> continuous tubes)
     for c in range(N):
-        for r in range(M - 1):
-            parts.append(strut(P[(c, r)], P[(c, r + 1)], rad(c, r, 1)))
+        col = [P[(c, r)] for r in range(M)]
+        parts += tube(catmull_rom(col, per=3), rad(c, 0, 1))
     # spiky crown + feet: extend each rib past the rims to a free tapering tip
     if cfg.get("crown"):
         for c in range(N):
