@@ -1,4 +1,4 @@
-# BACKLOG.md — prioritert arbeidskø
+# BACKLOG.md, prioritert arbeidskø
 
 Loopen konsumerer ovanfrå. `[TRENG IVER]` = berre mennesket.
 
@@ -7,13 +7,12 @@ fysiske modellar fyrst; Verkstad-oppgåvene under er løfta over
 research/skriving til ny beskjed. Nye skrivekonvensjonar gjeld (sjå
 CLAUDE.md): ingen tankestrekar, ikon eller emojiar.
 
-## Kø — Verkstad og meta (prioritert av Iver)
+## Kø, Verkstad og meta (prioritert av Iver)
 
-0. [ ] **Meta/Synk (FYRST, Ivers instruks 2026-07-06):** Notion-
-   omstrukturering: hovudsida som dashbord (prioritert/actionable
-   øvst), kanban-views, kalender-view for fristar, databasar og
-   lenkjer rydda og dokumenterte; konvensjonssveip (ingen
-   tankestrekar/ikon/emojiar) i git og Notion.
+0. [x] **Meta/Synk:** Notion-omstrukturering + konvensjonssveip git → it. 26.
+   Attstår: konvensjonssveip i Notion-undersidene (01-05, Verkstad-sidene,
+   Søknadspakke), og evt. namnebyte på sider/databasar med spesialteikn
+   i titlane.
 1. [x] **Verkstad:** Knagg #1 som parametrisk, printbar modell → it. 25.
 2. [ ] **Verkstad:** Skavl v0.3: avlange slissar i lagretninga
    (porøsitet 6-8 prosent, mål 30), jf. funn i `verkstad/skavl/README.md`;
@@ -26,35 +25,35 @@ CLAUDE.md): ingen tankestrekar, ikon eller emojiar.
    slicing-notat i README-ane). For lampa: mål E27-fatninga og pæra
    fyrst (R_SOKKEL/Z_LED). Timelapse frå fyrste print!
 
-## Kø — elles
+## Kø, elles
 
-1. [ ] `[TRENG IVER]` Vel arbeidsnamn — trengst i Salone-skjemaet.
+1. [ ] `[TRENG IVER]` Vel arbeidsnamn, trengst i Salone-skjemaet.
 2. [ ] `[TRENG IVER]` Start Knagg #1-printinga denne veka (kritisk sti).
 3. [ ] `[TRENG IVER]` Fotografer eit konkret leskur (med adresse, helst i
-   regn/vind) — trengst før Case #1 kan publiserast.
+   regn/vind), trengst før Case #1 kan publiserast.
 4. [ ] `[TRENG IVER]` AHO-kontakt steg 1: meld deg som informant hjå
-   Trym Abrahamsen (Applied Formgiving-ph.d.) — sjå
+   Trym Abrahamsen (Applied Formgiving-ph.d.), sjå
    `research/2026-07-06-aho-miljoet.md`.
 5. [ ] `[TRENG IVER]` Utvekslingsavgjerd før 15. sep 2026 (intern frist
    vårutveksling 2027 = same dag som Greenhouse): vår 2027 kolliderer med
-   Salone; haust 2027 er tryggare — sjå «Studieløpet som ramme» i 05-sida.
+   Salone; haust 2027 er tryggare, sjå «Studieløpet som ramme» i 05-sida.
 6. [ ] `[TRENG IVER]` Foto 16:9 av prototypane innan ~20. aug.
 7. [ ] `[TRENG IVER]` Send Salone-skjema innan 30. aug; Greenhouse innan 15. sep.
 8. [ ] `[TRENG IVER]` Foto: benk med midtarmlene + lenebenk
-   (Bjørvika/Oslo S) — til Case #2, sjå
+   (Bjørvika/Oslo S), til Case #2, sjå
    `writing/case-ideliste-designopproret.md`.
 9. [ ] **Synk:** Spegl eventuelle Notion-endringar → git (løpande).
 10. [ ] **Research:** Produsentkartlegging #4: Fjordfiesta (Molde,
-    Scandia-arven) — samanlikn med Eikund; deretter destiller
+    Scandia-arven), samanlikn med Eikund; deretter destiller
     produsent-landskapskartet inn i `strategy/04-posisjonering.md`.
 11. [ ] **Research:** Finn neste utlysing/frist for Northern Lighting
-    Student Design Award (årleg, est. 2013; stadfest at prisen framleis finst) —
+    Student Design Award (årleg, est. 2013; stadfest at prisen framleis finst), 
     kandidat-arena for Skavl-lampa etter Salone/Greenhouse.
 12. [ ] **Research:** Verifiser attståande kjeldespor i idélista:
-    K7 (søppelkasse — fann ikkje kjelde i it. 23), K11 (rekkverk),
-    K12/K13/K15/K16 — K4/K5/K14 er ankra.
+    K7 (søppelkasse, fann ikkje kjelde i it. 23), K11 (rekkverk),
+    K12/K13/K15/K16, K4/K5/K14 er ankra.
 13. [ ] **Vegkart:** Overvak Vestre/DOGA for opne designkonkurransar
-    (Munch-modellen) — sjekk kvartalsvis.
+    (Munch-modellen), sjekk kvartalsvis.
 
 ## Gjort
 
@@ -66,7 +65,7 @@ CLAUDE.md): ingen tankestrekar, ikon eller emojiar.
 - [x] It. 5: Norway Says → `research/2026-07-06-norway-says.md`
 - [x] It. 6: Søknadspakke → `briefs/soknadspakke-2026.md` + Notion-side
 - [x] It. 7: Manifest v1.0 Revisjon→Klar (i Notion; git-committen vart tom)
-- [x] It. 8: Synk/Meta — drift retta, branch-referansar oppdaterte etter PR #1
+- [x] It. 8: Synk/Meta, drift retta, branch-referansar oppdaterte etter PR #1
 - [x] It. 9: Case #1 «Leskuret som ikkje gjev le» → `writing/case-01-leskuret.md` + Notion (Fase: Utkast)
 - [x] It. 10: AHO-miljøet → `research/2026-07-06-aho-miljoet.md`
 - [x] It. 11: Skavl-algoritme v0.1 → `briefs/skavl-algoritme.md` + Verkstad-sida

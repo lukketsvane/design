@@ -1,4 +1,4 @@
-# Produsentkartlegging #1: Vestre — motmodellen til leskuret
+# Produsentkartlegging #1: Vestre, motmodellen til leskuret
 
 > Research-notat, loop-iterasjon 14 (2026-07-06). Frå iterasjonsmenyen
 > (Research: kartlegg éin produsent). Fyrste av produsentane i H1-lista
@@ -6,7 +6,7 @@
 
 ## Kvifor Vestre fyrst
 
-Vestre er ikkje berre ein mogleg produsentkontakt — dei er **den levande
+Vestre er ikkje berre ein mogleg produsentkontakt, dei er **den levande
 motmodellen til Case #1**. Der JCDecaux-modellen gjev kommunen «gratis»
 møblar betalte med reklameflater og den ventande sin komfort, sel Vestre
 byromsmøblar der kommunen betalar for varigheit: livstidsgaranti mot
@@ -45,17 +45,17 @@ Designopprør-empiri.
 1. **Det varige og det vakre (estetisk søyle 2, Designopprør-prinsipp 3):**
    livstidsgarantien er «billeg no er dyrt seinare» gjort til
    forretningsmodell. Vestre beviser at omhug langs tidsaksen kan vinne
-   anbod — presis den påstanden Case #1 endar i.
+   anbod, presis den påstanden Case #1 endar i.
 2. **Snøhetta-analogien vert bokstavleg:** Snøhetta designar alt for
    Vestre. Å arbeide mot Vestre er å gå i det faktiske fotefaret til
-   nordstjerna — same arena, same partnarskap.
+   nordstjerna, same arena, same partnarskap.
 3. **Norsk materialitet utan nostalgi:** varmforsinka stål med korngrense
-   og RAL-fargekart er grammatikkens materialsyn i industriell praksis —
+   og RAL-fargekart er grammatikkens materialsyn i industriell praksis, 
    ikkje «Scandinavian» som overflate, men material som constraint.
 4. **Flagga spenning:** Vestres språk er *stål og evigheit*; verkstadserien
    vår er *print og reparasjon*. Brua er ikkje materialet, men
    grammatikken: trykkdekomponering, omhugsfordeling, lesbart spor.
-   Ikkje pitch printobjekta som produkt til Vestre — pitch *metoden*,
+   Ikkje pitch printobjekta som produkt til Vestre, pitch *metoden*,
    med objekta som bevis.
 
 ## Konkrete inngangar (alle `[TRENG IVER]` når tida kjem, H1)
@@ -65,11 +65,11 @@ Designopprør-empiri.
    vestre.com + DOGA-kanalane; ein slik konkurranse er den asymmetriske
    døra inn.
 2. **Case-vinkel fyrst, portefølje etterpå:** når Case #1 er publisert,
-   er «motmodellen finst — han heiter Vestre» ein naturleg oppfølgjar
+   er «motmodellen finst, han heiter Vestre» ein naturleg oppfølgjar
    (Case #2-kandidat?). Kritikk som døropnar, med integritet: casen må
    òg tore å kritisere Vestre der det er grunnlag (t.d. pris/tilgjenge
    for små kommunar).
-3. **Fysisk arena:** The Plus har besøkssenter/omvisingar — ein
+3. **Fysisk arena:** The Plus har besøkssenter/omvisingar, ein
    studietur hausten 2026 er billegaste fyrstekontakt, og gjev
    verkstadserien industriell referanse (kva krev serieproduksjon som
    printen ikkje ser?).

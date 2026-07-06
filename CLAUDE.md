@@ -1,13 +1,13 @@
-# CLAUDE.md — harness for FORMLÆRE-programmet
+# CLAUDE.md, harness for FORMLÆRE-programmet
 
 Du arbeider i eit langsiktig strategiprosjekt for Iver Raknes Finne
 (industridesignstudent, AHO): å gjere for norsk industridesign det Snøhetta
 gjorde for norsk arkitektur. Prosjektet lever i to system som skal haldast
 i synk:
 
-1. **Notion** — menneskegrensesnittet. Sider, databasar, kanban. ID-ar i
+1. **Notion**, menneskegrensesnittet. Sider, databasar, kanban. ID-ar i
    `notion/manifest.json`.
-2. **Dette repoet** — agentgrensesnittet. State, backlog, speglar, logg.
+2. **Dette repoet**, agentgrensesnittet. State, backlog, speglar, logg.
 
 ## Faste reglar
 
@@ -23,7 +23,7 @@ i synk:
 - **Aldri slett** innhald i Notion; arkiver/flytt heller. Ved tvil: legg til, ikkje erstatt.
 - **Kvalitet over volum:** eitt grundig research-notat slår ti tynne. Alt du skriv skal kunne lesast av Iver utan kontekst frå økta.
 - **Kjeldefest alt:** research-notat skal ha URL-ar; strategipåstandar skal peike på traktaten (proposisjonsnummer) eller ei ekstern kjelde.
-- **Traktaten er grunnlova.** Ved konflikt mellom ein idé og traktatens rammeverk: flagg konflikten i loggen i staden for å jamne han ut. Falsifiseringsvilkåra (traktaten, notata) er ein feature — bruk dei.
+- **Traktaten er grunnlova.** Ved konflikt mellom ein idé og traktatens rammeverk: flagg konflikten i loggen i staden for å jamne han ut. Falsifiseringsvilkåra (traktaten, notata) er ein feature, bruk dei.
 - **Omhug i praksis:** kvar produktidé i Verkstad skal ha felta «Seleksjonstrykk (aksane)» og «Traktat-kopling» utfylte før fasen kan passere Skisse.
 
 ## Oppstart av ei økt (fyrste kontekstvindauge)
@@ -36,7 +36,7 @@ i synk:
 
 ## Synk-kontrakt (Notion ↔ git)
 
-- Strategisider: `strategy/*.md` speglar Notion-sidene 00–05. Endrar du
+- Strategisider: `strategy/*.md` speglar Notion-sidene 00-05. Endrar du
   éin stad, oppdater den andre i same iterasjon.
 - Databasar: git speglar ikkje radene (Notion er master for databasar);
   men større funn frå databasane kan destillerast inn i `strategy/` og

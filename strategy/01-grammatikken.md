@@ -1,6 +1,6 @@
 # 01 · Grammatikken
 
-Destillat av FORMLÆRE-traktaten (Finne, AHO 2026) — fundamentet
+Destillat av FORMLÆRE-traktaten (Finne, AHO 2026), fundamentet
 programmet står på.
 
 ## Kjernepåstanden
@@ -16,11 +16,11 @@ seleksjonstrykk, navigert av agentar på fleire skalaer.**
 
 ## Dei tre laga
 
-- **Form** — det ontologiske primitivet; posisjon i formrommet.
-- **Formgjevar** — agenten som navigerer, substrat-uavhengig: celle, tre,
+- **Form**, det ontologiske primitivet; posisjon i formrommet.
+- **Formgjevar**, agenten som navigerer, substrat-uavhengig: celle, tre,
   handverkar.
-- **Designar** — den spesifikke formgjevaren som navigerer *på vegner av
-  andre* som skal leve med forma (traktaten 5.125–5.126).
+- **Designar**, den spesifikke formgjevaren som navigerer *på vegner av
+  andre* som skal leve med forma (traktaten 5.125-5.126).
 
 ## Arbeidsvokabular
 
@@ -30,18 +30,18 @@ seleksjonstrykk, navigert av agentar på fleire skalaer.**
 | Seleksjonstrykk (2.1) | Gradient som endrar sannsynsfordelinga; avgrensing av kvar forma *ikkje* kan vere |
 | Tilpassingslandskap (3.1) | Vektorsummen av alle verksame trykk |
 | Lyskjegle (5.2) | Delmengda av formrommet agenten kan representere og manipulere |
-| Omhug (5.6) | Fordelinga av kor nær politikken faktisk kjem terskelen, akse for akse — intelligensens innhald |
+| Omhug (5.6) | Fordelinga av kor nær politikken faktisk kjem terskelen, akse for akse, intelligensens innhald |
 | Stilart (3.3) | Sverming kring felles tyngdepunkt; symptom, ikkje årsak |
 | Sviktsignatur (7.x) | Sporet forma etterlet når ho er designa under for trong omhug |
 
 ## Tre pilarar
 
-1. **Formgrammatikk** (Stiny & Gips) — det generative laget.
-2. **C–K-teori** (Hatchuel & Weil) — det epistemiske laget.
-3. **Agens-rammeverket** (Levin & Fields) — den ontologiske grunnen.
+1. **Formgrammatikk** (Stiny & Gips), det generative laget.
+2. **C-K-teori** (Hatchuel & Weil), det epistemiske laget.
+3. **Agens-rammeverket** (Levin & Fields), den ontologiske grunnen.
 
 ## Strategisk funksjon
 
 Eit fag med grammatikk kan sertifisere arbeid, ekskludere brot og bere
-eit forskingsprogram. Traktaten har eksplisitte falsifiseringsvilkår —
+eit forskingsprogram. Traktaten har eksplisitte falsifiseringsvilkår, 
 det gjer rammeverket vitskapleg, ikkje berre retorisk.

@@ -5,7 +5,7 @@ forma er til for.
 
 ## Kjerneargumentet
 
-Problemet med norsk offentleg design er ikkje estetisk — det er
+Problemet med norsk offentleg design er ikkje estetisk, det er
 **strukturelt**. Innkjøpsreglar, budsjettpress og byråkratisk angst
 undergrev god design systematisk. «Me lever i ei verd designa av den
 mest redde personen i rommet.»

@@ -36,6 +36,16 @@
     }
   },
   "databases": {
+    "oppgaver": {
+      "database_id": "6181265e-7648-4773-8fa1-83afb15010cb",
+      "data_source_id": "0a0b7bff-f4ca-4c82-8e14-46bdb9227ad1",
+      "views": {
+        "kanban_status": "3951c681-5f78-81ca-af08-000c0ad89a30",
+        "kalender_frist": "3951c681-5f78-81a4-ac9f-000c0c5ff94b",
+        "treng_iver_tabell": "3951c681-5f78-8111-9683-000c7bd1804d"
+      },
+      "note": "Kanonisk handlingsko. Speglar BACKLOG.md. Oppretta it. 26."
+    },
     "vegkart": {
       "database_id": "71b175c5-bf2e-48ed-ac5d-20e57ced9c7f",
       "data_source_id": "c3de4743-0810-4c4a-82d9-94bbb656373a",

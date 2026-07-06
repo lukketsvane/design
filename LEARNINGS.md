@@ -1,6 +1,17 @@
-# LEARNINGS.md — ratchet
+# LEARNINGS.md, ratchet
 
 Kvar feil vert til ein regel, éin gong. Nyaste øvst.
+
+- **2026-07-06:** Konvensjonssveip med regex over md-filer kollapsa
+  innrykk i kodeblokker og listeframhald (`re.sub('  +', ' ')`) →
+  tekstsveip skal alltid vere fence-medvite (linje for linje, hopp over
+  kodeblokker) og aldri røre leiande mellomrom.
+- **2026-07-06:** Skrivekonvensjonen «ingen tankestrekar» gjeld
+  teiknsetjing, IKKJE bokstavane æøå. Aldri translitterer til aa/oe/ae
+  i innhald. (Skjedde to gonger i it. 25; retta manuelt.)
+- **2026-07-06:** Notion replace_content kan flytte eksisterande blokker
+  til uventa posisjonar → verifiser alltid med fetch etterpå, og rett
+  rekkjefølgja med målretta update_content-byte.
 
 - **2026-07-06:** To loop-økter køyrde parallelt på `main` og laga kvar si
   case-idéliste (it. 15/16) → før persistence: `git fetch origin main` og

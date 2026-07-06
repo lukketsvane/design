@@ -2,7 +2,7 @@
 
 > Loop-iterasjon 16, 2026-07-06; konsolidert med case-idébanken frå den
 > parallelle iterasjon 15 i loop-iterasjon 17 same dag. Dette er den
-> KANONISKE lista — `writing/case-idebank.md` er no berre ein peikar hit.
+> KANONISKE lista, `writing/case-idebank.md` er no berre ein peikar hit.
 > Fôr til den månadlege case-rytmen på @designopproret. Kvar kandidat er
 > vurdert mot fem kriterium og har kjeldespor. Speglar rad i
 > Skriveprosjekt-basen (Fase: Idé).
@@ -18,7 +18,7 @@
 
 Merk: v0.1 tilrådde panteautomaten som Case #3 i september; konsolideringa
 følgjer idébankens rytmeprinsipp (motcase kvar fjerde) og flyttar han til
-desember. Konflikten er dermed løyst i retning idébanken — flagga her, ikkje
+desember. Konflikten er dermed løyst i retning idébanken, flagga her, ikkje
 sletta.
 
 ## Metoden (kort)
@@ -26,66 +26,66 @@ sletta.
 Ein god Designopprør-case etter 4-nivå-metoden treng:
 
 1. **Eit kvardagsobjekt** alle kjenner, helst fotograferbart i Oslo.
-2. **Eit lesbart brot** — forma sviktar for nokon, synleg med berre auga.
-3. **Dekomponerbare seleksjonstrykk** — kven sine krav forma faktisk
+2. **Eit lesbart brot**, forma sviktar for nokon, synleg med berre auga.
+3. **Dekomponerbare seleksjonstrykk**, kven sine krav forma faktisk
    optimerer for (tabellen frå Case #1 er malen).
-4. **Traktat-kopling** — casen skal *demonstrere* rammeverket, ikkje berre
+4. **Traktat-kopling**, casen skal *demonstrere* rammeverket, ikkje berre
    klage.
-5. **Kjelder** — minst tre uavhengige, helst norske.
+5. **Kjelder**, minst tre uavhengige, helst norske.
 
-Vurderingsskala 1–3 per kriterium: **Foto** (fotograferbar i Oslo utan
+Vurderingsskala 1-3 per kriterium: **Foto** (fotograferbar i Oslo utan
 avtale), **Kjelder** (styrke no), **Trykk** (kor reint trykka lèt seg
 dekomponere), **Traktat** (kor mange proposisjonar casen lyser opp),
-**Nyheit** (kor slite motivet er i designkritikken frå før — 3 = friskt).
+**Nyheit** (kor slite motivet er i designkritikken frå før, 3 = friskt).
 
 ## Kandidatane
 
-### K1 · Benken du ikkje kan liggje på ⭐ tilrådd som Case #2
+### K1 · Benken du ikkje kan liggje på, tilrådd som Case #2
 
 **Objektet:** parkbenken/ventebenken med armlene midt på, den bua
 «lenebenken» på haldeplassar, sitjeskulpturane i Bjørvika.
-**Brotet:** armlenet i midten er ikkje for armen din — det er der for at
+**Brotet:** armlenet i midten er ikkje for armen din, det er der for at
 ingen skal kunne liggje. Forma er høfleg på overflata og avvisande i
 geometrien; ho sorterer brukarar utan at nokon tilsett må seie eit ord.
 **Trykka:** grunneigar (ingen «uønskt opphald»), driftsselskap (lett
-spyling, ingen tilgrising), kommune («tryggleik», omdøme), forsikring —
+spyling, ingen tilgrising), kommune («tryggleik», omdøme), forsikring, 
 og den bustadlause, som ingen forhandlar for, får kravet sitt lese ut or
 forma. Perfekt spegelvending av leskur-casen: der var omsorga *fråverande*,
 her er ho *aktivt retta mot* nokon.
 **Traktat-kopling:** seleksjonstrykk (2.1), omhug og omhugens grense (5.6),
-sviktsignatur (7.x) — og eit nytt poeng lista i Case #1 ikkje hadde:
+sviktsignatur (7.x), og eit nytt poeng lista i Case #1 ikkje hadde:
 forma som *maktutøving utan aktør*, design som stille politikk.
-**Foto:** Bjørvika/Akerselvallmenningen, Oslo S, haldeplassar — alt i
+**Foto:** Bjørvika/Akerselvallmenningen, Oslo S, haldeplassar, alt i
 gangavstand frå AHO.
 **Kjelder (ankra):**
-- NRK: [«Vet du hvorfor denne benken ser sånn ut?»](https://www.nrk.no/kultur/vet-du-hvorfor-denne-benken-ser-sann-ut_-1.12461221) — innføring i ekskluderande design i Noreg.
-- Nettavisen: [«Raser mot liggeforbud-benker»](https://www.nettavisen.no/artikkel/raser-mot-liggeforbud-benker/s/12-95-3422812705) — Bjørvika-debatten; Bjørvika Utvikling gjekk gjennom designet på nytt etter kritikken.
-- Aftenposten: [«Byråden om fiendtlig arkitektur»](https://www.aftenposten.no/oslo/i/4vLo/byraaden-om-fiendtlig-arkitektur-har-ikke-tro-paa-regelbok-for-utbyggere) — politikknivået; forslaget om armlener på Oslo S.
-- Socius: [«Benker, makt og mulighet»](http://socius.sosiologi.org/2018/06/08/benker-makt-og-mulighet/) — sosiologisk lesing av benken.
+- NRK: [«Vet du hvorfor denne benken ser sånn ut?»](https://www.nrk.no/kultur/vet-du-hvorfor-denne-benken-ser-sann-ut_-1.12461221), innføring i ekskluderande design i Noreg.
+- Nettavisen: [«Raser mot liggeforbud-benker»](https://www.nettavisen.no/artikkel/raser-mot-liggeforbud-benker/s/12-95-3422812705), Bjørvika-debatten; Bjørvika Utvikling gjekk gjennom designet på nytt etter kritikken.
+- Aftenposten: [«Byråden om fiendtlig arkitektur»](https://www.aftenposten.no/oslo/i/4vLo/byraaden-om-fiendtlig-arkitektur-har-ikke-tro-paa-regelbok-for-utbyggere), politikknivået; forslaget om armlener på Oslo S.
+- Socius: [«Benker, makt og mulighet»](http://socius.sosiologi.org/2018/06/08/benker-makt-og-mulighet/), sosiologisk lesing av benken.
 - Internasjonal ramme å hente ved utkast: «hostile architecture» / Camden bench-litteraturen.
 **Skår:** Foto 3 · Kjelder 3 · Trykk 3 · Traktat 3 · Nyheit 2 = **14/15**
 
-### K2 · Panteautomaten — motmodellen ⭐ tilrådd som Case #3
+### K2 · Panteautomaten, motmodellen, tilrådd som Case #3
 
 **Objektet:** Tomra-panteautomaten i daglegvarebutikken.
-**Brotet:** *inga* — det er poenget. Fyrste positive case: eit norsk
+**Brotet:** *inga*, det er poenget. Fyrste positive case: eit norsk
 industridesign-objekt der brukaren, butikken, bryggjeriet og miljøet
 faktisk deler interesse, og forma viser det (eitt hol, éin kvittering).
-Designopprøret treng ein motmodell for ikkje å verte rein klagekanal —
+Designopprøret treng ein motmodell for ikkje å verte rein klagekanal, 
 same grep som Vestre-notatet gjer i research-sporet.
 **Trykka:** pantesystemet (lovpålagd retur) gjer at *alle* aktørane dreg
-same veg — eit sjeldan tilfelle der incentivstrukturen er designa fyrst,
+same veg, eit sjeldan tilfelle der incentivstrukturen er designa fyrst,
 og objektet berre må realisere han. Kontrasten til leskuret er eksakt:
 der var kontrakten mot brukaren, her er han for.
-**Traktat-kopling:** tilpassingslandskap (3.1) — når landskapet sjølv er
+**Traktat-kopling:** tilpassingslandskap (3.1), når landskapet sjølv er
 velforma, vert god form *mogleg*; seleksjonstrykk (2.1) i harmoni i staden
 for konflikt.
 **Foto:** kvar daglegvarebutikk.
 **Kjelder (ankra):**
-- TU: [«Den første pantemaskinen ble bygget på studenthybelen»](https://www.tu.no/artikler/tomra-har-i-dag-75-prosent-av-verdensmarkedet-for-pantemaskiner/469851) — Planke-brørne 1972, 75 % av verdsmarknaden.
-- SNL: [Tomra](https://snl.no/Tomra_-_bedrift) — grunnfakta.
-- Tomra: [historie](https://www.tomra.com/about-tomra/our-history) — fyrste automat i Oslo-butikk 2. januar 1972.
-- Inventas: [Tomra multifeed-pantemaskin](https://www.inventas.no/prosjekter/tomra-multifeed-pantemaskin) — norsk designbyrå bak nyare maskin; mogleg intervjuobjekt.
+- TU: [«Den første pantemaskinen ble bygget på studenthybelen»](https://www.tu.no/artikler/tomra-har-i-dag-75-prosent-av-verdensmarkedet-for-pantemaskiner/469851), Planke-brørne 1972, 75 % av verdsmarknaden.
+- SNL: [Tomra](https://snl.no/Tomra_-_bedrift), grunnfakta.
+- Tomra: [historie](https://www.tomra.com/about-tomra/our-history), fyrste automat i Oslo-butikk 2. januar 1972.
+- Inventas: [Tomra multifeed-pantemaskin](https://www.inventas.no/prosjekter/tomra-multifeed-pantemaskin), norsk designbyrå bak nyare maskin; mogleg intervjuobjekt.
 **Skår:** Foto 3 · Kjelder 3 · Trykk 2 · Traktat 3 · Nyheit 3 = **14/15**
 
 ### K3 · Sjølvbeteningskassa
@@ -95,7 +95,7 @@ synshemma vert ståande; svinnet eksploderer og fleire kjeder stengjer
 kassane att. Forma fortel kven som skulle sparast: bemanningsbudsjettet.
 **Trykka:** kjede (lønskostnad), leverandør (lisensmodell), kunde i fart
 (kø-kjensle) vs. kunde utan digital rutine.
-**Kjelder (ankra):** TV2: [«Flere butikker stenger selvbetjeningen»](https://www.tv2.no/nyheter/innenriks/flere-butikker-stenger-selvbetjeningen/16607996/) — Rema Kalbakken fjerna kassane etter 18 mnd; Dagens: [kritikk-oversyn](https://www.dagens.no/livsstil/her-er-grunnen-til-at-du-aldri-bor-handle-i-en-selvbetjeningskasse).
+**Kjelder (ankra):** TV2: [«Flere butikker stenger selvbetjeningen»](https://www.tv2.no/nyheter/innenriks/flere-butikker-stenger-selvbetjeningen/16607996/), Rema Kalbakken fjerna kassane etter 18 mnd; Dagens: [kritikk-oversyn](https://www.dagens.no/livsstil/her-er-grunnen-til-at-du-aldri-bor-handle-i-en-selvbetjeningskasse).
 **Skår:** Foto 3 · Kjelder 2 · Trykk 3 · Traktat 2 · Nyheit 2 = **12/15**
 
 ### K4 · Handlevogna med myntlås
@@ -104,21 +104,21 @@ kassane att. Forma fortel kven som skulle sparast: bemanningsbudsjettet.
 ikkje for deg med ungar på armen og ingen tikroning sidan 2019. Eit
 mikro-døme på at eitt einaste driftskrav får kolonisere heile
 brukarreisa. **Kjeldespor (uverifisert):** patenthistoria til myntlåsen,
-kjedene sine driftsgrunngjevingar — treng research før utkast.
+kjedene sine driftsgrunngjevingar, treng research før utkast.
 **Skår:** Foto 3 · Kjelder 1 · Trykk 2 · Traktat 2 · Nyheit 3 = **11/15**
 
 ### K5 · El-sparkesykkelen i byrommet
 
 **Brotet:** forma er optimert for utleigaren (byte av batteri, GPS,
-hærverkstoleranse, lågaste produksjonskost) — og for føtene til
+hærverkstoleranse, lågaste produksjonskost), og for føtene til
 fotgjengaren finst ho berre som snublefelle. Oslo-reguleringane frå
-2021– er sjølve historia om at kommunen måtte *ta tilbake* kravlista.
+2021- er sjølve historia om at kommunen måtte *ta tilbake* kravlista.
 **Kjeldespor (uverifisert):** Oslo kommune si forskrift, taloversyn frå
 Ruter/bymiljøetaten, ulukkestal frå OUS. **Skår:** 3·1·3·2·2 = **11/15**
 
 ### K6 · NAV-venterommet
 
-**Brotet:** skrudde stolar, nummerlapp, pleksiglas — møblane fortel deg
+**Brotet:** skrudde stolar, nummerlapp, pleksiglas, møblane fortel deg
 kva institusjonen fryktar at du er. Sterk omhug-case, men krev
 fotoløyve og varsam etikk (menneska på biletet er i ein sårbar
 situasjon). **Kjeldespor (uverifisert):** NAVs eigne designmanualar,
@@ -126,7 +126,7 @@ forsking på skrankeutforming. **Skår:** 1·1·3·3·3 = **11/15**
 
 ### K7 · Søppelkassa med den vesle luka
 
-**Brotet:** luka er krympa for å halde hushaldsavfall (og måker) ute —
+**Brotet:** luka er krympa for å halde hushaldsavfall (og måker) ute, 
 og dermed held ho òg pizzaøskja og den tomme kaffikoppen din ute; boset
 endar på bakken ved sida. Forma vann over føremålet. **Kjeldespor
 (uverifisert):** kommunale driftsgrunngjevingar, måkeprosjekt i
@@ -147,11 +147,11 @@ betale sjølve; universell utforming tapte for reinhald og merkevare.
 **Kjeldespor (uverifisert):** uu-tilsynet, Blindeforbundet sine
 høyringssvar. **Skår:** 2·2·2·3·2 = **11/15**
 
-### K10 · Vinterfortauet (systemcase — flagga)
+### K10 · Vinterfortauet (systemcase, flagga)
 
 **Brotet:** brøytegeometrien: køyrebana fyrst, fortauet sist, snøen frå
 vegen *opp på* fortauet. Byens vinterform er designa for bilen.
-**Flagg (traktatport):** dette er eit *system*, ikkje eit objekt — casen
+**Flagg (traktatport):** dette er eit *system*, ikkje eit objekt, casen
 tøyer manifestets objektramme. Kan forsvarast via 2.1 (trykk verkar på
 alle skalaar), men treng eksplisitt grunngjeving i teksten om han skal
 brukast. **Kjeldespor (uverifisert):** kommunale brøyteinstruksar,
@@ -161,13 +161,13 @@ TØI om vintermobilitet for eldre. **Skår:** 3·1·3·2·3 = **12/15**
 
 ### K11 · Standardrekkverket
 Galvanisert stålrøyr som defaultsvar i alle norske uterom; nivå 3 er
-vegnormal + rammeavtale (ingen teiknar det — det berre kjem). Sterk
+vegnormal + rammeavtale (ingen teiknar det, det berre kjem). Sterk
 «kven valde dette? ingen»-historie. **Skår:** 3·1·3·2·3 = **12/15**
 
 ### K12 · Parkeringsautomaten / betalingsappane
 Éin p-plass, fire appar, ingen mynt; skjerm uleseleg i regn. Nivå 3:
 fragmentert operatørmarknad + kommunale konsesjonar. Overlappar K9
-(betalingsterminalen) — slå saman ved utkast. **Skår:** 3·1·2·2·2 = **10/15**
+(betalingsterminalen), slå saman ved utkast. **Skår:** 3·1·2·2·2 = **10/15**
 
 ### K13 · Anleggsgjerdet som permanent tilstand
 Byggegjerde som står i årevis; nivå 3: ansvarspulverisering mellom
@@ -176,7 +176,7 @@ utbyggjar, kommune og entreprenør. **Skår:** 3·1·2·2·3 = **11/15**
 ### K14 · LED-gatelyset som blendar
 Høg fargetemperatur/blending i bustadgater; nivå 3: energikrav + innkjøp
 på lumen per krone, ikkje lys per menneske. Krysspeikar til Skavl-lampas
-blendfri-akse (verkstad ↔ kritikk). **Skår:** 3·1·3·3·3 = **13/15** ⭐
+blendfri-akse (verkstad ↔ kritikk). **Skår:** 3·1·3·3·3 = **13/15**
 
 ### K15 · Skiltjungelen
 Éin gatestrekning, talde skilt; kvart skilt har éin rasjonell eigar,
@@ -186,22 +186,22 @@ ingen eig summen. Rein teljing som empiri. **Skår:** 3·1·3·2·3 = **12/15**
 Éin konkret brukarreise («bestill fastlegetime for mor di utan BankID på
 mobil»); nivå 3: anbods- og forvaltingsregimet; nivå 2: ekskludering av
 eldre/ikkje-digitale. Manifest-prinsipp 2 (Spotify vel du; Helsenorge må
-du). Foto krevjande — karusell ber det. **Skår:** 1·1·3·3·2 = **10/15**
+du). Foto krevjande, karusell ber det. **Skår:** 1·1·3·3·2 = **10/15**
 
 *(Idébankens «søppelpunktet» er dekt av K7; «motcasen gjort rett» er K2.)*
 
 ## Prinsipp for banken (frå idébanken)
 
 - Aldri to digitale casar på rad (kanalen lever av foto).
-- Kvar fjerde case bør vere ein motcase (feire det gode) — manifestløftet.
+- Kvar fjerde case bør vere ein motcase (feire det gode), manifestløftet.
 - Kvar case skal kunne krysspeike til minst eitt verkstadobjekt eller
-  eitt traktat-omgrep — kritikk og bygging er same grammatikk.
+  eitt traktat-omgrep, kritikk og bygging er same grammatikk.
 
 ## Tilråding (v0.2, konsolidert)
 
 1. **Case #2 = K1 Benken** (utkast i august, publisering oktober;
    naturleg par med leskuret: *gløymd* omsorg vs. *våpengjord* omsorg).
-2. **Case #3 = K16 Helsenorge** (november; fyrste digitale case — treng
+2. **Case #3 = K16 Helsenorge** (november; fyrste digitale case, treng
    kjelderesearch fyrst).
 3. **Case #4 = K2 Panteautomaten som motcase** (desember; manifestløftet).
 4. Lager for 2027, etter skår: K14 LED-gatelyset (13) → K10 vinterfortauet

@@ -1,7 +1,7 @@
-# FORMLÆRE — program for norsk industridesign
+# FORMLÆRE, program for norsk industridesign
 
 > Å gjere for norsk industridesign det Snøhetta gjorde for norsk arkitektur:
-> gje faget ein grammatikk, ei estetisk line og ei røyst — frå det djupaste
+> gje faget ein grammatikk, ei estetisk line og ei røyst, frå det djupaste
 > idégrunnlaget til objektet du kan printe i dag.
 
 Dette repoet er **maskinlesbar spegel og loop-motor** for prosjektet.
@@ -29,6 +29,6 @@ forma på vegner av dei som skal leve med forma.
 
 ## Kjelder
 
-Fundamentet er traktaten *FORMLÆRE — Ei traktatform om form for design og
+Fundamentet er traktaten *FORMLÆRE, Ei traktatform om form for design og
 estetiske fag* (Finne, AHO 2026), Designopprøret-manifestet og diktsyklusen
 *Kva er design?*. Notion-prosjektet: sjå `notion/manifest.json`.

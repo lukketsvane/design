@@ -1,6 +1,6 @@
-# LOOP.md — den autonome arbeidssyklusen
+# LOOP.md, den autonome arbeidssyklusen
 
-> Loop engineering-prinsippet: ikkje prompt agenten tur for tur — design
+> Loop engineering-prinsippet: ikkje prompt agenten tur for tur, design
 > loopen som promptar agenten. Kvar iterasjon har fem trekk:
 > **discovery → handoff → verification → persistence → scheduling.**
 
@@ -11,29 +11,29 @@ utan å spørje om lov undervegs, til ein stoppvilkår er nådd.
 ## 0 · Invariantar (les før kvar iterasjon)
 
 - Følg alle reglar i `CLAUDE.md` (nynorsk, branch, aldri slett, kjeldefest).
-- Éin iterasjon = **éi avslutta arbeidseining** (45–90 min agentarbeid),
+- Éin iterasjon = **éi avslutta arbeidseining** (45-90 min agentarbeid),
   ikkje «litt av alt».
 - Alt arbeid skal ende i varige artefaktar: commit i git + rad i
   Notion-loggen. Arbeid som ikkje er persistert, har ikkje skjedd.
 
-## 1 · Discovery — finn neste arbeid
+## 1 · Discovery, finn neste arbeid
 
 1. Les `STATE.md`, `BACKLOG.md`, `LEARNINGS.md`, `git log --oneline -10`.
 2. Vel **øvste udone oppgåve i BACKLOG.md** som ikkje er blokkert.
-   Gjeldande styring frå Iver (2026-07-06): konkrete designprosjekt —
-   algoritmisk modellering for 3D-printbare modellar — går føre
+   Gjeldande styring frå Iver (2026-07-06): konkrete designprosjekt, 
+   algoritmisk modellering for 3D-printbare modellar, går føre
    balanseregelen i §4, til ny beskjed.
 3. Om backloggen er tom eller alt er blokkert: generer nytt arbeid frå
-   iterasjonsmenyen (§4) — vel det som gjev mest verdi for vegkartet no,
+   iterasjonsmenyen (§4), vel det som gjev mest verdi for vegkartet no,
    og varier: aldri same menykategori tre gonger på rad.
 
-## 2 · Handoff — gjer arbeidet
+## 2 · Handoff, gjer arbeidet
 
 Gjer oppgåva heilskapleg. For research: søk, les, destiller til eit datert
 notat i `research/` med kjelder. For skriving: fullstendige utkast, ikkje
 disposisjonar. For Notion-arbeid: bygg ferdig, ikkje halvvegs.
 
-## 3 · Verification — sjekk med friske auge
+## 3 · Verification, sjekk med friske auge
 
 Før noko vert markert done, køyr desse portane:
 
@@ -60,25 +60,25 @@ Før noko vert markert done, køyr desse portane:
 Balanseregel: over ti iterasjonar skal minst tre vere Research, to
 Skriving, to Verkstad, éin Vegkart, éin Synk, maks éin Meta.
 
-## 5 · Persistence — skriv state
+## 5 · Persistence, skriv state
 
 1. Oppdater `STATE.md`: iterasjonsnummer +1, kva vart gjort, kva er neste.
 2. Oppdater `BACKLOG.md`: kryss av utført, legg til nyoppdaga arbeid.
 3. Ved feil/lærdom: éi line i `LEARNINGS.md`.
 4. Commit med beskrivande melding; **verifiser at committen faktisk
-   inneheld filendringar** (`git show --stat HEAD`) — ein tom commit er
+   inneheld filendringar** (`git show --stat HEAD`), ein tom commit er
    ein feila persistence-port. Push med `git push -u origin main`
    (Ivers instruks 2026-07-06; retry 2s/4s/8s/16s ved nettfeil).
 5. Skriv éi rad i Notion-databasen «Logg · iterasjonar & funn»
    (Type=Agent-loop, dato, samandrag, neste handling).
 
-## 6 · Scheduling — bestem neste vekking
+## 6 · Scheduling, bestem neste vekking
 
 - Køyrer du under `/loop` dynamisk modus: bruk ScheduleWakeup med
-  1200–1800 s for vanleg takt; 3600 s om du nettopp har gjort tre
+  1200-1800 s for vanleg takt; 3600 s om du nettopp har gjort tre
   iterasjonar på rad utan menneskeleg innspel.
 - Køyrer du under ein cron-trigger: berre avslutt; triggeren vekkjer deg.
-- Elles: avslutt økta reint — neste sesjon plukkar opp frå STATE.md.
+- Elles: avslutt økta reint, neste sesjon plukkar opp frå STATE.md.
 
 ## 7 · Stopp- og pausevilkår
 
@@ -98,4 +98,4 @@ Skriving, to Verkstad, éin Vegkart, éin Synk, maks éin Meta.
 Loopen produserer; Iver bestemmer. Alt utoverretta (publisering, kontakt,
 innsending, pengar) ligg alltid att som `[TRENG IVER]`-oppgåver. Loopen
 sin jobb er at når Iver opnar Notion, ligg det alltid ferdig tenkt,
-kjeldefest og gjennomarbeidd materiale og ventar — aldri halvtenkt slam.
+kjeldefest og gjennomarbeidd materiale og ventar, aldri halvtenkt slam.

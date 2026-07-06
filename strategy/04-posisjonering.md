@@ -7,7 +7,7 @@
 | Namnet | Fjell = objekt + landskap | Form-i-landskap: skavlen/sporet |
 | Tverrfagleg | Arkitekt + landskapsarkitekt; «transpositioning» | Design + idévitskap + økologi + handverk |
 | Gjennombrot | Alexandria-biblioteket, 2 år etter oppstart | «Umogleg» oppdrag der grammatikken gjev svaret |
-| Ikonisk objekt | Operataket — den sosiale flata | Objektet som lesbart spor av omhug |
+| Ikonisk objekt | Operataket, den sosiale flata | Objektet som lesbart spor av omhug |
 | Forteljing | Bygget gjev tilbake til byen | Objektet gjev tilbake til substratet |
 | Fundament | Praksisdriven filosofi | **Motsett: traktaten først** |
 
@@ -27,7 +27,7 @@ objekt per kvartal som testar eitt proposisjonssett.
 
 ## Namnekandidatar
 
-Skavl · Fonn · Morene · Skare · Formlære — test: ber tesen i eitt ord,
+Skavl · Fonn · Morene · Skare · Formlære, test: ber tesen i eitt ord,
 fungerer på norsk/engelsk, peikar på krefter, ikkje stil. Avgjerd før
 fyrste offentlege publisering. `[TRENG IVER]`
 

@@ -3,7 +3,7 @@
 ## 1 · Snøhetta-modellen (dekomponert)
 
 - Grunnlagt 1987 som attic-kollektiv, AS i 1989 (Kjetil Trædal Thorsen +
-  Craig Dykers) — over ein ølhall i Oslo.
+  Craig Dykers), over ein ølhall i Oslo.
 - Vann Bibliotheca Alexandrina ~2 år etter etablering; Operaen (2008) gav
   den heimlege kanoniseringa.
 - Namnet = tesen: eit fjell er både objekt og landskap → arkitektur og
@@ -22,7 +22,7 @@
   nykommarkategori.
 - **Dagens bølgje**: Anderssen & Voll (ex-Norway Says, est. 2009), Lars
   Beller Fjetland (est. 2011, Knoll/Hem), Vera & Kyte (est. 2013, Bergen).
-  Sterk materialitet og skandinavisk formspråk — men ingen eig det
+  Sterk materialitet og skandinavisk formspråk, men ingen eig det
   intellektuelle/grammatiske laget. Posisjonen står open.
 - **Produsent-kandidatar**: Vestre, Eikund, Northern, Fjordfiesta,
   Røros Tweed (norskindustri.no-oversikta).
@@ -45,7 +45,7 @@
 ## 4 · Implikasjonar for prosjektet
 
 1. Vegkartet er forankra i verkelege institusjonar (DOGA, produsentar,
-   Milano/Stockholm) — neste research-steg er *fristar og datoar*.
+   Milano/Stockholm), neste research-steg er *fristar og datoar*.
 2. Snøhetta-analogien held, men med omvend rekkjefølgje (teori før
    praksis) → kvartalsregelen: eitt fysisk objekt per kvartal.
 3. Loop-oppsettet følgjer 2026-praksis: LOOP.md (protokoll), STATE.md

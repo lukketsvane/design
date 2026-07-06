@@ -1,4 +1,4 @@
-# Designbrief: Knagg #1 — kvar dag-knaggen (v1.1, 2026-07-06)
+# Designbrief: Knagg #1, kvar dag-knaggen (v1.1, 2026-07-06)
 
 Salone-prototype-kandidat #1 av 3. Full brief på Verkstad-sida i Notion
 (page_id 3951c681-5f78-81c5-95f8-e3528628b188); dette er spegelen.
@@ -13,8 +13,8 @@ falsifiseringsinstrument: rask tilbakemelding, låg kostnad, dagleg bruk.
 
 | Akse | Krav/estimat | Retning |
 |---|---|---|
-| Last, statisk | 3–5 kg jakke; 8–10 kg støyt | Meir gods ved rota |
-| Momentarm | 60–80 mm utstikk → ~6–8 Nm | Kortare utstikk |
+| Last, statisk | 3-5 kg jakke; 8-10 kg støyt | Meir gods ved rota |
+| Momentarm | 60-80 mm utstikk → ~6-8 Nm | Kortare utstikk |
 | Tekstil | Radius ≥ 8 mm i kontaktsona | Mjukare geometri |
 | Print-økonomi | Utan support, < 40 g, < 2 t | Vinklar < 45° |
 | Slitasje-estetikk | Patina synleg og vakker | Layer med gnisseretning |
@@ -22,13 +22,13 @@ falsifiseringsinstrument: rask tilbakemelding, låg kostnad, dagleg bruk.
 
 ## Traktat-kopling
 
-2.13/2.131 (kompromiss leseleg), 3.2 (kanalisering — kor langt frå
-svermen?), 7.14 (sviktlatens — design éin medvite svak variant),
+2.13/2.131 (kompromiss leseleg), 3.2 (kanalisering, kor langt frå
+svermen?), 7.14 (sviktlatens, design éin medvite svak variant),
 5.21 (affordanse utan instruksjon).
 
 ## Plan
 
-- **Print:** v0.1–0.3 = tre hypotesar (kraftlinje-form / kanalisert
+- **Print:** v0.1-0.3 = tre hypotesar (kraftlinje-form / kanalisert
   kontroll / medvite svak); iterer; finale i høg kvalitet + trekopi.
 - **Test:** last 5/10 kg/brot; 4 vekers brukstest med vekesfoto;
   lesetest («kvar sit kompromisset?») på tre medstudentar.
@@ -41,13 +41,13 @@ Kryssjekk mot `research/2026-07-06-brotmodus-taksonomi.md`:
 
 - **Knaggens eigne modusar:** krok-/øyrebrot (modus 7, strekk over lite
   tverrsnitt) og skaftbrot i bøyemoment (modus 4). Testplanen målar difor
-  per lastretning — bøyemoment ved rota (6–8 Nm), strekk i kroken, støyt
-  (8–10 kg) — ikkje éin generisk brotverdi (taksonomi-konsekvens 3).
-- **Kryp (modus 8) er knaggens stille fiende:** 3–5 kg statisk i veker.
+  per lastretning, bøyemoment ved rota (6-8 Nm), strekk i kroken, støyt
+  (8-10 kg), ikkje éin generisk brotverdi (taksonomi-konsekvens 3).
+- **Kryp (modus 8) er knaggens stille fiende:** 3-5 kg statisk i veker.
   Den fire vekers brukstesten skal måle permanent deformasjon (foto mot
   referansejigg kvar veke), ikkje berre «heldt/brotna».
 - **Materialval:** PETG for lastberande variantar (seigleik). PLA berre
-  for den medvite svake varianten — og der skal brotet vere *designa*:
+  for den medvite svake varianten, og der skal brotet vere *designa*:
   legg den svake sona som cantilever-rot utan fillet (modus 1) slik at
   sviktsignaturen (7.14) vert lesbar og reproduserbar.
 - **Rotfillet-regelen** (fillet ≥ halve tjukkleiken, snap-fit-litteraturen)
@@ -58,4 +58,4 @@ Kryssjekk mot `research/2026-07-06-brotmodus-taksonomi.md`:
 "A hook is the smallest object that carries a whole thesis: form as the
 legible trace of competing pressures. Load, textile, print economy and
 wear pull in different directions; the form is the compromise, designed
-to be read — and to grow more beautiful as use inscribes it."
+to be read, and to grow more beautiful as use inscribes it."

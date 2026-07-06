@@ -1,4 +1,4 @@
-# Designbrief: Reparasjonssett — kintsugi for plast (v1.1, 2026-07-06)
+# Designbrief: Reparasjonssett, kintsugi for plast (v1.1, 2026-07-06)
 
 Salone-prototype-kandidat #3 av 3. Full brief på Verkstad-sida i Notion
 (page_id 3951c681-5f78-81aa-9ed8-c453475eab83); dette er spegelen.
@@ -12,7 +12,7 @@ det einaste objektet som handlar om *alle andre sine objekt*.
 
 ## Konsept
 
-Synlege, standardiserte reparasjonsdelar for kvardagsbrot i plast —
+Synlege, standardiserte reparasjonsdelar for kvardagsbrot i plast, 
 kintsugi industrialisert. Skøytehylser, spennband, gjenge-lappar,
 hengsel-protesar i gull-oransje, for dei ~10 vanlegaste brotmodusane.
 Dokumentasjon, ikkje kamuflasje.
@@ -39,7 +39,7 @@ prinsipp 3+5 (det varige og det vakre; kritikk som omsorg).
 ## Prosess
 
 Veke 1: feltregistrering 20 øydelagde objekt → brotmodus-taksonomi.
-Veke 2–3: 4–6 parametriske delfamiliar; reparer 5 verkelege objekt.
+Veke 2-3: 4-6 parametriske delfamiliar; reparer 5 verkelege objekt.
 Veke 4: brukstest. Veke 5: kolleksjon med taksonomi-kort til Salone.
 
 ## Rulling mot brotmodus-taksonomien (v1.1, it. 20)
@@ -47,19 +47,19 @@ Veke 4: brukstest. Veke 5: kolleksjon med taksonomi-kort til Salone.
 Taksonomien (`research/2026-07-06-brotmodus-taksonomi.md`, it. 13)
 endrar briefen på fire punkt:
 
-1. **Klips-protesen rykkjer opp som eiga delfamilie** (modus 1/7/9 —
+1. **Klips-protesen rykkjer opp som eiga delfamilie** (modus 1/7/9, 
    truleg vanlegast i felt). Settet er no **fem** familiar: klips-protese,
    gjenge-lapp, hengsel-protese, skøytehylse, spennband.
 2. **Skøytehylsa i to variantar:** bøyemoment (skaft, modus 4) og
-   torsjon (aksel, modus 6) — ulik geometri, ulikt krav.
+   torsjon (aksel, modus 6), ulik geometri, ulikt krav.
 3. **≥50 N-kravet vert per modus:** strekk (krok), bøying (skaft), skjer
-   (klips) — testplanen i veke 4 målar kvar for seg.
+   (klips), testplanen i veke 4 målar kvar for seg.
 4. **Material:** PETG som standard for protesar; PLA berre for stive,
    ikkje-fleksande delar (lappar, band-lås).
 
 Mekanisk skøyting i staden for lim er dessutan teknisk grunngjeve, ikkje
 berre estetisk: polyolefinar (PP/PE) limer nesten ikkje utan primer
-(modus 10) — kintsugi-logikken og ingeniørlogikken konvergerer (3.4).
+(modus 10), kintsugi-logikken og ingeniørlogikken konvergerer (3.4).
 
 ## Foto (16:9)
 
@@ -70,5 +70,5 @@ før/etter-diptyk.
 
 "Kintsugi for plastic: standardised, visible repair parts for the ten
 most common household fractures. Not glue that hides the break, but
-components that document it — repair as dignity, not emergency. The
+components that document it, repair as dignity, not emergency. The
 object lives on because someone chose not to erase what happened to it."
