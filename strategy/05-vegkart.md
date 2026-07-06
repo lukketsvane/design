@@ -26,6 +26,38 @@ Bli institusjonen: det ikoniske oppdraget (offentleg innkjøp gjort rett),
 grammatikken som pensum + boka i ny utgåve, studioet som internasjonalt
 referansepunkt.
 
+## Studieløpet som ramme (lagt inn 2026-07-06, it. 12)
+
+Master i design ved AHO er 5-årig integrert (300 sp): grunnutdanning år
+1–3, masternivå år 4–5, diplom heile siste semesteret (30 sp). Med diplom
+våren 2028 (jf. `research/2026-07-06-konkurransefristar.md`) står Iver
+hausten 2026 i **starten av 4. året — det einaste året utveksling er
+mogleg**. Kjelder: [studieplanen](https://www.aho.no/studier/program/master-i-design/studieplaner/2025.html),
+[utvekslingssidene](https://www.aho.no/studier/utveksling/soknadsprosessen.html).
+
+| Semester | Kva | Vegkart-kopling |
+|---|---|---|
+| Haust 2026 (7.) | Masterkurs (t.d. Technoform/Protohype hjå Bjørnstad) | H0: printserie, Salone-/Greenhouse-søknad, AHO-kontakt steg 1–2 |
+| Vår 2027 (8.) | **Utvekslingsvindauge #1** eller masterkurs | H1: Salone-utstilling (april!), Fritt Ord-prosjekt |
+| Haust 2027 (9.) | **Utvekslingsvindauge #2** eller masterkurs | H1: produsentkontakt, akademisk artikkel |
+| Vår 2028 (10.) | **Diplom** — manifest-objektet | H1-milepælen; ikkje flyttbar |
+
+**Fristar som bind (frå AHO):**
+- Vårutveksling 2027: intern søknadsfrist **15. september 2026** — same
+  dag som Greenhouse-fristen. Avgjerda må takast i august/tidleg september.
+- Haustutveksling 2027: intern frist **1. februar 2027**.
+- Erasmus+-stipend: 1. juni (haust) / 1. desember (vår).
+
+**Flagga spenning (traktatport):** utveksling våren 2027 kolliderer med
+Salone di Mobile (april 2027) om søknaden går inn — å vere i Milano som
+utstillar og på utveksling samstundes går berre om vertsskulen ligg
+gunstig til. Alternativet (haust 2027) kolliderer med produsentkontakt-
+og artikkelplanane, men ikkje med nokon hard frist. **Tilråding frå
+loopen:** hald vårvindauget ope til Salone-svaret ligg føre om mogleg;
+elles prioriter haust 2027, og vel i så fall vertsskule etter
+grammatikk-relevans (skular med sterkt generativt/komputasjonelt
+formgjevingsmiljø), ikkje etter destinasjon. Valet er Ivers.
+
 ## Strategiske prinsipp
 
 1. Nedanfrå og oppanfrå samstundes — objekt ↔ teori.

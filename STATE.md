@@ -1,6 +1,6 @@
 # STATE.md — loop-state
 
-**Iterasjon:** 11
+**Iterasjon:** 12
 **Sist oppdatert:** 2026-07-06
 **Status:** Aktiv loop-køyring, andre økt. All utvikling går no direkte
 til `main` (Ivers instruks). Dagleg trigger aktiv: «FORMLÆRE dagleg loop»
@@ -22,11 +22,12 @@ til `main` (Ivers instruks). Dagleg trigger aktiv: «FORMLÆRE dagleg loop»
 | 9 | Skriving | Case #1 «Leskuret som ikkje gjev le» — fullt utkast, 9 kjelder, trykktabell, karusell-skisse; Fase Idé→Utkast |
 | 10 | Research | AHO-miljøet kartlagt: Bjørnstad (formgjeving) ⭐, Abrahamsen (ph.d.), Killi (AM/instituttleiar), Nordby; kontaktrekkjefølgje inn i H0/H1 |
 | 11 | Verkstad | Skavl-algoritme v0.1: kurve-stabel-arkitektur, pseudokode, 17 parametrar, metode-referansar; spegla på Verkstad-sida |
+| 12 | Vegkart | Studieløpet inn i H0/H1: 4. år = einaste utvekslingsår; frist vårutveksling = 15. sep (= Greenhouse!); spenning Salone×utveksling flagga |
 
 ## Neste handling
 
-Iterasjon 12: Vegkart — kople utveksling + semesterplan frå AHO-sida inn
-i H0/H1 (backlog #6), eller brotmodus-taksonomi (backlog #7).
+Iterasjon 13: Research — brotmodus-taksonomi for reparasjonssettet
+(iFixit/Restarters-data), øvste ublokkerte backlog-oppgåve.
 
 ## Blokkert / treng Iver — VIKTIGAST FYRST
 

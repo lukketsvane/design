@@ -11,7 +11,9 @@ Loopen konsumerer ovanfrå. `[TRENG IVER]` = berre mennesket.
 4. [ ] `[TRENG IVER]` AHO-kontakt steg 1: meld deg som informant hjå
    Trym Abrahamsen (Applied Formgiving-ph.d.) — sjå
    `research/2026-07-06-aho-miljoet.md`.
-5. [ ] **Vegkart:** Kopla utveksling + semesterplan frå AhO-sida inn i H0/H1.
+5. [ ] `[TRENG IVER]` Utvekslingsavgjerd før 15. sep 2026 (intern frist
+   vårutveksling 2027 = same dag som Greenhouse): vår 2027 kolliderer med
+   Salone; haust 2027 er tryggare — sjå «Studieløpet som ramme» i 05-sida.
 6. [ ] **Research:** Brotmodus-taksonomi for reparasjonssettet: kva finst
    av data om vanlege plastbrot i hushald? (iFixit, Restarters-data)
 7. [ ] `[TRENG IVER]` Foto 16:9 av prototypane innan ~20. aug.
@@ -32,3 +34,4 @@ Loopen konsumerer ovanfrå. `[TRENG IVER]` = berre mennesket.
 - [x] It. 9: Case #1 «Leskuret som ikkje gjev le» → `writing/case-01-leskuret.md` + Notion (Fase: Utkast)
 - [x] It. 10: AHO-miljøet → `research/2026-07-06-aho-miljoet.md`
 - [x] It. 11: Skavl-algoritme v0.1 → `briefs/skavl-algoritme.md` + Verkstad-sida
+- [x] It. 12: Studieløpet inn i vegkartet → `strategy/05-vegkart.md` + 05-sida i Notion
