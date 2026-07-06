@@ -1,6 +1,6 @@
 # STATE.md — loop-state
 
-**Iterasjon:** 21
+**Iterasjon:** 22
 **Sist oppdatert:** 2026-07-06
 **Status:** Aktiv loop-køyring, tredje økt («køyr til tokena er tomme»,
 Ivers instruks 2026-07-06). All utvikling går direkte til `main`.
@@ -33,12 +33,14 @@ Dagleg trigger aktiv: «FORMLÆRE dagleg loop»
 | 19 | Skriving | Case #2 «Benken du ikkje kan liggje på» — fullt utkast: 4 nivå, trykktabell, Bjørvika-empiri (namngjevne kritikarar + Lynnebakken-avvisinga), Camden/Savić, 9 kjelder, karusell-skisse; Skriveprosjekt-rad (Utkast, frist 1. okt) |
 | 20 | Verkstad | Alle tre briefane rulla til v1.1 mot brotmodus-taksonomien: knagg (test per lastretning, krypmåling, PETG/designa svak sone), lampe (termikk-modus, PETG-vurdering, snap-rot), repsett (fem delfamiliar, hylse i to variantar, 50 N per modus); spegla til Verkstad-sidene |
 | 21 | Research | Produsent #3 Northern: forlaget utan fabrikk; Northern Design Award (toårleg, studentar!) = døra inn for Skavl-lampa; Morten & Jonas som referansebane; flagga spenning utflagga produksjon vs. materialnærleik |
+| 22 | Vegkart | Produsentlandskapet inn i 05 (git + Notion): tre arketypar (Superfabrikken/Arven/Forlaget) med kvar si dør; månadsrytmen kopla til case-planen sep–des |
 
 ## Neste handling
 
-Iterasjon 22: Vegkart-rulling (sist it. 12) — nye funn inn i 05-sida:
-Northern Design Award i H1/H2, produsent-trekanten, Case #2-rytmen.
-Alternativt: verifiser kjeldespor i case-idélista.
+Iterasjon 23: Research — verifiser kjeldespor i case-idélista
+(K4/K5/K7 + K11–K16) ELLER finn Northern Design Award-fristen
+(backlog 11). Balanse: neste Skriving bør vere Helsenorge-research
+eller motcase-utkast.
 
 ## Blokkert / treng Iver — VIKTIGAST FYRST
 

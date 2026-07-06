@@ -56,3 +56,4 @@ Loopen konsumerer ovanfrå. `[TRENG IVER]` = berre mennesket.
 - [x] It. 19: Case #2 «Benken» fullt utkast → `writing/case-02-benken.md` + Skriveprosjekt-rad (Utkast)
 - [x] It. 20: Briefane rulla til v1.1 mot brotmodus-taksonomien → `briefs/*.md` + Verkstad-sidene
 - [x] It. 21: Produsent #3 Northern → `research/2026-07-06-produsent-northern.md`
+- [x] It. 22: Produsentlandskapet inn i vegkartet → `strategy/05-vegkart.md` + 05-sida

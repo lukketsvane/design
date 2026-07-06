@@ -58,6 +58,22 @@ elles prioriter haust 2027, og vel i så fall vertsskule etter
 grammatikk-relevans (skular med sterkt generativt/komputasjonelt
 formgjevingsmiljø), ikkje etter destinasjon. Valet er Ivers.
 
+## Produsentlandskapet (lagt inn 2026-07-06, it. 22)
+
+Kartlegginga (it. 14 Vestre, it. 18 Eikund, it. 21 Northern) gjev tre
+arketypar av norske designprodusentar — tre ulike landskap med kvar si
+dør inn:
+
+| Produsent | Arketyp | Døra inn | Vegkart-kopling |
+|---|---|---|---|
+| Vestre | **Superfabrikken** — offentleg rom, stål, eigen fabrikk (The Plus) | Opne designkonkurransar (Munch-modellen) | H1/H2: overvak utlysingar (Vestre/DOGA); studietur The Plus hausten 2026 |
+| Eikund | **Arven** — gullalder-katalog, eigen fabrikk på Jæren | «Det manglande møbelet»: nytt kapittel i gammal grammatikk | H2: krev at verkstadserien finst fysisk fyrst |
+| Northern | **Forlaget** — samtid, inga eiga fabrikk, 40+ designarar | Northern Design Award (toårleg, for studentar/unge) | H1: kandidat-arena for Skavl-lampa etter Salone/Greenhouse; finn neste frist |
+
+Fjordfiesta (#4) står att i kartlegginga. Når fire er kartlagde:
+destiller landskapskartet inn i `04-posisjonering.md`. Detaljar og
+kjelder i `research/2026-07-06-produsent-*.md`.
+
 ## Strategiske prinsipp
 
 1. Nedanfrå og oppanfrå samstundes — objekt ↔ teori.
@@ -70,3 +86,7 @@ formgjevingsmiljø), ikkje etter destinasjon. Valet er Ivers.
 
 Dagleg skisse · vekentleg verkstadøkt + loggnotat · månadleg publisert
 tekst · kvartalsvis fysisk objekt + vegkart-revisjon · årleg milepæl.
+
+Den månadlege teksten er frå no styrt av månadsplanen i
+`writing/case-ideliste-designopproret.md` (it. 17): sep = leskuret,
+okt = benken, nov = Helsenorge, des = motcasen (panteautomaten).
