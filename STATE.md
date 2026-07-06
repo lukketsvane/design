@@ -1,27 +1,25 @@
 # STATE.md — loop-state
 
-**Iterasjon:** 0 (grunnlegging)
+**Iterasjon:** 1
 **Sist oppdatert:** 2026-07-06
-**Status:** Prosjektet etablert; loopen klar til fyrste autonome iterasjon.
+**Status:** Aktiv loop-køyring.
 
-## Sist gjort (iterasjon 0)
+## Sist gjort (iterasjon 1 — Research: konkurransefristar)
 
-- Lese og destillert FORMLÆRE-traktaten (44 s.) + Notion-arkivet (AhO,
-  Designopprøret, Kva er design?, historikk).
-- Research: Snøhetta-modellen, norsk designøkosystem (DOGA, produsentar,
-  dagens studiobølgje), loop engineering-praksis (jun 2026).
-- Bygd Notion-prosjektet «FORMLÆRE — program for norsk industridesign»:
-  hovudside + 5 strategisider + 6 databasar (Vegkart 14 initiativ,
-  Verkstad 5 objekt, Skriveprosjekt 5, Prinsipp 8, Bibliotek 10, Logg)
-  med kanban- og timeline-views.
-- Etablert dette repoet som loop-motor og spegel.
+- Kartlagt fristar: **SaloneSatellite 2027: 30. aug 2026** (3 prototypar,
+  foto 16:9); **Greenhouse Stockholm 2027: 15. sep 2026** (CV + produkt-
+  presentasjon + standskisse, gratis); Statens kunstnarstipend ~1. sep
+  (fyrst relevant 2028); DOGA nykommar 2026-runden stengd → 2027.
+- Notat: `research/2026-07-06-konkurransefristar.md`
+- To nye 🔴-rader i Vegkart-databasen med reelle fristar.
+- **Retningsendring:** Salone-fristen komprimerer H0 — tre prototypar må
+  vere ferdige og fotograferte innan ~20. august. Backlog omprioritert.
 
 ## Neste handling
 
-Iterasjon 1: øvste oppgåve i BACKLOG.md — research på konkrete
-konkurransefristar og utlysingar 2026/2027 (grunnlag for H0/H1-initiativa).
+Iterasjon 2: designbrief Knagg #1 (no i teneste for Salone-søknaden).
 
 ## Blokkert / treng Iver
 
-- Namneval (Skavl/Fonn/Morene/Skare/Formlære) — før fyrste offentlege publisering.
-- Alt merkt `[TRENG IVER]` i BACKLOG.md.
+- `[TRENG IVER]` Innsending SaloneSatellite (30. aug) og Greenhouse (15. sep).
+- Namneval — trengst FØR Salone-søknaden (namn står i skjemaet!).
