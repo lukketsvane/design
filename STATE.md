@@ -1,6 +1,6 @@
 # STATE.md, loop-state
 
-**Iterasjon:** 26
+**Iterasjon:** 27
 **Sist oppdatert:** 2026-07-06
 **Status:** Aktiv loop-køyring, fleire økter parallelt («køyr til tokena
 er tomme», Ivers instruks 2026-07-06). All utvikling går direkte til
@@ -13,7 +13,11 @@ er tomme», Ivers instruks 2026-07-06). All utvikling går direkte til
 2. Skrivekonvensjonar: ingen tankestrekar, ikon eller emojiar, i alt
    vidare arbeid (sjå CLAUDE.md).
 3. Djup omstrukturering av Notion: hovudside som dashbord, kanban,
-   kalender, tydelege databasar og lenkjer (neste store oppgåve).
+   kalender, tydelege databasar og lenkjer.
+4. **Formretning (kveld, viktigast no):** rotasjonsgrammatikken frå
+   referansebileta er den estetiske hovudretninga for verkstadserien.
+   «This is the stuff we want to focus on, full effort loop, non stop
+   improvement.»
 
 ## Iterasjonshistorikk (denne økta)
 
@@ -40,21 +44,39 @@ er tomme», Ivers instruks 2026-07-06). All utvikling går direkte til
 | 18 | Research | Produsent #2 Eikund: arven som forretningsmodell; gullalder-diagnosen stadfesta empirisk; flagga spenning «grammatikk eller museum»; inngang = «det manglande møbelet»; Northern/Fjordfiesta står att |
 | 19 | Skriving | Case #2 «Benken du ikkje kan liggje på», fullt utkast: 4 nivå, trykktabell, Bjørvika-empiri (namngjevne kritikarar + Lynnebakken-avvisinga), Camden/Savić, 9 kjelder, karusell-skisse; Skriveprosjekt-rad (Utkast, frist 1. okt) |
 | 20 | Verkstad | Alle tre briefane rulla til v1.1 mot brotmodus-taksonomien: knagg (test per lastretning, krypmåling, PETG/designa svak sone), lampe (termikk-modus, PETG-vurdering, snap-rot), repsett (fem delfamiliar, hylse i to variantar, 50 N per modus); spegla til Verkstad-sidene |
-| 21 | Research | Produsent #3 Northern: forlaget utan fabrikk; Northern Design Award (toårleg, studentar!) = døra inn for Skavl-lampa; Morten & Jonas som referansebane; flagga spenning utflagga produksjon vs. materialnærleik |
+| 21 | Research | Produsent #3 Northern: forlaget utan fabrikk; Northern Lighting Student Design Award (årleg, studentar!) = døra inn for Skavl-lampa; Morten & Jonas som referansebane; flagga spenning utflagga produksjon vs. materialnærleik |
 | 22 | Vegkart | Produsentlandskapet inn i 05 (git + Notion): tre arketypar (Superfabrikken/Arven/Forlaget) med kvar si dør; månadsrytmen kopla til case-planen sep-des |
 | 23 | Verkstad | Skavl v0.2: pseudokoden implementert (`verkstad/skavl/skavl.py`), tre vasstette 3MF-søsken (107-120 g, overheng maks 45 grader, bru 7,9 mm, blendfri ved konstruksjon), valideringsrapport + silhuett-SVG. Funn: bru-budsjettet avgrensar porøsitet til 6-8 prosent (mål 30) og v0.3 = avlange slissar |
 | 24 | Research | Kjeldesveip (parallelløkt, committa som «it. 23»): K4 (handlevogn), K5 (sparkesykkel, no 13/15) og K14 (LED, no 14/15, delt topp) ankra; K7 fann ikkje kjelde. RETTING: Northern-prisen heiter Northern Lighting Student Design Award (årleg, est. 2013); britiske «Northern Design Awards» er urelatert |
 | 25 | Verkstad | Knagg #1 v0.1: tre hypotesar som printbar kode (`verkstad/knagg/knagg.py`): kraftlinje (moment-følgjande gods, PETG, 28 g, SF 9,0), kanalisert (kontroll, 27 g, SF 5,9), medvite-svak (designa brotsone, PLA, 26 g, predikert brotlast 10 kg). Vasstette 3MF liggjande på sida, validering + profil-SVG. Nye skrivekonvensjonar frå Iver inn i CLAUDE.md |
 | 26 | Meta/Synk | Notion-omstrukturering (Ivers instruks): ny Oppgåver-database (17 rader, status/prioritet/frist/eigar) med kanban-, kalender- og Treng Iver-views; hovudsida bygd om til dashbord (No-seksjon øvst, Oppgåver inline, systemtabell nedst, alt gamalt bevart); konvensjonssveip i git (30 md-filer, tankestrekar og emojiar ute, kodeblokker urørte); manifest.json + notion/STRUKTUR.md |
+| 27 | Retningsendring | Ivers fire referansebilete (truleg Steven Edwards-porselen) analyserte til rotasjonsgrammatikken: éin profil × rotasjonsarray × stabling, glasuren som trykk-kart. Skavl får lamell-modus (generator B) som løyser blendingsaksen geometrisk; glasur-analog som materialeksperiment #1; Edwards i Biblioteket (Kjerne); keramikk-sporet attende (H1). Bilete i `reference/formretning-2026-07/`; analyse i `research/2026-07-06-formretning-rotasjonsgrammatikk.md` |
+
+## Retning frå Iver (2026-07-06, kveld)
+
+**«This is the stuff we want to focus on, full effort loop, non stop
+improvement.»** Fire referansebilete (truleg Steven Edwards-porselen) i
+`reference/formretning-2026-07/`. Rotasjonsgrammatikken er no den
+estetiske hovudretninga for verkstadserien. Kjernegrepet: éin profil,
+rotasjonsarray, vertikal stabling/morfing, og glasuren (eller print-
+analogen) som trykk-kart som gjer kurvaturen lesbar. Analyse:
+`research/2026-07-06-formretning-rotasjonsgrammatikk.md`. Loopen køyrer
+kontinuerleg i tillegg til den daglege triggeren.
 
 ## Neste handling
 
-Iterasjon 27: konvensjonssveip i Notion-undersidene (01-05,
-Verkstad-sidene, Søknadspakke; hovudsida er teken i it. 26). Deretter
-Verkstad: reparasjonssett-generator eller Skavl v0.3 (avlange slissar).
+Iterasjon 28: rull rotasjonsgrammatikken inn i koden (Verkstad-tungt):
+implementer Skavl generator B (lamell/rotor) i `verkstad/skavl/` ved sida
+av generator A, med same valideringsport, og eksporter tre vasstette 3MF
+som testar den nye retninga direkte. Deretter: rotor-skål som tredje
+familiemedlem, og materialeksperiment #1 (glasur-analog i print).
+Sekundært (Notion): konvensjonssveip i undersidene (01-05, Verkstad,
+Søknadspakke; hovudsida teken i it. 26).
 
 ## Blokkert / treng Iver, VIKTIGAST FYRST
 
 1. **Namneval** (Skavl/Fonn/Morene/Skare/Formlære), står i Salone-skjemaet.
 2. **Start knaggen denne veka** (kortast printsyklus; kritisk sti til 20. aug).
-3. Innsending Salone (30. aug) og Greenhouse (15. sep).
+3. **Stadfest formreferansen:** er bileta Steven Edwards? (attribusjon
+   truleg, ikkje verifisert, sjå formretning-notatet). Trengst før ekstern bruk.
+4. Innsending Salone (30. aug) og Greenhouse (15. sep).

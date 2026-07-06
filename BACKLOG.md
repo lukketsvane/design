@@ -5,7 +5,10 @@ Loopen konsumerer ovanfrå. `[TRENG IVER]` = berre mennesket.
 **Styring (Iver, 2026-07-06):** algoritmisk modellering for 3D-printbare
 fysiske modellar fyrst; Verkstad-oppgåvene under er løfta over
 research/skriving til ny beskjed. Nye skrivekonvensjonar gjeld (sjå
-CLAUDE.md): ingen tankestrekar, ikon eller emojiar.
+CLAUDE.md): ingen tankestrekar, ikon eller emojiar. **Kveld:
+rotasjonsgrammatikken frå referansebileta er den estetiske hovudretninga
+(«full effort loop, non stop improvement»), sjå
+`research/2026-07-06-formretning-rotasjonsgrammatikk.md`.**
 
 ## Kø, Verkstad og meta (prioritert av Iver)
 
@@ -13,14 +16,22 @@ CLAUDE.md): ingen tankestrekar, ikon eller emojiar.
    Attstår: konvensjonssveip i Notion-undersidene (01-05, Verkstad-sidene,
    Søknadspakke), og evt. namnebyte på sider/databasar med spesialteikn
    i titlane.
-1. [x] **Verkstad:** Knagg #1 som parametrisk, printbar modell → it. 25.
-2. [ ] **Verkstad:** Skavl v0.3: avlange slissar i lagretninga
+1. [ ] **Verkstad (RETNING):** Skavl generator B (lamell/rotor) implementert
+   i `verkstad/skavl/` ved sida av generator A, same valideringsport, tre
+   vasstette 3MF som testar rotasjonsgrammatikken direkte. Pseudokode ligg
+   i `briefs/skavl-algoritme.md` §Lamell-modus; analyse i formretning-notatet.
+2. [ ] **Verkstad (RETNING):** Rotor-skål som tredje familiemedlem
+   (referanse 04, flat rotor), same generator-B-kjerne, grunn skål.
+3. [ ] **Verkstad (RETNING):** Materialeksperiment #1, glasur-analogen i
+   print (silk-PETG laglys / to-farge kant-høglys / polert egg mot matt dal),
+   testprotokoll for Knagg/Skavl-printane.
+4. [ ] **Verkstad:** Skavl v0.3: avlange slissar i lagretninga
    (porøsitet 6-8 prosent, mål 30), jf. funn i `verkstad/skavl/README.md`;
    evt. ekte differential growth (fråstøyt + ikkje-stjerneforma ringar).
-3. [ ] **Verkstad:** Reparasjonssett: parametrisk klips-protese-generator
+5. [ ] **Verkstad:** Reparasjonssett: parametrisk klips-protese-generator
    kopla til brotmodus-taksonomien (`research/2026-07-06-brotmodus-taksonomi.md`),
    PETG, start med modus «snap-fit-hake av».
-4. [ ] `[TRENG IVER]` Slice og testprint Skavl-søskena og knaggane
+6. [ ] `[TRENG IVER]` Slice og testprint Skavl-søskena og knaggane
    (`verkstad/skavl/print/*.3mf`, `verkstad/knagg/print/*.3mf`; sjå
    slicing-notat i README-ane). For lampa: mål E27-fatninga og pæra
    fyrst (R_SOKKEL/Z_LED). Timelapse frå fyrste print!
@@ -34,25 +45,30 @@ CLAUDE.md): ingen tankestrekar, ikon eller emojiar.
 4. [ ] `[TRENG IVER]` AHO-kontakt steg 1: meld deg som informant hjå
    Trym Abrahamsen (Applied Formgiving-ph.d.), sjå
    `research/2026-07-06-aho-miljoet.md`.
-5. [ ] `[TRENG IVER]` Utvekslingsavgjerd før 15. sep 2026 (intern frist
+5. [ ] `[TRENG IVER]` Stadfest formreferansen: er bileta Steven Edwards?
+   (attribusjon truleg, ikkje verifisert), trengst før ekstern bruk.
+6. [ ] `[TRENG IVER]` Utvekslingsavgjerd før 15. sep 2026 (intern frist
    vårutveksling 2027 = same dag som Greenhouse): vår 2027 kolliderer med
    Salone; haust 2027 er tryggare, sjå «Studieløpet som ramme» i 05-sida.
-6. [ ] `[TRENG IVER]` Foto 16:9 av prototypane innan ~20. aug.
-7. [ ] `[TRENG IVER]` Send Salone-skjema innan 30. aug; Greenhouse innan 15. sep.
-8. [ ] `[TRENG IVER]` Foto: benk med midtarmlene + lenebenk
+7. [ ] `[TRENG IVER]` Foto 16:9 av prototypane innan ~20. aug.
+8. [ ] `[TRENG IVER]` Send Salone-skjema innan 30. aug; Greenhouse innan 15. sep.
+9. [ ] `[TRENG IVER]` Foto: benk med midtarmlene + lenebenk
    (Bjørvika/Oslo S), til Case #2, sjå
    `writing/case-ideliste-designopproret.md`.
-9. [ ] **Synk:** Spegl eventuelle Notion-endringar → git (løpande).
-10. [ ] **Research:** Produsentkartlegging #4: Fjordfiesta (Molde,
+10. [ ] **Synk:** Spegl eventuelle Notion-endringar → git (løpande).
+11. [ ] **Research:** Produsentkartlegging #4: Fjordfiesta (Molde,
     Scandia-arven), samanlikn med Eikund; deretter destiller
     produsent-landskapskartet inn i `strategy/04-posisjonering.md`.
-11. [ ] **Research:** Finn neste utlysing/frist for Northern Lighting
-    Student Design Award (årleg, est. 2013; stadfest at prisen framleis finst), 
+12. [ ] **Research:** Finn neste utlysing/frist for Northern Lighting
+    Student Design Award (årleg, est. 2013; stadfest at prisen framleis finst),
     kandidat-arena for Skavl-lampa etter Salone/Greenhouse.
-12. [ ] **Research:** Verifiser attståande kjeldespor i idélista:
+13. [ ] **Research:** Verifiser attståande kjeldespor i idélista:
     K7 (søppelkasse, fann ikkje kjelde i it. 23), K11 (rekkverk),
     K12/K13/K15/K16, K4/K5/K14 er ankra.
-13. [ ] **Vegkart:** Overvak Vestre/DOGA for opne designkonkurransar
+14. [ ] **Research:** Steven Edwards / rotasjons-keramikk djupare: metode
+    (repetition, compression, cut), utstillingar, kva print-grammatikken
+    kan lære; inn i Biblioteket og evt. keramikk-spor H1.
+15. [ ] **Vegkart:** Overvak Vestre/DOGA for opne designkonkurransar
     (Munch-modellen), sjekk kvartalsvis.
 
 ## Gjort
@@ -83,3 +99,5 @@ CLAUDE.md): ingen tankestrekar, ikon eller emojiar.
 - [x] It. 23: Skavl v0.2 implementert og validert → `verkstad/skavl/` (3 x 3MF + rapport + silhuett)
 - [x] It. 24: Kjeldesveip idélista (K4/K5/K14 ankra) + Northern-pris-retting (parallelløkt, committa som «it. 23»)
 - [x] It. 25: Knagg #1 v0.1, tre hypotesar som printbare solidar → `verkstad/knagg/`
+- [x] It. 26: Notion-omstrukturering + konvensjonssveip git → dashbord, Oppgåver-database, `notion/STRUKTUR.md`
+- [x] It. 27: Retningsendring, rotasjonsgrammatikken → `research/2026-07-06-formretning-rotasjonsgrammatikk.md` + lamell-modus i `briefs/skavl-algoritme.md` + referansebilete + Edwards i Bibliotek
