@@ -1,2 +1,5 @@
 __pycache__/
 *.pyc
+
+# scratch iteration renders
+verkstad/renders/_*.png

@@ -48,7 +48,13 @@ SKAVL_ZROT = 118.0   # turn the porous windward band to a trailing accent
 FILAMENT = {         # warm off-white printed plastic, per family
     "skavl": np.array([0.90, 0.88, 0.84]),
     "knagg": np.array([0.83, 0.81, 0.77]),
+    "repsett": np.array([0.88, 0.55, 0.14]),   # kintsugi gold-orange (signal)
+    "radial": np.array([0.60, 0.81, 0.73]),    # celadon porcelain
 }
+# families whose 3MF files are not named "{family}-{name}.3mf"
+FILE_PREFIX = {"repsett": "skoeytehylse", "radial": "ribbe"}
+# glossier sheen for the porcelain-read radial family
+FAMILY_SHEEN = {"radial": 0.16}
 
 # two directional lights (world direction the light TRAVELS, i.e. toward the
 # object) and their radiances; no ambient term
@@ -79,9 +85,17 @@ MODELS = [
 def load_oriented(family, name):
     """Load the 3MF and rotate it into presentation orientation, resting on
     the floor plane z = 0, centred over the origin in x and y."""
-    path = os.path.join(HERE, family, "print", f"{family}-{name}.3mf")
+    prefix = FILE_PREFIX.get(family, family)
+    path = os.path.join(HERE, family, "print", f"{prefix}-{name}.3mf")
     mesh = trimesh.load(path, force="mesh", process=False)
 
+    if family == "repsett":
+        # couplers are modelled axis-vertical; lay them down so the product
+        # shot shows the tube flank, the collar and the pinned holes
+        mesh.apply_transform(trimesh.transformations.rotation_matrix(
+            math.pi / 2, (1, 0, 0)))
+        mesh.apply_transform(trimesh.transformations.rotation_matrix(
+            math.radians(-18), (0, 0, 1)))
     if family == "knagg":
         # generators export the hook lying on its side for printing; undo
         # that so it stands in wall-mounted use pose (plate vertical, arm
@@ -145,24 +159,25 @@ def project(points, cam, W, H, yfov):
 
 
 # ---------------------------------------------------------------- shading
-def shade(normals, view_dirs, base_rgb):
+def shade(normals, view_dirs, base_rgb, sheen=None):
     """Two directional lights, no ambient, faint Blinn sheen. normals and
     view_dirs are per-sample unit vectors; returns linear RGB.
 
     Two-sided: the normal is flipped to face the viewer, so surfaces seen
     from behind (the inside of a hollow shade through its opening or windows)
     read as softly lit rather than pure black."""
+    sheen = SHEEN if sheen is None else sheen
     n = normals * np.sign(np.sum(normals * view_dirs, axis=1))[:, None]
     col = np.zeros(n.shape[:1] + (3,))
     for Ldir, I in ((KEY_DIR, KEY_I), (FILL_DIR, FILL_I)):
         L = -Ldir / np.linalg.norm(Ldir)          # surface -> light
         ndl = np.clip(n @ L, 0.0, 1.0)
         col += (I * ndl)[:, None] * base_rgb[None, :]
-        if I == KEY_I and SHEEN > 0:
+        if I == KEY_I and sheen > 0:
             H = L + view_dirs
             H /= np.linalg.norm(H, axis=1, keepdims=True) + 1e-9
             ndh = np.clip(np.sum(n * H, axis=1), 0.0, 1.0)
-            col += (SHEEN * I * ndh ** SHEEN_POW)[:, None]
+            col += (sheen * I * ndh ** SHEEN_POW)[:, None]
     return col
 
 
@@ -268,7 +283,7 @@ def render_png(mesh, family, out_path, az_deg=38, el_deg=16,
     view /= np.linalg.norm(view, axis=2, keepdims=True) + 1e-9
     F = len(mesh.faces)
     lin = shade(ncorner.reshape(-1, 3), view.reshape(-1, 3),
-                FILAMENT[family]).reshape(F, 3, 3)
+                FILAMENT[family], sheen=FAMILY_SHEEN.get(family)).reshape(F, 3, 3)
 
     if family == "skavl":
         # inner shell (normal points toward the vertical axis) glows warm, so
@@ -311,10 +326,22 @@ FAMILY_INFO = {
     "skavl-v03": ("Skavl v0.3, tre søsken, slissar i lagretninga", "skavl",
                   [("a-roleg-v03", "roleg"), ("b-open-v03", "open"),
                    ("c-asketisk-v03", "asketisk")]),
+    "repsett": ("Reparasjonssett, skøytehylse, mekanisk skøyt ikkje lim",
+                "repsett",
+                [("boey-d08", "bøying d8"), ("boey-d12", "bøying d12"),
+                 ("torsjon-d10", "torsjon d10")]),
+    "radial": ("Ribbe, radiale finnar, tre søsken", "radial",
+               [("leaf", "blad"), ("vertebra", "virvel"), ("spiral", "spiral")]),
 }
 # v0.3 lamp models (tall layer-direction slots), rendered via --v03
 V03_MODELS = [("skavl", "a-roleg-v03"), ("skavl", "b-open-v03"),
               ("skavl", "c-asketisk-v03")]
+# reparasjonssett, skoeytehylse family, rendered via --repsett
+REPSETT_MODELS = [("repsett", "boey-d08"), ("repsett", "boey-d12"),
+                  ("repsett", "torsjon-d10")]
+# radial-fin (ribbe) family, rendered via --radial
+RADIAL_MODELS = [("radial", "leaf"), ("radial", "vertebra"),
+                 ("radial", "spiral")]
 FONT_DIR = "/usr/share/fonts/truetype/dejavu"
 
 
@@ -356,6 +383,34 @@ def build_family(family, out_dir):
     return out
 
 
+def build_turntable(mesh, family, name, out_dir, angles=(0, 90, 180, 270)):
+    """Render the model from four azimuths and tile them into one strip, so a
+    single image shows the object in the round."""
+    import tempfile
+    tiles = []
+    for az in angles:
+        tmp = os.path.join(tempfile.gettempdir(), f"_tt_{family}_{name}_{az}.png")
+        render_png(mesh, family, tmp, az_deg=az, ss=SS_TT)
+        tiles.append(Image.open(tmp).convert("RGB"))
+        os.remove(tmp)
+    tw, th = tiles[0].size
+    gap, margin, bottom = 24, 40, 64
+    W = len(tiles) * tw + (len(tiles) - 1) * gap + 2 * margin
+    canvas = Image.new("RGB", (W, th + bottom), (255, 255, 255))
+    d = ImageDraw.Draw(canvas)
+    f_label = _font(False, 34)
+    for i, (tile, az) in enumerate(zip(tiles, angles)):
+        x = margin + i * (tw + gap)
+        canvas.paste(tile, (x, 0))
+        lab = f"{az} grader"
+        lb = d.textbbox((0, 0), lab, font=f_label)
+        d.text((x + (tw - (lb[2] - lb[0])) / 2, th + 12), lab,
+               font=f_label, fill=(120, 130, 138))
+    out = os.path.join(out_dir, f"{family}-{name}-turntable.png")
+    canvas.save(out)
+    return out
+
+
 # ---------------------------------------------------------------------- main
 def main():
     ap = argparse.ArgumentParser()
@@ -369,6 +424,10 @@ def main():
                     help="override supersampling factor for hero renders")
     ap.add_argument("--v03", action="store_true",
                     help="render the v0.3 slot lamps and their family strip")
+    ap.add_argument("--repsett", action="store_true",
+                    help="render the reparasjonssett couplers and family strip")
+    ap.add_argument("--radial", action="store_true",
+                    help="render the radial-fin (ribbe) lamps and family strip")
     args = ap.parse_args()
 
     out_dir = os.path.join(HERE, "renders")
@@ -383,26 +442,34 @@ def main():
             print(f"family {family}: {os.path.relpath(out, HERE)}")
         return
 
-    models = V03_MODELS if args.v03 else MODELS
+    models = (V03_MODELS if args.v03 else
+              REPSETT_MODELS if args.repsett else
+              RADIAL_MODELS if args.radial else MODELS)
     for family, name in models:
         if args.only and args.only not in f"{family}/{name}":
             continue
         mesh = load_oriented(family, name)
+        if args.turntable:
+            # turntables only; heroes already exist from a plain run
+            out = build_turntable(mesh, family, name, out_dir)
+            print(f"turntable {family}-{name}: {os.path.relpath(out, HERE)}")
+            continue
         hero = os.path.join(out_dir, f"{family}-{name}.png")
         # lamps carry a fine porous window band; give them extra supersampling
         # so the lace resolves cleanly instead of blocky
         ss = args.ss if args.ss else (SS_LAMP if family == "skavl" else SS)
         render_png(mesh, family, hero, ss=ss)
         print(f"hero  {family}-{name}: {os.path.relpath(hero, HERE)} (ss={ss})")
-        if args.turntable:
-            for k, az in enumerate((20, 110, 200, 290)):
-                p = os.path.join(out_dir, f"{family}-{name}-tt{k}.png")
-                render_png(mesh, family, p, az_deg=az, ss=SS_TT)
-                print(f"  tt{k} az={az}")
 
     if args.v03:
         out = build_family("skavl-v03", out_dir)
         print(f"family skavl-v03: {os.path.relpath(out, HERE)}")
+    if args.repsett:
+        out = build_family("repsett", out_dir)
+        print(f"family repsett: {os.path.relpath(out, HERE)}")
+    if args.radial:
+        out = build_family("radial", out_dir)
+        print(f"family radial: {os.path.relpath(out, HERE)}")
 
 
 if __name__ == "__main__":
