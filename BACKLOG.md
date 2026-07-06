@@ -2,26 +2,7 @@
 
 Loopen konsumerer ovanfrå. `[TRENG IVER]` = berre mennesket.
 
-**Styring (Iver, 2026-07-06):** algoritmisk modellering for 3D-printbare
-fysiske modellar fyrst — Verkstad-oppgåvene under er løfta over
-research/skriving til ny beskjed.
-
-## Kø — Verkstad (prioritert av Iver)
-
-1. [ ] **Verkstad:** Knagg #1 som parametrisk, printbar modell
-   (`verkstad/knagg/`): geometri frå `briefs/knagg-01.md`, validering mot
-   aksane, 3MF. Kortast printsyklus = raskaste veg til fysisk testdata.
-2. [ ] **Verkstad:** Skavl v0.3: avlange slissar i lagretninga
-   (porøsitet 6–8 % → mot 30 %), jf. funn i `verkstad/skavl/README.md`;
-   evt. ekte differential growth (fråstøyt + ikkje-stjerneforma ringar).
-3. [ ] **Verkstad:** Reparasjonssett: parametrisk klips-protese-generator
-   kopla til brotmodus-taksonomien (`research/2026-07-06-brotmodus-taksonomi.md`),
-   PETG, start med modus «snap-fit-hake av».
-4. [ ] `[TRENG IVER]` Slice og testprint Skavl-søskena
-   (`verkstad/skavl/print/*.3mf`; sjå slicing-notat i README) — mål E27-
-   fatninga og pæra fyrst (R_SOKKEL/Z_LED). Timelapse frå fyrste print!
-
-## Kø — elles
+## Kø
 
 1. [ ] `[TRENG IVER]` Vel arbeidsnamn — trengst i Salone-skjemaet.
 2. [ ] `[TRENG IVER]` Start Knagg #1-printinga denne veka (kritisk sti).
@@ -42,12 +23,12 @@ research/skriving til ny beskjed.
 10. [ ] **Research:** Produsentkartlegging #4: Fjordfiesta (Molde,
     Scandia-arven) — samanlikn med Eikund; deretter destiller
     produsent-landskapskartet inn i `strategy/04-posisjonering.md`.
-11. [ ] **Research:** Finn neste utlysing/frist for Northern Design
-    Award (toårleg, for studentar/unge designarar) — kandidat-arena
-    for Skavl-lampa etter Salone/Greenhouse.
-12. [ ] **Research:** Verifiser kjeldespora for K4 (handlevogn), K5
-    (sparkesykkel), K7 (søppelkasse) og kandidatane K11–K16 i idélista
-    før dei rykkjer opp.
+11. [ ] **Research:** Finn neste utlysing/frist for Northern Lighting
+    Student Design Award (årleg, est. 2013; stadfest at prisen framleis finst) —
+    kandidat-arena for Skavl-lampa etter Salone/Greenhouse.
+12. [ ] **Research:** Verifiser attståande kjeldespor i idélista:
+    K7 (søppelkasse — fann ikkje kjelde i it. 23), K11 (rekkverk),
+    K12/K13/K15/K16 — K4/K5/K14 er ankra.
 13. [ ] **Vegkart:** Overvak Vestre/DOGA for opne designkonkurransar
     (Munch-modellen) — sjekk kvartalsvis.
 
@@ -76,4 +57,4 @@ research/skriving til ny beskjed.
 - [x] It. 20: Briefane rulla til v1.1 mot brotmodus-taksonomien → `briefs/*.md` + Verkstad-sidene
 - [x] It. 21: Produsent #3 Northern → `research/2026-07-06-produsent-northern.md`
 - [x] It. 22: Produsentlandskapet inn i vegkartet → `strategy/05-vegkart.md` + 05-sida
-- [x] It. 23: Skavl v0.2 implementert og validert → `verkstad/skavl/` (3 × 3MF + rapport + silhuett)
+- [x] It. 23: Kjeldesveip idélista (K4/K5/K14 ankra) + Northern-pris-retting → idéliste, produsentnotat, 05

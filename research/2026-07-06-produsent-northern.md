@@ -10,8 +10,8 @@ arven (gullalderen som katalog). Northern er noko tredje: **den levande
 samtidskanalen** — merkevara som gjev *nye* norske designarar
 serieproduksjon utan eiga fabrikk. For ein industridesignstudent med ei
 lampe i porteføljen er Northern den mest realistiske fyrste kommersielle
-døra i heile kartlegginga — og dei har ei formalisert dør: ein toårleg
-designpris for nettopp studentar og unge designarar.
+døra i heile kartlegginga — og dei har hatt ei formalisert dør: ein
+årleg studentpris (sjå faktagrunnlaget, retta it. 23).
 
 ## Faktagrunnlag
 
@@ -40,10 +40,16 @@ designpris for nettopp studentar og unge designarar.
   Kjelder: [northern.no/designers/morten-jonas](https://www.northern.no/pages/designers/morten-jonas),
   [morten-jonas.no](https://www.morten-jonas.no/about),
   [northern.no/designers/stine-aas](https://www.northern.no/pages/designers/stine-aas).
-- **Døra inn — Northern Design Award:** toårleg konkurranse for
-  framveksande europeiske designarar og studentar.
-  Kjelde: [SNL](https://snl.no/Northern). *(Neste utgåve/frist ikkje
-  verifisert enno — eiga loop-oppgåve.)*
+- **Døra inn — studentprisen (retta it. 23):** Rogne etablerte den
+  *årlege* **Northern Lighting Student Design Award** i 2013 for unge
+  designtalent; vinnarar er kunngjorde på northern.no. (SNL omtalar ein
+  toårleg «Northern Design Award» — upresist eller endra format; merk at
+  britiske «Northern Design Awards» er ein annan, urelatert eigedomspris.)
+  Status for prisen etter 2018-relanseringa er ikkje stadfesta —
+  `[TRENG IVER]`/loop: sjekk northern.no/journal eller spør direkte.
+  Kjelder: [David Village Lighting: Ove Rogne-biografi](https://www.davidvillagelighting.co.uk/designer/Ove-Rogne/881),
+  [northern.no: «Winner of Northern Design Award announced»](https://northern.no/wr/journal/winner-of-northern-design-award-announced/),
+  [SNL](https://snl.no/Northern).
 
 ## Kopling til tesen (traktatport)
 
@@ -69,7 +75,8 @@ designpris for nettopp studentar og unge designarar.
 
 ## Konkrete inngangar (alle `[TRENG IVER]` når tida kjem)
 
-1. **Northern Design Award:** finn neste utlysing/frist (toårleg).
+1. **Northern (Lighting) Student Design Award:** stadfest at prisen
+   framleis finst, og finn neste utlysing/frist.
    Skavl-lampa er tematisk midt i Northern sitt DNA (skulpturelt lys,
    naturmetafor, nordisk material-forteljing) — dette kan vere den
    naturlege arenaen for lampa *etter* Salone/Greenhouse-løpet.
