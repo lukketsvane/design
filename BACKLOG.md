@@ -21,9 +21,10 @@ rotasjonsgrammatikken frå referansebileta er den estetiske hovudretninga
    valideringsport, tre vasstette 3MF som testar rotasjonsgrammatikken
    direkte → it. 28. Opningsgrad 24-31 prosent, ribberelieff, twist klemt
    til FDM-printbar ribbekant.
-2. [ ] **Verkstad (RETNING):** Rotor-skål som tredje familiemedlem
-   (referanse-d, flat rotor / vertikale finner), same generator-B-kjerne,
-   grunn skål.
+2. [x] **Verkstad (RETNING):** Rotor-familiemedlem `g-rotor` (referanse-d,
+   vertikale finner) → it. 29. Funn: den *flate* skåla er ei keramikk-form
+   (vassrette veggar = FDM-overheng); den printbare kusinen er ei ståande
+   finne-søyle. Ekte flat skål = eige resin/SLA-spor om Iver vil.
 3. [ ] **Verkstad (RETNING):** Materialeksperiment #1, glasur-analogen i
    print (silk-PETG laglys / to-farge kant-høglys / polert egg mot matt dal),
    testprotokoll for Knagg/Skavl-printane.
@@ -104,3 +105,4 @@ rotasjonsgrammatikken frå referansebileta er den estetiske hovudretninga
 - [x] It. 26: Notion-omstrukturering + konvensjonssveip git → dashbord, Oppgåver-database, `notion/STRUKTUR.md`
 - [x] It. 27: Retningsendring, rotasjonsgrammatikken → `research/2026-07-06-formretning-rotasjonsgrammatikk.md` + lamell-modus i `briefs/skavl-algoritme.md` + referansebilete + Edwards i Bibliotek
 - [x] It. 28: Skavl v0.3 vase-greina (generator B bygd) → `verkstad/skavl/skavl_vase.py` + 3 vasstette 3MF + render + validering + ref/README
+- [x] It. 29: Skavl `g-rotor` fjerde søsken + flat-rotor printbarheit-funn → `verkstad/skavl/` (4 vasstette 3MF)

@@ -22,7 +22,7 @@ utfyller kvarandre. Attribusjon (truleg Steven Edwards) er `[TRENG IVER]`
 | `ref-a-vridd-lamell.png` | Tett diagonal lamellstruktur, vridd kring eit volum med innsnøring; avrunda kvadratisk munning; slissane går nesten heile høgda | Ribber som primærstruktur, opningane er *mellomromma*, ikkje hol i eit skal; vriding gjev diagonal retning | Mange ribber (40+), twist 120-150 grader, m=4-harmonisk mot toppen, kontinuerlege slissar |
 | `ref-b-trompet-drope.png` | Vertikale bølgjande ribber som møtest og skilst; dropeforma opningar; trompetutsving i toppen, lauk-basis | Ribbesenter med lågfrekvent vibrering; slisse-envelopen pulserer (klemmer att og opnar) = dropene | Ingen twist, rib-wobble av frøa støy, drope-envelope med vertikal bølgjelengd, flare i silhuetten |
 | `ref-c-timeglas-slissar.png` | Vridde ribber, avlange linseforma slissar, timeglas-silhuett, trekanta munning | Som A men færre ribber og lengre pinch-rytme; m=3-harmonisk | Twist ~120 grader, slisse-pinch midt på, m=3 mot toppen |
-| `ref-d-vertikale-finner.png` | Djupe frittståande radielle finner med ovale hol; nesten rett sylinder, kastellert topp | Radiell djupn utover skalet, eiga grein (krev finne-geometri, ikkje skal-celler) | Utsett til v0.4: finnemodus med radiell ekstrusjon |
+| `ref-d-vertikale-finner.png` | Djupe frittståande radielle finner med ovale hol; nesten rett sylinder, kastellert topp | Radiell djupn utover skalet via ribberelieff; rette vertikale finner | Realisert som søsken `g-rotor` (v0.3): 56 finner, twist 0, relieff 7 mm, opning 30 %, ribbekant-drift 0 grader (mest printbar) |
 | (femte fil) | Dublett av ref-b (same md5) | | |
 
 ## Kva dette endrar i Skavl
@@ -41,4 +41,18 @@ utfyller kvarandre. Attribusjon (truleg Steven Edwards) er `[TRENG IVER]`
    låg-ordens cos(m*theta)-ledd som veks mot toppen og roterer med
    twisten.
 
-Generator: `skavl_vase.py` (v0.3). Validering: `validering-vase-v0.3.md`.
+## Printbarheit-funn (it. 29): den flate rotoren er ei keramikk-form
+
+Referanse-d / den flate rotorskåla (jf. `reference/formretning-2026-07/
+04-flat-rotor.jpeg`) har nesten vassrette veggar. Printa stråleorientert
+(ståande) i FDM vert det store overheng utan støtte; forma er ei
+omnbrend keramikk-form, ikkje ei stråle-form. Den *printbare* kusinen
+til rotor-estetikken er ei ståande søyle med mange rette vertikale
+finner og djupe slissar, difor er `g-rotor` høg og rett, ikkje flat.
+Dette er «form følgjer fitness» i praksis: seleksjonslandskapet (FDM
+stråle) tvingar ei anna form enn keramikklandskapet, sjølv med same
+grammatikk (radial repetisjon). Ei ekte flat skål høyrer heime i
+resin/SLA eller med støtte, eit eige spor om Iver vil.
+
+Generator: `skavl_vase.py` (v0.3, fire søsken d/e/f/g).
+Validering: `validering-vase-v0.3.md`. Render: `render-v0.3.png`.

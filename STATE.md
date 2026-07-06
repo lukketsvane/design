@@ -1,6 +1,6 @@
 # STATE.md, loop-state
 
-**Iterasjon:** 28
+**Iterasjon:** 29
 **Sist oppdatert:** 2026-07-06
 **Status:** Aktiv loop-køyring, fleire økter parallelt («køyr til tokena
 er tomme», Ivers instruks 2026-07-06). All utvikling går direkte til
@@ -65,12 +65,14 @@ gjer kurvaturen lesbar. Analyse:
 `research/2026-07-06-formretning-rotasjonsgrammatikk.md`. Loopen køyrer
 kontinuerleg i tillegg til den daglege triggeren.
 
+| 29 | Verkstad | Skavl v0.3 fekk fjerde søsken `g-rotor` (referanse-d/flat rotor): 56 rette vertikale finner, relieff 7 mm, opning 30 %, ribbekant-drift 0° (mest printbare). Printbarheit-funn dokumentert: den flate rotorskåla har vassrette veggar = FDM-overheng, så den printbare kusinen er ei ståande finne-søyle (form følgjer fitness: FDM-landskapet ≠ keramikklandskapet). 4-opp render + ref/README-funn |
+
 ## Neste handling
 
-Iterasjon 29 (Verkstad-tungt): (a) rotor-skål som tredje familiemedlem
-(referanse-d, flat rotor/vertikale finner) på generator-B-kjernen;
-(b) vase-lampe-hybrid, arv slisse-grammatikken inn i `skavl.py` med
-blend/termikk på; (c) materialeksperiment #1 (glasur-analog i print).
+Iterasjon 30 (Verkstad-tungt): (a) vase-lampe-hybrid, arv slisse-
+grammatikken inn i `skavl.py` med blend/termikk-klemmene på; (b)
+materialeksperiment #1 (glasur-analog i print: silk-PETG laglys /
+to-farge kant-høglys); (c) reparasjonssett klips-protese-generator.
 Sekundært: konvensjonssveip Notion-undersider; Fjordfiesta (#4);
 Case #3 Helsenorge.
 

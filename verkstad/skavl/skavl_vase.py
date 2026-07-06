@@ -58,6 +58,17 @@ SIBLINGS = {
         m_poly=3, poly_amp=4.0, gap_frac=0.44,
         drope_lam=150.0, drope_styrke=0.55,
     ),
+    # ref-d: den printbare kusinen til den flate rotoren. Ei grunn rotorskaal
+    # (referanse-d/04) har nesten vassrette veggar = stort overheng: FDM kan
+    # ikkje printe henne stottefri (keramikk-referansen er omnbrend). Den
+    # printbare realiseringa av rotor-estetikken er ei staaande soyle med
+    # mange rette vertikale finner og djupe slissar, sjaa ref/README.
+    "g-rotor": dict(
+        seed=404, n_rib=56, twist_deg=0.0, wobble=0.0, rib_relief=7.0,
+        profil=[(0, R_FOT), (28, 78), (120, 96), (210, 92), (240, 88)],
+        m_poly=0, poly_amp=0.0, gap_frac=0.52,
+        drope_lam=0.0, drope_styrke=0.0,
+    ),
 }
 
 
