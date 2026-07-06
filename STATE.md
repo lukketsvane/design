@@ -1,9 +1,10 @@
 # STATE.md — loop-state
 
-**Iterasjon:** 10
+**Iterasjon:** 11
 **Sist oppdatert:** 2026-07-06
-**Status:** Aktiv loop-køyring, andre økt. PR #1 (iterasjon 0–7) er merga
-til main; ny arbeidsbranch er `claude/observer-planning-rdapid`.
+**Status:** Aktiv loop-køyring, andre økt. All utvikling går no direkte
+til `main` (Ivers instruks). Dagleg trigger aktiv: «FORMLÆRE dagleg loop»
+(trig_01DqhXRKkJof8qzmz8oHozmh, 05:00 UTC, ferskt miljø per køyring).
 
 ## Iterasjonshistorikk (denne økta)
 
@@ -20,11 +21,12 @@ til main; ny arbeidsbranch er `claude/observer-planning-rdapid`.
 | 8 | Synk/Meta | Drift retta: STATE/BACKLOG à jour med it. 7; branch-referansar oppdaterte etter merge av PR #1 |
 | 9 | Skriving | Case #1 «Leskuret som ikkje gjev le» — fullt utkast, 9 kjelder, trykktabell, karusell-skisse; Fase Idé→Utkast |
 | 10 | Research | AHO-miljøet kartlagt: Bjørnstad (formgjeving) ⭐, Abrahamsen (ph.d.), Killi (AM/instituttleiar), Nordby; kontaktrekkjefølgje inn i H0/H1 |
+| 11 | Verkstad | Skavl-algoritme v0.1: kurve-stabel-arkitektur, pseudokode, 17 parametrar, metode-referansar; spegla på Verkstad-sida |
 
 ## Neste handling
 
-Iterasjon 11: Verkstad — Grasshopper/Python-skisse for
-Skavl-lampe-algoritmen (pseudokode + parameterliste), eller Vegkart-rulling.
+Iterasjon 12: Vegkart — kople utveksling + semesterplan frå AHO-sida inn
+i H0/H1 (backlog #6), eller brotmodus-taksonomi (backlog #7).
 
 ## Blokkert / treng Iver — VIKTIGAST FYRST
 

@@ -11,14 +11,12 @@ Loopen konsumerer ovanfrå. `[TRENG IVER]` = berre mennesket.
 4. [ ] `[TRENG IVER]` AHO-kontakt steg 1: meld deg som informant hjå
    Trym Abrahamsen (Applied Formgiving-ph.d.) — sjå
    `research/2026-07-06-aho-miljoet.md`.
-5. [ ] **Verkstad:** Grasshopper/Python-skisse for Skavl-lampe-algoritmen
-   (pseudokode + parameterliste er nok — Iver implementerer).
-6. [ ] **Vegkart:** Kopla utveksling + semesterplan frå AhO-sida inn i H0/H1.
-7. [ ] **Research:** Brotmodus-taksonomi for reparasjonssettet: kva finst
+5. [ ] **Vegkart:** Kopla utveksling + semesterplan frå AhO-sida inn i H0/H1.
+6. [ ] **Research:** Brotmodus-taksonomi for reparasjonssettet: kva finst
    av data om vanlege plastbrot i hushald? (iFixit, Restarters-data)
-8. [ ] `[TRENG IVER]` Foto 16:9 av prototypane innan ~20. aug.
-9. [ ] `[TRENG IVER]` Send Salone-skjema innan 30. aug; Greenhouse innan 15. sep.
-10. [ ] **Synk:** Spegl eventuelle Notion-endringar → git.
+7. [ ] `[TRENG IVER]` Foto 16:9 av prototypane innan ~20. aug.
+8. [ ] `[TRENG IVER]` Send Salone-skjema innan 30. aug; Greenhouse innan 15. sep.
+9. [ ] **Synk:** Spegl eventuelle Notion-endringar → git.
 
 ## Gjort
 
@@ -33,3 +31,4 @@ Loopen konsumerer ovanfrå. `[TRENG IVER]` = berre mennesket.
 - [x] It. 8: Synk/Meta — drift retta, branch-referansar oppdaterte etter PR #1
 - [x] It. 9: Case #1 «Leskuret som ikkje gjev le» → `writing/case-01-leskuret.md` + Notion (Fase: Utkast)
 - [x] It. 10: AHO-miljøet → `research/2026-07-06-aho-miljoet.md`
+- [x] It. 11: Skavl-algoritme v0.1 → `briefs/skavl-algoritme.md` + Verkstad-sida
