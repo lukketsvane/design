@@ -14,11 +14,9 @@ Loopen konsumerer ovanfrå. `[TRENG IVER]` = berre mennesket.
 5. [ ] `[TRENG IVER]` Utvekslingsavgjerd før 15. sep 2026 (intern frist
    vårutveksling 2027 = same dag som Greenhouse): vår 2027 kolliderer med
    Salone; haust 2027 er tryggare — sjå «Studieløpet som ramme» i 05-sida.
-6. [ ] **Research:** Brotmodus-taksonomi for reparasjonssettet: kva finst
-   av data om vanlege plastbrot i hushald? (iFixit, Restarters-data)
-7. [ ] `[TRENG IVER]` Foto 16:9 av prototypane innan ~20. aug.
-8. [ ] `[TRENG IVER]` Send Salone-skjema innan 30. aug; Greenhouse innan 15. sep.
-9. [ ] **Synk:** Spegl eventuelle Notion-endringar → git.
+6. [ ] `[TRENG IVER]` Foto 16:9 av prototypane innan ~20. aug.
+7. [ ] `[TRENG IVER]` Send Salone-skjema innan 30. aug; Greenhouse innan 15. sep.
+8. [ ] **Synk:** Spegl eventuelle Notion-endringar → git (løpande).
 
 ## Gjort
 
@@ -35,3 +33,4 @@ Loopen konsumerer ovanfrå. `[TRENG IVER]` = berre mennesket.
 - [x] It. 10: AHO-miljøet → `research/2026-07-06-aho-miljoet.md`
 - [x] It. 11: Skavl-algoritme v0.1 → `briefs/skavl-algoritme.md` + Verkstad-sida
 - [x] It. 12: Studieløpet inn i vegkartet → `strategy/05-vegkart.md` + 05-sida i Notion
+- [x] It. 13: Brotmodus-taksonomi v0.1 → `research/2026-07-06-brotmodus-taksonomi.md` + Verkstad-sida
