@@ -1,11 +1,16 @@
 # STATE.md — loop-state
 
-**Iterasjon:** 22
+**Iterasjon:** 23
 **Sist oppdatert:** 2026-07-06
-**Status:** Aktiv loop-køyring, tredje økt («køyr til tokena er tomme»,
+**Status:** Aktiv loop-køyring, fjerde økt («køyr til tokena er tomme»,
 Ivers instruks 2026-07-06). All utvikling går direkte til `main`.
 Dagleg trigger aktiv: «FORMLÆRE dagleg loop»
 (trig_01DqhXRKkJof8qzmz8oHozmh, 05:00 UTC, ferskt miljø per køyring).
+
+**Gjeldande styring frå Iver (2026-07-06, fjerde økt):** prioriter
+konkrete designprosjekt — algoritmisk modellering o.l. for fysiske
+modellar Iver kan 3D-printe. Verkstad-tungt til ny beskjed; balanse-
+regelen i LOOP.md §4 vik for denne styringa.
 
 ## Iterasjonshistorikk (denne økta)
 
@@ -34,13 +39,16 @@ Dagleg trigger aktiv: «FORMLÆRE dagleg loop»
 | 20 | Verkstad | Alle tre briefane rulla til v1.1 mot brotmodus-taksonomien: knagg (test per lastretning, krypmåling, PETG/designa svak sone), lampe (termikk-modus, PETG-vurdering, snap-rot), repsett (fem delfamiliar, hylse i to variantar, 50 N per modus); spegla til Verkstad-sidene |
 | 21 | Research | Produsent #3 Northern: forlaget utan fabrikk; Northern Design Award (toårleg, studentar!) = døra inn for Skavl-lampa; Morten & Jonas som referansebane; flagga spenning utflagga produksjon vs. materialnærleik |
 | 22 | Vegkart | Produsentlandskapet inn i 05 (git + Notion): tre arketypar (Superfabrikken/Arven/Forlaget) med kvar si dør; månadsrytmen kopla til case-planen sep–des |
+| 23 | Verkstad | Skavl v0.2: pseudokoden implementert (`verkstad/skavl/skavl.py`) — tre vasstette 3MF-søsken (107–120 g, overheng ≤ 45°, bru ≤ 7,9 mm, blendfri ved konstruksjon), valideringsrapport + silhuett-SVG; funn: bru-budsjettet avgrensar porøsitet til 6–8 % (mål 30 %) → v0.3 = avlange slissar. Parallelløkt-kollisjon på iterasjonsnummer løyst ved rebase (20→23) |
 
 ## Neste handling
 
-Iterasjon 23: Research — verifiser kjeldespor i case-idélista
-(K4/K5/K7 + K11–K16) ELLER finn Northern Design Award-fristen
-(backlog 11). Balanse: neste Skriving bør vere Helsenorge-research
-eller motcase-utkast.
+Iterasjon 24 (Verkstad-styring frå Iver): Knagg #1 som parametrisk,
+printbar modell (kortast printsyklus, kritisk sti til 20. aug) ELLER
+Skavl v0.3 (avlange slissar → porøsitet mot 30 %). Deretter:
+reparasjonssettet som klips-protese-generator kopla til
+brotmodus-taksonomien. NB: parallelløkt kan vere aktiv — fetch før
+persistence (LEARNINGS).
 
 ## Blokkert / treng Iver — VIKTIGAST FYRST
 

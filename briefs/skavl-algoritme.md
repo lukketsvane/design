@@ -4,6 +4,11 @@
 > Nivå: nok til at Iver kan implementere i Grasshopper (Anemone/Kangaroo +
 > GhPython) eller rein Rhino-Python. Ingen kode er testa — dette er
 > *navigasjonskartet*, ikkje territoriet.
+>
+> **→ v0.2 er implementert og validert:** sjå `verkstad/skavl/`
+> (iterasjon 20). Rein-Python-vegen; tre vasstette, printbare 3MF-søsken
+> som passerer alle portane i steg 6. Avvik frå pseudokoden og funn er
+> dokumenterte i `verkstad/skavl/README.md`.
 
 ## Grunnval: kurve-stabel, ikkje mesh-vekst
 

@@ -20,6 +20,9 @@ utan å spørje om lov undervegs, til ein stoppvilkår er nådd.
 
 1. Les `STATE.md`, `BACKLOG.md`, `LEARNINGS.md`, `git log --oneline -10`.
 2. Vel **øvste udone oppgåve i BACKLOG.md** som ikkje er blokkert.
+   Gjeldande styring frå Iver (2026-07-06): konkrete designprosjekt —
+   algoritmisk modellering for 3D-printbare modellar — går føre
+   balanseregelen i §4, til ny beskjed.
 3. Om backloggen er tom eller alt er blokkert: generer nytt arbeid frå
    iterasjonsmenyen (§4) — vel det som gjev mest verdi for vegkartet no,
    og varier: aldri same menykategori tre gonger på rad.
