@@ -20,13 +20,16 @@ Loopen konsumerer ovanfrå. `[TRENG IVER]` = berre mennesket.
    (Bjørvika/Oslo S) — til Case #2, sjå
    `writing/case-ideliste-designopproret.md`.
 9. [ ] **Synk:** Spegl eventuelle Notion-endringar → git (løpande).
-10. [ ] **Research:** Produsentkartlegging #3: Northern (Oslo) eller
-    Fjordfiesta (Molde) — same lest; Northern trong djupare søk enn
-    fyrste forsøk gav.
-11. [ ] **Research:** Verifiser kjeldespora for K4 (handlevogn), K5
+10. [ ] **Research:** Produsentkartlegging #4: Fjordfiesta (Molde,
+    Scandia-arven) — samanlikn med Eikund; deretter destiller
+    produsent-landskapskartet inn i `strategy/04-posisjonering.md`.
+11. [ ] **Research:** Finn neste utlysing/frist for Northern Design
+    Award (toårleg, for studentar/unge designarar) — kandidat-arena
+    for Skavl-lampa etter Salone/Greenhouse.
+12. [ ] **Research:** Verifiser kjeldespora for K4 (handlevogn), K5
     (sparkesykkel), K7 (søppelkasse) og kandidatane K11–K16 i idélista
     før dei rykkjer opp.
-12. [ ] **Vegkart:** Overvak Vestre/DOGA for opne designkonkurransar
+13. [ ] **Vegkart:** Overvak Vestre/DOGA for opne designkonkurransar
     (Munch-modellen) — sjekk kvartalsvis.
 
 ## Gjort
@@ -52,3 +55,4 @@ Loopen konsumerer ovanfrå. `[TRENG IVER]` = berre mennesket.
 - [x] It. 18: Produsent #2 Eikund → `research/2026-07-06-produsent-eikund.md`
 - [x] It. 19: Case #2 «Benken» fullt utkast → `writing/case-02-benken.md` + Skriveprosjekt-rad (Utkast)
 - [x] It. 20: Briefane rulla til v1.1 mot brotmodus-taksonomien → `briefs/*.md` + Verkstad-sidene
+- [x] It. 21: Produsent #3 Northern → `research/2026-07-06-produsent-northern.md`
