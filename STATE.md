@@ -1,6 +1,6 @@
 # STATE.md — loop-state
 
-**Iterasjon:** 8
+**Iterasjon:** 9
 **Sist oppdatert:** 2026-07-06
 **Status:** Aktiv loop-køyring, andre økt. PR #1 (iterasjon 0–7) er merga
 til main; ny arbeidsbranch er `claude/observer-planning-rdapid`.
@@ -18,11 +18,12 @@ til main; ny arbeidsbranch er `claude/observer-planning-rdapid`.
 | 6 | Skriving | Søknadspakke Salone+Greenhouse: sjekklister, EN-presentasjon, standkonsept «Le-sida» |
 | 7 | Skriving | Manifest v1.0 → Klar i Notion (git-committen vart tom; retta i it. 8) |
 | 8 | Synk/Meta | Drift retta: STATE/BACKLOG à jour med it. 7; branch-referansar oppdaterte etter merge av PR #1 |
+| 9 | Skriving | Case #1 «Leskuret som ikkje gjev le» — fullt utkast, 9 kjelder, trykktabell, karusell-skisse; Fase Idé→Utkast |
 
 ## Neste handling
 
-Iterasjon 9: Utkast Case #1 «Kvifor ser Noreg slik ut?» med 4-nivå-metoden
-(øvste ublokkerte backlog-oppgåve).
+Iterasjon 10: Research AHO-miljøet (rettleiarar/allierte for
+grammatikk-tilnærminga) — øvste ublokkerte backlog-oppgåve.
 
 ## Blokkert / treng Iver — VIKTIGAST FYRST
 
