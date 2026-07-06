@@ -68,7 +68,7 @@ dør inn:
 |---|---|---|---|
 | Vestre | **Superfabrikken**, offentleg rom, stål, eigen fabrikk (The Plus) | Opne designkonkurransar (Munch-modellen) | H1/H2: overvak utlysingar (Vestre/DOGA); studietur The Plus hausten 2026 |
 | Eikund | **Arven**, gullalder-katalog, eigen fabrikk på Jæren | «Det manglande møbelet»: nytt kapittel i gammal grammatikk | H2: krev at verkstadserien finst fysisk fyrst |
-| Northern | **Forlaget**, samtid, inga eiga fabrikk, 40+ designarar | Northern Design Award (toårleg, for studentar/unge) | H1: kandidat-arena for Skavl-lampa etter Salone/Greenhouse; finn neste frist |
+| Northern | **Forlaget**, samtid, inga eiga fabrikk, 40+ designarar | Northern Lighting Student Design Award (årleg, est. 2013; status i dag uverifisert) | H1: kandidat-arena for Skavl-lampa etter Salone/Greenhouse; stadfest prisen + finn frist |
 
 Fjordfiesta (#4) står att i kartlegginga. Når fire er kartlagde:
 destiller landskapskartet inn i `04-posisjonering.md`. Detaljar og

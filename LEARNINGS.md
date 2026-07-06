@@ -42,6 +42,14 @@ Kvar feil vert til ein regel, éin gong. Nyaste øvst.
   til uventa posisjonar → verifiser alltid med fetch etterpå, og rett
   rekkjefølgja med målretta update_content-byte.
 
+- **2026-07-06:** To loop-økter bygde kvar sin generator B frå Ivers
+  referansebilete (it. 28 vase / it. 30 lampe) og skreiv til same
+  fil-namn `print/skavl-b-open.3mf` → den eine committen klabba den andre
+  si fil. Regel: kvar generator MÅ namespace outputane sine (`skavl-lamell-*`
+  vs `vase-*` vs `skavl-a/b/c`); sjekk `git show --stat` for uventa
+  binærdiff på filer du ikkje meinte å endre FØR push. Og: ved gjenteken
+  rebase-race, renummerer eiga iterasjon til max(remote)+1 og PUSH med ein
+  gong; kodefiler kolliderer sjeldan (ulike namn), berre STATE/BACKLOG gjer.
 - **2026-07-06:** To loop-økter køyrde parallelt på `main` og laga kvar si
   case-idéliste (it. 15/16) → før persistence: `git fetch origin main` og
   sjekk om remote har flytta seg; har han det, les dei nye committane og

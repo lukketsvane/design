@@ -2,9 +2,10 @@
 # frø gjev same geometri og same bilete.
 numpy
 trimesh
-manifold3d      # boolske operasjonar (knagg: plate, skruehol, spor)
-shapely         # knagg: plate-polygon
+shapely         # polygon-profilar (knagg-plate, skavl_b-lamell, repsett)
+manifold3d      # boolske operasjonar (union av lameller/ringar, kutt)
+rtree           # skavl_b.py: strålecasting for blend-måling
 lxml            # 3MF-eksport
-networkx        # trimesh fix_normals
+networkx        # trimesh fix_normals / 3MF-eksport
 scipy           # trimesh normal-glatting og reparasjon
 pillow          # render.py: PNG-utskrift og nedskalering

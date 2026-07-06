@@ -114,6 +114,53 @@ rapport: histogram(overheng), okklusjonsgrad, masse, opningsareal
 - **Timelapse:** print-timelapsen (lag-for-lag = snøfall) er
   dokumentasjonskravet frå briefen; set kamera før fyrste testprint.
 
+## Lamell-modus (generator B, retningsendring frå Iver 2026-07-06)
+
+> **→ v0.1 er implementert og validert:** sjå `verkstad/skavl/skavl_b.py`
+> og `verkstad/skavl/README.md` (iterasjon 28). Tromme-topologi, tre
+> vasstette 3MF-søsken (115-120 g, overheng maks 45°). Ope funn: radiale
+> finnar stengjer berre 13-16 % av blendbandet, sjå README.
+
+Referansebileta i `reference/formretning-2026-07/` (analyse:
+`research/2026-07-06-formretning-rotasjonsgrammatikk.md`) gjev ein
+enklare og visuelt sterkare arkitektur enn ringstabelen for blendings-
+aksen: **N radiale lameller** i staden for kontinuerleg skal.
+
+```
+# GENERATOR B: rotasjonsarray av modulert profil
+profil = dropekurve(h_lamell, b_topp, b_midje, b_fot)   # 2D, i r-z-planet
+for k in 0..N_lameller-1:
+    θ_k   = k * 360°/N_lameller
+    mod_k = 1 + a_støy * støy(k, frø)                   # breidde/midje-variasjon
+    lamell[k] = extruder(profil * mod_k, t_lamell, vinkla φ_skru)
+form = union(lamell[*], nav_topp, krage_botn)
+
+# same harde klemmer som generator A gjeld per lamell:
+#   okklusjon: nabolamellar må overlappe i projeksjon frå augehøgd-banda
+#   termikk:   indre lamellkant ≥ r_term + 40 mm
+#   print:     lamell står vertikalt → overheng-fritt i hovudretning;
+#              φ_skru ≤ 50° om skrudd variant
+```
+
+| Parameter (B) | Start | Kommentar |
+|---|---|---|
+| `N_lameller` | 24 | jf. referanse 01/03; partal gjev roleg rytme |
+| `h_lamell / b_topp / b_midje / b_fot` | 220 / 18 / 8 / 26 mm | dropeprofil med innsnørt midje |
+| `t_lamell` | 2,4 mm | 3 perimeter; stiv nok fritt-ståande |
+| `φ_skru` | 0-15° | rotor-effekten frå referanse 04; 0 = roleg |
+| `a_støy` | 0,15 | søsken-variasjon utan å bryte rytmen |
+
+**Okklusjonsvilkåret er geometrisk løyseleg i lukka form:** frå
+synsvinkel α må `b_midje ≥ 2π·r_midje/N · sin(gap-faktor)`, rekn ut,
+ikkje iterer. Generator A (ringstabel) og B (lamell) deler felt,
+klemmer og valideringsrapport; søskenfamilien kan blande modusane
+(t.d. A-A-B), éin grammatikk, to generatorar.
+
+**Print-analog til glasur-poolinga** (materialeksperiment #1): silk-PETG
+der laglinjer fangar lys etter kurvatur; kant-høglys ved to-farge;
+polert egg mot matt dal. Mål: forma skal dokumentere sin eigen geometri
+slik glasuren gjer det i referansen.
+
 ## Referansar (metode)
 
 - Anders Hoff: [Differential line growth](https://inconvergent.net/generative/differential-line/), kanonisk skildring av vekst + fråstøyt + glatting på kurve.
