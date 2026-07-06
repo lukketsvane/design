@@ -1,8 +1,9 @@
 # STATE.md — loop-state
 
-**Iterasjon:** 6
+**Iterasjon:** 8
 **Sist oppdatert:** 2026-07-06
-**Status:** Aktiv loop-køyring; 6 iterasjonar fullførte i fyrste økt.
+**Status:** Aktiv loop-køyring, andre økt. PR #1 (iterasjon 0–7) er merga
+til main; ny arbeidsbranch er `claude/observer-planning-rdapid`.
 
 ## Iterasjonshistorikk (denne økta)
 
@@ -15,11 +16,13 @@
 | 4 | Verkstad | Designbrief Reparasjonssett (kintsugi for plast) + trio-grunngjeving |
 | 5 | Research | Norway Says → grammatikken er limet; exit-plan frå dag éin |
 | 6 | Skriving | Søknadspakke Salone+Greenhouse: sjekklister, EN-presentasjon, standkonsept «Le-sida» |
+| 7 | Skriving | Manifest v1.0 → Klar i Notion (git-committen vart tom; retta i it. 8) |
+| 8 | Synk/Meta | Drift retta: STATE/BACKLOG à jour med it. 7; branch-referansar oppdaterte etter merge av PR #1 |
 
 ## Neste handling
 
-Iterasjon 7: «Manifest v1.0: Designopprøret» frå Revisjon til Klar
-(øvste attverande skrivetask), deretter Case #1-utkast.
+Iterasjon 9: Utkast Case #1 «Kvifor ser Noreg slik ut?» med 4-nivå-metoden
+(øvste ublokkerte backlog-oppgåve).
 
 ## Blokkert / treng Iver — VIKTIGAST FYRST
 

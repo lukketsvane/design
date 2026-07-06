@@ -62,8 +62,10 @@ Skriving, to Verkstad, éin Vegkart, éin Synk, maks éin Meta.
 1. Oppdater `STATE.md`: iterasjonsnummer +1, kva vart gjort, kva er neste.
 2. Oppdater `BACKLOG.md`: kryss av utført, legg til nyoppdaga arbeid.
 3. Ved feil/lærdom: éi line i `LEARNINGS.md`.
-4. Commit med beskrivande melding; push med `git push -u origin
-   claude/norsk-design-strategy-plan-zgwmkm` (retry 2s/4s/8s/16s ved nettfeil).
+4. Commit med beskrivande melding; **verifiser at committen faktisk
+   inneheld filendringar** (`git show --stat HEAD`) — ein tom commit er
+   ein feila persistence-port. Push med `git push -u origin <designert
+   branch>` (sjå CLAUDE.md; retry 2s/4s/8s/16s ved nettfeil).
 5. Skriv éi rad i Notion-databasen «Logg · iterasjonar & funn»
    (Type=Agent-loop, dato, samandrag, neste handling).
 
