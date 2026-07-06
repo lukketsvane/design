@@ -1,6 +1,6 @@
 # STATE.md — loop-state
 
-**Iterasjon:** 19
+**Iterasjon:** 20
 **Sist oppdatert:** 2026-07-06
 **Status:** Aktiv loop-køyring, tredje økt («køyr til tokena er tomme»,
 Ivers instruks 2026-07-06). All utvikling går direkte til `main`.
@@ -31,13 +31,13 @@ Dagleg trigger aktiv: «FORMLÆRE dagleg loop»
 | 17 | Synk | Konsolidering: idébank (it. 15) + idéliste (it. 16) → éi kanonisk liste v0.2 (16 kandidatar, månadsplan sep–des, prinsipp); idebank-fila er peikar; Notion-rada oppdatert; motcase flytt til desember (flagga) |
 | 18 | Research | Produsent #2 Eikund: arven som forretningsmodell; gullalder-diagnosen stadfesta empirisk; flagga spenning «grammatikk eller museum»; inngang = «det manglande møbelet»; Northern/Fjordfiesta står att |
 | 19 | Skriving | Case #2 «Benken du ikkje kan liggje på» — fullt utkast: 4 nivå, trykktabell, Bjørvika-empiri (namngjevne kritikarar + Lynnebakken-avvisinga), Camden/Savić, 9 kjelder, karusell-skisse; Skriveprosjekt-rad (Utkast, frist 1. okt) |
+| 20 | Verkstad | Alle tre briefane rulla til v1.1 mot brotmodus-taksonomien: knagg (test per lastretning, krypmåling, PETG/designa svak sone), lampe (termikk-modus, PETG-vurdering, snap-rot), repsett (fem delfamiliar, hylse i to variantar, 50 N per modus); spegla til Verkstad-sidene |
 
 ## Neste handling
 
-Iterasjon 20: frå backloggen — Research: verifiser kjeldespor K4/K5/K7 +
-K11–K16 i case-idélista, ELLER Produsent #3 (Northern/Fjordfiesta).
-Balansesjekk: hugs Verkstad/Vegkart snart (sist Verkstad var it. 11,
-Vegkart it. 12).
+Iterasjon 21: frå backloggen — Research: verifiser kjeldespor K4/K5/K7 +
+K11–K16 i case-idélista, ELLER Produsent #3 (Northern/Fjordfiesta),
+ELLER Vegkart-rulling (sist it. 12).
 
 ## Blokkert / treng Iver — VIKTIGAST FYRST
 

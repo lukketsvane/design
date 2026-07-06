@@ -1,4 +1,4 @@
-# Designbrief: Skavl-lampe — form av krefter, ikkje vilje (v1, 2026-07-06)
+# Designbrief: Skavl-lampe — form av krefter, ikkje vilje (v1.1, 2026-07-06)
 
 Salone-prototype-kandidat #2 av 3. Full brief på Verkstad-sida i Notion
 (page_id 3951c681-5f78-8150-b20f-d1aa75cce756); dette er spegelen.
@@ -40,6 +40,21 @@ vektingar. Veke 2–3: print + mål blending/temp/skugge. Veke 4–5: iterer
 
 Tend i mørkt rom (skuggen som hovudmotiv) · porøsitet mot lys ·
 tre-søsken-familien.
+
+## Rulling mot brotmodus-taksonomien og algoritmen (v1.1, it. 20)
+
+- **Termikk > mekanikk:** lampas kritiske «brotmodus» er ikkje mekanisk
+  brot, men termisk mjukning/kryp (slektning av modus 8): PLA byrjar
+  krype alt kring 60 °C. Vurder PETG som standardmateriale (høgare
+  mjukningstemperatur, seigare) — masse-asserten i
+  `briefs/skavl-algoritme.md` må då rekne med ~1,27 g/cm³ i staden for
+  1,24.
+- **Verktøyfri demontering** (monteringsaksen) er snap-geometri i rota →
+  rotfillet ≥ halve snap-tjukkleiken (modus 1) og printretning på tvers
+  av bøyeplanet, jf. taksonomien.
+- **Testplanen veke 2–3** (temperaturmåling) avgjer materialvalet: logg
+  måla mot r_min-klaringa (40 mm) slik at termikk-klemma i algoritmen kan
+  strammast/slakkast på data, ikkje på kjensle.
 
 ## Salone-skildring (EN, 272 teikn)
 

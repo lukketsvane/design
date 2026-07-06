@@ -1,4 +1,4 @@
-# Designbrief: Knagg #1 — kvar dag-knaggen (v1, 2026-07-06)
+# Designbrief: Knagg #1 — kvar dag-knaggen (v1.1, 2026-07-06)
 
 Salone-prototype-kandidat #1 av 3. Full brief på Verkstad-sida i Notion
 (page_id 3951c681-5f78-81c5-95f8-e3528628b188); dette er spegelen.
@@ -34,6 +34,24 @@ svermen?), 7.14 (sviktlatens — design éin medvite svak variant),
   lesetest («kvar sit kompromisset?») på tre medstudentar.
 - **Foto (16:9):** i bruk med sidelys; patina-detalj; familiebilete med
   brot-varianten.
+
+## Rulling mot brotmodus-taksonomien (v1.1, it. 20)
+
+Kryssjekk mot `research/2026-07-06-brotmodus-taksonomi.md`:
+
+- **Knaggens eigne modusar:** krok-/øyrebrot (modus 7, strekk over lite
+  tverrsnitt) og skaftbrot i bøyemoment (modus 4). Testplanen målar difor
+  per lastretning — bøyemoment ved rota (6–8 Nm), strekk i kroken, støyt
+  (8–10 kg) — ikkje éin generisk brotverdi (taksonomi-konsekvens 3).
+- **Kryp (modus 8) er knaggens stille fiende:** 3–5 kg statisk i veker.
+  Den fire vekers brukstesten skal måle permanent deformasjon (foto mot
+  referansejigg kvar veke), ikkje berre «heldt/brotna».
+- **Materialval:** PETG for lastberande variantar (seigleik). PLA berre
+  for den medvite svake varianten — og der skal brotet vere *designa*:
+  legg den svake sona som cantilever-rot utan fillet (modus 1) slik at
+  sviktsignaturen (7.14) vert lesbar og reproduserbar.
+- **Rotfillet-regelen** (fillet ≥ halve tjukkleiken, snap-fit-litteraturen)
+  gjeld kraftlinje-forma ved veggfestet.
 
 ## Salone-skildring (EN, 289 teikn)
 
