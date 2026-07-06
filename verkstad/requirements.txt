@@ -6,4 +6,5 @@ manifold3d      # boolske operasjonar (knagg: plate, skruehol, spor)
 shapely         # knagg: plate-polygon
 lxml            # 3MF-eksport
 networkx        # trimesh fix_normals
+scipy           # trimesh normal-glatting og reparasjon
 pillow          # render.py: PNG-utskrift og nedskalering

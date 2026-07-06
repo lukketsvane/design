@@ -40,7 +40,9 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 
 # --------------------------------------------------------------- look config
 SIZE = 1200          # final PNG edge [px]
-SS = 3               # supersampling factor (render at SIZE*SS, then downscale)
+SS = 3               # default supersampling (render at SIZE*SS, then downscale)
+SS_LAMP = 4          # lamps: extra supersampling for the fine window lace
+SS_TT = 2            # turntables: lighter, they are secondary
 SKAVL_ZROT = 118.0   # turn the porous windward band to a trailing accent
 
 FILAMENT = {         # warm off-white printed plastic, per family
@@ -251,8 +253,9 @@ def shadow_mask(mesh, cam, W, H, yfov):
 
 # -------------------------------------------------------------------- render
 def render_png(mesh, family, out_path, az_deg=38, el_deg=16,
-               yfov=0.42, margin=1.16):
-    W = H = SIZE * SS
+               yfov=0.42, margin=1.16, ss=None):
+    ss = SS if ss is None else ss
+    W = H = SIZE * ss
     cam, centre, dist = place_camera(mesh, az_deg, el_deg, yfov, margin)
     eye = cam[0]
 
@@ -355,6 +358,8 @@ def main():
                     help="composite the three siblings of each family side by "
                          "side (uses existing hero renders, no re-render)")
     ap.add_argument("--only", default=None, help="family/name filter")
+    ap.add_argument("--ss", type=int, default=None,
+                    help="override supersampling factor for hero renders")
     args = ap.parse_args()
 
     out_dir = os.path.join(HERE, "renders")
@@ -371,12 +376,15 @@ def main():
             continue
         mesh = load_oriented(family, name)
         hero = os.path.join(out_dir, f"{family}-{name}.png")
-        render_png(mesh, family, hero)
-        print(f"hero  {family}-{name}: {os.path.relpath(hero, HERE)}")
+        # lamps carry a fine porous window band; give them extra supersampling
+        # so the lace resolves cleanly instead of blocky
+        ss = args.ss if args.ss else (SS_LAMP if family == "skavl" else SS)
+        render_png(mesh, family, hero, ss=ss)
+        print(f"hero  {family}-{name}: {os.path.relpath(hero, HERE)} (ss={ss})")
         if args.turntable:
             for k, az in enumerate((20, 110, 200, 290)):
                 p = os.path.join(out_dir, f"{family}-{name}-tt{k}.png")
-                render_png(mesh, family, p, az_deg=az)
+                render_png(mesh, family, p, az_deg=az, ss=SS_TT)
                 print(f"  tt{k} az={az}")
 
 
