@@ -103,18 +103,26 @@ kassane att. Forma fortel kven som skulle sparast: bemanningsbudsjettet.
 **Brotet:** låsen er der for logistikken (vognene skal heim til stativet),
 ikkje for deg med ungar på armen og ingen tikroning sidan 2019. Eit
 mikro-døme på at eitt einaste driftskrav får kolonisere heile
-brukarreisa. **Kjeldespor (uverifisert):** patenthistoria til myntlåsen,
-kjedene sine driftsgrunngjevingar, treng research før utkast.
-**Skår:** Foto 3 · Kjelder 1 · Trykk 2 · Traktat 2 · Nyheit 3 = **11/15**
+brukarreisa. **Kjelder (ankra it. 23):**
+[Nettavisen om Rema-løysinga («ingen går rundt med mynter»)](https://www.nettavisen.no/nyheter/reagerer-pa-rema-1000s-nye-losning-ingen-gar-rundt-med-mynter/s/5-95-3115535),
+[Romerikes Blad: kundar snur ved inngangen](https://www.rb.no/snudde-ved-inngangen-ingen-gar-rundt-med-mynter/s/5-43-2778668),
+[Dinside: kjedene utan myntkrav](https://dinside.dagbladet.no/okonomi/her-trenger-du-ikke-a-lete-etter-tieren/61273549) ,
+myntautomatar til 30 000 kr per stk. er prisen kjedene betalar for å
+halde på låsen.
+**Skår (justert):** Foto 3 · Kjelder 2 · Trykk 2 · Traktat 2 · Nyheit 3 = **12/15**
 
 ### K5 · El-sparkesykkelen i byrommet
 
 **Brotet:** forma er optimert for utleigaren (byte av batteri, GPS,
 hærverkstoleranse, lågaste produksjonskost), og for føtene til
 fotgjengaren finst ho berre som snublefelle. Oslo-reguleringane frå
-2021- er sjølve historia om at kommunen måtte *ta tilbake* kravlista.
-**Kjeldespor (uverifisert):** Oslo kommune si forskrift, taloversyn frå
-Ruter/bymiljøetaten, ulukkestal frå OUS. **Skår:** 3·1·3·2·2 = **11/15**
+2021– er sjølve historia om at kommunen måtte *ta tilbake* kravlista.
+**Kjelder (ankra it. 23):**
+[Aftenposten: 421 skadar berre i juni 2021, 3000 totalt på Oslo legevakt](https://www.aftenposten.no/oslo/i/41n3VE/svaert-mange-ulykker-med-elsparkesykkel-421-skader-i-juni-mer-enn-dobling-fra-i-fjor),
+[Nettavisen: nye Oslo-reglar, natteforbod, tal halvert 20 000→8 000](https://www.nettavisen.no/nyheter/her-er-de-nye-reglene-for-elsparkesykler-i-oslo-forbyr-utleie-pa-natten/s/12-95-3424154036),
+[Statens vegvesen 2023: skadetala kraftig redusert etter regulering](https://www.vegvesen.no/om-oss/presse/aktuelt/2023/03/antall-skadde-pa-elsparkesykkel-er-kraftig-redusert/),
+[evaluering av utleigelova 2021 (TØI/Kudos)](https://kudos.dfo.no/documents/51187/files/33635.pdf).
+**Skår (justert):** 3·3·3·2·2 = **13/15**
 
 ### K6 · NAV-venterommet
 
@@ -176,7 +184,14 @@ utbyggjar, kommune og entreprenør. **Skår:** 3·1·2·2·3 = **11/15**
 ### K14 · LED-gatelyset som blendar
 Høg fargetemperatur/blending i bustadgater; nivå 3: energikrav + innkjøp
 på lumen per krone, ikkje lys per menneske. Krysspeikar til Skavl-lampas
-blendfri-akse (verkstad ↔ kritikk). **Skår:** 3·1·3·3·3 = **13/15**
+blendfri-akse (verkstad ↔ kritikk). **Kjelder (ankra it. 23):**
+[TU: «Her er grunnen til at Oslo satte full stopp på LED-utbyttingen»](https://www.tu.no/artikler/her-er-grunnen-til-at-oslo-satte-full-stopp-pa-led-utbyttingen/233452) ,
+Oslo stogga sjølv utskiftinga; blending og blålys-uro er dokumentert
+innkjøpsrisiko;
+[Vestland: 36 000 armaturar vert skifta, spesifisert 2700 K](https://www.energiaktuelt.no/skal-skifte-ut-36-000-veilys-vil-redusere-kostnadene-med-titalls-millioner-kroner-i-aaret.6740454-575507.html) ,
+fargetemperatur *kan* skrivast inn i kravlista når nokon vil;
+[Miljøverndep. T-1512 «Lys på stedet»](https://www.regjeringen.no/contentassets/52dc5ce489734c959e079471b0757dec/t-1512.pdf).
+**Skår (justert):** 3·2·3·3·3 = **14/15** ⭐ (delt topp i lageret)
 
 ### K15 · Skiltjungelen
 Éin gatestrekning, talde skilt; kvart skilt har éin rasjonell eigar,
@@ -204,9 +219,11 @@ du). Foto krevjande, karusell ber det. **Skår:** 1·1·3·3·2 = **10/15**
 2. **Case #3 = K16 Helsenorge** (november; fyrste digitale case, treng
    kjelderesearch fyrst).
 3. **Case #4 = K2 Panteautomaten som motcase** (desember; manifestløftet).
-4. Lager for 2027, etter skår: K14 LED-gatelyset (13) → K10 vinterfortauet
-   (12, systemflagg) → K11 rekkverket (12) → K15 skiltjungelen (12) →
-   K3 sjølvbeteningskassa (12).
+4. Lager for 2027, etter skår (justert it. 23): K14 LED-gatelyset (14) →
+   K5 sparkesykkelen (13) → K10 vinterfortauet (12, systemflagg) →
+   K11 rekkverket (12) → K15 skiltjungelen (12) → K3 sjølvbeteningskassa
+   (12) → K4 handlevogna (12). K7 søppelkassa fann ikkje god kjelde i
+   fyrste sveip, står som uverifisert.
 
 ## Neste steg
 
