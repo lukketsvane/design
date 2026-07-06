@@ -71,6 +71,15 @@ dokumentasjonskravet frå briefen.
 og pæresenteret til z = 130 mm, mål den faktiske fatninga og pæra, og
 juster `R_SOKKEL`/`Z_LED` før fyrste print.
 
+## Render (produktbilete)
+
+`../render.py` byggjer studioframstillingar av dei tre 3MF-søskena på
+saumlaus kvit botn: to retningslys, ingen ambient eller miljølys, mjuk
+kontaktskugge. Lampa er rendra tend: innerskalet lyser varmt, så
+toppopninga og den porøse lo-sida les som ei lyskjelde, ikkje svarte hol.
+Bileta ligg i `../renders/skavl-*.png`. Køyr `python3 render.py` (treng
+`numpy`, `trimesh`, `pillow`; sjå `../requirements.txt`).
+
 ## Traktat-kopling
 
 - **5.31:** `SIBLINGS`-tabellen er tre trajektoriar gjennom same

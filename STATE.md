@@ -1,6 +1,6 @@
 # STATE.md, loop-state
 
-**Iterasjon:** 26
+**Iterasjon:** 27
 **Sist oppdatert:** 2026-07-06
 **Status:** Aktiv loop-køyring, fleire økter parallelt («køyr til tokena
 er tomme», Ivers instruks 2026-07-06). All utvikling går direkte til
@@ -46,12 +46,15 @@ er tomme», Ivers instruks 2026-07-06). All utvikling går direkte til
 | 24 | Research | Kjeldesveip (parallelløkt, committa som «it. 23»): K4 (handlevogn), K5 (sparkesykkel, no 13/15) og K14 (LED, no 14/15, delt topp) ankra; K7 fann ikkje kjelde. RETTING: Northern-prisen heiter Northern Lighting Student Design Award (årleg, est. 2013); britiske «Northern Design Awards» er urelatert |
 | 25 | Verkstad | Knagg #1 v0.1: tre hypotesar som printbar kode (`verkstad/knagg/knagg.py`): kraftlinje (moment-følgjande gods, PETG, 28 g, SF 9,0), kanalisert (kontroll, 27 g, SF 5,9), medvite-svak (designa brotsone, PLA, 26 g, predikert brotlast 10 kg). Vasstette 3MF liggjande på sida, validering + profil-SVG. Nye skrivekonvensjonar frå Iver inn i CLAUDE.md |
 | 26 | Meta/Synk | Notion-omstrukturering (Ivers instruks): ny Oppgåver-database (17 rader, status/prioritet/frist/eigar) med kanban-, kalender- og Treng Iver-views; hovudsida bygd om til dashbord (No-seksjon øvst, Oppgåver inline, systemtabell nedst, alt gamalt bevart); konvensjonssveip i git (30 md-filer, tankestrekar og emojiar ute, kodeblokker urørte); manifest.json + notion/STRUKTUR.md |
+| 27 | Verkstad | Renderpipeline ferdigstilt: `verkstad/render.py` (eigen NumPy z-buffer-rasteriser, sidan headless OSMesa berre gjev spekulær) lagar seks produktbilete på saumlaus kvit botn (to retningslys, ingen ambient, mjuk kontaktskugge). Lampa rendra tend (varmt innerskal, glødande vindauge); knaggen crease-medviten i bruksstilling. Bileta i `verkstad/renders/`, lagt til Notion Verkstad-sidene. NB: køyrer på tildelt branch `claude/generative-design-finalize-wwmnl6` (ikkje main), jf. sesjonsinstruks; PR opna |
 
 ## Neste handling
 
-Iterasjon 27: konvensjonssveip i Notion-undersidene (01-05,
-Verkstad-sidene, Søknadspakke; hovudsida er teken i it. 26). Deretter
-Verkstad: reparasjonssett-generator eller Skavl v0.3 (avlange slissar).
+Iterasjon 28: Skavl v0.3 (avlange slissar i lagretninga for meir opning),
+og/eller reparasjonssett-generator. Renderpipelina kan gjenbrukast for
+begge (`verkstad/render.py`, legg nye familiar til i `MODELS`). Vurder
+turntable-bilete (`--turntable`) og ei lita galleri-side i Notion.
+Framleis att: konvensjonssveip i Notion-undersidene (01-05, Søknadspakke).
 
 ## Blokkert / treng Iver, VIKTIGAST FYRST
 

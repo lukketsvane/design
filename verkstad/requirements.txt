@@ -1,0 +1,9 @@
+# Verkstad-generatorane og renderaren. Deterministiske; same parametrar og
+# frø gjev same geometri og same bilete.
+numpy
+trimesh
+manifold3d      # boolske operasjonar (knagg: plate, skruehol, spor)
+shapely         # knagg: plate-polygon
+lxml            # 3MF-eksport
+networkx        # trimesh fix_normals
+pillow          # render.py: PNG-utskrift og nedskalering

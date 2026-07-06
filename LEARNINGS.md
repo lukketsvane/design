@@ -2,6 +2,16 @@
 
 Kvar feil vert til ein regel, éin gong. Nyaste øvst.
 
+- **2026-07-06:** Headless GL (OSMesa + pyrender) i containeren renderar
+  berre spekulær refleksjon, ikkje diffus: alle matte flater vart svarte
+  same kva lyssetjing. Ikkje bruk tid på å tune pyrender-intensitetar mot
+  dette; `verkstad/render.py` er ein liten eigen NumPy z-buffer-rasteriser
+  (Lambert + crease-medvitne normalar + mjuk kontaktskugge) utan
+  GL-avhengnad. To retningslys, ingen ambient (Ivers val).
+- **2026-07-06:** Notion `create-attachment` tek ikkje lokale filer, berre
+  `content` (tekst) eller `source_url` (offentleg HTTPS utan redirect).
+  For lokale PNG-ar: push til det offentlege repoet fyrst og bruk
+  `raw.githubusercontent.com/<owner>/<repo>/<branch>/<sti>` som source_url.
 - **2026-07-06:** Konvensjonssveip med regex over md-filer kollapsa
   innrykk i kodeblokker og listeframhald (`re.sub('  +', ' ')`) →
   tekstsveip skal alltid vere fence-medvite (linje for linje, hopp over
