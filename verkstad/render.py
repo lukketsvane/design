@@ -300,14 +300,21 @@ def render_png(mesh, family, out_path, az_deg=38, el_deg=16,
 # ------------------------------------------------------------------- family
 # per family: strip title and the three siblings with their short labels, the
 # "three siblings side by side" shot the design briefs ask for (Salone)
+# key -> (title, hero-file prefix, [(hero basename tail, short label)])
 FAMILY_INFO = {
-    "skavl": ("Skavl, tre søsken, éin grammatikk",
+    "skavl": ("Skavl, tre søsken, éin grammatikk", "skavl",
               [("a-roleg", "roleg"), ("b-open", "open"),
                ("c-asketisk", "asketisk")]),
-    "knagg": ("Knagg #1, tre hypotesar, éin grammatikk",
+    "knagg": ("Knagg #1, tre hypotesar, éin grammatikk", "knagg",
               [("kraftlinje", "kraftlinje"), ("kanalisert", "kanalisert"),
                ("medvite-svak", "medvite-svak")]),
+    "skavl-v03": ("Skavl v0.3, tre søsken, slissar i lagretninga", "skavl",
+                  [("a-roleg-v03", "roleg"), ("b-open-v03", "open"),
+                   ("c-asketisk-v03", "asketisk")]),
 }
+# v0.3 lamp models (tall layer-direction slots), rendered via --v03
+V03_MODELS = [("skavl", "a-roleg-v03"), ("skavl", "b-open-v03"),
+              ("skavl", "c-asketisk-v03")]
 FONT_DIR = "/usr/share/fonts/truetype/dejavu"
 
 
@@ -322,8 +329,8 @@ def _font(bold, size):
 def build_family(family, out_dir):
     """Composite the three sibling heroes side by side on white with a title
     and per-variant labels."""
-    title, variants = FAMILY_INFO[family]
-    tiles = [Image.open(os.path.join(out_dir, f"{family}-{n}.png")).convert("RGB")
+    title, prefix, variants = FAMILY_INFO[family]
+    tiles = [Image.open(os.path.join(out_dir, f"{prefix}-{n}.png")).convert("RGB")
              for n, _ in variants]
     tw, th = tiles[0].size
     gap, margin, top, bottom = 36, 56, 108, 92
@@ -360,6 +367,8 @@ def main():
     ap.add_argument("--only", default=None, help="family/name filter")
     ap.add_argument("--ss", type=int, default=None,
                     help="override supersampling factor for hero renders")
+    ap.add_argument("--v03", action="store_true",
+                    help="render the v0.3 slot lamps and their family strip")
     args = ap.parse_args()
 
     out_dir = os.path.join(HERE, "renders")
@@ -367,11 +376,15 @@ def main():
 
     if args.family:
         for family in FAMILY_INFO:
-            out = build_family(family, out_dir)
+            try:
+                out = build_family(family, out_dir)
+            except FileNotFoundError:
+                continue                       # heroes for this family not built
             print(f"family {family}: {os.path.relpath(out, HERE)}")
         return
 
-    for family, name in MODELS:
+    models = V03_MODELS if args.v03 else MODELS
+    for family, name in models:
         if args.only and args.only not in f"{family}/{name}":
             continue
         mesh = load_oriented(family, name)
@@ -386,6 +399,10 @@ def main():
                 p = os.path.join(out_dir, f"{family}-{name}-tt{k}.png")
                 render_png(mesh, family, p, az_deg=az, ss=SS_TT)
                 print(f"  tt{k} az={az}")
+
+    if args.v03:
+        out = build_family("skavl-v03", out_dir)
+        print(f"family skavl-v03: {os.path.relpath(out, HERE)}")
 
 
 if __name__ == "__main__":

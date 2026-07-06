@@ -65,6 +65,25 @@ SIBLINGS = {
     "c-asketisk": dict(seed=37, amp=0.6, p_terskel=0.55, bulge=80.0, w_glatt=0.45),
 }
 
+# v0.3: the same body forms (grow() is unchanged, same seeds/amp/bulge), a
+# different window strategy. v0.2 found the per-layer bridge budget (<= 8 mm)
+# caps porosity at 6-8 % against a 30 % target; the span is per layer, so
+# height is free. v0.3 opens tall, thin slots in the layer direction: the
+# window noise gets a long vertical wavelength so open cells form vertical
+# streaks, the height cap is lifted, and horizontal webs are widened for hoop
+# stiffness. Thresholds are lowered (more open) to approach the 30 % target.
+SLOT_MAX_H = 70          # max slot height in cells (140 mm) before a web
+SLOT_WEB_ROWS = 2        # closed rows between vertically stacked slots
+SLOT_WEB_MIN = 3.0       # min horizontal material between slots [mm] (= WEB_MIN)
+V03_SIBLINGS = {
+    "a-roleg":    dict(seed=11, amp=0.8, p_terskel=0.40, bulge=92.0,
+                       w_glatt=0.5, slots=True),
+    "b-open":     dict(seed=23, amp=1.1, p_terskel=-0.55, bulge=92.0,
+                       w_glatt=0.4, slots=True),
+    "c-asketisk": dict(seed=37, amp=0.6, p_terskel=0.20, bulge=80.0,
+                       w_glatt=0.45, slots=True),
+}
+
 THETA = np.arange(M) * 2.0 * math.pi / M
 VIND = np.cos(THETA - THETA_LE)          # 1 = lee, -1 = windward
 LE_T = (VIND + 1.0) / 2.0                # 0 = windward, 1 = lee
@@ -166,9 +185,19 @@ def grow(cfg):
 # ------------------------------------------------------------------ windows
 def window_mask(r, cfg):
     """Open cells on the windward side (pseudocode step 4). A cell sits
-    between rings i,i+1 and theta samples j,j+1."""
-    wnoise = make_noise(cfg["seed"] + 1000, K=30, n_lo=5, n_hi=22,
-                        lam_lo=10.0, lam_hi=40.0)
+    between rings i,i+1 and theta samples j,j+1. With cfg["slots"] the windows
+    are tall, thin slots in the layer direction (v0.3)."""
+    slots = cfg.get("slots", False)
+    if slots:
+        # long vertical wavelength -> open cells line up into vertical streaks
+        wnoise = make_noise(cfg["seed"] + 1000, K=26, n_lo=6, n_hi=18,
+                            lam_lo=120.0, lam_hi=520.0)
+    else:
+        wnoise = make_noise(cfg["seed"] + 1000, K=30, n_lo=5, n_hi=22,
+                            lam_lo=10.0, lam_hi=40.0)
+    web_min = SLOT_WEB_MIN if slots else WEB_MIN
+    max_h = SLOT_MAX_H if slots else 6
+    web_rows = SLOT_WEB_ROWS if slots else 2
     open_mask = np.zeros((N_LAG, M), dtype=bool)
     z_c = (np.arange(N_LAG) + 0.5) * DZ
     th_c = (np.arange(M) + 0.5) * 2.0 * math.pi / M
@@ -193,7 +222,7 @@ def window_mask(r, cfg):
         cellw_max = 2.0 * math.pi * float(r_ci.max()) / M
         cellw_min = 2.0 * math.pi * float(r_ci.min()) / M
         max_run = max(1, int(BRU_MAKS // cellw_max))   # conservative both ways
-        min_gap = max(1, math.ceil(WEB_MIN / cellw_min))
+        min_gap = max(1, math.ceil(web_min / cellw_min))
         closed = np.flatnonzero(~row)
         start = int(closed[0])   # windward side is ~half the circle: exists
         new = np.zeros(M, dtype=bool)
@@ -208,12 +237,13 @@ def window_mask(r, cfg):
                 run = 0
                 gap += 1
         open_mask[i, :] = new
-    # vertical stiffness: cap window height at 6 cells (12 mm) with 2-cell webs
+    # vertical stiffness: cap slot height (v0.2: 6 cells / 12 mm; v0.3: tall
+    # slots) with a web of web_rows closed cells between stacked openings
     for j in range(M):
         col = open_mask[:, j]
         run, gap = 0, 99
         for i in range(N_LAG):
-            if col[i] and run < 6 and (run > 0 or gap >= 2):
+            if col[i] and run < max_h and (run > 0 or gap >= web_rows):
                 run += 1
                 gap = 0
             else:
@@ -392,26 +422,37 @@ def silhouette_svg(results, path):
 # --------------------------------------------------------------------- main
 def main():
     import os
+    import argparse
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--v03", action="store_true",
+                    help="generate the v0.3 slot family (tall layer-direction "
+                         "slots) instead of the v0.2 window family")
+    args = ap.parse_args()
+    version = "v0.3" if args.v03 else "v0.2"
+    siblings = V03_SIBLINGS if args.v03 else SIBLINGS
+    suffix = "-v03" if args.v03 else ""
+
     here = os.path.dirname(os.path.abspath(__file__))
     reports, sil = [], []
-    for name, cfg in SIBLINGS.items():
+    for name, cfg in siblings.items():
         r = grow(cfg)
         open_mask = window_mask(r, cfg)
         mesh, tags = build_mesh(r, open_mask)
         rep = validate(name, r, open_mask, mesh, tags)
         rep["fro"] = cfg["seed"]
         rep.update({f"cfg_{k}": v for k, v in cfg.items() if k != "seed"})
-        out = os.path.join(here, "print", f"skavl-{name}.3mf")
+        out = os.path.join(here, "print", f"skavl-{name}{suffix}.3mf")
         mesh.export(out)
         rep["fil"] = os.path.relpath(out, here)
         reports.append(rep)
         sil.append((name, r, open_mask))
         print(f"{name}: watertight={rep['vasstett']} masse={rep['masse_g']:.0f} g "
               f"overheng_maks={rep['overheng_maks']:.1f}deg "
-              f"bru_maks={rep['bru_maks_mm']:.1f}mm blendceller={rep['blendceller']}")
+              f"bru_maks={rep['bru_maks_mm']:.1f}mm blendceller={rep['blendceller']} "
+              f"opning={rep['opningsgrad_lo_pst']:.0f}%")
 
-    silhouette_svg(sil, os.path.join(here, "silhuett-v0.2.svg"))
-    write_report(reports, os.path.join(here, "validering-v0.2.md"))
+    silhouette_svg(sil, os.path.join(here, f"silhuett-{version}.svg"))
+    write_report(reports, os.path.join(here, f"validering-{version}.md"), version)
 
     failures = []
     for rep in reports:
@@ -431,9 +472,9 @@ def main():
     print("Alle portar passerte.")
 
 
-def write_report(reports, path):
+def write_report(reports, path, version="v0.2"):
     lines = [
-        "# Skavl v0.2, valideringsrapport (generert av `skavl.py`)",
+        f"# Skavl {version}, valideringsrapport (generert av `skavl.py`)",
         "",
         "> Pseudokode-steg 6 i `briefs/skavl-algoritme.md`: måltala før print.",
         "> Traktat 1.321: denne rapporten er projeksjonen som gjer flest",

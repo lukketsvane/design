@@ -2,6 +2,16 @@
 
 Kvar feil vert til ein regel, éin gong. Nyaste øvst.
 
+- **2026-07-06:** Skavl-porøsiteten er ikkje avgrensa av print (bru-budsjett)
+  men av OPTIKK: blendbandet (inga opning med siktline til LED i elevasjon
+  −5° til 60°) fjernar heile øvre halvdel av lo-sida, så sjølv v0.3-slissar
+  med minimale web når berre ~18 %, ikkje 30 %. Lærdom for generativ form:
+  identifiser kva skranke som faktisk bind FØR du optimaliserer, elles
+  tuner du feil parameter (som eg gjorde med web/terskel før eg såg det).
+- **2026-07-06:** Ved container-omstart forsvinn pip-installerte pakkar
+  (numpy/trimesh/pillow/scipy osv.); git-state overlever. Reinstaller frå
+  `verkstad/requirements.txt` fyrst i ei ny økt før du køyrer generatorane
+  eller render.py.
 - **2026-07-06:** Headless GL (OSMesa + pyrender) i containeren renderar
   berre spekulær refleksjon, ikkje diffus: alle matte flater vart svarte
   same kva lyssetjing. Ikkje bruk tid på å tune pyrender-intensitetar mot

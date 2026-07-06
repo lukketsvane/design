@@ -1,6 +1,6 @@
 # STATE.md, loop-state
 
-**Iterasjon:** 27
+**Iterasjon:** 28
 **Sist oppdatert:** 2026-07-06
 **Status:** Aktiv loop-køyring, fleire økter parallelt («køyr til tokena
 er tomme», Ivers instruks 2026-07-06). All utvikling går direkte til
@@ -46,7 +46,8 @@ er tomme», Ivers instruks 2026-07-06). All utvikling går direkte til
 | 24 | Research | Kjeldesveip (parallelløkt, committa som «it. 23»): K4 (handlevogn), K5 (sparkesykkel, no 13/15) og K14 (LED, no 14/15, delt topp) ankra; K7 fann ikkje kjelde. RETTING: Northern-prisen heiter Northern Lighting Student Design Award (årleg, est. 2013); britiske «Northern Design Awards» er urelatert |
 | 25 | Verkstad | Knagg #1 v0.1: tre hypotesar som printbar kode (`verkstad/knagg/knagg.py`): kraftlinje (moment-følgjande gods, PETG, 28 g, SF 9,0), kanalisert (kontroll, 27 g, SF 5,9), medvite-svak (designa brotsone, PLA, 26 g, predikert brotlast 10 kg). Vasstette 3MF liggjande på sida, validering + profil-SVG. Nye skrivekonvensjonar frå Iver inn i CLAUDE.md |
 | 26 | Meta/Synk | Notion-omstrukturering (Ivers instruks): ny Oppgåver-database (17 rader, status/prioritet/frist/eigar) med kanban-, kalender- og Treng Iver-views; hovudsida bygd om til dashbord (No-seksjon øvst, Oppgåver inline, systemtabell nedst, alt gamalt bevart); konvensjonssveip i git (30 md-filer, tankestrekar og emojiar ute, kodeblokker urørte); manifest.json + notion/STRUKTUR.md |
-| 27 | Verkstad | Renderpipeline ferdigstilt: `verkstad/render.py` (eigen NumPy z-buffer-rasteriser, sidan headless OSMesa berre gjev spekulær) lagar seks produktbilete på saumlaus kvit botn (to retningslys, ingen ambient, mjuk kontaktskugge). Lampa rendra tend (varmt innerskal, glødande vindauge); knaggen crease-medviten i bruksstilling. Bileta i `verkstad/renders/`, lagt til Notion Verkstad-sidene. NB: køyrer på tildelt branch `claude/generative-design-finalize-wwmnl6` (ikkje main), jf. sesjonsinstruks; PR opna |
+| 27 | Verkstad | Renderpipeline ferdigstilt: `verkstad/render.py` (eigen NumPy z-buffer-rasteriser, sidan headless OSMesa berre gjev spekulær) lagar seks produktbilete på saumlaus kvit botn (to retningslys, ingen ambient, mjuk kontaktskugge). Lampa rendra tend (varmt innerskal, glødande vindauge); knaggen crease-medviten i bruksstilling. Bileta i `verkstad/renders/`, lagt til Notion Verkstad-sidene. NB: køyrer på tildelt branch `claude/generative-design-finalize-wwmnl6` (ikkje main), jf. sesjonsinstruks; PR opna. Følgt opp: familiebilete (tre søsken side om side, 27b), lampene på SS=4 med per-formål supersampling (27c) |
+| 28 | Verkstad | Skavl v0.3: slissar i lagretninga (`skavl.py --v03`). Same kropp, ny vindaugsstrategi: lange tynne vertikale slissar, minimale web (3 mm). Opningsgrad opp frå 6-8 % (v0.2) til 10-18 % (v0.3, b-open 18 %). FUNN: den bindande skranken er ikkje print (bru) men optikk (blendbandet fjernar øvre halvdel av lo-sida), difor ikkje 30 %. Nye 3MF (`-v03`), validering-v0.3.md, tre nye renders + familiestripe. v0.2-filene bevart |
 
 ## Neste handling
 
