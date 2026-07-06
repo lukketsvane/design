@@ -2,6 +2,15 @@
 
 Kvar feil vert til ein regel, éin gong. Nyaste øvst.
 
+- **2026-07-06:** Ved matching mot eit referansebilete: identifiser den
+  underliggjande STRUKTUREN før du modellerer, ikkje overflate-inntrykket.
+  Ribbe-referansen såg ut som «skjel/tekstur» men VAR eit gitter av runda
+  rør med hol. Eg brende to rundar på skjel-på-kule før det. Spør: er dette
+  ei overflate, eit gitter av element, eller eit felt av hol? Bygg deretter.
+- **2026-07-06:** For å matche eit fotografert objekt tel RENDER-oppsettet
+  like mykje som geometrien: hard 2-lys-på-kvit såg CG ut; mjuk trelys-rig
+  (`porcelain_lights`) + grå gradient-botn + glans gjorde same geometri til
+  «porselen». Sjekk lyssetjing/bakgrunn før du konkluderer at forma er feil.
 - **2026-07-06:** Skavl-porøsiteten er ikkje avgrensa av print (bru-budsjett)
   men av OPTIKK: blendbandet (inga opning med siktline til LED i elevasjon
   −5° til 60°) fjernar heile øvre halvdel av lo-sida, så sjølv v0.3-slissar

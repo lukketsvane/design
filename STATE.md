@@ -1,6 +1,6 @@
 # STATE.md, loop-state
 
-**Iterasjon:** 28
+**Iterasjon:** 31
 **Sist oppdatert:** 2026-07-06
 **Status:** Aktiv loop-køyring, fleire økter parallelt («køyr til tokena
 er tomme», Ivers instruks 2026-07-06). All utvikling går direkte til
@@ -48,6 +48,9 @@ er tomme», Ivers instruks 2026-07-06). All utvikling går direkte til
 | 26 | Meta/Synk | Notion-omstrukturering (Ivers instruks): ny Oppgåver-database (17 rader, status/prioritet/frist/eigar) med kanban-, kalender- og Treng Iver-views; hovudsida bygd om til dashbord (No-seksjon øvst, Oppgåver inline, systemtabell nedst, alt gamalt bevart); konvensjonssveip i git (30 md-filer, tankestrekar og emojiar ute, kodeblokker urørte); manifest.json + notion/STRUKTUR.md |
 | 27 | Verkstad | Renderpipeline ferdigstilt: `verkstad/render.py` (eigen NumPy z-buffer-rasteriser, sidan headless OSMesa berre gjev spekulær) lagar seks produktbilete på saumlaus kvit botn (to retningslys, ingen ambient, mjuk kontaktskugge). Lampa rendra tend (varmt innerskal, glødande vindauge); knaggen crease-medviten i bruksstilling. Bileta i `verkstad/renders/`, lagt til Notion Verkstad-sidene. NB: køyrer på tildelt branch `claude/generative-design-finalize-wwmnl6` (ikkje main), jf. sesjonsinstruks; PR opna. Følgt opp: familiebilete (tre søsken side om side, 27b), lampene på SS=4 med per-formål supersampling (27c) |
 | 28 | Verkstad | Skavl v0.3: slissar i lagretninga (`skavl.py --v03`). Same kropp, ny vindaugsstrategi: lange tynne vertikale slissar, minimale web (3 mm). Opningsgrad opp frå 6-8 % (v0.2) til 10-18 % (v0.3, b-open 18 %). FUNN: den bindande skranken er ikkje print (bru) men optikk (blendbandet fjernar øvre halvdel av lo-sida), difor ikkje 30 %. Nye 3MF (`-v03`), validering-v0.3.md, tre nye renders + familiestripe. v0.2-filene bevart |
+| 29 | Verkstad | Reparasjonssett (tredje produktet), familie 1 skøytehylse: `repsett.py` lagar parametriske skøytekoplingar (bøying d8/d12, torsjon d10), vasstette, alle portar (hald 1200-2300 N). Rendra i kintsugi gull-oransje. Pluss turntables (4-vinkla kontaktark, `render.py --turntable`) for alle modellar. Publisert |
+| 30 | Verkstad | Radial-finne-familie «Ribbe» starta etter Ivers celadon-referanse: `radial.py`. Fyrste tolking (skjel på kule) likna ikkje; porselen-render (mjuk trelys, grå gradient) + staggra skjel gjorde han betre men framleis feil struktur |
+| 31 | Verkstad | Ribbe RETT tolking: `radial/lattice.py`. Referansen er eit VOVE GITTER av runda rør, augeforma hol mellom motfase-ribber, smelta som korall, holt og ope. Tre søsken: korall/rev/søyle. `render.py --lattice` (porselen-rig, FAMILY_DIR-override). Skjel-varianten bevart. Publisert til Notion Ribbe-sida. LÆRDOM: match STRUKTUR (gitter av rør med hol), ikkje overflate-tekstur (skjel) |
 
 ## Neste handling
 
