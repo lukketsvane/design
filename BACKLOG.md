@@ -16,18 +16,20 @@ rotasjonsgrammatikken frå referansebileta er den estetiske hovudretninga
    Attstår: konvensjonssveip i Notion-undersidene (01-05, Verkstad-sidene,
    Søknadspakke), og evt. namnebyte på sider/databasar med spesialteikn
    i titlane.
-1. [ ] **Verkstad (RETNING):** Skavl generator B (lamell/rotor) implementert
-   i `verkstad/skavl/` ved sida av generator A, same valideringsport, tre
-   vasstette 3MF som testar rotasjonsgrammatikken direkte. Pseudokode ligg
-   i `briefs/skavl-algoritme.md` §Lamell-modus; analyse i formretning-notatet.
+1. [x] **Verkstad (RETNING):** Skavl generator B (lamell/rotor) implementert
+   i `verkstad/skavl/skavl_vase.py` ved sida av generator A, same
+   valideringsport, tre vasstette 3MF som testar rotasjonsgrammatikken
+   direkte → it. 28. Opningsgrad 24-31 prosent, ribberelieff, twist klemt
+   til FDM-printbar ribbekant.
 2. [ ] **Verkstad (RETNING):** Rotor-skål som tredje familiemedlem
-   (referanse 04, flat rotor), same generator-B-kjerne, grunn skål.
+   (referanse-d, flat rotor / vertikale finner), same generator-B-kjerne,
+   grunn skål.
 3. [ ] **Verkstad (RETNING):** Materialeksperiment #1, glasur-analogen i
    print (silk-PETG laglys / to-farge kant-høglys / polert egg mot matt dal),
    testprotokoll for Knagg/Skavl-printane.
-4. [ ] **Verkstad:** Skavl v0.3: avlange slissar i lagretninga
-   (porøsitet 6-8 prosent, mål 30), jf. funn i `verkstad/skavl/README.md`;
-   evt. ekte differential growth (fråstøyt + ikkje-stjerneforma ringar).
+4. [ ] **Verkstad:** Skavl-lampe-hybrid: arv slisse-grammatikken frå
+   vase-v0.3 inn i lampa (`skavl.py`) med blend- og termikk-klemmene på,
+   slik at lyskjelde-versjonen får same opningsgrad som vasane.
 5. [ ] **Verkstad:** Reparasjonssett: parametrisk klips-protese-generator
    kopla til brotmodus-taksonomien (`research/2026-07-06-brotmodus-taksonomi.md`),
    PETG, start med modus «snap-fit-hake av».
@@ -101,3 +103,4 @@ rotasjonsgrammatikken frå referansebileta er den estetiske hovudretninga
 - [x] It. 25: Knagg #1 v0.1, tre hypotesar som printbare solidar → `verkstad/knagg/`
 - [x] It. 26: Notion-omstrukturering + konvensjonssveip git → dashbord, Oppgåver-database, `notion/STRUKTUR.md`
 - [x] It. 27: Retningsendring, rotasjonsgrammatikken → `research/2026-07-06-formretning-rotasjonsgrammatikk.md` + lamell-modus i `briefs/skavl-algoritme.md` + referansebilete + Edwards i Bibliotek
+- [x] It. 28: Skavl v0.3 vase-greina (generator B bygd) → `verkstad/skavl/skavl_vase.py` + 3 vasstette 3MF + render + validering + ref/README

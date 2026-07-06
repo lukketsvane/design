@@ -1,6 +1,6 @@
 # STATE.md, loop-state
 
-**Iterasjon:** 27
+**Iterasjon:** 28
 **Sist oppdatert:** 2026-07-06
 **Status:** Aktiv loop-køyring, fleire økter parallelt («køyr til tokena
 er tomme», Ivers instruks 2026-07-06). All utvikling går direkte til
@@ -51,27 +51,28 @@ er tomme», Ivers instruks 2026-07-06). All utvikling går direkte til
 | 25 | Verkstad | Knagg #1 v0.1: tre hypotesar som printbar kode (`verkstad/knagg/knagg.py`): kraftlinje (moment-følgjande gods, PETG, 28 g, SF 9,0), kanalisert (kontroll, 27 g, SF 5,9), medvite-svak (designa brotsone, PLA, 26 g, predikert brotlast 10 kg). Vasstette 3MF liggjande på sida, validering + profil-SVG. Nye skrivekonvensjonar frå Iver inn i CLAUDE.md |
 | 26 | Meta/Synk | Notion-omstrukturering (Ivers instruks): ny Oppgåver-database (17 rader, status/prioritet/frist/eigar) med kanban-, kalender- og Treng Iver-views; hovudsida bygd om til dashbord (No-seksjon øvst, Oppgåver inline, systemtabell nedst, alt gamalt bevart); konvensjonssveip i git (30 md-filer, tankestrekar og emojiar ute, kodeblokker urørte); manifest.json + notion/STRUKTUR.md |
 | 27 | Retningsendring | Ivers fire referansebilete (truleg Steven Edwards-porselen) analyserte til rotasjonsgrammatikken: éin profil × rotasjonsarray × stabling, glasuren som trykk-kart. Skavl får lamell-modus (generator B) som løyser blendingsaksen geometrisk; glasur-analog som materialeksperiment #1; Edwards i Biblioteket (Kjerne); keramikk-sporet attende (H1). Bilete i `reference/formretning-2026-07/`; analyse i `research/2026-07-06-formretning-rotasjonsgrammatikk.md` |
+| 28 | Verkstad | Skavl v0.3 vase-greina (= generator B / lamell-modus frå it. 27, no bygd): ny generator `verkstad/skavl/skavl_vase.py` med ribbe/slisse-grammatikk i staden for utstansa vindauge. Tre vasstette printbare søsken (d-vridd 44 ribber/112° twist, e-drope vertikale ribber/dropemunning, f-timeglas timeglas/115°); 89-98 g; opningsgrad 24-31 % (v0.2 sat fast på 6-8 %); ribberelieff står proud. Alle printfysikk-portar passerer. Twist klemt ned til FDM-printbar ribbekant (<50°) sidan ref er keramikk (flagga). 3D-render + validering + ref/README. Konvergens med it. 27-planen (parallelløkt): deira analyse, denne implementasjonen |
 
 ## Retning frå Iver (2026-07-06, kveld)
 
 **«This is the stuff we want to focus on, full effort loop, non stop
 improvement.»** Fire referansebilete (truleg Steven Edwards-porselen) i
-`reference/formretning-2026-07/`. Rotasjonsgrammatikken er no den
-estetiske hovudretninga for verkstadserien. Kjernegrepet: éin profil,
-rotasjonsarray, vertikal stabling/morfing, og glasuren (eller print-
-analogen) som trykk-kart som gjer kurvaturen lesbar. Analyse:
+`reference/formretning-2026-07/` (og `verkstad/skavl/ref/`).
+Rotasjonsgrammatikken er no den estetiske hovudretninga for
+verkstadserien. Kjernegrepet: éin profil, rotasjonsarray, vertikal
+stabling/morfing, og glasuren (eller print-analogen) som trykk-kart som
+gjer kurvaturen lesbar. Analyse:
 `research/2026-07-06-formretning-rotasjonsgrammatikk.md`. Loopen køyrer
 kontinuerleg i tillegg til den daglege triggeren.
 
 ## Neste handling
 
-Iterasjon 28: rull rotasjonsgrammatikken inn i koden (Verkstad-tungt):
-implementer Skavl generator B (lamell/rotor) i `verkstad/skavl/` ved sida
-av generator A, med same valideringsport, og eksporter tre vasstette 3MF
-som testar den nye retninga direkte. Deretter: rotor-skål som tredje
-familiemedlem, og materialeksperiment #1 (glasur-analog i print).
-Sekundært (Notion): konvensjonssveip i undersidene (01-05, Verkstad,
-Søknadspakke; hovudsida teken i it. 26).
+Iterasjon 29 (Verkstad-tungt): (a) rotor-skål som tredje familiemedlem
+(referanse-d, flat rotor/vertikale finner) på generator-B-kjernen;
+(b) vase-lampe-hybrid, arv slisse-grammatikken inn i `skavl.py` med
+blend/termikk på; (c) materialeksperiment #1 (glasur-analog i print).
+Sekundært: konvensjonssveip Notion-undersider; Fjordfiesta (#4);
+Case #3 Helsenorge.
 
 ## Blokkert / treng Iver, VIKTIGAST FYRST
 
