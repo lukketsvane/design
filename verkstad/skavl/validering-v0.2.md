@@ -9,6 +9,7 @@
 | Frø | loggført | 11 | 23 | 37 |
 | Vasstett solid | ja | True | True | True |
 | Masse (PLA 1,24 g/cm³) | < 150 g | 120 g | 119 g | 107 g |
+| Masse (PETG 1,27 g/cm³, jf. brief v1.1) | < 150 g | 123 g | 122 g | 110 g |
 | Overheng, maks (skal) | < 50.0° | 45.0° | 45.0° | 45.0° |
 | Overheng, p95 | — | 45.0° | 45.0° | 45.0° |
 | Skalareal over budsjett | < 1 % | 0.00 % | 0.00 % | 0.00 % |

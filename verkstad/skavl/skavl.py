@@ -56,6 +56,7 @@ GLARE_BAND_DEG = (-5.0, 60.0)   # LED-ray elevation band with no windows
 BLEND_TIP_DEG = (-5.0, 35.0)    # elevation band where the wall tips inward
 RIM_RINGS = 4        # closed cell rows at bottom and top
 PLA_DENSITY = 1.24e-3           # g/mm^3
+PETG_DENSITY = 1.27e-3          # g/mm^3 — PETG-vurderinga i brief v1.1
 
 SIBLINGS = {
     # per pseudocode section 5: three weightings, one grammar
@@ -301,6 +302,7 @@ def validate(name, r, open_mask, mesh, tags):
     rep["vasstett"] = bool(mesh.is_watertight)
     rep["volum_mm3"] = float(mesh.volume)
     rep["masse_g"] = float(mesh.volume) * PLA_DENSITY
+    rep["masse_petg_g"] = float(mesh.volume) * PETG_DENSITY
     rep["trekantar"] = len(mesh.faces)
 
     # overhang on the shell surfaces only (window tops are budgeted bridges)
@@ -448,6 +450,7 @@ def write_report(reports, path):
     row("Frø", "loggført", "{}", "fro")
     row("Vasstett solid", "ja", "{}", "vasstett")
     row("Masse (PLA 1,24 g/cm³)", "< 150 g", "{:.0f} g", "masse_g")
+    row("Masse (PETG 1,27 g/cm³, jf. brief v1.1)", "< 150 g", "{:.0f} g", "masse_petg_g")
     row("Overheng, maks (skal)", f"< {OVERHENG_DEG}°", "{:.1f}°", "overheng_maks")
     row("Overheng, p95", "—", "{:.1f}°", "overheng_p95")
     row("Skalareal over budsjett", "< 1 %", "{:.2f} %", "overheng_brot_areal_pst")
