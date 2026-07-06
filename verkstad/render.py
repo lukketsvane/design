@@ -34,7 +34,7 @@ import math
 import argparse
 import numpy as np
 import trimesh
-from PIL import Image, ImageFilter
+from PIL import Image, ImageFilter, ImageDraw, ImageFont
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 
@@ -294,16 +294,77 @@ def render_png(mesh, family, out_path, az_deg=38, el_deg=16,
     return out_path
 
 
+# ------------------------------------------------------------------- family
+# per family: strip title and the three siblings with their short labels, the
+# "three siblings side by side" shot the design briefs ask for (Salone)
+FAMILY_INFO = {
+    "skavl": ("Skavl, tre søsken, éin grammatikk",
+              [("a-roleg", "roleg"), ("b-open", "open"),
+               ("c-asketisk", "asketisk")]),
+    "knagg": ("Knagg #1, tre hypotesar, éin grammatikk",
+              [("kraftlinje", "kraftlinje"), ("kanalisert", "kanalisert"),
+               ("medvite-svak", "medvite-svak")]),
+}
+FONT_DIR = "/usr/share/fonts/truetype/dejavu"
+
+
+def _font(bold, size):
+    name = "DejaVuSans-Bold.ttf" if bold else "DejaVuSans.ttf"
+    try:
+        return ImageFont.truetype(os.path.join(FONT_DIR, name), size)
+    except OSError:
+        return ImageFont.load_default()
+
+
+def build_family(family, out_dir):
+    """Composite the three sibling heroes side by side on white with a title
+    and per-variant labels."""
+    title, variants = FAMILY_INFO[family]
+    tiles = [Image.open(os.path.join(out_dir, f"{family}-{n}.png")).convert("RGB")
+             for n, _ in variants]
+    tw, th = tiles[0].size
+    gap, margin, top, bottom = 36, 56, 108, 92
+    ink, sub = (38, 44, 50), (120, 130, 138)
+    W = len(tiles) * tw + (len(tiles) - 1) * gap + 2 * margin
+    H = top + th + bottom
+    canvas = Image.new("RGB", (W, H), (255, 255, 255))
+    d = ImageDraw.Draw(canvas)
+
+    f_title, f_label = _font(True, 54), _font(False, 40)
+    tb = d.textbbox((0, 0), title, font=f_title)
+    d.text(((W - (tb[2] - tb[0])) / 2, 30), title, font=f_title, fill=ink)
+
+    for i, (tile, (_, label)) in enumerate(zip(tiles, variants)):
+        x = margin + i * (tw + gap)
+        canvas.paste(tile, (x, top))
+        lb = d.textbbox((0, 0), label, font=f_label)
+        d.text((x + (tw - (lb[2] - lb[0])) / 2, top + th + 14),
+               label, font=f_label, fill=sub)
+
+    out = os.path.join(out_dir, f"{family}-familie.png")
+    canvas.save(out)
+    return out
+
+
 # ---------------------------------------------------------------------- main
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--turntable", action="store_true",
                     help="also write 4-angle turntables per model")
+    ap.add_argument("--family", action="store_true",
+                    help="composite the three siblings of each family side by "
+                         "side (uses existing hero renders, no re-render)")
     ap.add_argument("--only", default=None, help="family/name filter")
     args = ap.parse_args()
 
     out_dir = os.path.join(HERE, "renders")
     os.makedirs(out_dir, exist_ok=True)
+
+    if args.family:
+        for family in FAMILY_INFO:
+            out = build_family(family, out_dir)
+            print(f"family {family}: {os.path.relpath(out, HERE)}")
+        return
 
     for family, name in MODELS:
         if args.only and args.only not in f"{family}/{name}":
