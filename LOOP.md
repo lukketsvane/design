@@ -150,18 +150,24 @@ tre gonger på rad, så porteføljen ikkje let eitt trykk dominere (4.5).
 5. Skriv éi rad i Notion-databasen «Logg · iterasjonar & funn»
    (Type=Agent-loop, dato, samandrag, neste handling). Spegl større
    objekt-framsteg til Verkstad-sida.
-6. **Galleri (obligatorisk for kvar render):** for kvart bilete iterasjonen
-   lagar (3D-render, silhuett, diagram, foto), legg til éi rad i Notion-
-   databasen «Galleri, renders og iterasjonar»
-   (`collection://d9bf7c02-0fda-4d64-8202-8904dbdd1c5c`). Set **page-cover**
-   til raw GitHub-URL-en så biletet syner som kort-førehandsvising:
-   `https://raw.githubusercontent.com/lukketsvane/design/main/<sti>`
-   (repoet er offentleg; PNG renderer trygt som cover, SVG serverer no
-   image/svg+xml). Fyll `Objekt`, `Pipeline-steg`, `Type`, `Iterasjon`,
-   `Dato`, `Fil i git` (github.com/blob-lenke) og `Notat` (kva versjonen
-   viser + øvste funn). Commit biletet til git FYRST, så raw-URL-en er
-   levande. Lag alltid minst éin PNG-render per objektversjon; ein
-   generator utan bilete er ikkje ferdig i pipelinen.
+6. **Galleri (obligatorisk for kvar render).** Kvart bilete iterasjonen
+   lagar (3D-render, silhuett, diagram, foto) skal inn i Notion-databasen
+   «Galleri, renders og iterasjonar»
+   (`collection://d9bf7c02-0fda-4d64-8202-8904dbdd1c5c`, kanonisk, linka paa
+   hovudsida). Fyll Objekt, Pipeline-steg, Type, Iterasjon, Dato,
+   Fil-i-git og Notat (kva versjonen viser + oevste funn).
+   Biletmekanisme (commit biletet til git FYRST):
+   - **Om repoet er offentleg:** set page-cover til raw GitHub-URL-en, so
+     biletet syner som kort-foerehandsvising:
+     `https://raw.githubusercontent.com/lukketsvane/design/main/<sti>`.
+   - **Om repoet er privat** (raw-URL renderer ikkje): lag ein liten SVG
+     med `python3 verkstad/tools/png_to_notion_svg.py <render.png>`, last
+     han opp inline med `notion-create-attachment`, og embed
+     `markdown_source` i sida som `<image src="file-upload://...">`
+     (verifisert metode).
+   Lag alltid minst éin PNG-render per objektversjon; ein generator utan
+   bilete er ikkje ferdig i pipelinen. Send gjerne rendinga til Iver med
+   SendUserFile naar objektet naar ny fase.
 
 ## 6 · Scheduling, bestem neste vekking
 

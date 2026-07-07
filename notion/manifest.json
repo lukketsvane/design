@@ -88,8 +88,14 @@
         "galleri": "3961c681-5f78-813a-8c52-000c4c0828c9",
         "hovudside_linka": "3961c681-5f78-8188-86d4-000c7723b68f"
       },
-      "note": "Globalt galleri: kvar render/silhuett/produksjonsmodell frå design-pipelinen. Page-cover = raw GitHub-URL. Loopen legg til ei rad per bilete (LOOP.md §5.6). Linka gallery-view ligg nedst på hovudsida. Oppretta 2026-07-07.",
-      "cover_url_base": "https://raw.githubusercontent.com/lukketsvane/design/main/"
+      "note": "Kanonisk globalt galleri (linka paa hovudsida). Kvar render/silhuett/produksjonsmodell fraa design-pipelinen som ei rad (LOOP.md §5.6).",
+      "cover_url_base": "https://raw.githubusercontent.com/lukketsvane/design/main/",
+      "repo_public": true,
+      "image_mechanism": "Repoet er OFFENTLEG (stadfesta 2026-07-07, raw-URL gjev 200). Primaer: commit biletet til git, set page-cover og content-image til raw GitHub-URL (cover_url_base + git-sti). Fallback om repoet nokon gong vert privat: inline-SVG via verkstad/tools/png_to_notion_svg.py + notion-create-attachment.",
+      "alt_db_inline_svg": {
+        "data_source_id": "82c18616-62e5-4d02-aee9-564ca1b2c27f",
+        "note": "Deprecert parallell galleri-DB (inline-SVG-metode). Bruk den kanoniske over. Ikkje slett (Notion-regel); kan arkiverast."
+      }
     }
   },
   "source_pages": {

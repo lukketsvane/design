@@ -25,10 +25,10 @@ A. [ ] **Nytt objekt (RETNING, glatt familie):** implicit-flate-generator
    der forma navigerer reelle trykk (volum, stabilitet, veggtjukn,
    printfysikk utan støtte). Vasstett 3MF + validering + render. Legg i
    `verkstad/glattflate/` med namespaced output.
-0. [x] **Meta/Synk:** Notion-omstrukturering + konvensjonssveip git → it. 26.
-   Attstår: konvensjonssveip i Notion-undersidene (01-05, Verkstad-sidene,
-   Søknadspakke), og evt. namnebyte på sider/databasar med spesialteikn
-   i titlane.
+0. [x] **Meta/Synk:** Notion-omstrukturering + konvensjonssveip git (it. 26)
+   og Notion-undersidene (it. 34). Attstår (lågt prioritert): select-
+   opsjonar med intervall-strek (Horisont H1-H3), radinnhald i
+   Bibliotek/Prinsipp.
 1. [x] **Verkstad (RETNING):** Generator B bygd i tre komplementære greiner:
    vase (`skavl_vase.py`, ribbe/slisse, opningsgrad 24-31 %, it. 28),
    rotor (`g-rotor`, vertikale finner, it. 29) og lampe (`skavl_b.py`,
@@ -137,3 +137,4 @@ A. [ ] **Nytt objekt (RETNING, glatt familie):** implicit-flate-generator
 - [x] It. 29: Skavl `g-rotor` fjerde søsken + flat-rotor printbarheit-funn → `verkstad/skavl/` (4 vasstette 3MF)
 - [x] It. 30: Generator B lampe-greina (lamell/blend) → `verkstad/skavl/skavl_b.py` (3 vasstette 3MF, 115-120 g, blend-funn 13-16 %) + README + requirements.txt
 - [x] It. 31: Skavl v0.4 lampe-hybrid (rib/slisse, glare-band lukka, blend=0) → `verkstad/skavl/skavl_lampe.py` + 2 vasstette lampe-3MF + render
+- [x] It. 34: Konvensjonssveip Notion (hovudside, 01-05, Søknadspakke, 06, Verkstad-sidene)
