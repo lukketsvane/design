@@ -97,8 +97,13 @@ skriving/verkstad, éin vegkart, éin synk, maks éin meta.
 4. Commit + `git push -u origin claude/norsk-design-strategy-plan-zgwmkm`
    (retry 2s/4s/8s/16s ved nettfeil).
 5. Éi rad i Notion-loggen «Logg · iterasjonar & funn» (Type=Agent-loop);
-   for generative iterasjonar: last opp/omtal kontaktarket og ev. legg
-   objektet i Verkstad-databasen.
+   for generative iterasjonar: legg objektet i Verkstad-databasen.
+6. **Galleri:** for kvar render — push PNG-en til det offentlege bilete-repoet
+   (`lukketsvane/formlaere-galleri`, main) med iterasjonsstempla filnamn
+   (t.d. `it13_contact.png`) via GitHub-API-en (`create_or_update_file`),
+   og legg éi rad i Notion-databasen «Galleri · renders & iterasjonar» med
+   Bilete-URL = `https://raw.githubusercontent.com/lukketsvane/formlaere-galleri/main/<fil>`
+   (Files-property tek ekstern URL), Type, Iterasjon, Seed, Kjeldefil.
 
 ## 7 · Scheduling
 

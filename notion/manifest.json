@@ -70,7 +70,20 @@
       "database_id": "95dfd924-7aef-4894-9224-debf9170c629",
       "data_source_id": "a212687f-c714-4116-bef2-9ccb124d1fd2",
       "loop_row_type": "Agent-loop"
+    },
+    "galleri": {
+      "database_id": "105c56e0-0efd-4a50-8445-0e7ca57de71c",
+      "data_source_id": "507963d0-d1b3-4fa8-b857-0287a1d5374b",
+      "image_property": "Bilete",
+      "gallery_view": "3961c681-5f78-81b7-b16b-000c7aa13436"
     }
+  },
+  "gallery_repo": {
+    "owner": "lukketsvane",
+    "repo": "formlaere-galleri",
+    "branch": "main",
+    "raw_base": "https://raw.githubusercontent.com/lukketsvane/formlaere-galleri/main/",
+    "status": "ventar på at Iver opprettar offentleg repo (App manglar repo-create-løyve)"
   },
   "source_pages": {
     "aho_hub": "541fbd4f-35f1-4e2f-9df7-39e5a85385a3",
