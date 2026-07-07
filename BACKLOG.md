@@ -12,6 +12,17 @@ rotasjonsgrammatikken frå referansebileta er den estetiske hovudretninga
 
 ## Kø, Verkstad og meta (prioritert av Iver)
 
+Loop-oppdraget er no ein full design-pipeline (idé → parametrisk/generativ
+modell → validering → produksjonsmodell), sjå LOOP.md. Formspråket spenner
+over to familiar: rotasjonsgrammatikk (bygd) og glatte minimalflater (ny).
+
+A. [ ] **Nytt objekt (RETNING, glatt familie):** implicit-flate-generator
+   for den glatte minimalflate-familien (referanse 06-09: saddel-/dryp-skal,
+   to-tona matt/blank). Teknikk: SDF + marching cubes (skimage/trimesh),
+   gyroid/TPMS eller metaball-blend. Fyrste objekt: ei skål eller eit fat
+   der forma navigerer reelle trykk (volum, stabilitet, veggtjukn,
+   printfysikk utan støtte). Vasstett 3MF + validering + render. Legg i
+   `verkstad/glattflate/` med namespaced output.
 0. [x] **Meta/Synk:** Notion-omstrukturering + konvensjonssveip git → it. 26.
    Attstår: konvensjonssveip i Notion-undersidene (01-05, Verkstad-sidene,
    Søknadspakke), og evt. namnebyte på sider/databasar med spesialteikn
