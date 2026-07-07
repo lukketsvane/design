@@ -9,6 +9,14 @@ i synk:
    `notion/manifest.json`.
 2. **Dette repoet**, agentgrensesnittet. State, backlog, speglar, logg.
 
+**Misjon for loopen (Ivers styring 2026-07-07):** repoet skal drive ein
+fullstendig iterativ design-idegenerator og designar, frå idé gjennom
+parametrisk og generativ-vekst-modellering heilt fram til
+produksjonsklare modellar. Design-pipelinen og metode-menyen ligg i
+`LOOP.md` (frø to vekst to prøve to slip to produksjonsmodell). Verkstad/
+design går føre programme-sporet (strategi/research/skriving) til ny
+beskjed.
+
 ## Faste reglar
 
 - **Språk:** nynorsk i alt innhald (Ivers eigen målform). Kode/filnamn på engelsk er ok.

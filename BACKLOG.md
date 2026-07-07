@@ -2,16 +2,29 @@
 
 Loopen konsumerer ovanfrå. `[TRENG IVER]` = berre mennesket.
 
-**Styring (Iver, 2026-07-06):** algoritmisk modellering for 3D-printbare
-fysiske modellar fyrst; Verkstad-oppgåvene under er løfta over
-research/skriving til ny beskjed. Nye skrivekonvensjonar gjeld (sjå
-CLAUDE.md): ingen tankestrekar, ikon eller emojiar. **Kveld:
-rotasjonsgrammatikken frå referansebileta er den estetiske hovudretninga
-(«full effort loop, non stop improvement»), sjå
-`research/2026-07-06-formretning-rotasjonsgrammatikk.md`.**
+**Misjon (Iver, 2026-07-07):** loopen er ein fullstendig iterativ
+design-idegenerator og designar, frå idé gjennom parametrisk og
+generativ-vekst-modellering heilt fram til produksjonsklare modellar.
+Design-pipeline (frø to vekst to prøve to slip to produksjonsmodell) og
+metode-meny i `LOOP.md`. Verkstad/design fyrst; programme-sporet
+sekundært. Skrivekonvensjonar (CLAUDE.md): ingen tankestrekar, ikon eller
+emojiar. Estetisk hovudretning: rotasjonsgrammatikken frå referansebileta
+(5 no, tromme-linse lagt til), sjå
+`research/2026-07-06-formretning-rotasjonsgrammatikk.md`.
 
 ## Kø, Verkstad og meta (prioritert av Iver)
 
+Loop-oppdraget er no ein full design-pipeline (idé → parametrisk/generativ
+modell → validering → produksjonsmodell), sjå LOOP.md. Formspråket spenner
+over to familiar: rotasjonsgrammatikk (bygd) og glatte minimalflater (ny).
+
+A. [ ] **Nytt objekt (RETNING, glatt familie):** implicit-flate-generator
+   for den glatte minimalflate-familien (referanse 06-09: saddel-/dryp-skal,
+   to-tona matt/blank). Teknikk: SDF + marching cubes (skimage/trimesh),
+   gyroid/TPMS eller metaball-blend. Fyrste objekt: ei skål eller eit fat
+   der forma navigerer reelle trykk (volum, stabilitet, veggtjukn,
+   printfysikk utan støtte). Vasstett 3MF + validering + render. Legg i
+   `verkstad/glattflate/` med namespaced output.
 0. [x] **Meta/Synk:** Notion-omstrukturering + konvensjonssveip git → it. 26.
    Attstår: konvensjonssveip i Notion-undersidene (01-05, Verkstad-sidene,
    Søknadspakke), og evt. namnebyte på sider/databasar med spesialteikn
@@ -35,7 +48,19 @@ rotasjonsgrammatikken frå referansebileta er den estetiske hovudretninga
    glare-band lukka, blend=0, termisk klaring 74-79 mm, E27-sokkel, opning
    15 %). To komplementaere geometriske svar paa blendaksen. Attstaar:
    kombiner dei to til 100 % blend + hoegare opning (lagt i Neste handling).
-5. [ ] **Verkstad:** Reparasjonssett: parametrisk klips-protese-generator
+5. [ ] **Design (RETNING):** Ny familie `h-tromme` (v0.5) frå
+   referanse-e (`ref-e-tromme-linse.png`): brei tromme/tønne med vertikale
+   bølgjande lameller og store linse-/augeforma opningar. Bygg på
+   `skavl_vase.py`-kjernen: brei rett profil (h omtrent lik diameter),
+   30-36 ribber, twist 0, kraftig drope_styrke for linsene, relieff 6-8 mm.
+   Full pipeline til produksjonsmodell (§2 i LOOP.md).
+6. [ ] **Design (RETNING):** Kombiner dei to lampe-svara (skavl_b radial +
+   skavl_lampe rib/slisse) til 100 % blend + høgare opning; louver/indre
+   diffusor. Full validering (blend=0, termikk, print).
+7. [ ] **Design (metode):** Prøv ein ny generativ-vekst-metode frå
+   metode-menyen (LOOP.md §3) på eit objekt: reaction-diffusion-relieff
+   eller Voronoi-skalgitter på ein vase, eller TPMS-infill i knaggen.
+8. [ ] **Verkstad:** Reparasjonssett: parametrisk klips-protese-generator
    kopla til brotmodus-taksonomien (`research/2026-07-06-brotmodus-taksonomi.md`),
    PETG, start med modus «snap-fit-hake av».
 6. [ ] `[TRENG IVER]` Slice og testprint Skavl-søskena og knaggane

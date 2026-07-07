@@ -80,6 +80,16 @@
       "database_id": "95dfd924-7aef-4894-9224-debf9170c629",
       "data_source_id": "a212687f-c714-4116-bef2-9ccb124d1fd2",
       "loop_row_type": "Agent-loop"
+    },
+    "galleri": {
+      "database_id": "4f4cd89a-9236-4b4e-811a-5f64b55bdf6f",
+      "data_source_id": "d9bf7c02-0fda-4d64-8202-8904dbdd1c5c",
+      "views": {
+        "galleri": "3961c681-5f78-813a-8c52-000c4c0828c9",
+        "hovudside_linka": "3961c681-5f78-8188-86d4-000c7723b68f"
+      },
+      "note": "Globalt galleri: kvar render/silhuett/produksjonsmodell frå design-pipelinen. Page-cover = raw GitHub-URL. Loopen legg til ei rad per bilete (LOOP.md §5.6). Linka gallery-view ligg nedst på hovudsida. Oppretta 2026-07-07.",
+      "cover_url_base": "https://raw.githubusercontent.com/lukketsvane/design/main/"
     }
   },
   "source_pages": {
