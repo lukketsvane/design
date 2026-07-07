@@ -1,6 +1,6 @@
 # STATE.md, loop-state
 
-**Iterasjon:** 31
+**Iterasjon:** 32
 **Sist oppdatert:** 2026-07-06
 **Status:** Aktiv loop-køyring, fleire økter parallelt («køyr til tokena
 er tomme», Ivers instruks 2026-07-06). All utvikling går direkte til
@@ -13,17 +13,20 @@ komplementære triggerar som vekslar: «FORMLÆRE loop 4,5t (A)»
 natt-wrappen 23:37→01:07 = 1,5 t). Begge: ferskt miljø per køyring,
 push-varsel.
 
-**Gjeldande styring frå Iver (2026-07-06):**
-1. Konkrete designprosjekt fyrst: algoritmisk modellering for fysiske
+**Gjeldande styring frå Iver:**
+1. **Misjon (2026-07-07):** loopen er ein fullstendig iterativ design-
+   idegenerator og designar, frå idé gjennom parametrisk og generativ-
+   vekst-modellering heilt fram til produksjonsklare modellar. Ny
+   design-pipeline (frø to vekst to prøve to slip to produksjonsmodell)
+   og metode-meny i `LOOP.md`. «A fully iterative design idea generator
+   and designer, all the way to production models.»
+2. Konkrete designprosjekt fyrst: algoritmisk modellering for fysiske
    modellar Iver kan 3D-printe (Verkstad-tungt til ny beskjed).
-2. Skrivekonvensjonar: ingen tankestrekar, ikon eller emojiar, i alt
-   vidare arbeid (sjå CLAUDE.md).
-3. Djup omstrukturering av Notion: hovudside som dashbord, kanban,
-   kalender, tydelege databasar og lenkjer.
-4. **Formretning (kveld, viktigast no):** rotasjonsgrammatikken frå
-   referansebileta er den estetiske hovudretninga for verkstadserien.
-   «This is the stuff we want to focus on, full effort loop, non stop
-   improvement.»
+3. Skrivekonvensjonar: ingen tankestrekar, ikon eller emojiar (CLAUDE.md).
+4. Formretning: rotasjonsgrammatikken frå referansebileta er den
+   estetiske hovudretninga (5 referansar no, tromme-linse lagt til
+   2026-07-07: `verkstad/skavl/ref/ref-e-tromme-linse.png`).
+5. Notion: hovudside som dashbord, kanban, kalender, tydelege databasar.
 
 ## Iterasjonshistorikk (denne økta)
 
@@ -61,6 +64,7 @@ push-varsel.
 | 29 | Verkstad | Skavl v0.3 fekk fjerde søsken `g-rotor` (referanse-d/flat rotor): 56 rette vertikale finner, relieff 7 mm, opning 30 %, ribbekant-drift 0° (mest printbare). Printbarheit-funn dokumentert: den flate rotorskåla har vassrette veggar = FDM-overheng, så den printbare kusinen er ei ståande finne-søyle (form følgjer fitness: FDM-landskapet ≠ keramikklandskapet). 4-opp render + ref/README-funn |
 | 30 | Verkstad | Generator B, LAMPE-greina (`verkstad/skavl/skavl_b.py`): rotasjonsgrammatikken som N radiale dropeforma lameller, tromme-topologi (komplementær til it. 28 vase-greina og it. 29 rotor: vase = ribberelieff/lukka botn, lampe = blendfokus/open lampeskjerm med E27-ring). Tre vasstette 3MF-søsken (roleg 24 finnar / open 18 / rotor 30 m/16° vriding), 115-120 g, overheng maks 45° (fasa toppring), alle harde portar passerte. Ope funn: radiale finnar stengjer berre 13-16 % av blendbandet (målt ved strålecasting), v0.2-arbeid. Silhuett-SVG + validering-b-v0.1.md + requirements.txt |
 | 31 | Verkstad | Skavl v0.4 lampe-hybrid (`verkstad/skavl/skavl_lampe.py`), komplementaer til it. 30 skavl_b: rib/slisse-grammatikken fraa vasane paa lampa med glare/termikk paa att. To vasstette soesken (roleg/open), blend=0 ved konstruksjon (kvar slisse i glare-bandet lukka, oevre sone tett, konveksjonsslissar i nedre halvdel), termisk klaring 74-79 mm, E27-sokkel, opning 15 %. Alle portar. To ulike geometriske svar paa blendaksen: skavl_b lukkar 13-16 % med radiale finnar, skavl_lampe lukkar 100 % ved aa fjerne slissar i bandet |
+| 32 | Meta | Loop-reframe (Ivers instruks «fully iterative design idea generator and designer, all the way to production models»): `LOOP.md` skriven om til ein design-motor med fem-fasa pipeline (frø to vekst to prøve to slip to produksjonsmodell), metode-meny for generativ vekst (differential growth, reaction-diffusion, L-system, fyllotaksi, Voronoi, TPMS m.m.), utvida valideringsport. CLAUDE.md + STATE + BACKLOG oppdaterte. Ny referanse `ref-e-tromme-linse.png` (femte form) lagt til, ny familie `h-tromme` i backloggen. Trigger-prompt oppdatert til design-misjonen |
 
 ## Retning frå Iver (2026-07-06, kveld)
 

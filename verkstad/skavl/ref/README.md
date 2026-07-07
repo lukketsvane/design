@@ -23,7 +23,7 @@ utfyller kvarandre. Attribusjon (truleg Steven Edwards) er `[TRENG IVER]`
 | `ref-b-trompet-drope.png` | Vertikale bølgjande ribber som møtest og skilst; dropeforma opningar; trompetutsving i toppen, lauk-basis | Ribbesenter med lågfrekvent vibrering; slisse-envelopen pulserer (klemmer att og opnar) = dropene | Ingen twist, rib-wobble av frøa støy, drope-envelope med vertikal bølgjelengd, flare i silhuetten |
 | `ref-c-timeglas-slissar.png` | Vridde ribber, avlange linseforma slissar, timeglas-silhuett, trekanta munning | Som A men færre ribber og lengre pinch-rytme; m=3-harmonisk | Twist ~120 grader, slisse-pinch midt på, m=3 mot toppen |
 | `ref-d-vertikale-finner.png` | Djupe frittståande radielle finner med ovale hol; nesten rett sylinder, kastellert topp | Radiell djupn utover skalet via ribberelieff; rette vertikale finner | Realisert som søsken `g-rotor` (v0.3): 56 finner, twist 0, relieff 7 mm, opning 30 %, ribbekant-drift 0 grader (mest printbar) |
-| (femte fil) | Dublett av ref-b (same md5) | | |
+| `ref-e-tromme-linse.png` (ny 2026-07-07) | Brei tromme/tønne, vertikale bølgjande lameller, store linse-/augeforma opningar mellom dei, kastellert topp og botn | Same ribbe/slisse-grammatikk som ref-b, men brei sylinder (h omtrent lik diameter) og sterk drope-envelope = store linser; djup ribberelieff | Ny familie `h-tromme` (v0.5): brei rett profil, 30-36 ribber, twist 0, kraftig drope_styrke for linsene, relieff 6-8 mm. Utstår til komande iterasjon |
 
 ## Kva dette endrar i Skavl
 
