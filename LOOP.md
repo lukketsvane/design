@@ -52,7 +52,8 @@ eitt objekt eitt steg, eller forbetre det innan same steg (v0.1 → v0.2).
 
 **Definisjon av «produksjonsklar»:** vasstett; alle harde portar grøne i
 den genererte rapporten; 3MF ligg i `print/`; slicing-kortet fortel korleis
-det skal printast; opne funn er anten lukka eller eksplisitt flagga i
+det skal printast; minst éin PNG-render ligg i git og er lagt inn i
+Galleri-databasen (§5.6); opne funn er anten lukka eller eksplisitt flagga i
 rapporten som medviten avgrensing. Fysisk print er alltid `[TRENG IVER]`.
 
 ## 0 · Invariantar (les før kvar iterasjon)
@@ -149,6 +150,18 @@ tre gonger på rad, så porteføljen ikkje let eitt trykk dominere (4.5).
 5. Skriv éi rad i Notion-databasen «Logg · iterasjonar & funn»
    (Type=Agent-loop, dato, samandrag, neste handling). Spegl større
    objekt-framsteg til Verkstad-sida.
+6. **Galleri (obligatorisk for kvar render):** for kvart bilete iterasjonen
+   lagar (3D-render, silhuett, diagram, foto), legg til éi rad i Notion-
+   databasen «Galleri, renders og iterasjonar»
+   (`collection://d9bf7c02-0fda-4d64-8202-8904dbdd1c5c`). Set **page-cover**
+   til raw GitHub-URL-en så biletet syner som kort-førehandsvising:
+   `https://raw.githubusercontent.com/lukketsvane/design/main/<sti>`
+   (repoet er offentleg; PNG renderer trygt som cover, SVG serverer no
+   image/svg+xml). Fyll `Objekt`, `Pipeline-steg`, `Type`, `Iterasjon`,
+   `Dato`, `Fil i git` (github.com/blob-lenke) og `Notat` (kva versjonen
+   viser + øvste funn). Commit biletet til git FYRST, så raw-URL-en er
+   levande. Lag alltid minst éin PNG-render per objektversjon; ein
+   generator utan bilete er ikkje ferdig i pipelinen.
 
 ## 6 · Scheduling, bestem neste vekking
 
