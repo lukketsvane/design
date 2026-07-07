@@ -1,6 +1,6 @@
 # STATE.md, loop-state
 
-**Iterasjon:** 33
+**Iterasjon:** 34
 **Sist oppdatert:** 2026-07-07
 **Status:** Aktiv loop-køyring, fleire økter parallelt («køyr til tokena
 er tomme», Ivers instruks 2026-07-06). All utvikling går direkte til
@@ -66,6 +66,7 @@ push-varsel.
 | 31 | Verkstad | Skavl v0.4 lampe-hybrid (`verkstad/skavl/skavl_lampe.py`), komplementaer til it. 30 skavl_b: rib/slisse-grammatikken fraa vasane paa lampa med glare/termikk paa att. To vasstette soesken (roleg/open), blend=0 ved konstruksjon (kvar slisse i glare-bandet lukka, oevre sone tett, konveksjonsslissar i nedre halvdel), termisk klaring 74-79 mm, E27-sokkel, opning 15 %. Alle portar. To ulike geometriske svar paa blendaksen: skavl_b lukkar 13-16 % med radiale finnar, skavl_lampe lukkar 100 % ved aa fjerne slissar i bandet |
 | 32 | Meta | Loop-reframe (Ivers instruks «fully iterative design idea generator and designer, all the way to production models»): `LOOP.md` skriven om til ein design-motor med fem-fasa pipeline (frø to vekst to prøve to slip to produksjonsmodell), metode-meny for generativ vekst (differential growth, reaction-diffusion, L-system, fyllotaksi, Voronoi, TPMS m.m.), utvida valideringsport. CLAUDE.md + STATE + BACKLOG oppdaterte. Ny referanse `ref-e-tromme-linse.png` (femte form) lagt til, ny familie `h-tromme` i backloggen. Trigger-prompt oppdatert til design-misjonen |
 | 33 | Meta | Globalt galleri (Ivers instruks «all future renders to a new global gallery database as images»): ny Notion-database «Galleri, render og iterasjonar» (data_source 82c18616...); alle render hamnar der som bilete. Mekanisme: `verkstad/tools/png_to_notion_svg.py` gjer PNG om til liten JPEG-data-URI-SVG som lastast opp inline (repoet er privat, so ingen offentleg URL). LOOP.md §5.6 + CLAUDE.md sync-kontrakt + manifest.json oppdaterte. Backfill: vase-familien v0.3 og lampe v0.4 er inne med embedda render |
+| 34 | Synk | Konvensjonssveip i Notion (renummerert fraa 27 ved rebase): hovudsida, 01-05, Søknadspakke, 06 og alle fem Verkstad-sidene svepte for tankestrekar; Verkstad-titlane og Vegkart-databasen namna om (kolon/bindestrek); forelda branch-referanse på 06-sida retta til main. Attstår: select-opsjonar med intervall-strek (H1-H3), radinnhald i Bibliotek/Prinsipp |
 
 ## Retning frå Iver (2026-07-06, kveld)
 
@@ -81,7 +82,7 @@ kontinuerleg i tillegg til den daglege triggeren.
 
 ## Neste handling
 
-Iterasjon 32 (Verkstad-tungt). Tre generator-B-greiner finst no: vase
+Iterasjon 35 (Verkstad-tungt). Tre generator-B-greiner finst no: vase
 (`skavl_vase.py`), rotor (`g-rotor`), og TO lampe-tilnaerminger (it. 30
 `skavl_b.py` radiale lameller / it. 31 `skavl_lampe.py` rib-slisse med
 glare-band lukka). Neste:
@@ -94,7 +95,7 @@ rotor- og dei to lampe-greinene;
 (c) materialeksperiment #1 (glasur-analog i print: silk-PETG laglys /
 to-farge kant-hoeglys);
 (d) reparasjonssett klips-protese-generator.
-Sekundaert: konvensjonssveip Notion-undersider; Fjordfiesta (#4);
+Sekundaert: Fjordfiesta (#4);
 Case #3 Helsenorge.
 
 ## Blokkert / treng Iver, VIKTIGAST FYRST
