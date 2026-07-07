@@ -53,6 +53,10 @@ beskjed.
   «Logg · iterasjonar & funn» med Type=Agent-loop, og (b) oppdaterer
   `STATE.md` + committar. Git-commit-meldinga og Notion-loggraden skal
   fortelje same historie.
+- Galleri: kvart render/kvar generert form skal òg inn i Notion-databasen
+  «Galleri, render og iterasjonar» som eit bilete (sjå LOOP.md §5.6 og
+  `verkstad/tools/png_to_notion_svg.py`). Alle framtidige render hamnar
+  der, som eit levande galleri av heile iterasjonshistoria.
 
 ## Verifikasjon før commit/push
 
