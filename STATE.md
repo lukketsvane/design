@@ -4,9 +4,14 @@
 **Sist oppdatert:** 2026-07-06
 **Status:** Aktiv loop-køyring, fleire økter parallelt («køyr til tokena
 er tomme», Ivers instruks 2026-07-06). All utvikling går direkte til
-`main`. Trigger aktiv kvar 4. time: «FORMLÆRE loop kvar 4. time»
-(trig_01DqhXRKkJof8qzmz8oHozmh, cron `11 */4 * * *` UTC, ferskt miljø per
-køyring, push-varsel) (Ivers instruks 2026-07-06: «auto run every 4 hours»).
+`main`. Loop-triggerar aktive kvar 4,5 time (Ivers instruks: «every 4 1/2
+hours»). Sidan 4,5 t ikkje deler 24 t jamt, er kadensen sett med TO
+komplementære triggerar som vekslar: «FORMLÆRE loop 4,5t (A)»
+(trig_01DqhXRKkJof8qzmz8oHozmh, `7 1,10,19 * * *`) og «(B)»
+(trig_016uSTYMzU7uty5h1LDs8o1v, `37 5,14,23 * * *`). Samla fyring UTC:
+01:07, 05:37, 10:07, 14:37, 19:07, 23:37 (4,5 t mellom alle unnateke
+natt-wrappen 23:37→01:07 = 1,5 t). Begge: ferskt miljø per køyring,
+push-varsel.
 
 **Gjeldande styring frå Iver (2026-07-06):**
 1. Konkrete designprosjekt fyrst: algoritmisk modellering for fysiske
