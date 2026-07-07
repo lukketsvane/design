@@ -1,8 +1,19 @@
 # STATE.md — loop-state
 
-**Iterasjon:** 11
+**Iterasjon:** 12
 **Sist oppdatert:** 2026-07-06
-**Status:** Aktiv. Autonom Routine sett opp (kvar 4. time). It. 10–11 køyrde.
+**Status:** Aktiv. GENERATIV MOTOR BYGD. Routine ~kvar 4,5. time.
+
+## Sist gjort (it. 12) — VIKTIGAST
+
+Iver skjerpa målet: loopen skal vere ein FULLT ITERATIV designgenerator —
+frå idé via parametrisk/generativ vekst til produksjonsmodellar. Nye
+referansar viser bulbøs sfære-klynge-morfologi (blomkål, sfære-totem).
+Bygd `generator/grow.py` v1: agent-basert sfære-aggregasjon → smooth-union
+→ marching cubes → vasstette STL-ar. Køyrt: 6 søsken, alle vasstette,
+180 mm, eksportert + kontaktark. LOOP.md omskriven: generativ motor er no
+KJERNEN i loopen. Genomet = posisjon i formrommet; STL = reproduserbar frå
+genom (difor gitignorert; genomes.json + kontaktark er dei varige).
 
 ## Sist gjort (it. 10–11)
 

@@ -1,96 +1,124 @@
-# LOOP.md — den autonome arbeidssyklusen
+# LOOP.md — den autonome design- og arbeidssyklusen
 
 > Loop engineering-prinsippet: ikkje prompt agenten tur for tur — design
-> loopen som promptar agenten. Kvar iterasjon har fem trekk:
-> **discovery → handoff → verification → persistence → scheduling.**
+> loopen som promptar agenten. Kvar iterasjon: **discovery → handoff →
+> verification → persistence → scheduling.**
+>
+> **Kjernen i denne loopen er ein generativ designmotor.** Målet er ikkje
+> berre strategi og dokument, men *faktiske former* — frå idé gjennom
+> parametrisk/generativ vekst til produksjonsklare modellar (STL/OBJ).
+> Dokumentarbeidet (strategi, kritikk, research) tener designen.
 
-Denne fila ER loop-prompten. Ein agent som får beskjeden «køyr loopen»
-(via `/loop`, ein trigger, eller manuelt) skal følgje protokollen under,
-utan å spørje om lov undervegs, til ein stoppvilkår er nådd.
+Denne fila ER loop-prompten. Ein agent som får «køyr loopen» følgjer
+protokollen under til eit stoppvilkår er nådd.
 
-## 0 · Invariantar (les før kvar iterasjon)
+## 0 · Invariantar
 
 - Følg alle reglar i `CLAUDE.md` (nynorsk, branch, aldri slett, kjeldefest).
-- Éin iterasjon = **éi avslutta arbeidseining** (45–90 min agentarbeid),
-  ikkje «litt av alt».
-- Alt arbeid skal ende i varige artefaktar: commit i git + rad i
-  Notion-loggen. Arbeid som ikkje er persistert, har ikkje skjedd.
+- Éin iterasjon = **éi avslutta arbeidseining** som endar i varige
+  artefaktar: commit i git + rad i Notion-loggen. Arbeid som ikkje er
+  persistert, har ikkje skjedd.
+- **Kvar generativ iterasjon skal produsere geometri du kan sjå og printe**
+  — ikkje berre snakk om form.
 
-## 1 · Discovery — finn neste arbeid
+## 1 · Den generative pipelinen (motoren)
+
+`generator/grow.py` er v1 av motoren. Pipeline:
+
+1. **Idé/seed** — vel eit formmål (vase, skjerm, krukke, objekt) og kva
+   referanse i `assets/formsprak/` det siktar mot.
+2. **Genom** — set seleksjonstrykk-vektene (symmetri, vertikal/radial bias,
+   knopp-tal, falloff, blend). Genomet ER posisjonen i formrommet (1.3).
+   Kvar parameter er eit seleksjonstrykk (2.1).
+3. **Vekst** — sfære-aggregasjon under trykka → signert distansefelt
+   (smooth-union / metaball) → marching cubes → mesh. Forma fell ut av
+   navigasjonen (5.13).
+4. **Iterasjon/seleksjon** — generer ein **sverm av søsken** (3.3), vurder
+   dei mot formgrammatikken (07 · Formspråk) og mot traktat-aksane:
+   materialminimum, printbarheit, «ser det grodd ut?».
+5. **Produksjonsmodell** — eksporter vasstett STL/OBJ; rapporter volum,
+   mål, vasstett-status i `genomes.json`. Dette er den printbare/støypbare
+   modellen.
+
+Køyr motoren:
+```
+python3 generator/grow.py --n 6 --seed <N> --out generator/out
+```
+
+**Å forbetre motoren er sjølv ei gyldig iterasjon.** Døme på utvidingar
+(legg i BACKLOG): ribbe/differential-growth-modus (kråkebolle/lamell,
+ikkje berre bulbøs); radial hòl (vase/skjerm-topologi); veggtjukn-offset
+for keramikk-print; overheng-/krymp-sjekk mot wet-clay-budsjettet
+(sjå `briefs/krakebolle-skjerm.md`); glasur-dal-analyse; automatisk
+utval av «beste» søsken mot ein omhugs-score.
+
+## 2 · Discovery — finn neste arbeid
 
 1. Les `STATE.md`, `BACKLOG.md`, `LEARNINGS.md`, `git log --oneline -10`.
-2. Vel **øvste udone oppgåve i BACKLOG.md** som ikkje er blokkert.
-3. Om backloggen er tom eller alt er blokkert: generer nytt arbeid frå
-   iterasjonsmenyen (§4) — vel det som gjev mest verdi for vegkartet no,
-   og varier: aldri same menykategori tre gonger på rad.
+2. Vel øvste ublokkerte oppgåve i `BACKLOG.md` (hopp over `[TRENG IVER]`).
+3. Tom backlog → generer arbeid frå menyen (§4); prioriter **generativt**
+   arbeid; varier (ikkje same menykategori tre gonger på rad).
 
-## 2 · Handoff — gjer arbeidet
+## 3 · Handoff — gjer arbeidet
 
-Gjer oppgåva heilskapleg. For research: søk, les, destiller til eit datert
-notat i `research/` med kjelder. For skriving: fullstendige utkast, ikkje
-disposisjonar. For Notion-arbeid: bygg ferdig, ikkje halvvegs.
+Fullfør heilskapleg. Generativt: køyr motoren, sjå på kontaktarket,
+vel/iterer, eksporter. Research/skriving: fullstendige, kjeldefeste
+leveransar. Aldri halvvegs.
 
-## 3 · Verification — sjekk med friske auge
+## 4 · Verification — sjekk med friske auge
 
-Før noko vert markert done, køyr desse portane:
+- **Design-port (generativt):** er søskena vasstette (`is_watertight`)?
+  Ser dei ut som formspråket (grodd, ikkje komponert)? Er dei printbare
+  i storleik/overheng? Legg kontaktark + STL i `generator/out/…`.
+- **Innhaldsport:** forståeleg for Iver utan øktkontekst, nynorsk, kjeldefest.
+- **Traktatport:** motseier det traktaten? Flagg i loggen om ja.
+- **Teknisk port:** JSON gyldig, lenkjer heile, Notion renderer, git rein.
 
-- **Innhaldsport:** Les artefakten på nytt som om du var Iver utan
-  øktkontekst. Er det forståeleg, kjeldefest, på nynorsk, kopla til tesen?
-- **Traktatport:** Motseier innhaldet traktaten? Om ja: er det flagga som
-  medviten spenning i loggen?
-- **Teknisk port:** JSON gyldig, lenkjer heile, Notion-sider renderer
-  (fetch attende), git-status rein etter commit.
-- Om ein port feilar: fiks, eller rull attende og skriv kvifor i
-  `LEARNINGS.md`. Ikkje marker done.
+## 5 · Iterasjonsmeny
 
-## 4 · Iterasjonsmeny (når backloggen treng påfyll)
-
-| Kategori | Døme på arbeid |
+| Kategori | Arbeid |
 |---|---|
-| **Research** | Kartlegg éin konkurransearena, éin produsent, éi utlysing; djupdykk i éi teorikjelde frå Biblioteket; finn faktiske fristar/datoar |
-| **Skriving** | Før eitt Skriveprosjekt éin fase vidare (idé→utkast→revisjon); utkast til Designopprør-case |
-| **Verkstad** | Skriv full designbrief for eitt Verkstad-objekt: aksar, traktat-kopling, printstrategi, testplan |
-| **Vegkart** | Rull vegkartet: er fristar realistiske? Nye høve dukka opp? Oppdater «Neste steg»-felt |
-| **Synk** | Notion ↔ git-avvik? Spegl endringar begge vegar |
-| **Meta** | Forbetre LOOP.md/CLAUDE.md sjølv, basert på LEARNINGS.md |
+| **Generativt (kjerne)** | Køyr/forbetre `grow.py`; ny formfamilie; ny vekstmodus; produksjonseksport; utval av beste søsken |
+| **Verkstad** | Kople eit generert objekt til ein designbrief (aksar, print, test) |
+| **Research** | Teknikk (keramikk-print, celadon, algoritmar); arenaer/fristar; teori |
+| **Skriving** | Essay/kritikk/case eitt steg vidare |
+| **Strategi/Vegkart** | Rull vegkartet; nye høve; oppdater «neste steg» |
+| **Synk** | Notion ↔ git-avvik begge vegar |
+| **Meta** | Forbetre LOOP.md/CLAUDE.md frå LEARNINGS.md |
 
-Balanseregel: over ti iterasjonar skal minst tre vere Research, to
-Skriving, to Verkstad, éin Vegkart, éin Synk, maks éin Meta.
+Balanse over ti iterasjonar: minst **fire generative**, to research, to
+skriving/verkstad, éin vegkart, éin synk, maks éin meta.
 
-## 5 · Persistence — skriv state
+## 6 · Persistence
 
-1. Oppdater `STATE.md`: iterasjonsnummer +1, kva vart gjort, kva er neste.
-2. Oppdater `BACKLOG.md`: kryss av utført, legg til nyoppdaga arbeid.
-3. Ved feil/lærdom: éi line i `LEARNINGS.md`.
-4. Commit med beskrivande melding; push med `git push -u origin
-   claude/norsk-design-strategy-plan-zgwmkm` (retry 2s/4s/8s/16s ved nettfeil).
-5. Skriv éi rad i Notion-databasen «Logg · iterasjonar & funn»
-   (Type=Agent-loop, dato, samandrag, neste handling).
+1. Oppdater `STATE.md` (iterasjon +1, gjort, neste) og `BACKLOG.md`.
+2. Nye artefaktar (STL, kontaktark, genomes.json, kode) committast.
+3. Feil/lærdom → éi line i `LEARNINGS.md`.
+4. Commit + `git push -u origin claude/norsk-design-strategy-plan-zgwmkm`
+   (retry 2s/4s/8s/16s ved nettfeil).
+5. Éi rad i Notion-loggen «Logg · iterasjonar & funn» (Type=Agent-loop);
+   for generative iterasjonar: last opp/omtal kontaktarket og ev. legg
+   objektet i Verkstad-databasen.
 
-## 6 · Scheduling — bestem neste vekking
+## 7 · Scheduling
 
-- Køyrer du under `/loop` dynamisk modus: bruk ScheduleWakeup med
-  1200–1800 s for vanleg takt; 3600 s om du nettopp har gjort tre
-  iterasjonar på rad utan menneskeleg innspel.
-- Køyrer du under ein cron-trigger: berre avslutt; triggeren vekkjer deg.
-- Elles: avslutt økta reint — neste sesjon plukkar opp frå STATE.md.
+- `/loop` dynamisk: ScheduleWakeup 1200–1800 s (3600 s etter fleire
+  iterasjonar utan menneske).
+- Cron/Routine-firing: berre avslutt; triggeren vekkjer deg.
+- Elles: avslutt reint — neste økt les `STATE.md`.
 
-## 7 · Stopp- og pausevilkår
+## 8 · Stopp / pause / menneskekontrakt
 
-**Stopp (avslutt loopen og varsle Iver):**
-- Iver ber om stopp, eller stiller spørsmål som krev svar før vidare arbeid.
-- Ein irreversibel eller utoverretta handling står i vegen (publisering,
-  e-post til eksterne, søknadsinnsending): DET GJER LOOPEN ALDRI SJØLV.
-  Legg det klart i backloggen merkt `[TRENG IVER]` og hald fram med anna.
-- Tre iterasjonar på rad utan at nokon port i §3 passerer: noko er gale
-  med sjølve loopen; skriv diagnose i LEARNINGS.md og stopp.
+**Stopp og varsle Iver** når: Iver ber om det; ei utoverretta handling
+står i vegen (sjå under); tre iterasjonar på rad utan at nokon port i §4
+passerer.
 
-**Pause (hopp over iterasjon, ikkje stopp):**
-- Notion eller GitHub utilgjengeleg → prøv att neste vekking.
+**Loopen gjer ALDRI sjølv:** publisering, e-post, søknadsinnsending,
+bestilling av print/keramikk hjå tredjepart, pengebruk. Slikt vert
+liggjande som `[TRENG IVER]` i backloggen.
 
-## 8 · Kontrakt med mennesket
+**Pause (hopp over, ikkje stopp):** Notion/GitHub nede → prøv att neste firing.
 
-Loopen produserer; Iver bestemmer. Alt utoverretta (publisering, kontakt,
-innsending, pengar) ligg alltid att som `[TRENG IVER]`-oppgåver. Loopen
-sin jobb er at når Iver opnar Notion, ligg det alltid ferdig tenkt,
-kjeldefest og gjennomarbeidd materiale og ventar — aldri halvtenkt slam.
+Loopen produserer former og materiale; Iver vel, brenner og publiserer.
+Når Iver opnar repoet/Notion skal det alltid liggje ferdige, vasstette
+modellar og gjennomarbeidd materiale og vente — aldri halvtenkt slam.

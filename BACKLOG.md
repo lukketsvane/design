@@ -4,6 +4,10 @@ Loopen konsumerer ovanfrå. `[TRENG IVER]` = berre mennesket.
 
 ## Kø
 
+0. [ ] **Generativt:** utvid `grow.py` med ribbe/differential-growth-modus
+   (kråkebolle/lamell/gjelle — ikkje berre bulbøs) + radial hòl-topologi
+   (vase/skjerm). Deretter: veggtjukn-offset + overheng/krymp-sjekk for
+   keramikk-print; omhugs-score for auto-utval av beste søsken.
 1. [ ] `[TRENG IVER]` Sjekk AHO keramikkverkstad: paste-ekstruder (WASP/Eazao?)
    + reduksjonsomn for celadon? Avgjer keramikk-tidslina.
 2. [ ] `[TRENG IVER]` Vel arbeidsnamn — trengst i Salone-skjemaet.

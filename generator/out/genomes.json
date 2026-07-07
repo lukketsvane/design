@@ -1,0 +1,146 @@
+[
+  {
+    "index": 0,
+    "stl": "sibling_00.stl",
+    "genom": {
+      "seed": 944904,
+      "n_buds": 48,
+      "symmetry": 7,
+      "symmetry_break": 0.25065085185394254,
+      "vertical_bias": 0.2851243139943551,
+      "radial_bias": 0.4700665139644902,
+      "radius_start": 0.3,
+      "radius_falloff": 0.9048264134475514,
+      "blend": 0.05042122436524598,
+      "iso_pad": 0.06
+    },
+    "watertight": true,
+    "n_faces": 38744,
+    "extent_mm": [
+      198.6,
+      243.6,
+      180.0
+    ],
+    "volume_cm3": 2169.5
+  },
+  {
+    "index": 1,
+    "stl": "sibling_01.stl",
+    "genom": {
+      "seed": 897213,
+      "n_buds": 43,
+      "symmetry": 7,
+      "symmetry_break": 0.25535527432545013,
+      "vertical_bias": 0.4307609717062324,
+      "radial_bias": 0.4712129707277254,
+      "radius_start": 0.3,
+      "radius_falloff": 0.8334110734520929,
+      "blend": 0.07038956701232997,
+      "iso_pad": 0.06
+    },
+    "watertight": true,
+    "n_faces": 38904,
+    "extent_mm": [
+      178.4,
+      183.5,
+      180.0
+    ],
+    "volume_cm3": 1172.6
+  },
+  {
+    "index": 2,
+    "stl": "sibling_02.stl",
+    "genom": {
+      "seed": 990459,
+      "n_buds": 42,
+      "symmetry": 5,
+      "symmetry_break": 0.20176941745638832,
+      "vertical_bias": 0.7473001700606356,
+      "radial_bias": 0.6670647676855013,
+      "radius_start": 0.3,
+      "radius_falloff": 0.8746615075329396,
+      "blend": 0.1291168118145508,
+      "iso_pad": 0.06
+    },
+    "watertight": true,
+    "n_faces": 31410,
+    "extent_mm": [
+      132.3,
+      133.5,
+      180.0
+    ],
+    "volume_cm3": 950.8
+  },
+  {
+    "index": 3,
+    "stl": "sibling_03.stl",
+    "genom": {
+      "seed": 504548,
+      "n_buds": 42,
+      "symmetry": 4,
+      "symmetry_break": 0.1152466474487258,
+      "vertical_bias": 0.5175237625638185,
+      "radial_bias": 0.3675768031845533,
+      "radius_start": 0.3,
+      "radius_falloff": 0.8042816334528315,
+      "blend": 0.09119110562170962,
+      "iso_pad": 0.06
+    },
+    "watertight": true,
+    "n_faces": 26608,
+    "extent_mm": [
+      135.9,
+      94.6,
+      180.0
+    ],
+    "volume_cm3": 789.6
+  },
+  {
+    "index": 4,
+    "stl": "sibling_04.stl",
+    "genom": {
+      "seed": 970264,
+      "n_buds": 42,
+      "symmetry": 7,
+      "symmetry_break": 0.21842977598802227,
+      "vertical_bias": 0.4584705879597083,
+      "radial_bias": 0.5487493741574017,
+      "radius_start": 0.3,
+      "radius_falloff": 0.8297017906432798,
+      "blend": 0.05094352204340047,
+      "iso_pad": 0.06
+    },
+    "watertight": true,
+    "n_faces": 37180,
+    "extent_mm": [
+      194.9,
+      172.3,
+      180.0
+    ],
+    "volume_cm3": 1245.5
+  },
+  {
+    "index": 5,
+    "stl": "sibling_05.stl",
+    "genom": {
+      "seed": 917167,
+      "n_buds": 31,
+      "symmetry": 4,
+      "symmetry_break": 0.23224706659400463,
+      "vertical_bias": 0.27036403439219714,
+      "radial_bias": 0.4978145242408827,
+      "radius_start": 0.3,
+      "radius_falloff": 0.8004481090462492,
+      "blend": 0.11640381838413964,
+      "iso_pad": 0.06
+    },
+    "watertight": true,
+    "n_faces": 31512,
+    "extent_mm": [
+      210.3,
+      192.9,
+      180.0
+    ],
+    "volume_cm3": 1679.2
+  }
+]
