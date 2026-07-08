@@ -28,19 +28,19 @@
   #rows::-webkit-scrollbar { display: none; }
   #sheet.closed #rows, #sheet.closed #chips { display: none; }
 
-  .bar { display: flex; align-items: center; gap: 6px; }
+  .bar { display: flex; align-items: center; gap: 5px; }
   .seg { display: flex; background: #161616; border: 1px solid #2e2e2e;
     border-radius: 999px; padding: 3px; flex: 0 1 auto; min-width: 0; }
   .seg button { border: 0; background: transparent; color: #d6d6d6;
-    font-size: 15px; padding: 8px 12px; border-radius: 999px;
+    font-size: 14px; padding: 7px 10px; border-radius: 999px;
     cursor: pointer; white-space: nowrap; }
   .seg button.on { background: #fff; color: #000; font-weight: 600; }
-  .iconbtn { width: 41px; height: 41px; flex: 0 0 auto; border-radius: 999px;
+  .iconbtn { width: 38px; height: 38px; flex: 0 0 auto; border-radius: 999px;
     border: 1px solid #2e2e2e; background: #161616; color: #ededed;
     display: inline-flex; align-items: center; justify-content: center;
     cursor: pointer; }
   .iconbtn.on { background: #fff; color: #000; border-color: #fff; }
-  .iconbtn svg { width: 19px; height: 19px; }
+  .iconbtn svg { width: 18px; height: 18px; }
   .spacer { flex: 1 1 auto; }
 
   #chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
@@ -71,6 +71,30 @@
   #busy { position: fixed; top: max(14px, env(safe-area-inset-top));
     left: 18px; font-size: 13px; color: #666; z-index: 5;
     transition: opacity .2s; opacity: 0; }
+
+  /* lys modus: kvitt studio med golv og hard skugge */
+  body.light #brand a { color: #8a8a8a; }
+  body.light #sheet { background: rgba(248,248,248,.94);
+    border-color: #e2e2e2; }
+  body.light .seg { background: #ececec; border-color: #ddd; }
+  body.light .seg button { color: #333; }
+  body.light .seg button.on { background: #111; color: #fff; }
+  body.light .iconbtn { background: #ececec; border-color: #ddd;
+    color: #222; }
+  body.light .iconbtn.on { background: #111; color: #fff;
+    border-color: #111; }
+  body.light .chip { background: #ececec; border-color: #ddd;
+    color: #222; }
+  body.light .chip.on { background: #111; color: #fff;
+    border-color: #111; }
+  body.light .row label { color: #444; }
+  body.light .row output { color: #222; }
+  body.light input[type=range]::-webkit-slider-runnable-track {
+    background: #222; }
+  body.light input[type=range]::-webkit-slider-thumb { background: #111; }
+  body.light input[type=range]::-moz-range-track { background: #222; }
+  body.light input[type=range]::-moz-range-thumb { background: #111; }
+  body.light #rows h3 { color: #999; }
 </style>
 </head>
 <body>
@@ -86,6 +110,13 @@
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
         stroke-width="2.4" stroke-linecap="round">
         <path d="M8 5v14M16 5v14"/></svg>
+    </button>
+    <button class="iconbtn" id="theme" title="lys eller moerk bakgrunn">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+        stroke-width="2" stroke-linecap="round">
+        <circle cx="12" cy="12" r="4.2"/>
+        <path d="M12 2.5v3M12 18.5v3M2.5 12h3M18.5 12h3M5 5l2.1 2.1M16.9
+        16.9 19 19M19 5l-2.1 2.1M7.1 16.9 5 19"/></svg>
     </button>
     <button class="iconbtn" id="lamp" title="lys i lampa">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
@@ -197,6 +228,8 @@ for (const p of Object.values(PRESETS_GRIND)) {
   if (p.loop_lean == null) p.loop_lean = 0;
   if (p.loop_drop == null) p.loop_drop = 0;
   if (p.cup_zf == null) p.cup_zf = 0;
+  if (p.grow == null) p.grow = 1;
+  if (p.zig == null) p.zig = 0;
 }
 
 /* sliderdefinisjonar: [gruppe, nykel, namn, min, maks, steg] */
@@ -232,6 +265,8 @@ const SLIDERS_GRIND = [
   ["form", "f_bot", "Botn",     0.5, 1.5, 0.01],
   ["form", "f_top", "Topp",     0.5, 1.5, 0.01],
   ["form", "buk",   "Buk",     -0.4, 0.4, 0.01],
+  ["form", "grow",  "Vekst",    0.6, 1.6, 0.02],
+  ["form", "zig",   "Sikksakk", 0, 20, 0.5],
   ["stag", "twist", "Twist",    0, 0.5, 0.05],
   ["stag", "bow",   "Boge",     0, 30, 0.5],
   ["stag", "tube",  "Rør",      3, 10, 0.1],
@@ -315,6 +350,20 @@ scene.add(new THREE.HemisphereLight(0xffffff, 0x111111, 0.35));
 const bulb = new THREE.PointLight(0xffc890, 0, 900, 1.6);
 scene.add(bulb);
 
+// golv med hard skugge, berre i lys modus (moerk modus: ikkje noko golv)
+renderer.shadowMap.enabled = true;
+renderer.shadowMap.type = THREE.BasicShadowMap;
+key.castShadow = true;
+key.shadow.mapSize.set(2048, 2048);
+key.shadow.bias = -0.0004;
+const ground = new THREE.Mesh(
+  new THREE.PlaneGeometry(3000, 3000),
+  new THREE.ShadowMaterial({ opacity: 0.22 }));
+ground.receiveShadow = true;
+ground.visible = false;
+scene.add(ground);
+let lightMode = false;
+
 const material = new THREE.MeshPhysicalMaterial({
   color: 0xffffff, roughness: 0.30, metalness: 0.0,
   clearcoat: 0.55, clearcoatRoughness: 0.35,
@@ -362,12 +411,23 @@ worker.onmessage = (ev) => {
   geo.setIndex(new THREE.BufferAttribute(indices, 1));
   geo.computeVertexNormals();
   if (meshObj) { meshObj.geometry.dispose(); meshObj.geometry = geo; }
-  else { meshObj = new THREE.Mesh(geo, material); group.add(meshObj); }
+  else {
+    meshObj = new THREE.Mesh(geo, material);
+    meshObj.castShadow = true;
+    group.add(meshObj);
+  }
   geo.computeBoundingBox();
   const bb = geo.boundingBox;
   const cz = (bb.min.z + bb.max.z) / 2;
   meshObj.position.set(0, 0, -cz);
   bulb.position.set(0, 0, 0);
+  ground.position.set(0, 0, bb.min.z - cz - 0.3);
+  const Rs = Math.max(bb.max.x - bb.min.x, bb.max.y - bb.min.y,
+                      bb.max.z - bb.min.z);
+  const sc = key.shadow.camera;
+  sc.left = -Rs; sc.right = Rs; sc.top = Rs; sc.bottom = -Rs;
+  sc.near = 10; sc.far = 2000;
+  sc.updateProjectionMatrix();
   if (needFit) {
     needFit = false;
     const w = Math.max(bb.max.x - bb.min.x, bb.max.y - bb.min.y);
@@ -501,6 +561,14 @@ spinBtn.addEventListener("click", () => {
   spinning = !spinning;
   spinBtn.classList.toggle("on", spinning);
 });
+const themeBtn = document.getElementById("theme");
+themeBtn.addEventListener("click", () => {
+  lightMode = !lightMode;
+  document.body.classList.toggle("light", lightMode);
+  scene.background.set(lightMode ? 0xf2f1ef : 0x000000);
+  ground.visible = lightMode;      // moerk modus: ikkje noko golv
+  themeBtn.classList.toggle("on", lightMode);
+});
 const lampBtn = document.getElementById("lamp");
 lampBtn.addEventListener("click", () => {
   const on = bulb.intensity === 0;
@@ -536,7 +604,8 @@ document.getElementById("shuffle").addEventListener("click", () => {
       ball: r(0, 12), nub: Math.random() < 0.5 ? 0 : r(2, 4.5),
       cup: Math.random() < 0.6 ? r(14, 24) : 0, cup_zf: 0,
       mlen: Math.random() < 0.4 ? r(10, 24) : 0, tilt: r(15, 65),
-      k: r(3, 8),
+      k: r(3, 8), grow: r(0.75, 1.4),
+      zig: Math.random() < 0.35 ? r(4, 14) : 0,
       loop: Math.random() < 0.4 ? r(18, 55) : 0,
       loop_out: r(30, 70), loop_zf: r(0.25, 0.6),
       loop_tilt: r(0, 70), loop_ell: r(0.8, 1.6),

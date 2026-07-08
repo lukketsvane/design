@@ -20,7 +20,9 @@ strukturen er n-periodisk kring aksen. Elementmenyen:
 | kopp | cup, cup_zf | sentral lysestake-kopp med boring |
 | kuler | ball, nub | ledd-kuler paa nodane, knoppar utover |
 | munningar | mlen, tilt | opne roerender som foeter (boring subtrahert) |
-| loop | loop, loop_out, loop_zf, loop_tilt, loop_lean, loop_ell | lukka blad/drope-ring i tilta radialplan |
+| loop | loop, loop_out, loop_zf, loop_tilt, loop_lean, loop_ell, loop_drop | lukka blad/drope-ring i tilta radialplan, med dropeform |
+| vekst | grow | element-tjukn som funksjon av hoegda |
+| symmetri | n, twist, zig | rotasjonsgruppe, fasedreiing, sikksakk (annakvar node heva/senka halverer gruppa) |
 | smelt | k | kor mykje alt flyt saman |
 
 Sju verdisett, same kode, mot dei sju referansane:

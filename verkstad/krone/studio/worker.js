@@ -180,73 +180,100 @@ function grindArc(p0, p1, bow, m) {
 }
 
 function grindElements(c) {
-  const lv = grindLevels(c), per = 2 * Math.PI / c.n;
+  const lv = grindLevels(c), n = c.n;
+  const perN = 2 * Math.PI / n;
+  const zig = c.zig || 0;
+  const per = Math.abs(zig) > 0.05 ? 2 * perN : perN;
+  const grow = c.grow || 1;
+  const Lc = lv.length;
+  const su = (i) => Math.pow(grow, Lc === 1 ? 0 : i / (Lc - 1));
+  const subs = Math.abs(zig) > 0.05
+    ? [[0, zig / 2], [perN, -zig / 2]] : [[0, 0]];
+  const offs = () => Math.abs(zig) > 0.05 ? [0, per, -per] : [0];
   const caps = [], balls = [], tori = [], bores = [], loops = [];
   const tube = c.tube;
-  for (let l = 0; l < lv.length - 1; l++) {
-    const p0 = grindNode(lv[l], 0), p1 = grindNode(lv[l + 1], 0);
-    const pts = grindArc(p0, p1, c.bow, 10);
-    for (let i = 0; i < pts.length - 1; i++)
-      caps.push([pts[i], pts[i + 1], tube, [0]]);
-    if (c.diag > 0.01)
-      for (const sgn of [1, -1]) {
-        const q1 = grindNode(lv[l + 1], sgn * per);
-        const qs = grindArc(p0, q1, c.bow * 0.5, 7);
-        for (let i = 0; i < qs.length - 1; i++)
-          caps.push([qs[i], qs[i + 1], tube * c.diag, [0, -sgn * per]]);
-      }
+
+  function nod(i, th) {
+    const p = grindNode(lv[i], th);
+    if (subs.length > 1) p[2] += subs[Math.round(th / perN) & 1][1];
+    return p;
+  }
+
+  for (const [th0] of subs) {
+    for (let l = 0; l < Lc - 1; l++) {
+      const p0 = nod(l, th0), p1 = nod(l + 1, th0);
+      const rr = tube * (su(l) + su(l + 1)) / 2;
+      const pts = grindArc(p0, p1, c.bow, 10);
+      for (let i = 0; i < pts.length - 1; i++)
+        caps.push([pts[i], pts[i + 1], rr, offs()]);
+      if (c.diag > 0.01)
+        for (const sgn of [1, -1]) {
+          const q1 = nod(l + 1, th0 + sgn * perN);
+          const qs = grindArc(p0, q1, c.bow * 0.5, 7);
+          const dof = Math.abs(zig) > 0.05 ? offs() : [0, -sgn * perN];
+          for (let i = 0; i < qs.length - 1; i++)
+            caps.push([qs[i], qs[i + 1], rr * c.diag, dof]);
+        }
+    }
   }
   lv.forEach((l, i) => {
-    if (c.rings === 2 || (c.rings === 1 && (i === 0 || i === lv.length - 1)))
-      tori.push([l[0], l[1], tube]);
+    if (c.rings === 2 || (c.rings === 1 && (i === 0 || i === Lc - 1)))
+      tori.push([l[0], l[1], tube * su(i)]);
   });
   let zc = c.L > 1 ? c.H : c.H * 0.98;
   if ((c.cup_zf || 0) > 0.01) zc = c.cup_zf * c.H;
-  if (c.cup > 0.5 && c.spokes) {
-    const top = lv[lv.length - 1];
-    const p0 = grindNode(top, 0);
-    const p1 = [c.cup * 0.75 * Math.cos(top[2]),
-                c.cup * 0.75 * Math.sin(top[2]), zc];
-    const pts = grindArc(p0, p1, 0, 3);
-    for (let i = 0; i < pts.length - 1; i++)
-      caps.push([pts[i], pts[i + 1], tube, [0]]);
-  }
-  for (const l of lv) {
-    const p = grindNode(l, 0);
-    if (c.ball > 0.3) balls.push([p, c.ball]);
-    if (c.nub > 0.3) {
-      const f = (l[1] + tube * 1.25) / (l[1] + 1e-9);
-      balls.push([[p[0] * f, p[1] * f, p[2]], c.nub]);
+  if (c.cup > 0.5 && c.spokes)
+    for (const [th0] of subs) {
+      const p0 = nod(Lc - 1, th0);
+      const ph = lv[Lc - 1][2];
+      const p1 = [c.cup * 0.75 * Math.cos(th0 + ph),
+                  c.cup * 0.75 * Math.sin(th0 + ph), zc];
+      const pts = grindArc(p0, p1, 0, 3);
+      const rr = tube * su(Lc - 1);
+      for (let i = 0; i < pts.length - 1; i++)
+        caps.push([pts[i], pts[i + 1], rr, offs()]);
     }
-  }
-  if (c.mlen > 0.5) {
-    const p = grindNode(lv[0], 0);
-    const nrm = Math.hypot(p[0], p[1]) + 1e-9;
-    const t = c.tilt * Math.PI / 180;
-    const d = [p[0] / nrm * Math.sin(t), p[1] / nrm * Math.sin(t),
-               -Math.cos(t)];
-    const q = [p[0] + d[0] * c.mlen, p[1] + d[1] * c.mlen,
-               p[2] + d[2] * c.mlen];
-    caps.push([p, q, tube * 1.5, [0]]);
-    bores.push([[p[0] + d[0] * c.mlen * 0.3, p[1] + d[1] * c.mlen * 0.3,
-                 p[2] + d[2] * c.mlen * 0.3], d, tube * 0.85,
-                c.mlen * 0.9 + 6]);
-  }
+  for (const [th0] of subs)
+    for (let i = 0; i < Lc; i++) {
+      const l = lv[i];
+      const p = nod(i, th0);
+      if (c.ball > 0.3) balls.push([p, c.ball * su(i), offs()]);
+      if (c.nub > 0.3) {
+        const fk = (l[1] + tube * 1.25) / (l[1] + 1e-9);
+        balls.push([[p[0] * fk, p[1] * fk, p[2]], c.nub * su(i), offs()]);
+      }
+    }
+  if (c.mlen > 0.5)
+    for (const [th0] of subs) {
+      const p = nod(0, th0);
+      const nrm = Math.hypot(p[0], p[1]) + 1e-9;
+      const t = c.tilt * Math.PI / 180;
+      const d = [p[0] / nrm * Math.sin(t), p[1] / nrm * Math.sin(t),
+                 -Math.cos(t)];
+      const q = [p[0] + d[0] * c.mlen, p[1] + d[1] * c.mlen,
+                 p[2] + d[2] * c.mlen];
+      caps.push([p, q, tube * 1.5 * su(0), offs()]);
+      bores.push([[p[0] + d[0] * c.mlen * 0.3, p[1] + d[1] * c.mlen * 0.3,
+                   p[2] + d[2] * c.mlen * 0.3], d, tube * 0.85 * su(0),
+                  c.mlen * 0.9 + 6, offs()]);
+    }
   if ((c.loop || 0) > 1) {
     const ti = (c.loop_tilt || 0) * Math.PI / 180;
-    let N = [0, Math.cos(ti), Math.sin(ti)];          // t-hat mot z-hat
+    let N = [0, Math.cos(ti), Math.sin(ti)];
     let u1 = [1, 0, 0];
-    let u2 = [0, N[2], -N[1]];                        // N x u1
-    const be = (c.loop_lean || 0) * Math.PI / 180;    // +lean: topp inn
+    let u2 = [0, N[2], -N[1]];
+    const be = (c.loop_lean || 0) * Math.PI / 180;
     const cb = Math.cos(be), sb = Math.sin(be);
     const rot = (v) => [cb * v[0] - sb * v[2], v[1],
                         sb * v[0] + cb * v[2]];
     u1 = rot(u1); u2 = rot(u2); N = rot(N);
-    const C = [c.loop_out, 0, c.loop_zf * c.H];
-    loops.push([C, u1, u2, N, c.loop, c.loop_ell || 1, tube,
-                c.loop_drop || 0]);
+    for (const [th0, dz] of subs) {
+      const C = [c.loop_out, 0, c.loop_zf * c.H + dz];
+      loops.push([C, u1, u2, N, c.loop, c.loop_ell || 1, tube,
+                  c.loop_drop || 0, offs()]);
+    }
   }
-  return { caps, balls, tori, bores, loops, zc };
+  return { caps, balls, tori, bores, loops, zc, per };
 }
 
 function segDist(px, py, pz, a, b, r) {
@@ -259,8 +286,7 @@ function segDist(px, py, pz, a, b, r) {
 }
 
 function makeGrindField(c) {
-  const per = 2 * Math.PI / c.n;
-  const { caps, balls, tori, bores, loops, zc } = grindElements(c);
+  const { caps, balls, tori, bores, loops, zc, per } = grindElements(c);
   const k = c.k;
   const rc = c.cup, hc = Math.max(c.cup * 1.05, 16);
   return function f(x, y, z) {
@@ -277,10 +303,14 @@ function makeGrindField(c) {
                             a, b, r), k);
       }
     const px = rho * Math.cos(thw), py = rho * Math.sin(thw);
-    for (const [p, r] of balls)
-      g = smin(g, Math.hypot(px - p[0], py - p[1], z - p[2]) - r, k);
-    for (const [C, u1, u2, N, rl, ell, rr, drop] of loops)
-      for (const off of [0, per, -per]) {
+    for (const [p, r, boffs] of balls)
+      for (const off of boffs) {
+        const tw = thw - off;
+        g = smin(g, Math.hypot(rho * Math.cos(tw) - p[0],
+                               rho * Math.sin(tw) - p[1], z - p[2]) - r, k);
+      }
+    for (const [C, u1, u2, N, rl, ell, rr, drop, loffs] of loops)
+      for (const off of new Set([...loffs, 0, per, -per])) {
         const tw = thw - off;
         const qx = rho * Math.cos(tw) - C[0],
               qy = rho * Math.sin(tw) - C[1], qz = z - C[2];
@@ -300,13 +330,16 @@ function makeGrindField(c) {
       const db = Math.max(rho - rc * 0.68, zc + hc / 2 - 3 - z);
       g = smax(g, -db, 1.6);
     }
-    for (const [p, d, r, ln] of bores) {
-      const rx = px - p[0], ry = py - p[1], rz = z - p[2];
-      const t = rx * d[0] + ry * d[1] + rz * d[2];
-      const rad = Math.hypot(rx - t * d[0], ry - t * d[1], rz - t * d[2]);
-      const db = Math.max(rad - r, Math.max(-t - 2, t - ln));
-      g = smax(g, -db, 1.2);
-    }
+    for (const [p, d, r, ln, boffs] of bores)
+      for (const off of boffs) {
+        const tw = thw - off;
+        const rx = rho * Math.cos(tw) - p[0], ry = rho * Math.sin(tw) - p[1],
+              rz = z - p[2];
+        const t = rx * d[0] + ry * d[1] + rz * d[2];
+        const rad = Math.hypot(rx - t * d[0], ry - t * d[1], rz - t * d[2]);
+        const db = Math.max(rad - r, Math.max(-t - 2, t - ln));
+        g = smax(g, -db, 1.2);
+      }
     return g;
   };
 }
@@ -316,8 +349,10 @@ function grindBounds(c) {
   let rMax = c.R * Math.max(c.f_bot, c.f_top, 1 + Math.abs(c.buk))
     + c.bow + c.tube * 2 + c.ball + c.mlen + 10;
   rMax = Math.max(rMax, (c.loop_out || 0) + lp * ell + c.tube * 2 + 10);
-  let zMin = -(c.mlen + Math.max(c.tube * 1.6, c.ball, c.nub) + 8);
-  let zMax = c.H + Math.max(c.cup * 1.2, 10) + c.ball + 8;
+  let zMin = -(c.mlen + Math.max(c.tube * 1.6, c.ball, c.nub)
+               + Math.abs(c.zig || 0) / 2 + 8);
+  let zMax = c.H + Math.max(c.cup * 1.2, 10) + c.ball
+    + Math.abs(c.zig || 0) / 2 + 8;
   if (lp > 1) {
     zMin = Math.min(zMin, c.loop_zf * c.H - lp * ell - c.tube * 2 - 6);
     zMax = Math.max(zMax, c.loop_zf * c.H + lp * ell + c.tube * 2 + 6);

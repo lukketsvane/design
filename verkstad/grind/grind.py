@@ -79,6 +79,8 @@ for _c in VARIANTS.values():
     _c.setdefault("loop_ell", 1.0)
     _c.setdefault("loop_lean", 0.0)
     _c.setdefault("loop_drop", 0.0)
+    _c.setdefault("grow", 1.0)            # element-tjukn som funksjon av u
+    _c.setdefault("zig", 0.0)             # annakvar node heva/senka (mm)
 
 
 def smin(a, b, k):
@@ -130,56 +132,92 @@ def elements(c):
     boringar (p0, akse, radius, lengd). Alt for EITT segment; 'kopiar' er
     theta-offset som elementet ogsaa finst paa (naboar for diagonalane)."""
     lv = levels(c)
-    per = 2.0 * math.pi / c["n"]
+    n = c["n"]
+    per_n = 2.0 * math.pi / n                        # nodeavstand
+    zig = c.get("zig", 0.0)
+    per = 2.0 * per_n if abs(zig) > 0.05 else per_n  # feltperioden
+    grow = c.get("grow", 1.0)
+    Lc = len(lv)
+
+    def su(i):                                       # vekstskala paa nivaa i
+        u = 0.0 if Lc == 1 else i / (Lc - 1.0)
+        return grow ** u
+
+    # sub-segment: (basisvinkel, z-offset). Med sikksakk vert perioden
+    # dobla og segmentet inneheld to nodar, ein heva og ein senka.
+    subs = [(0.0, zig / 2.0), (per_n, -zig / 2.0)] if abs(zig) > 0.05 \
+        else [(0.0, 0.0)]
+
+    def offs(th0):
+        return (0.0, per, -per) if abs(zig) > 0.05 else (0.0,)
+
     caps, balls, tori, bores = [], [], [], []
     tube = c["tube"]
+    dzs = {th0: dz for th0, dz in subs}
 
-    for l in range(len(lv) - 1):                     # stag med boge
-        p0, p1 = node(lv[l], 0.0), node(lv[l + 1], 0.0)
-        pts = arc_points(p0, p1, c["bow"])
-        for a, b in zip(pts[:-1], pts[1:]):
-            caps.append((a, b, tube, (0.0,)))
-        if c["diag"] > 0.01:                         # X-kryss til naboane
-            for sgn in (1.0, -1.0):
-                q1 = node(lv[l + 1], sgn * per)
-                pts = arc_points(p0, q1, c["bow"] * 0.5, m=7)
-                for a, b in zip(pts[:-1], pts[1:]):
-                    caps.append((a, b, tube * c["diag"], (0.0, -sgn * per)))
+    def nod(i, th):
+        p = node(lv[i], th)
+        kidx = round(th / per_n) % 2                 # kva sub noden hoeyrer til
+        p = p.copy()
+        p[2] += subs[kidx][1] if len(subs) > 1 else 0.0
+        return p
+
+    for th0, dz in subs:
+        for l in range(Lc - 1):                      # stag med boge
+            p0, p1 = nod(l, th0), nod(l + 1, th0)
+            rr = tube * (su(l) + su(l + 1)) / 2.0
+            pts = arc_points(p0, p1, c["bow"])
+            for a, b in zip(pts[:-1], pts[1:]):
+                caps.append((a, b, rr, offs(th0)))
+            if c["diag"] > 0.01:                     # X-kryss til naboane
+                for sgn in (1.0, -1.0):
+                    q1 = nod(l + 1, th0 + sgn * per_n)
+                    pts = arc_points(p0, q1, c["bow"] * 0.5, m=7)
+                    for a, b in zip(pts[:-1], pts[1:]):
+                        caps.append((a, b, rr * c["diag"],
+                                     offs(th0) if abs(zig) > 0.05
+                                     else (0.0, -sgn * per_n)))
 
     for i, l in enumerate(lv):                       # ringar
-        if c["rings"] == 2 or (c["rings"] == 1 and i in (0, len(lv) - 1)):
-            tori.append((l[0], l[1], tube))
+        if c["rings"] == 2 or (c["rings"] == 1 and i in (0, Lc - 1)):
+            tori.append((l[0], l[1], tube * su(i)))
 
     zc = c["H"] if c["L"] > 1 else c["H"] * 0.98     # kopp + eiker
     if c.get("cup_zf", 0.0) > 0.01:
         zc = c["cup_zf"] * c["H"]
     if c["cup"] > 0.5:
         if c["spokes"]:
-            top = lv[-1]
-            p0 = node(top, 0.0)
-            p1 = np.array([c["cup"] * 0.75 * math.cos(top[2]),
-                           c["cup"] * 0.75 * math.sin(top[2]), zc])
-            pts = arc_points(p0, p1, 0.0, m=3)
-            for a, b in zip(pts[:-1], pts[1:]):
-                caps.append((a, b, tube, (0.0,)))
+            for th0, dz in subs:
+                p0 = nod(Lc - 1, th0)
+                ph = lv[-1][2]
+                p1 = np.array([c["cup"] * 0.75 * math.cos(th0 + ph),
+                               c["cup"] * 0.75 * math.sin(th0 + ph), zc])
+                pts = arc_points(p0, p1, 0.0, m=3)
+                rr = tube * su(Lc - 1)
+                for a, b in zip(pts[:-1], pts[1:]):
+                    caps.append((a, b, rr, offs(th0)))
 
-    for l in lv:                                     # kuler og knoppar
-        p = node(l, 0.0)
-        if c["ball"] > 0.3:
-            balls.append((p, c["ball"]))
-        if c["nub"] > 0.3:
-            e = p.copy()
-            e[:2] *= (l[1] + tube * 1.25) / (l[1] + 1e-9)
-            balls.append((e, c["nub"]))
+    for th0, dz in subs:
+        for i, l in enumerate(lv):                   # kuler og knoppar
+            p = nod(i, th0)
+            if c["ball"] > 0.3:
+                balls.append((p, c["ball"] * su(i), offs(th0)))
+            if c["nub"] > 0.3:
+                e = p.copy()
+                e[:2] *= (l[1] + tube * 1.25) / (l[1] + 1e-9)
+                balls.append((e, c["nub"] * su(i), offs(th0)))
 
-    if c["mlen"] > 0.5:                              # roerfoeter med boring
-        p = node(lv[0], 0.0)
-        e = p[:2] / (np.linalg.norm(p[:2]) + 1e-9)
-        t = math.radians(c["tilt"])
-        d = np.array([e[0] * math.sin(t), e[1] * math.sin(t), -math.cos(t)])
-        caps.append((p, p + d * c["mlen"], tube * 1.5, (0.0,)))
-        bores.append((p + d * c["mlen"] * 0.3, d, tube * 0.85,
-                      c["mlen"] * 0.9 + 6.0))
+        if c["mlen"] > 0.5:                          # roerfoeter med boring
+            p = nod(0, th0)
+            e2 = p[:2] / (np.linalg.norm(p[:2]) + 1e-9)
+            t = math.radians(c["tilt"])
+            d = np.array([e2[0] * math.sin(t), e2[1] * math.sin(t),
+                          -math.cos(t)])
+            caps.append((p, p + d * c["mlen"], tube * 1.5 * su(0),
+                         offs(th0)))
+            bores.append((p + d * c["mlen"] * 0.3, d,
+                          tube * 0.85 * su(0), c["mlen"] * 0.9 + 6.0,
+                          offs(th0)))
 
     loops = []
     if c.get("loop", 0.0) > 1.0:                     # blad/drope-loop
@@ -187,16 +225,15 @@ def elements(c):
         t_hat = np.array([0.0, 1.0, 0.0])
         z_hat = np.array([0.0, 0.0, 1.0])
         ti = math.radians(c["loop_tilt"])
-        N = math.cos(ti) * t_hat + math.sin(ti) * z_hat
-        u1 = e.copy()
-        u2 = np.cross(N, u1)
+        N0 = math.cos(ti) * t_hat + math.sin(ti) * z_hat
         be = math.radians(c.get("loop_lean", 0.0))   # +lean: topp mot aksen
         cb, sb = math.cos(be), math.sin(be)
         rot = np.array([[cb, 0.0, -sb], [0.0, 1.0, 0.0], [sb, 0.0, cb]])
-        u1, u2, N = rot @ u1, rot @ u2, rot @ N
-        C = e * c["loop_out"] + z_hat * (c["loop_zf"] * c["H"])
-        loops.append((C, u1, u2, N, c["loop"], c["loop_ell"], tube,
-                      c.get("loop_drop", 0.0)))
+        u1, u2, N = rot @ e, rot @ np.cross(N0, e), rot @ N0
+        for th0, dz in subs:
+            C = e * c["loop_out"] + z_hat * (c["loop_zf"] * c["H"] + dz)
+            loops.append((C, u1, u2, N, c["loop"], c["loop_ell"], tube,
+                          c.get("loop_drop", 0.0), offs(th0)))
     return caps, balls, tori, bores, loops, zc
 
 
@@ -211,6 +248,8 @@ def field(P, c):
     x, y, z = P[:, 0], P[:, 1], P[:, 2]
     rho = np.hypot(x, y)
     per = 2.0 * math.pi / c["n"]
+    if abs(c.get("zig", 0.0)) > 0.05:
+        per *= 2.0
     th = np.arctan2(y, x)
     thw = ((th + per / 2.0) % per) - per / 2.0        # senterbasert wrap
     caps, balls, tori, bores, loops, zc = elements(c)
@@ -226,12 +265,14 @@ def field(P, c):
                 tw = thw - off
                 Q = np.column_stack([rho * np.cos(tw), rho * np.sin(tw), z])
                 f = smin(f, _seg_dist(Q, a, b, r), k)
-    for p, r in balls:
-        Q = np.column_stack([rho * np.cos(thw), rho * np.sin(thw), z])
-        f = smin(f, np.linalg.norm(Q - p, axis=1) - r, k)
+    for p, r, boffs in balls:
+        for off in boffs:
+            tw = thw - off
+            Q = np.column_stack([rho * np.cos(tw), rho * np.sin(tw), z])
+            f = smin(f, np.linalg.norm(Q - p, axis=1) - r, k)
 
-    for C, u1, u2, N, rl, ell, rr, drop in loops:     # loops (drope-ring)
-        for off in (0.0, per, -per):
+    for C, u1, u2, N, rl, ell, rr, drop, loffs in loops:  # loops (drope-ring)
+        for off in set(list(loffs) + [0.0, per, -per]):
             tw = thw - off
             Q = np.column_stack([rho * np.cos(tw), rho * np.sin(tw), z])
             rel = Q - C
@@ -254,13 +295,15 @@ def field(P, c):
         dbore = np.maximum(rho - rc * 0.68, zc + hc / 2.0 - 3.0 - z)
         f = smax(f, -dbore, 1.6)
 
-    for p, d, r, ln in bores:                         # roermunningar
-        Q = np.column_stack([rho * np.cos(thw), rho * np.sin(thw), z])
-        rel = Q - p
-        t = rel @ d
-        rad = np.linalg.norm(rel - t[:, None] * d[None, :], axis=1)
-        db = np.maximum(rad - r, np.maximum(-t - 2.0, t - ln))
-        f = smax(f, -db, 1.2)
+    for p, d, r, ln, boffs in bores:                  # roermunningar
+        for off in boffs:
+            tw = thw - off
+            Q = np.column_stack([rho * np.cos(tw), rho * np.sin(tw), z])
+            rel = Q - p
+            t = rel @ d
+            rad = np.linalg.norm(rel - t[:, None] * d[None, :], axis=1)
+            db = np.maximum(rad - r, np.maximum(-t - 2.0, t - ln))
+            f = smax(f, -db, 1.2)
     return f
 
 
@@ -320,11 +363,13 @@ def bounds(c):
         + c["bow"] + c["tube"] * 2.0 + c["ball"] + c["mlen"] + 10.0
     rmax = max(rmax, c.get("loop_out", 0.0) + lp * c.get("loop_ell", 1.0)
                + c["tube"] * 2.0 + 10.0)
-    zmin = -(c["mlen"] + max(c["tube"] * 1.6, c["ball"], c["nub"]) + 8.0)
+    zmin = -(c["mlen"] + max(c["tube"] * 1.6, c["ball"], c["nub"])
+             + abs(c.get("zig", 0.0)) / 2.0 + 8.0)
     if lp > 1.0:
         zmin = min(zmin, c["loop_zf"] * c["H"] - lp * c["loop_ell"]
                    - c["tube"] * 2.0 - 6.0)
-    zmax = c["H"] + max(c["cup"] * 1.2, 10.0) + c["ball"] + 8.0
+    zmax = c["H"] + max(c["cup"] * 1.2, 10.0) + c["ball"] \
+        + abs(c.get("zig", 0.0)) / 2.0 + 8.0
     if lp > 1.0:
         zmax = max(zmax, c["loop_zf"] * c["H"] + lp * c["loop_ell"]
                    + c["tube"] * 2.0 + 6.0)
