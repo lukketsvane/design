@@ -66,8 +66,8 @@ VARIANTS = {
                   twist=0.0, bow=0.0, tube=6.4, diag=0.0, rings=2,
                   spokes=1, ball=0.0, nub=0.0, cup=15.0, mlen=0.0,
                   tilt=0.0, k=6.5,
-                  loop=36.0, loop_out=62.0, loop_zf=0.43, loop_tilt=6.0,
-                  loop_ell=1.6, loop_lean=15.0),
+                  loop=38.0, loop_out=58.0, loop_zf=0.42, loop_tilt=6.0,
+                  loop_ell=1.55, loop_lean=10.0, loop_drop=0.45),
 }
 VARIANTS["drope"]["cup_zf"] = 0.55
 for _c in VARIANTS.values():
@@ -78,6 +78,7 @@ for _c in VARIANTS.values():
     _c.setdefault("loop_tilt", 0.0)
     _c.setdefault("loop_ell", 1.0)
     _c.setdefault("loop_lean", 0.0)
+    _c.setdefault("loop_drop", 0.0)
 
 
 def smin(a, b, k):
@@ -194,7 +195,8 @@ def elements(c):
         rot = np.array([[cb, 0.0, -sb], [0.0, 1.0, 0.0], [sb, 0.0, cb]])
         u1, u2, N = rot @ u1, rot @ u2, rot @ N
         C = e * c["loop_out"] + z_hat * (c["loop_zf"] * c["H"])
-        loops.append((C, u1, u2, N, c["loop"], c["loop_ell"], tube))
+        loops.append((C, u1, u2, N, c["loop"], c["loop_ell"], tube,
+                      c.get("loop_drop", 0.0)))
     return caps, balls, tori, bores, loops, zc
 
 
@@ -228,7 +230,7 @@ def field(P, c):
         Q = np.column_stack([rho * np.cos(thw), rho * np.sin(thw), z])
         f = smin(f, np.linalg.norm(Q - p, axis=1) - r, k)
 
-    for C, u1, u2, N, rl, ell, rr in loops:           # loops (ellipse-ring)
+    for C, u1, u2, N, rl, ell, rr, drop in loops:     # loops (drope-ring)
         for off in (0.0, per, -per):
             tw = thw - off
             Q = np.column_stack([rho * np.cos(tw), rho * np.sin(tw), z])
@@ -236,7 +238,13 @@ def field(P, c):
             a1 = rel @ u1
             a2 = (rel @ u2) / ell
             h = rel @ N
-            d = np.hypot(np.hypot(a1, a2) - rl, h) - rr
+            if drop > 0.01:
+                t = np.clip(-a2 / (rl + 1e-9), 0.0, 1.0)
+                a1 = a1 / (1.0 - drop * t * 0.85 + 1e-9)
+                rr_eff = rr * (1.0 - drop * 0.45 * t)
+            else:
+                rr_eff = rr
+            d = np.hypot(np.hypot(a1, a2) - rl, h) - rr_eff
             f = smin(f, d, k)
 
     if c["cup"] > 0.5:                                # kopp med boring
@@ -312,7 +320,7 @@ def bounds(c):
         + c["bow"] + c["tube"] * 2.0 + c["ball"] + c["mlen"] + 10.0
     rmax = max(rmax, c.get("loop_out", 0.0) + lp * c.get("loop_ell", 1.0)
                + c["tube"] * 2.0 + 10.0)
-    zmin = -(c["mlen"] + 8.0)
+    zmin = -(c["mlen"] + max(c["tube"] * 1.6, c["ball"], c["nub"]) + 8.0)
     if lp > 1.0:
         zmin = min(zmin, c["loop_zf"] * c["H"] - lp * c["loop_ell"]
                    - c["tube"] * 2.0 - 6.0)
@@ -350,11 +358,18 @@ def build(name, pitch=0.8):
     if mesh.volume < 0:
         mesh.invert()
     trimesh.smoothing.filter_taubin(mesh, lamb=0.5, nu=-0.53, iterations=6)
+    raw = mesh
     try:
         if len(mesh.faces) > 240_000:
             mesh = mesh.simplify_quadric_decimation(face_count=240_000)
+            trimesh.repair.fill_holes(mesh)
+            # desimeringa kan rive hol; fell attende til raa-nettet
+            import collections as _cl
+            cnt = _cl.Counter(map(tuple, mesh.edges_sorted))
+            if any(v == 1 for v in cnt.values()):
+                mesh = raw
     except BaseException:
-        pass
+        mesh = raw
     comps = mesh.split(only_watertight=False)
     mesh = trimesh.util.concatenate([m for m in comps if len(m.faces) > 60])
     mesh = split_pinches(mesh)

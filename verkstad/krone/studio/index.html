@@ -185,8 +185,8 @@ const PRESETS_GRIND = {
   "Drope": { n: 3, L: 1, H: 150, R: 33, f_bot: 1, f_top: 1, buk: 0,
     twist: 0, bow: 0, tube: 6.4, diag: 0, rings: 2, spokes: 1,
     ball: 0, nub: 0, cup: 15, cup_zf: 0.55, mlen: 0, tilt: 0, k: 6.5,
-    loop: 36, loop_out: 62, loop_zf: 0.43, loop_tilt: 6, loop_ell: 1.6,
-    loop_lean: 15 },
+    loop: 38, loop_out: 58, loop_zf: 0.42, loop_tilt: 6, loop_ell: 1.55,
+    loop_lean: 10, loop_drop: 0.45 },
 };
 for (const p of Object.values(PRESETS_GRIND)) {
   p.kind = "grind";
@@ -195,6 +195,7 @@ for (const p of Object.values(PRESETS_GRIND)) {
     p.loop_tilt = 0; p.loop_ell = 1;
   }
   if (p.loop_lean == null) p.loop_lean = 0;
+  if (p.loop_drop == null) p.loop_drop = 0;
   if (p.cup_zf == null) p.cup_zf = 0;
 }
 
@@ -243,6 +244,7 @@ const SLIDERS_GRIND = [
   ["loop", "loop_tilt", "Loop vinkel", 0, 90, 1],
   ["loop", "loop_lean", "Loop inn",   -30, 40, 1],
   ["loop", "loop_ell",  "Loop form",  0.6, 2, 0.05],
+  ["loop", "loop_drop", "Loop drope", 0, 0.6, 0.05],
   ["detalj", "ball", "Kule",    0, 14, 0.5],
   ["detalj", "nub",  "Knopp",   0, 5, 0.5],
   ["detalj", "cup",  "Kopp",    0, 26, 0.5],
@@ -314,8 +316,8 @@ const bulb = new THREE.PointLight(0xffc890, 0, 900, 1.6);
 scene.add(bulb);
 
 const material = new THREE.MeshPhysicalMaterial({
-  color: 0xffffff, roughness: 0.38, metalness: 0.0,
-  clearcoat: 0.22, clearcoatRoughness: 0.5,
+  color: 0xffffff, roughness: 0.30, metalness: 0.0,
+  clearcoat: 0.55, clearcoatRoughness: 0.35,
   side: THREE.DoubleSide,
 });
 const group = new THREE.Group();
@@ -538,7 +540,7 @@ document.getElementById("shuffle").addEventListener("click", () => {
       loop: Math.random() < 0.4 ? r(18, 55) : 0,
       loop_out: r(30, 70), loop_zf: r(0.25, 0.6),
       loop_tilt: r(0, 70), loop_ell: r(0.8, 1.6),
-      loop_lean: r(-10, 30),
+      loop_lean: r(-10, 30), loop_drop: Math.random() < 0.5 ? 0 : r(0.2, 0.55),
     });
   }
   cfg = base;

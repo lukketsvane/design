@@ -426,9 +426,10 @@ FAMILY_INFO = {
               ("smultring", "smultring"), ("terning", "terning")]),
     "krone": ("Krone, eitt parametersett, tre verdisett", "krone",
               [("taarn", "taarn"), ("krans", "krans"), ("skaal", "skaal")]),
-    "grind": ("Grind, grafbyggjaren, fem verdisett", "grind",
+    "grind": ("Grind, grafbyggjaren, sju verdisett", "grind",
               [("tromme", "tromme"), ("stjerne", "stjerne"),
-               ("totem", "totem"), ("korg", "korg"), ("krabbe", "krabbe")]),
+               ("totem", "totem"), ("korg", "korg"), ("krabbe", "krabbe"),
+               ("kloever", "kløver"), ("drope", "drope")]),
 }
 # v0.3 lamp models (tall layer-direction slots), rendered via --v03
 V03_MODELS = [("skavl", "a-roleg-v03"), ("skavl", "b-open-v03"),
@@ -449,7 +450,8 @@ LYKT_MODELS = [("lykt", "kuppel"), ("lykt", "ball"), ("lykt", "krone"),
 KRONE_MODELS = [("krone", "taarn"), ("krone", "krans"), ("krone", "skaal")]
 # grind (node-strut builder) family, rendered via --grind
 GRIND_MODELS = [("grind", "tromme"), ("grind", "stjerne"), ("grind", "totem"),
-                ("grind", "korg"), ("grind", "krabbe")]
+                ("grind", "korg"), ("grind", "krabbe"), ("grind", "kloever"),
+                ("grind", "drope")]
 FONT_DIR = "/usr/share/fonts/truetype/dejavu"
 
 
@@ -581,9 +583,9 @@ def main():
         el = 5 if family in PORCELAIN_FAMILIES else 16   # eye-level porcelain
         if name in ("krans", "skaal"):
             el = 14                          # flate formar: litt ovanfraa
-        elif name in ("stjerne", "krabbe"):
+        elif name in ("stjerne", "krabbe", "kloever"):
             el = 26                          # heilt flate: ovanfraa
-        elif name == "tromme":
+        elif name in ("tromme", "drope"):
             el = 13
         render_png(mesh, family, hero, ss=ss, el_deg=el, name=name)
         print(f"hero  {family}-{name}: {os.path.relpath(hero, HERE)} (ss={ss})")

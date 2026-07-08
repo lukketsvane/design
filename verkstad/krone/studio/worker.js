@@ -243,7 +243,8 @@ function grindElements(c) {
                         sb * v[0] + cb * v[2]];
     u1 = rot(u1); u2 = rot(u2); N = rot(N);
     const C = [c.loop_out, 0, c.loop_zf * c.H];
-    loops.push([C, u1, u2, N, c.loop, c.loop_ell || 1, tube]);
+    loops.push([C, u1, u2, N, c.loop, c.loop_ell || 1, tube,
+                c.loop_drop || 0]);
   }
   return { caps, balls, tori, bores, loops, zc };
 }
@@ -278,15 +279,21 @@ function makeGrindField(c) {
     const px = rho * Math.cos(thw), py = rho * Math.sin(thw);
     for (const [p, r] of balls)
       g = smin(g, Math.hypot(px - p[0], py - p[1], z - p[2]) - r, k);
-    for (const [C, u1, u2, N, rl, ell, rr] of loops)
+    for (const [C, u1, u2, N, rl, ell, rr, drop] of loops)
       for (const off of [0, per, -per]) {
         const tw = thw - off;
         const qx = rho * Math.cos(tw) - C[0],
               qy = rho * Math.sin(tw) - C[1], qz = z - C[2];
-        const a1 = qx * u1[0] + qy * u1[1] + qz * u1[2];
+        let a1 = qx * u1[0] + qy * u1[1] + qz * u1[2];
         const a2 = (qx * u2[0] + qy * u2[1] + qz * u2[2]) / ell;
         const h = qx * N[0] + qy * N[1] + qz * N[2];
-        g = smin(g, Math.hypot(Math.hypot(a1, a2) - rl, h) - rr, k);
+        let rrE = rr;
+        if (drop > 0.01) {
+          const t = Math.min(Math.max(-a2 / (rl + 1e-9), 0), 1);
+          a1 = a1 / (1 - drop * t * 0.85 + 1e-9);
+          rrE = rr * (1 - drop * 0.45 * t);
+        }
+        g = smin(g, Math.hypot(Math.hypot(a1, a2) - rl, h) - rrE, k);
       }
     if (rc > 0.5) {
       g = smin(g, Math.max(rho - rc, Math.abs(z - zc) - hc / 2), k);
@@ -309,7 +316,7 @@ function grindBounds(c) {
   let rMax = c.R * Math.max(c.f_bot, c.f_top, 1 + Math.abs(c.buk))
     + c.bow + c.tube * 2 + c.ball + c.mlen + 10;
   rMax = Math.max(rMax, (c.loop_out || 0) + lp * ell + c.tube * 2 + 10);
-  let zMin = -(c.mlen + 8);
+  let zMin = -(c.mlen + Math.max(c.tube * 1.6, c.ball, c.nub) + 8);
   let zMax = c.H + Math.max(c.cup * 1.2, 10) + c.ball + 8;
   if (lp > 1) {
     zMin = Math.min(zMin, c.loop_zf * c.H - lp * ell - c.tube * 2 - 6);
