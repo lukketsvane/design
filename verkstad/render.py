@@ -51,6 +51,8 @@ FILAMENT = {         # warm off-white printed plastic, per family
     "repsett": np.array([0.88, 0.55, 0.14]),   # kintsugi gold-orange (signal)
     "radial": np.array([0.66, 0.83, 0.77]),    # celadon porcelain
     "lattice": np.array([0.66, 0.83, 0.77]),   # celadon porcelain
+    "lykt": np.array([0.90, 0.86, 0.78]),      # warm cream ceramic
+    "krone": np.array([0.91, 0.87, 0.79]),     # warm cream ceramic
 }
 # families whose 3MF files are not named "{family}-{name}.3mf"
 FILE_PREFIX = {"repsett": "skoeytehylse", "radial": "ribbe",
@@ -58,9 +60,10 @@ FILE_PREFIX = {"repsett": "skoeytehylse", "radial": "ribbe",
 # families whose print/ dir differs from the family name
 FAMILY_DIR = {"lattice": "radial"}
 # glossier sheen for the porcelain-read families
-FAMILY_SHEEN = {"radial": 0.26, "lattice": 0.30}
+FAMILY_SHEEN = {"radial": 0.26, "lattice": 0.30, "lykt": 0.22,
+                "krone": 0.20}
 # families rendered with the soft porcelain studio rig + grey backdrop
-PORCELAIN_FAMILIES = {"radial", "lattice"}
+PORCELAIN_FAMILIES = {"radial", "lattice", "lykt", "krone"}
 
 # two directional lights (world direction the light TRAVELS, i.e. toward the
 # object) and their radiances; no ambient term
@@ -289,7 +292,7 @@ def shadow_mask(mesh, cam, W, H, yfov):
 
 # -------------------------------------------------------------------- render
 def render_png(mesh, family, out_path, az_deg=38, el_deg=16,
-               yfov=0.42, margin=1.16, ss=None):
+               yfov=0.42, margin=1.16, ss=None, name=None):
     ss = SS if ss is None else ss
     global LIGHTS, BACKDROP, SHEEN_POW
     saved = (LIGHTS, BACKDROP, SHEEN_POW)
@@ -297,12 +300,42 @@ def render_png(mesh, family, out_path, az_deg=38, el_deg=16,
         LIGHTS, BACKDROP, SHEEN_POW = porcelain_lights(), (0.90, 0.82), 12.0
     try:
         return _render_png(mesh, family, out_path, az_deg, el_deg,
-                           yfov, margin, ss)
+                           yfov, margin, ss, name)
     finally:
         LIGHTS, BACKDROP, SHEEN_POW = saved
 
 
-def _render_png(mesh, family, out_path, az_deg, el_deg, yfov, margin, ss):
+def lykt_inner(mesh, vpos, ncorner):
+    """Interior-face mask for the lykt shades, purely geometric so every
+    variant works from one rule: a corner is interior when its normal points
+    toward the local core. For the torus the core is the tube's centre
+    circle; for every other shell it is the solid's midpoint."""
+    rxy = np.linalg.norm(mesh.vertices[:, :2], axis=1)
+    b = mesh.bounds
+    if rxy.min() > 0.14 * rxy.max():          # central hole: a torus
+        R0 = (rxy.max() + rxy.min()) / 2.0
+        zc = (b[0][2] + b[1][2]) / 2.0
+        e = vpos.copy()
+        e[..., 2] = 0.0
+        e /= np.linalg.norm(e, axis=2, keepdims=True) + 1e-9
+        tc = R0 * e
+        tc[..., 2] = zc
+        inward = tc - vpos
+        inward /= np.linalg.norm(inward, axis=2, keepdims=True) + 1e-9
+        return np.sum(ncorner * inward, axis=2) > 0.2
+    cen = np.array([0.0, 0.0, (b[0][2] + b[1][2]) / 2.0])
+    out = vpos - cen
+    out /= np.linalg.norm(out, axis=2, keepdims=True) + 1e-9
+    return np.sum(ncorner * out, axis=2) < -0.2
+
+
+# taarn har ein liner (indre skal): sjoelve linerflata les som lyskjelde
+# (band i radius), men gjennom liner-slisa ser ein moerkt, som i referansen
+KRONE_GLOW_RHO = {"taarn": (50.0, 57.5)}
+
+
+def _render_png(mesh, family, out_path, az_deg, el_deg, yfov, margin, ss,
+                name=None):
     W = H = SIZE * ss
     cam, centre, dist = place_camera(mesh, az_deg, el_deg, yfov, margin)
     eye = cam[0]
@@ -325,6 +358,21 @@ def _render_png(mesh, family, out_path, az_deg, el_deg, yfov, margin, ss):
         rad[..., 2] = 0.0
         rad /= np.linalg.norm(rad, axis=2, keepdims=True) + 1e-9
         inner = np.sum(ncorner * rad, axis=2) < -0.15
+        lin[inner] = INTERIOR_EMISSIVE
+    elif family == "lykt":
+        lin[lykt_inner(mesh, vpos, ncorner)] = INTERIOR_EMISSIVE
+    elif family == "krone":
+        # inner shell glows (radial test, like skavl); the taarn liner sits
+        # closest to the bulb, so the whole liner reads as the source
+        rad = vpos.copy()
+        rad[..., 2] = 0.0
+        rad /= np.linalg.norm(rad, axis=2, keepdims=True) + 1e-9
+        inner = np.sum(ncorner * rad, axis=2) < -0.15
+        glow_rho = KRONE_GLOW_RHO.get(name)
+        if glow_rho:
+            lo, hi = glow_rho
+            rr = np.linalg.norm(vpos[..., :2], axis=2)
+            inner |= (rr > lo) & (rr < hi)
         lin[inner] = INTERIOR_EMISSIVE
 
     # backface cull (keep faces with any vertex in front of the camera)
@@ -372,6 +420,11 @@ FAMILY_INFO = {
                [("leaf", "blad"), ("vertebra", "virvel"), ("spiral", "spiral")]),
     "lattice": ("Ribbe, vove gitter med augehol, tre søsken", "lattice",
                 [("coral", "korall"), ("reef", "rev"), ("column", "søyle")]),
+    "lykt": ("Lykt, fem grunnformer, eitt regelverk", "lykt",
+             [("kuppel", "kuppel"), ("ball", "ball"), ("krone", "krone"),
+              ("smultring", "smultring"), ("terning", "terning")]),
+    "krone": ("Krone, eitt parametersett, tre verdisett", "krone",
+              [("taarn", "taarn"), ("krans", "krans"), ("skaal", "skaal")]),
 }
 # v0.3 lamp models (tall layer-direction slots), rendered via --v03
 V03_MODELS = [("skavl", "a-roleg-v03"), ("skavl", "b-open-v03"),
@@ -385,6 +438,11 @@ RADIAL_MODELS = [("radial", "leaf"), ("radial", "vertebra"),
 # lattice (woven eye-hole) family, rendered via --lattice
 LATTICE_MODELS = [("lattice", "coral"), ("lattice", "reef"),
                   ("lattice", "column")]
+# lykt (parametric shade grammar) family, rendered via --lykt
+LYKT_MODELS = [("lykt", "kuppel"), ("lykt", "ball"), ("lykt", "krone"),
+               ("lykt", "smultring"), ("lykt", "terning")]
+# krone (SDF shade, one parameter set) family, rendered via --krone
+KRONE_MODELS = [("krone", "taarn"), ("krone", "krans"), ("krone", "skaal")]
 FONT_DIR = "/usr/share/fonts/truetype/dejavu"
 
 
@@ -473,6 +531,10 @@ def main():
                     help="render the radial-fin (ribbe) lamps and family strip")
     ap.add_argument("--lattice", action="store_true",
                     help="render the woven eye-hole lattice lamps + family")
+    ap.add_argument("--lykt", action="store_true",
+                    help="render the parametric lykt shades + family strip")
+    ap.add_argument("--krone", action="store_true",
+                    help="render the krone SDF shades + family strip")
     args = ap.parse_args()
 
     out_dir = os.path.join(HERE, "renders")
@@ -490,7 +552,9 @@ def main():
     models = (V03_MODELS if args.v03 else
               REPSETT_MODELS if args.repsett else
               RADIAL_MODELS if args.radial else
-              LATTICE_MODELS if args.lattice else MODELS)
+              LATTICE_MODELS if args.lattice else
+              LYKT_MODELS if args.lykt else
+              KRONE_MODELS if args.krone else MODELS)
     for family, name in models:
         if args.only and args.only not in f"{family}/{name}":
             continue
@@ -505,7 +569,9 @@ def main():
         # so the lace resolves cleanly instead of blocky
         ss = args.ss if args.ss else (SS_LAMP if family == "skavl" else SS)
         el = 5 if family in PORCELAIN_FAMILIES else 16   # eye-level porcelain
-        render_png(mesh, family, hero, ss=ss, el_deg=el)
+        if name in ("krans", "skaal"):
+            el = 14                          # flate formar: litt ovanfraa
+        render_png(mesh, family, hero, ss=ss, el_deg=el, name=name)
         print(f"hero  {family}-{name}: {os.path.relpath(hero, HERE)} (ss={ss})")
 
     if args.v03:
@@ -520,6 +586,12 @@ def main():
     if args.lattice:
         out = build_family("lattice", out_dir)
         print(f"family lattice: {os.path.relpath(out, HERE)}")
+    if args.lykt:
+        out = build_family("lykt", out_dir)
+        print(f"family lykt: {os.path.relpath(out, HERE)}")
+    if args.krone:
+        out = build_family("krone", out_dir)
+        print(f"family krone: {os.path.relpath(out, HERE)}")
 
 
 if __name__ == "__main__":

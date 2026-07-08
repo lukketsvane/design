@@ -2,6 +2,26 @@
 
 Kvar feil vert til ein regel, éin gong. Nyaste øvst.
 
+- **2026-07-08:** Vil ein ha «merge and smoothen» (mjuke, smelta overgangar
+  som i keramikk), er implisitt felt + smin/smax + marching cubes rett
+  verktøy; boolske kutt gjev harde kantar same kor mykje ein glattar
+  etterpå. Lykt-settet (boolsk) mot Krone-settet (felt) er beviset.
+- **2026-07-08:** Same geometri i to språk (krone.py og studio/worker.js)
+  MÅ paritetstestast med tilfeldige punkt før ein stolar på biletet; ein
+  halv-segment-forskyving i vinkelinnpakkinga gav «umoglege» artefaktar
+  som såg ut som mesher-feil. Testen fann rota på minutt (maks avvik
+  0,04 mm etter fiks).
+- **2026-07-08:** Marching cubes kan la to flater tangere gjennom same kant
+  (valens 4/6, ikkje-manifold). Rett reparasjon er vifte-splitting per
+  HJØRNE (union-find over flate-vifta gjennom manifolde kantar), ikkje
+  omdøyping av hjørne i enkeltflater; det siste riv opp nabokantane.
+- **2026-07-08:** Geometri-detaljar under voxel-pitchen (nålehol r < pitch)
+  gjev berre skimmer-støy i marching cubes/SurfaceNets; klem radien opp
+  til pitchen i grove pass og bruk eksakte verdiar berre i eksportpasset.
+- **2026-07-08:** Chromium i containeren kjem ikkje ut gjennom agentproxyen
+  (ERR_CONNECTION_RESET); hent eksterne assets med curl (som går gjennom
+  proxyen) og test nettsider lokalt på localhost, som er unnateke.
+
 - **2026-07-06:** Ved matching mot eit referansebilete: identifiser den
   underliggjande STRUKTUREN før du modellerer, ikkje overflate-inntrykket.
   Ribbe-referansen såg ut som «skjel/tekstur» men VAR eit gitter av runda

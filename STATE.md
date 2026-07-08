@@ -119,6 +119,17 @@ så branch-arbeidet er lista her i staden for i hovudtabellen:
   krone/fot). Tre søsken korall/rev/søyle. **Overlappar main sitt generator
   B-spor** (skavl_b/skavl_lampe): begge tolkar referansen som radial/vove
   lampeform, ulik geometri. Konsolidering treng Iver.
+- **Lykt** `verkstad/lykt/` (2026-07-08): Ivers fem keramikk-referansar
+  (smultring, kuppel, ball, krone, terning) som boolsk generator, fem
+  grunnformer, eitt regelverk. Utforskinga som fann grammatikken.
+- **Krone** `verkstad/krone/` (2026-07-08, Ivers styring «fully
+  parametric, merge and smoothen breps, same parameters different
+  values»): EITT implisitt felt (smin/smax, marching cubes) med tre
+  verdisett (taarn, krans, skaal), vasstette 3MF. Og **Krone Studio**
+  `verkstad/krone/studio/`: interaktivt web-grensesnitt i same formspråk
+  som parametric.iverfinne.no (botnark, presets, slidere, shuffle,
+  lampelys-modus, STL-eksport, delbar URL); JS-feltet paritetstesta mot
+  python (maks avvik 0,04 mm).
 
 ## Blokkert / treng Iver, VIKTIGAST FYRST
 

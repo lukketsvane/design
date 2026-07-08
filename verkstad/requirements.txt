@@ -9,3 +9,5 @@ lxml            # 3MF-eksport
 networkx        # trimesh fix_normals / 3MF-eksport
 scipy           # trimesh normal-glatting og reparasjon
 pillow          # render.py: PNG-utskrift og nedskalering
+scikit-image    # krone.py: marching cubes over det implisitte feltet
+fast_simplification  # krone.py: desimering av MC-nettet
