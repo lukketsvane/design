@@ -21,6 +21,11 @@ Kvar feil vert til ein regel, éin gong. Nyaste øvst.
 - **2026-07-08:** Chromium i containeren kjem ikkje ut gjennom agentproxyen
   (ERR_CONNECTION_RESET); hent eksterne assets med curl (som går gjennom
   proxyen) og test nettsider lokalt på localhost, som er unnateke.
+- **2026-07-08:** `pkill -f "<mønster>"` der mønsteret står i same
+  kommandolinje drep skalet sjølv (exit 144) FØR resten av kommandoen
+  køyrer, og heredoc-redigeringane gjekk tapt. Del opp mønsterstrengen
+  (`"timeout 150""0"`) eller køyr pkill i eige Bash-kall og verifiser
+  etterpå at redigeringa faktisk står i fila.
 
 - **2026-07-06:** Ved matching mot eit referansebilete: identifiser den
   underliggjande STRUKTUREN før du modellerer, ikkje overflate-inntrykket.

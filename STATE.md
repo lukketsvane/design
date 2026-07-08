@@ -130,6 +130,14 @@ så branch-arbeidet er lista her i staden for i hovudtabellen:
   som parametric.iverfinne.no (botnark, presets, slidere, shuffle,
   lampelys-modus, STL-eksport, delbar URL); JS-feltet paritetstesta mot
   python (maks avvik 0,04 mm).
+- **Grind** `verkstad/grind/` (2026-07-08, Ivers styring «builder for
+  creating all these generative parametrical structures», sju
+  referansar): grafbyggjar for skjelett-strukturar (nivå, stag, ringar,
+  eiker, kopp, kuler, munningar, loops) som eitt smelta felt; sju
+  verdisett (tromme, stjerne, totem, korg, krabbe, kløver, drope).
+  Krone Studio er no FLEIRFAMILIE (Krone, Grind) med familieveljar og
+  preset-chips, akkurat som Ring/Vessel/Fin på parametric.iverfinne.no.
+  Paritetstest eksakt (identisk elementgeometri i JS og python).
 
 ## Blokkert / treng Iver, VIKTIGAST FYRST
 

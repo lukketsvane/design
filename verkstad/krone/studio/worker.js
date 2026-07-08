@@ -145,6 +145,179 @@ function bounds(c) {
   return { rMax, zMin: -4, zMax: zcMax };
 }
 
+/* --------------------------------------- grind: graf av roer og kuler */
+function grindLevels(c) {
+  const per = 2 * Math.PI / c.n, out = [];
+  for (let l = 0; l < c.L; l++) {
+    const u = c.L === 1 ? 0.55 : l / (c.L - 1);
+    const r = c.R * (c.f_bot + (c.f_top - c.f_bot) * u
+      + 4 * c.buk * u * (1 - u));
+    const z = c.L === 1 ? 0.55 * c.H : u * c.H;
+    out.push([z, r, c.twist * per * l]);
+  }
+  return out;
+}
+
+function grindNode(lv, th) {
+  const [z, r, ph] = lv;
+  return [r * Math.cos(th + ph), r * Math.sin(th + ph), z];
+}
+
+function grindArc(p0, p1, bow, m) {
+  const pts = [];
+  for (let i = 0; i <= m; i++) {
+    const t = i / m;
+    const p = [p0[0] + (p1[0] - p0[0]) * t, p0[1] + (p1[1] - p0[1]) * t,
+               p0[2] + (p1[2] - p0[2]) * t];
+    const nrm = Math.hypot(p[0], p[1]);
+    if (nrm > 1e-9 && bow) {
+      const s = bow * Math.sin(Math.PI * t) / nrm;
+      p[0] += p[0] * s; p[1] += p[1] * s;
+    }
+    pts.push(p);
+  }
+  return pts;
+}
+
+function grindElements(c) {
+  const lv = grindLevels(c), per = 2 * Math.PI / c.n;
+  const caps = [], balls = [], tori = [], bores = [], loops = [];
+  const tube = c.tube;
+  for (let l = 0; l < lv.length - 1; l++) {
+    const p0 = grindNode(lv[l], 0), p1 = grindNode(lv[l + 1], 0);
+    const pts = grindArc(p0, p1, c.bow, 10);
+    for (let i = 0; i < pts.length - 1; i++)
+      caps.push([pts[i], pts[i + 1], tube, [0]]);
+    if (c.diag > 0.01)
+      for (const sgn of [1, -1]) {
+        const q1 = grindNode(lv[l + 1], sgn * per);
+        const qs = grindArc(p0, q1, c.bow * 0.5, 7);
+        for (let i = 0; i < qs.length - 1; i++)
+          caps.push([qs[i], qs[i + 1], tube * c.diag, [0, -sgn * per]]);
+      }
+  }
+  lv.forEach((l, i) => {
+    if (c.rings === 2 || (c.rings === 1 && (i === 0 || i === lv.length - 1)))
+      tori.push([l[0], l[1], tube]);
+  });
+  let zc = c.L > 1 ? c.H : c.H * 0.98;
+  if ((c.cup_zf || 0) > 0.01) zc = c.cup_zf * c.H;
+  if (c.cup > 0.5 && c.spokes) {
+    const top = lv[lv.length - 1];
+    const p0 = grindNode(top, 0);
+    const p1 = [c.cup * 0.75 * Math.cos(top[2]),
+                c.cup * 0.75 * Math.sin(top[2]), zc];
+    const pts = grindArc(p0, p1, 0, 3);
+    for (let i = 0; i < pts.length - 1; i++)
+      caps.push([pts[i], pts[i + 1], tube, [0]]);
+  }
+  for (const l of lv) {
+    const p = grindNode(l, 0);
+    if (c.ball > 0.3) balls.push([p, c.ball]);
+    if (c.nub > 0.3) {
+      const f = (l[1] + tube * 1.25) / (l[1] + 1e-9);
+      balls.push([[p[0] * f, p[1] * f, p[2]], c.nub]);
+    }
+  }
+  if (c.mlen > 0.5) {
+    const p = grindNode(lv[0], 0);
+    const nrm = Math.hypot(p[0], p[1]) + 1e-9;
+    const t = c.tilt * Math.PI / 180;
+    const d = [p[0] / nrm * Math.sin(t), p[1] / nrm * Math.sin(t),
+               -Math.cos(t)];
+    const q = [p[0] + d[0] * c.mlen, p[1] + d[1] * c.mlen,
+               p[2] + d[2] * c.mlen];
+    caps.push([p, q, tube * 1.5, [0]]);
+    bores.push([[p[0] + d[0] * c.mlen * 0.3, p[1] + d[1] * c.mlen * 0.3,
+                 p[2] + d[2] * c.mlen * 0.3], d, tube * 0.85,
+                c.mlen * 0.9 + 6]);
+  }
+  if ((c.loop || 0) > 1) {
+    const ti = (c.loop_tilt || 0) * Math.PI / 180;
+    let N = [0, Math.cos(ti), Math.sin(ti)];          // t-hat mot z-hat
+    let u1 = [1, 0, 0];
+    let u2 = [0, N[2], -N[1]];                        // N x u1
+    const be = (c.loop_lean || 0) * Math.PI / 180;    // +lean: topp inn
+    const cb = Math.cos(be), sb = Math.sin(be);
+    const rot = (v) => [cb * v[0] - sb * v[2], v[1],
+                        sb * v[0] + cb * v[2]];
+    u1 = rot(u1); u2 = rot(u2); N = rot(N);
+    const C = [c.loop_out, 0, c.loop_zf * c.H];
+    loops.push([C, u1, u2, N, c.loop, c.loop_ell || 1, tube]);
+  }
+  return { caps, balls, tori, bores, loops, zc };
+}
+
+function segDist(px, py, pz, a, b, r) {
+  const abx = b[0] - a[0], aby = b[1] - a[1], abz = b[2] - a[2];
+  const apx = px - a[0], apy = py - a[1], apz = pz - a[2];
+  let t = (apx * abx + apy * aby + apz * abz)
+    / (abx * abx + aby * aby + abz * abz + 1e-12);
+  t = Math.min(Math.max(t, 0), 1);
+  return Math.hypot(apx - t * abx, apy - t * aby, apz - t * abz) - r;
+}
+
+function makeGrindField(c) {
+  const per = 2 * Math.PI / c.n;
+  const { caps, balls, tori, bores, loops, zc } = grindElements(c);
+  const k = c.k;
+  const rc = c.cup, hc = Math.max(c.cup * 1.05, 16);
+  return function f(x, y, z) {
+    const rho = Math.hypot(x, y);
+    const th = Math.atan2(y, x);
+    const thw = ((th + per / 2) % per + per) % per - per / 2;
+    let g = 1e9;
+    for (const [zt, rt, rr] of tori)
+      g = smin(g, Math.hypot(rho - rt, z - zt) - rr, k);
+    for (const [a, b, r, offs] of caps)
+      for (const off of offs) {
+        const tw = thw - off;
+        g = smin(g, segDist(rho * Math.cos(tw), rho * Math.sin(tw), z,
+                            a, b, r), k);
+      }
+    const px = rho * Math.cos(thw), py = rho * Math.sin(thw);
+    for (const [p, r] of balls)
+      g = smin(g, Math.hypot(px - p[0], py - p[1], z - p[2]) - r, k);
+    for (const [C, u1, u2, N, rl, ell, rr] of loops)
+      for (const off of [0, per, -per]) {
+        const tw = thw - off;
+        const qx = rho * Math.cos(tw) - C[0],
+              qy = rho * Math.sin(tw) - C[1], qz = z - C[2];
+        const a1 = qx * u1[0] + qy * u1[1] + qz * u1[2];
+        const a2 = (qx * u2[0] + qy * u2[1] + qz * u2[2]) / ell;
+        const h = qx * N[0] + qy * N[1] + qz * N[2];
+        g = smin(g, Math.hypot(Math.hypot(a1, a2) - rl, h) - rr, k);
+      }
+    if (rc > 0.5) {
+      g = smin(g, Math.max(rho - rc, Math.abs(z - zc) - hc / 2), k);
+      const db = Math.max(rho - rc * 0.68, zc + hc / 2 - 3 - z);
+      g = smax(g, -db, 1.6);
+    }
+    for (const [p, d, r, ln] of bores) {
+      const rx = px - p[0], ry = py - p[1], rz = z - p[2];
+      const t = rx * d[0] + ry * d[1] + rz * d[2];
+      const rad = Math.hypot(rx - t * d[0], ry - t * d[1], rz - t * d[2]);
+      const db = Math.max(rad - r, Math.max(-t - 2, t - ln));
+      g = smax(g, -db, 1.2);
+    }
+    return g;
+  };
+}
+
+function grindBounds(c) {
+  const lp = c.loop || 0, ell = c.loop_ell || 1;
+  let rMax = c.R * Math.max(c.f_bot, c.f_top, 1 + Math.abs(c.buk))
+    + c.bow + c.tube * 2 + c.ball + c.mlen + 10;
+  rMax = Math.max(rMax, (c.loop_out || 0) + lp * ell + c.tube * 2 + 10);
+  let zMin = -(c.mlen + 8);
+  let zMax = c.H + Math.max(c.cup * 1.2, 10) + c.ball + 8;
+  if (lp > 1) {
+    zMin = Math.min(zMin, c.loop_zf * c.H - lp * ell - c.tube * 2 - 6);
+    zMax = Math.max(zMax, c.loop_zf * c.H + lp * ell + c.tube * 2 + 6);
+  }
+  return { rMax, zMin, zMax };
+}
+
 /* ------------------------------------- naive SurfaceNets (Lysenko, MIT) */
 const CUBE_EDGES = new Int32Array(24);
 const EDGE_TABLE = new Int32Array(256);
@@ -262,10 +435,12 @@ function toSTL(positions, indices) {
 /* ------------------------------------------------------------------ main */
 self.onmessage = (ev) => {
   const { cfg, res, job, want } = ev.data;
-  const { rMax, zMin, zMax } = bounds(cfg);
+  const grind = cfg.kind === "grind";
+  const { rMax, zMin, zMax } = grind ? grindBounds(cfg) : bounds(cfg);
   const span = Math.max(2 * rMax, zMax - zMin);
   const pitch = span / res;
-  const f = makeField(cfg, want === "stl" ? 0 : pitch);
+  const f = grind ? makeGrindField(cfg)
+                  : makeField(cfg, want === "stl" ? 0 : pitch);
   const nx = Math.ceil(2 * rMax / pitch) + 3;
   const nz = Math.ceil((zMax - zMin) / pitch) + 3;
   const ox = -rMax - pitch, oz = zMin - pitch;

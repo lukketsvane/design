@@ -53,6 +53,7 @@ FILAMENT = {         # warm off-white printed plastic, per family
     "lattice": np.array([0.66, 0.83, 0.77]),   # celadon porcelain
     "lykt": np.array([0.90, 0.86, 0.78]),      # warm cream ceramic
     "krone": np.array([0.91, 0.87, 0.79]),     # warm cream ceramic
+    "grind": np.array([0.92, 0.89, 0.83]),     # glossy bone-white ceramic
 }
 # families whose 3MF files are not named "{family}-{name}.3mf"
 FILE_PREFIX = {"repsett": "skoeytehylse", "radial": "ribbe",
@@ -61,9 +62,9 @@ FILE_PREFIX = {"repsett": "skoeytehylse", "radial": "ribbe",
 FAMILY_DIR = {"lattice": "radial"}
 # glossier sheen for the porcelain-read families
 FAMILY_SHEEN = {"radial": 0.26, "lattice": 0.30, "lykt": 0.22,
-                "krone": 0.20}
+                "krone": 0.20, "grind": 0.34}
 # families rendered with the soft porcelain studio rig + grey backdrop
-PORCELAIN_FAMILIES = {"radial", "lattice", "lykt", "krone"}
+PORCELAIN_FAMILIES = {"radial", "lattice", "lykt", "krone", "grind"}
 
 # two directional lights (world direction the light TRAVELS, i.e. toward the
 # object) and their radiances; no ambient term
@@ -425,6 +426,9 @@ FAMILY_INFO = {
               ("smultring", "smultring"), ("terning", "terning")]),
     "krone": ("Krone, eitt parametersett, tre verdisett", "krone",
               [("taarn", "taarn"), ("krans", "krans"), ("skaal", "skaal")]),
+    "grind": ("Grind, grafbyggjaren, fem verdisett", "grind",
+              [("tromme", "tromme"), ("stjerne", "stjerne"),
+               ("totem", "totem"), ("korg", "korg"), ("krabbe", "krabbe")]),
 }
 # v0.3 lamp models (tall layer-direction slots), rendered via --v03
 V03_MODELS = [("skavl", "a-roleg-v03"), ("skavl", "b-open-v03"),
@@ -443,6 +447,9 @@ LYKT_MODELS = [("lykt", "kuppel"), ("lykt", "ball"), ("lykt", "krone"),
                ("lykt", "smultring"), ("lykt", "terning")]
 # krone (SDF shade, one parameter set) family, rendered via --krone
 KRONE_MODELS = [("krone", "taarn"), ("krone", "krans"), ("krone", "skaal")]
+# grind (node-strut builder) family, rendered via --grind
+GRIND_MODELS = [("grind", "tromme"), ("grind", "stjerne"), ("grind", "totem"),
+                ("grind", "korg"), ("grind", "krabbe")]
 FONT_DIR = "/usr/share/fonts/truetype/dejavu"
 
 
@@ -535,6 +542,8 @@ def main():
                     help="render the parametric lykt shades + family strip")
     ap.add_argument("--krone", action="store_true",
                     help="render the krone SDF shades + family strip")
+    ap.add_argument("--grind", action="store_true",
+                    help="render the grind node-strut builders + family")
     args = ap.parse_args()
 
     out_dir = os.path.join(HERE, "renders")
@@ -554,7 +563,8 @@ def main():
               RADIAL_MODELS if args.radial else
               LATTICE_MODELS if args.lattice else
               LYKT_MODELS if args.lykt else
-              KRONE_MODELS if args.krone else MODELS)
+              KRONE_MODELS if args.krone else
+              GRIND_MODELS if args.grind else MODELS)
     for family, name in models:
         if args.only and args.only not in f"{family}/{name}":
             continue
@@ -571,6 +581,10 @@ def main():
         el = 5 if family in PORCELAIN_FAMILIES else 16   # eye-level porcelain
         if name in ("krans", "skaal"):
             el = 14                          # flate formar: litt ovanfraa
+        elif name in ("stjerne", "krabbe"):
+            el = 26                          # heilt flate: ovanfraa
+        elif name == "tromme":
+            el = 13
         render_png(mesh, family, hero, ss=ss, el_deg=el, name=name)
         print(f"hero  {family}-{name}: {os.path.relpath(hero, HERE)} (ss={ss})")
 
@@ -592,6 +606,9 @@ def main():
     if args.krone:
         out = build_family("krone", out_dir)
         print(f"family krone: {os.path.relpath(out, HERE)}")
+    if args.grind:
+        out = build_family("grind", out_dir)
+        print(f"family grind: {os.path.relpath(out, HERE)}")
 
 
 if __name__ == "__main__":
