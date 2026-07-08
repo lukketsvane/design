@@ -195,27 +195,27 @@ for (const p of Object.values(PRESETS_KRONE)) p.kind = "krone";
 const PRESETS_GRIND = {
   "Tromme": { n: 8, L: 2, H: 84, R: 64, f_bot: 1, f_top: 1, buk: 0,
     twist: 0, bow: 12, tube: 7.2, diag: 0, rings: 2, spokes: 1,
-    ball: 9, nub: 4.2, cup: 20, mlen: 0, tilt: 0, k: 5 },
+    ball: 9, nub: 4.2, candle: 1, mlen: 0, tilt: 0, k: 5 },
   "Stjerne": { n: 5, L: 1, H: 36, R: 84, f_bot: 1, f_top: 1, buk: 0,
     twist: 0, bow: 0, tube: 7, diag: 0, rings: 2, spokes: 1,
-    ball: 13, nub: 0, cup: 18, mlen: 0, tilt: 0, k: 6 },
+    ball: 13, nub: 0, candle: 2, mlen: 0, tilt: 0, k: 6 },
   "Totem": { n: 3, L: 3, H: 170, R: 50, f_bot: 1.1, f_top: 0.85, buk: 0,
     twist: 0.5, bow: 14, tube: 8, diag: 1, rings: 1, spokes: 0,
-    ball: 9.5, nub: 0, cup: 0, mlen: 20, tilt: 28, k: 6.5 },
+    ball: 9.5, nub: 0, candle: 0, mlen: 20, tilt: 28, k: 6.5 },
   "Korg": { n: 6, L: 3, H: 148, R: 58, f_bot: 1.18, f_top: 0.92,
     buk: -0.08, twist: 0.5, bow: 7, tube: 5.6, diag: 1, rings: 2,
-    spokes: 0, ball: 6.5, nub: 3.2, cup: 0, mlen: 0, tilt: 0, k: 4.5 },
+    spokes: 0, ball: 6.5, nub: 3.2, candle: 0, mlen: 0, tilt: 0, k: 4.5 },
   "Krabbe": { n: 5, L: 1, H: 52, R: 62, f_bot: 1, f_top: 1, buk: 0,
     twist: 0, bow: 0, tube: 6.8, diag: 0, rings: 2, spokes: 1,
-    ball: 9, nub: 0, cup: 17, mlen: 18, tilt: 52, k: 6 },
+    ball: 9, nub: 0, candle: 2, mlen: 18, tilt: 52, k: 6 },
   "Kløver": { n: 4, L: 1, H: 52, R: 40, f_bot: 1, f_top: 1, buk: 0,
     twist: 0, bow: 0, tube: 7, diag: 0, rings: 0, spokes: 1,
-    ball: 8.5, nub: 0, cup: 16, mlen: 0, tilt: 0, k: 5.5,
+    ball: 8.5, nub: 0, candle: 2, mlen: 0, tilt: 0, k: 5.5,
     loop: 26, loop_out: 50, loop_zf: 0.34, loop_tilt: 56,
     loop_ell: 0.85 },
   "Drope": { n: 3, L: 1, H: 150, R: 33, f_bot: 1, f_top: 1, buk: 0,
     twist: 0, bow: 0, tube: 6.4, diag: 0, rings: 2, spokes: 1,
-    ball: 0, nub: 0, cup: 15, cup_zf: 0.55, mlen: 0, tilt: 0, k: 6.5,
+    ball: 0, nub: 0, candle: 2, cup_zf: 0.55, mlen: 0, tilt: 0, k: 6.5,
     loop: 38, loop_out: 58, loop_zf: 0.42, loop_tilt: 6, loop_ell: 1.55,
     loop_lean: 10, loop_drop: 0.45 },
 };
@@ -228,6 +228,7 @@ for (const p of Object.values(PRESETS_GRIND)) {
   if (p.loop_lean == null) p.loop_lean = 0;
   if (p.loop_drop == null) p.loop_drop = 0;
   if (p.cup_zf == null) p.cup_zf = 0;
+  if (p.candle == null) p.candle = 0;
   if (p.grow == null) p.grow = 1;
   if (p.zig == null) p.zig = 0;
 }
@@ -282,7 +283,7 @@ const SLIDERS_GRIND = [
   ["loop", "loop_drop", "Loop drope", 0, 0.6, 0.05],
   ["detalj", "ball", "Kule",    0, 14, 0.5],
   ["detalj", "nub",  "Knopp",   0, 5, 0.5],
-  ["detalj", "cup",  "Kopp",    0, 26, 0.5],
+  ["detalj", "candle", "Lys",   0, 2, 1],
   ["detalj", "cup_zf", "Kopp høgd", 0, 1.1, 0.01],
   ["detalj", "mlen", "Munning", 0, 26, 0.5],
   ["detalj", "tilt", "Munnvinkel", 0, 80, 1],
@@ -302,7 +303,8 @@ function spanGrind(c) {
   let rM = c.R * Math.max(c.f_bot, c.f_top, 1 + Math.abs(c.buk))
     + c.bow + c.tube * 2 + c.ball + c.mlen + 10;
   rM = Math.max(rM, (c.loop_out || 0) + lp * ell + c.tube * 2 + 10);
-  const zTop = Math.max(c.H + Math.max(c.cup * 1.2, 10) + c.ball,
+  const cupH = c.candle ? 38 : 10;
+  const zTop = Math.max(c.H + cupH + c.ball,
                         lp > 1 ? c.loop_zf * c.H + lp * ell + 14 : 0);
   return Math.max(2 * rM, zTop + c.mlen + 16);
 }
@@ -488,10 +490,10 @@ function buildRows() {
     inp.type = "range"; inp.min = mn; inp.max = mx; inp.step = st;
     inp.value = cfg[key];
     const out = document.createElement("output");
-    out.textContent = fmt(cfg[key], st);
+    out.textContent = fmt(cfg[key], st, key);
     inp.addEventListener("input", () => {
       cfg[key] = parseFloat(inp.value);
-      out.textContent = fmt(cfg[key], st);
+      out.textContent = fmt(cfg[key], st, key);
       setPreset(null);
       queueRebuild();
     });
@@ -500,14 +502,17 @@ function buildRows() {
     rowsEl.appendChild(row);
   }
 }
-function fmt(v, st) { return st >= 1 ? String(Math.round(v))
-  : (st >= 0.1 ? v.toFixed(1) : v.toFixed(2)); }
+function fmt(v, st, key) {
+  if (key === "candle") return ["ingen", "telys", "krone"][Math.round(v)];
+  return st >= 1 ? String(Math.round(v))
+    : (st >= 0.1 ? v.toFixed(1) : v.toFixed(2));
+}
 
 function syncRows() {
   for (const [, key] of FAMILIES[fam].sliders) {
     if (!inputs[key]) continue;
     inputs[key].inp.value = cfg[key];
-    inputs[key].out.textContent = fmt(cfg[key], inputs[key].st);
+    inputs[key].out.textContent = fmt(cfg[key], inputs[key].st, key);
   }
 }
 
@@ -602,7 +607,8 @@ document.getElementById("shuffle").addEventListener("click", () => {
       tube: r(4.5, 9), diag: Math.random() < 0.5 ? 0 : r(0.6, 1.2),
       rings: Math.round(r(0, 2)), spokes: Math.random() < 0.6 ? 1 : 0,
       ball: r(0, 12), nub: Math.random() < 0.5 ? 0 : r(2, 4.5),
-      cup: Math.random() < 0.6 ? r(14, 24) : 0, cup_zf: 0,
+      candle: Math.random() < 0.7 ? (Math.random() < 0.5 ? 1 : 2) : 0,
+      cup_zf: 0,
       mlen: Math.random() < 0.4 ? r(10, 24) : 0, tilt: r(15, 65),
       k: r(3, 8), grow: r(0.75, 1.4),
       zig: Math.random() < 0.35 ? r(4, 14) : 0,
@@ -632,6 +638,9 @@ if (location.hash.length > 8) {
     start = JSON.parse(decodeURIComponent(escape(atob(
       location.hash.slice(1)))));
     if (start && !start.cfg) start = { fam: "Krone", cfg: start };
+    if (start && start.cfg && start.cfg.candle == null
+        && (start.cfg.cup || 0) > 0.5)
+      start.cfg.candle = start.cfg.cup < 19 ? 2 : 1;
     if (start && !FAMILIES[start.fam]) start = null;
   } catch (e) { start = null; }
 }

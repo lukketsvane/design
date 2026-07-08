@@ -17,7 +17,7 @@ strukturen er n-periodisk kring aksen. Elementmenyen:
 | stag | bow, tube, diag | kapsel-bogar mellom nivaa, X-diagonalar |
 | ringar | rings (0, endar, alle) | torusar paa nivaa |
 | eiker | spokes | stag fraa oevste krans inn til koppen |
-| kopp | cup, cup_zf | sentral lysestake-kopp med boring |
+| kopp | candle (0 ingen, 1 telys, 2 kronelys), cup_zf | standardisert sokkel, sjaa under |
 | kuler | ball, nub | ledd-kuler paa nodane, knoppar utover |
 | munningar | mlen, tilt | opne roerender som foeter (boring subtrahert) |
 | loop | loop, loop_out, loop_zf, loop_tilt, loop_lean, loop_ell, loop_drop | lukka blad/drope-ring i tilta radialplan, med dropeform |
@@ -36,6 +36,24 @@ Sju verdisett, same kode, mot dei sju referansane:
 | krabbe | laag fot med kopp og skraastilte roerfoeter |
 | kloever | tilta blad-loops kring koppen |
 | drope | hoege drope-loops som lener inn mot midtring med kopp |
+
+## Lysstandardane (sokkelen)
+
+Koppen er laast til to standardar, ikkje fri radius (Ivers krav
+2026-07-09). Maal fraa Clas Ohlson:
+
+| standard | lyset | boring | djupn | yttervegg |
+|---|---|---|---|---|
+| telys (44-1725) | dia 37,5 mm, hoegd ca 16 mm | dia 40,5 mm (klaring 3 mm) | 13 mm, flat botn | 4,75 mm |
+| kronelys (44-3816) | rifla fot ca 22 mm, lengd 190 mm | dia 23 mm (foten kilar seg) | 30 mm | 5,5 mm |
+
+Verdisetta: tromme har telys; stjerne, krabbe, kloever og drope har
+kronelys; totem og korg er utan kopp.
+
+**Tryggleik:** PLA-printane er FORMSTUDIAR. PLA mjuknar ved ca 60
+gradar og brenn; bruk med levande lys krev keramikk (stoyp/brenn
+forma) eller metallinnsats i koppen. Telysets aluminiumskopp er ikkje
+nok vern aaleine.
 
 ## Filene
 

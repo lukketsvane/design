@@ -28,43 +28,50 @@ import trimesh
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 
+# lysstandardar (mm): maal fraa Clas Ohlson 44-1725 (telys, dia 37,5) og
+# 44-3816 (kronelys, lengd 190, rifla fot ca 22); boring med klaring
+CANDLE = {
+    1: dict(bore=20.25, depth=13.0, wall=4.75),   # telys: OD 40,5
+    2: dict(bore=11.5, depth=30.0, wall=5.5),     # kronelys: OD 23
+}
+
 VARIANTS = {
     # laag tromleforma korg med ovale hol, eiker og kopp (ref 1)
     "tromme": dict(n=8, L=2, H=84.0, R=64.0, f_bot=1.0, f_top=1.0, buk=0.0,
                    twist=0.0, bow=12.0, tube=7.2, diag=0.0, rings=2,
-                   spokes=1, ball=9.0, nub=4.2, cup=20.0, mlen=0.0,
+                   spokes=1, ball=9.0, nub=4.2, candle=1, mlen=0.0,
                    tilt=0.0, k=5.0),
     # flat stjernefot med kraftige kuler og kopp (ref 2)
     "stjerne": dict(n=5, L=1, H=36.0, R=84.0, f_bot=1.0, f_top=1.0, buk=0.0,
                     twist=0.0, bow=0.0, tube=7.0, diag=0.0, rings=2,
-                    spokes=1, ball=13.0, nub=0.0, cup=18.0, mlen=0.0,
+                    spokes=1, ball=13.0, nub=0.0, candle=2, mlen=0.0,
                     tilt=0.0, k=6.0),
     # hoeg open totem med boga stag og roermunningar (ref 3)
     "totem": dict(n=3, L=3, H=170.0, R=50.0, f_bot=1.1, f_top=0.85,
                   buk=0.0, twist=0.5, bow=14.0, tube=8.0, diag=1.0,
-                  rings=1, spokes=0, ball=9.5, nub=0.0, cup=0.0, mlen=20.0,
+                  rings=1, spokes=0, ball=9.5, nub=0.0, candle=0, mlen=20.0,
                   tilt=28.0, k=6.5),
     # korgvase i tre nivaa med X-fletting og knoppar (ref 4)
     "korg": dict(n=6, L=3, H=148.0, R=58.0, f_bot=1.18, f_top=0.92,
                  buk=-0.08, twist=0.5, bow=7.0, tube=5.6, diag=1.0,
-                 rings=2, spokes=0, ball=6.5, nub=3.2, cup=0.0, mlen=0.0,
+                 rings=2, spokes=0, ball=6.5, nub=3.2, candle=0, mlen=0.0,
                  tilt=0.0, k=4.5),
     # laag krabbe med kopp og skraastilte roerfoeter (ref 5)
     "krabbe": dict(n=5, L=1, H=52.0, R=62.0, f_bot=1.0, f_top=1.0, buk=0.0,
                    twist=0.0, bow=0.0, tube=6.8, diag=0.0, rings=2,
-                   spokes=1, ball=9.0, nub=0.0, cup=17.0, mlen=18.0,
+                   spokes=1, ball=9.0, nub=0.0, candle=2, mlen=18.0,
                    tilt=52.0, k=6.0),
     # kloeverfot: tilta blad-loops kring koppen, knoppkuler (ref 6)
     "kloever": dict(n=4, L=1, H=52.0, R=40.0, f_bot=1.0, f_top=1.0, buk=0.0,
                     twist=0.0, bow=0.0, tube=7.0, diag=0.0, rings=0,
-                    spokes=1, ball=8.5, nub=0.0, cup=16.0, mlen=0.0,
+                    spokes=1, ball=8.5, nub=0.0, candle=2, mlen=0.0,
                     tilt=0.0, k=5.5,
                     loop=26.0, loop_out=50.0, loop_zf=0.34, loop_tilt=56.0,
                     loop_ell=0.85),
     # dropebur: hoege vertikale drope-loops, midtring med kopp (ref 7)
     "drope": dict(n=3, L=1, H=150.0, R=33.0, f_bot=1.0, f_top=1.0, buk=0.0,
                   twist=0.0, bow=0.0, tube=6.4, diag=0.0, rings=2,
-                  spokes=1, ball=0.0, nub=0.0, cup=15.0, mlen=0.0,
+                  spokes=1, ball=0.0, nub=0.0, candle=2, mlen=0.0,
                   tilt=0.0, k=6.5,
                   loop=38.0, loop_out=58.0, loop_zf=0.42, loop_tilt=6.0,
                   loop_ell=1.55, loop_lean=10.0, loop_drop=0.45),
@@ -72,6 +79,7 @@ VARIANTS = {
 VARIANTS["drope"]["cup_zf"] = 0.55
 for _c in VARIANTS.values():
     _c.setdefault("cup_zf", 0.0)          # 0 = automatisk (topp)
+    _c.setdefault("candle", 0)            # 0 ingen, 1 telys, 2 kronelys
     _c.setdefault("loop", 0.0)
     _c.setdefault("loop_out", 40.0)
     _c.setdefault("loop_zf", 0.4)
@@ -185,13 +193,15 @@ def elements(c):
     zc = c["H"] if c["L"] > 1 else c["H"] * 0.98     # kopp + eiker
     if c.get("cup_zf", 0.0) > 0.01:
         zc = c["cup_zf"] * c["H"]
-    if c["cup"] > 0.5:
+    cnd = CANDLE.get(int(round(c.get("candle", 0))))
+    cup_r = (cnd["bore"] + cnd["wall"]) if cnd else 0.0
+    if cnd:
         if c["spokes"]:
             for th0, dz in subs:
                 p0 = nod(Lc - 1, th0)
                 ph = lv[-1][2]
-                p1 = np.array([c["cup"] * 0.75 * math.cos(th0 + ph),
-                               c["cup"] * 0.75 * math.sin(th0 + ph), zc])
+                p1 = np.array([cup_r * 0.8 * math.cos(th0 + ph),
+                               cup_r * 0.8 * math.sin(th0 + ph), zc])
                 pts = arc_points(p0, p1, 0.0, m=3)
                 rr = tube * su(Lc - 1)
                 for a, b in zip(pts[:-1], pts[1:]):
@@ -288,12 +298,14 @@ def field(P, c):
             d = np.hypot(np.hypot(a1, a2) - rl, h) - rr_eff
             f = smin(f, d, k)
 
-    if c["cup"] > 0.5:                                # kopp med boring
-        rc, hc = c["cup"], max(c["cup"] * 1.05, 16.0)
+    cnd = CANDLE.get(int(round(c.get("candle", 0))))
+    if cnd:                                           # kopp: lysstandard
+        rc = cnd["bore"] + cnd["wall"]
+        hc = cnd["depth"] + 4.0                       # 4 mm golv i koppen
         dcyl = np.maximum(rho - rc, np.abs(z - zc) - hc / 2.0)
         f = smin(f, dcyl, k)
-        dbore = np.maximum(rho - rc * 0.68, zc + hc / 2.0 - 3.0 - z)
-        f = smax(f, -dbore, 1.6)
+        dbore = np.maximum(rho - cnd["bore"], (zc + hc / 2.0 - cnd["depth"]) - z)
+        f = smax(f, -dbore, 1.2)
 
     for p, d, r, ln, boffs in bores:                  # roermunningar
         for off in boffs:
@@ -368,7 +380,9 @@ def bounds(c):
     if lp > 1.0:
         zmin = min(zmin, c["loop_zf"] * c["H"] - lp * c["loop_ell"]
                    - c["tube"] * 2.0 - 6.0)
-    zmax = c["H"] + max(c["cup"] * 1.2, 10.0) + c["ball"] \
+    cnd_b = CANDLE.get(int(round(c.get("candle", 0))))
+    cup_h = (cnd_b["depth"] + 8.0) if cnd_b else 10.0
+    zmax = c["H"] + cup_h + c["ball"] \
         + abs(c.get("zig", 0.0)) / 2.0 + 8.0
     if lp > 1.0:
         zmax = max(zmax, c["loop_zf"] * c["H"] + lp * c["loop_ell"]

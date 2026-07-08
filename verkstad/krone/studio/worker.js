@@ -146,6 +146,13 @@ function bounds(c) {
 }
 
 /* --------------------------------------- grind: graf av roer og kuler */
+/* lysstandardar (mm): telys dia 37,5 (CO 44-1725), kronelys rifla fot
+   ca 22 (CO 44-3816); boring med klaring */
+const CANDLE = {
+  1: { bore: 20.25, depth: 13, wall: 4.75 },
+  2: { bore: 11.5, depth: 30, wall: 5.5 },
+};
+
 function grindLevels(c) {
   const per = 2 * Math.PI / c.n, out = [];
   for (let l = 0; l < c.L; l++) {
@@ -222,12 +229,14 @@ function grindElements(c) {
   });
   let zc = c.L > 1 ? c.H : c.H * 0.98;
   if ((c.cup_zf || 0) > 0.01) zc = c.cup_zf * c.H;
-  if (c.cup > 0.5 && c.spokes)
+  const cnd = CANDLE[Math.round(c.candle || 0)];
+  const cupR = cnd ? cnd.bore + cnd.wall : 0;
+  if (cnd && c.spokes)
     for (const [th0] of subs) {
       const p0 = nod(Lc - 1, th0);
       const ph = lv[Lc - 1][2];
-      const p1 = [c.cup * 0.75 * Math.cos(th0 + ph),
-                  c.cup * 0.75 * Math.sin(th0 + ph), zc];
+      const p1 = [cupR * 0.8 * Math.cos(th0 + ph),
+                  cupR * 0.8 * Math.sin(th0 + ph), zc];
       const pts = grindArc(p0, p1, 0, 3);
       const rr = tube * su(Lc - 1);
       for (let i = 0; i < pts.length - 1; i++)
@@ -273,7 +282,7 @@ function grindElements(c) {
                   c.loop_drop || 0, offs()]);
     }
   }
-  return { caps, balls, tori, bores, loops, zc, per };
+  return { caps, balls, tori, bores, loops, zc, per, cnd };
 }
 
 function segDist(px, py, pz, a, b, r) {
@@ -286,9 +295,10 @@ function segDist(px, py, pz, a, b, r) {
 }
 
 function makeGrindField(c) {
-  const { caps, balls, tori, bores, loops, zc, per } = grindElements(c);
+  const { caps, balls, tori, bores, loops, zc, per, cnd } = grindElements(c);
   const k = c.k;
-  const rc = c.cup, hc = Math.max(c.cup * 1.05, 16);
+  const rc = cnd ? cnd.bore + cnd.wall : 0;
+  const hc = cnd ? cnd.depth + 4 : 0;
   return function f(x, y, z) {
     const rho = Math.hypot(x, y);
     const th = Math.atan2(y, x);
@@ -327,8 +337,8 @@ function makeGrindField(c) {
       }
     if (rc > 0.5) {
       g = smin(g, Math.max(rho - rc, Math.abs(z - zc) - hc / 2), k);
-      const db = Math.max(rho - rc * 0.68, zc + hc / 2 - 3 - z);
-      g = smax(g, -db, 1.6);
+      const db = Math.max(rho - cnd.bore, (zc + hc / 2 - cnd.depth) - z);
+      g = smax(g, -db, 1.2);
     }
     for (const [p, d, r, ln, boffs] of bores)
       for (const off of boffs) {
@@ -351,7 +361,8 @@ function grindBounds(c) {
   rMax = Math.max(rMax, (c.loop_out || 0) + lp * ell + c.tube * 2 + 10);
   let zMin = -(c.mlen + Math.max(c.tube * 1.6, c.ball, c.nub)
                + Math.abs(c.zig || 0) / 2 + 8);
-  let zMax = c.H + Math.max(c.cup * 1.2, 10) + c.ball
+  const cndB = CANDLE[Math.round(c.candle || 0)];
+  let zMax = c.H + (cndB ? cndB.depth + 8 : 10) + c.ball
     + Math.abs(c.zig || 0) / 2 + 8;
   if (lp > 1) {
     zMin = Math.min(zMin, c.loop_zf * c.H - lp * ell - c.tube * 2 - 6);
