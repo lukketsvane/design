@@ -486,7 +486,7 @@ function toSTL(positions, indices) {
 }
 
 /* ------------------------------------------------------------------ main */
-self.onmessage = (ev) => {
+self.onmessage = async (ev) => {
   const { cfg, res, job, want } = ev.data;
   const grind = cfg.kind === "grind";
   const { rMax, zMin, zMax } = grind ? grindBounds(cfg) : bounds(cfg);
@@ -494,6 +494,8 @@ self.onmessage = (ev) => {
   const pitch = span / res;
   const f = grind ? makeGrindField(cfg)
                   : makeField(cfg, want === "stl" ? 0 : pitch);
+  const doYield = self.__isSync
+    ? () => new Promise((r) => setTimeout(r, 0)) : null;
   const nx = Math.ceil(2 * rMax / pitch) + 3;
   const nz = Math.ceil((zMax - zMin) / pitch) + 3;
   const ox = -rMax - pitch, oz = zMin - pitch;
@@ -506,6 +508,7 @@ self.onmessage = (ev) => {
       for (let ii = 0; ii < nx; ++ii, ++i)
         data[i] = f(ox + ii * pitch, y, z);
     }
+    if (doYield && (k & 3) === 3) await doYield();
   }
   const mesh = surfaceNets(data, [nx, nx, nz],
                            [pitch, pitch, pitch], [ox, ox, oz]);

@@ -9,6 +9,7 @@
   * { margin: 0; padding: 0; box-sizing: border-box;
       -webkit-tap-highlight-color: transparent; }
   html, body { height: 100%; overflow: hidden; background: #000;
+    overscroll-behavior: none;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
       Helvetica, Arial, sans-serif; color: #ededed; }
   #view { position: fixed; inset: 0; }
@@ -18,13 +19,15 @@
   #brand a { color: inherit; text-decoration: none; }
 
   #sheet { position: fixed; left: 12px; right: 12px;
+    user-select: none; -webkit-user-select: none;
     bottom: max(12px, env(safe-area-inset-bottom));
     background: rgba(16,16,16,.92); backdrop-filter: blur(18px);
     -webkit-backdrop-filter: blur(18px);
     border: 1px solid #262626; border-radius: 30px;
     padding: 14px 16px; z-index: 10; max-width: 560px; margin: 0 auto; }
   #rows { max-height: min(46vh, 470px); overflow-y: auto;
-    scrollbar-width: none; }
+    scrollbar-width: none; overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch; }
   #rows::-webkit-scrollbar { display: none; }
   #sheet.closed #rows, #sheet.closed #chips { display: none; }
 
@@ -57,7 +60,8 @@
   .row output { font-size: 14px; color: #ededed; text-align: right;
     font-variant-numeric: tabular-nums; }
   input[type=range] { -webkit-appearance: none; appearance: none;
-    width: 100%; height: 24px; background: transparent; cursor: pointer; }
+    width: 100%; height: 28px; background: transparent; cursor: pointer;
+    touch-action: none; }
   input[type=range]::-webkit-slider-runnable-track { height: 2px;
     background: #efefef; border-radius: 1px; }
   input[type=range]::-webkit-slider-thumb { -webkit-appearance: none;
@@ -319,9 +323,13 @@ const FAMILIES = {
 let fam = "Krone", cfg = null, activePreset = null;
 
 /* ------------------------------------------------------------------ scene */
+const MOBILE = matchMedia("(pointer: coarse)").matches;
 const view = document.getElementById("view");
-const renderer = new THREE.WebGLRenderer({ antialias: true });
-renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+const renderer = new THREE.WebGLRenderer({
+  antialias: !MOBILE || devicePixelRatio < 2.5,
+  powerPreference: "high-performance",
+});
+renderer.setPixelRatio(Math.min(devicePixelRatio, MOBILE ? 1.7 : 2));
 renderer.setSize(innerWidth, innerHeight);
 renderer.toneMapping = THREE.ACESFilmicToneMapping;
 renderer.toneMappingExposure = 1.32;
@@ -450,16 +458,19 @@ worker.onmessage = (ev) => {
 
 let timer = null, refineTimer = null;
 function spanOf(c) { return FAMILIES[fam].span(c); }
+const PREVIEW_RES = MOBILE ? 72 : 96;
+const REFINE_CAP = MOBILE ? 150 : 270;
+const REFINE_PITCH = MOBILE ? 1.7 : 1.25;
 function rebuild(res = 100) {
   busy.style.opacity = 1;
   worker.postMessage({ cfg, res, job: ++jobId });
 }
 function queueRebuild() {
   clearTimeout(timer); clearTimeout(refineTimer);
-  timer = setTimeout(() => rebuild(96), 60);
-  // refine: sikta paa ~1,25 mm pitch, men aldri over 270 celler
-  const res2 = Math.min(270, Math.max(170, Math.round(spanOf(cfg) / 1.25)));
-  refineTimer = setTimeout(() => rebuild(res2), 700);
+  timer = setTimeout(() => rebuild(PREVIEW_RES), 60);
+  const res2 = Math.min(REFINE_CAP,
+    Math.max(120, Math.round(spanOf(cfg) / REFINE_PITCH)));
+  refineTimer = setTimeout(() => rebuild(res2), MOBILE ? 500 : 700);
   history.replaceState(null, "",
     "#" + btoa(unescape(encodeURIComponent(JSON.stringify(
       { fam, cfg })))));
@@ -628,7 +639,8 @@ document.getElementById("save").addEventListener("click", () => {
   if (pendingSTL) return;
   pendingSTL = true;
   busy.style.opacity = 1;
-  worker.postMessage({ cfg, res: 320, job: ++jobId, want: "stl" });
+  worker.postMessage({ cfg, res: MOBILE ? 240 : 320, job: ++jobId,
+                       want: "stl" });
 });
 
 /* ------------------------------------------------------------------ start */
@@ -652,8 +664,7 @@ if (start) {
   buildChips();
   buildRows();
   setPreset(null);
-  rebuild(96);
-  setTimeout(() => rebuild(190), 900);
+  queueRebuild();
 } else {
   setFamily("Krone", "Tårn");
 }
