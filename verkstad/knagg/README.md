@@ -58,6 +58,15 @@ flatsida ligg på senga. Ingen support: overheng over 45 grader er
 Ei forsenka M4-skrue øvst i plata, pluss limflate på resten av plata
 for ukjend vegg, jf. monteringsaksen i briefen.
 
+## Render (produktbilete)
+
+`../render.py` byggjer studioframstillingar av dei tre variantane på
+saumlaus kvit botn: to retningslys, ingen ambient, mjuk kontaktskugge.
+Knaggen står i bruksstilling (plate mot vegg, arm ut, sadel opp), og
+kantskarpe flater held seg flate (crease-medviten normal). Bileta ligg i
+`../renders/knagg-*.png`. Køyr `python3 render.py`
+(sjå `../requirements.txt`).
+
 ## Traktat-kopling
 
 - 2.13/2.131: kraftlinje-varianten er kompromisset gjort leseleg.

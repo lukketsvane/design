@@ -1,0 +1,673 @@
+<!doctype html>
+<html lang="nn">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<title>Krone Studio</title>
+<style>
+  :root { color-scheme: dark; }
+  * { margin: 0; padding: 0; box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent; }
+  html, body { height: 100%; overflow: hidden; background: #000;
+    overscroll-behavior: none;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+      Helvetica, Arial, sans-serif; color: #ededed; }
+  #view { position: fixed; inset: 0; }
+  #brand { position: fixed; top: max(14px, env(safe-area-inset-top));
+    right: 18px; font-size: 15px; color: #8a8a8a; letter-spacing: .01em;
+    user-select: none; z-index: 5; }
+  #brand a { color: inherit; text-decoration: none; }
+
+  #sheet { position: fixed; left: 12px; right: 12px;
+    user-select: none; -webkit-user-select: none;
+    bottom: max(12px, env(safe-area-inset-bottom));
+    background: rgba(16,16,16,.92); backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    border: 1px solid #262626; border-radius: 30px;
+    padding: 14px 16px; z-index: 10; max-width: 560px; margin: 0 auto; }
+  #rows { max-height: min(46vh, 470px); overflow-y: auto;
+    scrollbar-width: none; overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch; }
+  #rows::-webkit-scrollbar { display: none; }
+  #sheet.closed #rows, #sheet.closed #chips { display: none; }
+
+  .bar { display: flex; align-items: center; gap: 5px; }
+  .seg { display: flex; background: #161616; border: 1px solid #2e2e2e;
+    border-radius: 999px; padding: 3px; flex: 0 1 auto; min-width: 0; }
+  .seg button { border: 0; background: transparent; color: #d6d6d6;
+    font-size: 14px; padding: 7px 10px; border-radius: 999px;
+    cursor: pointer; white-space: nowrap; }
+  .seg button.on { background: #fff; color: #000; font-weight: 600; }
+  .iconbtn { width: 38px; height: 38px; flex: 0 0 auto; border-radius: 999px;
+    border: 1px solid #2e2e2e; background: #161616; color: #ededed;
+    display: inline-flex; align-items: center; justify-content: center;
+    cursor: pointer; }
+  .iconbtn.on { background: #fff; color: #000; border-color: #fff; }
+  .iconbtn svg { width: 18px; height: 18px; }
+  .spacer { flex: 1 1 auto; }
+
+  #chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+  .chip { border: 1px solid #2e2e2e; background: #161616; color: #e6e6e6;
+    border-radius: 999px; padding: 9px 16px; font-size: 15px;
+    cursor: pointer; }
+  .chip.on { background: #fff; color: #000; font-weight: 600;
+    border-color: #fff; }
+
+  .row { display: grid; grid-template-columns: 96px 1fr 52px;
+    align-items: center; gap: 12px; padding: 7px 2px; }
+  .row label { font-size: 12px; letter-spacing: .14em; color: #cfcfcf;
+    text-transform: uppercase; white-space: nowrap; overflow: hidden; }
+  .row output { font-size: 14px; color: #ededed; text-align: right;
+    font-variant-numeric: tabular-nums; }
+  input[type=range] { -webkit-appearance: none; appearance: none;
+    width: 100%; height: 28px; background: transparent; cursor: pointer;
+    touch-action: none; }
+  input[type=range]::-webkit-slider-runnable-track { height: 2px;
+    background: #efefef; border-radius: 1px; }
+  input[type=range]::-webkit-slider-thumb { -webkit-appearance: none;
+    width: 15px; height: 15px; border-radius: 50%; background: #fff;
+    margin-top: -6.5px; }
+  input[type=range]::-moz-range-track { height: 2px; background: #efefef; }
+  input[type=range]::-moz-range-thumb { width: 15px; height: 15px;
+    border: 0; border-radius: 50%; background: #fff; }
+  #rows h3 { font-size: 11px; letter-spacing: .18em; color: #777;
+    text-transform: uppercase; margin: 12px 2px 2px; font-weight: 600; }
+  #busy { position: fixed; top: max(14px, env(safe-area-inset-top));
+    left: 18px; font-size: 13px; color: #666; z-index: 5;
+    transition: opacity .2s; opacity: 0; }
+
+  /* lys modus: kvitt studio med golv og hard skugge */
+  body.light #brand a { color: #8a8a8a; }
+  body.light #sheet { background: rgba(248,248,248,.94);
+    border-color: #e2e2e2; }
+  body.light .seg { background: #ececec; border-color: #ddd; }
+  body.light .seg button { color: #333; }
+  body.light .seg button.on { background: #111; color: #fff; }
+  body.light .iconbtn { background: #ececec; border-color: #ddd;
+    color: #222; }
+  body.light .iconbtn.on { background: #111; color: #fff;
+    border-color: #111; }
+  body.light .chip { background: #ececec; border-color: #ddd;
+    color: #222; }
+  body.light .chip.on { background: #111; color: #fff;
+    border-color: #111; }
+  body.light .row label { color: #444; }
+  body.light .row output { color: #222; }
+  body.light input[type=range]::-webkit-slider-runnable-track {
+    background: #222; }
+  body.light input[type=range]::-webkit-slider-thumb { background: #111; }
+  body.light input[type=range]::-moz-range-track { background: #222; }
+  body.light input[type=range]::-moz-range-thumb { background: #111; }
+  body.light #rows h3 { color: #999; }
+</style>
+</head>
+<body>
+<div id="view"></div>
+<div id="brand"><a href="https://iverfinne.no">iverfinne.no</a></div>
+<div id="busy">byggjer</div>
+
+<div id="sheet">
+  <div class="bar">
+    <div class="seg" id="families"></div>
+    <div class="spacer"></div>
+    <button class="iconbtn" id="spin" title="dreieskive">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+        stroke-width="2.4" stroke-linecap="round">
+        <path d="M8 5v14M16 5v14"/></svg>
+    </button>
+    <button class="iconbtn" id="theme" title="lys eller moerk bakgrunn">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+        stroke-width="2" stroke-linecap="round">
+        <circle cx="12" cy="12" r="4.2"/>
+        <path d="M12 2.5v3M12 18.5v3M2.5 12h3M18.5 12h3M5 5l2.1 2.1M16.9
+        16.9 19 19M19 5l-2.1 2.1M7.1 16.9 5 19"/></svg>
+    </button>
+    <button class="iconbtn" id="lamp" title="lys i lampa">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M9 18h6M10 21h4M12 3a6 6 0 0 1 3.4 10.9c-.7.5-1.1 1.2-1.3
+        2.1h-4.2c-.2-.9-.6-1.6-1.3-2.1A6 6 0 0 1 12 3z"/></svg>
+    </button>
+    <button class="iconbtn on" id="shuffle" title="tilfeldige verdiar">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M16 3h5v5M4 20 21 3M21 16v5h-5M15 15l6 6M4 4l5 5"/></svg>
+    </button>
+    <button class="iconbtn" id="save" title="last ned STL">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12
+        15V3"/></svg>
+    </button>
+    <button class="iconbtn" id="fold" title="vis/skjul">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+        stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M6 9l6 6 6-6"/></svg>
+    </button>
+  </div>
+  <div id="chips"></div>
+  <div id="rows"></div>
+</div>
+<!-- presets-elementet er chips-rada; behald id for eldre kode -->
+
+
+<script type="importmap">
+{ "imports": {
+    "three": "./vendor/three.module.js",
+    "three/addons/": "./vendor/addons/"
+} }
+</script>
+<script type="module">
+import * as THREE from "three";
+import { OrbitControls } from "three/addons/controls/OrbitControls.js";
+
+/* -------------------------------------------------- presets (mm, som krone.py) */
+const PRESETS_KRONE = {
+  "Tårn": {
+    n: 8, H: 176, Rb: 62, Rt: 58, bulge: 7, t: 5.5,
+    h1: 27, w1: 6, split: 10.5, h2: 10, w2: 4.5, ck: 5.5,
+    hz: 0.45, hr0: 14, hr1: 14, hlen: 46, hk: 4,
+    pillow: 2.2, groove: 1.2, beadS: 1, pinS: 1, lgap: 13,
+    band_z: 0.80, rim_k: 2.2,
+    pins: [ { zf: 0.86, pat: "ros7", s: 4.2, r: 1.5, phase: "c" },
+            { zf: 0.10, pat: "ros19", s: 4.0, r: 1.5, phase: "c" } ],
+    beads: [ { zf: 0.045, r: 4.2 }, { zf: 0.50, r: 4.2 },
+             { zf: 0.79, r: 4.2 } ],
+  },
+  "Krans": {
+    n: 10, H: 46, Rb: 150, Rt: 104, bulge: 0, t: 7,
+    h1: 0, w1: 8, split: 0, h2: 27, w2: 17, ck: 10,
+    hz: 0.30, hr0: 17, hr1: 9, hlen: 13, hk: 5.5,
+    pillow: 1.8, groove: 1.4, beadS: 1, pinS: 1, lgap: 0,
+    band_z: null, rim_k: 3,
+    pins: [ { zf: 1.24, pat: "quin", s: 3.4, r: 1.2, phase: "c" } ],
+    beads: [ { zf: 0.13, r: 5.4 } ],
+  },
+  "Skål": {
+    n: 12, H: 92, Rb: 56, Rt: 112, bulge: 0, t: 6,
+    h1: 17, w1: 8, split: 0, h2: 0, w2: 6, ck: 7,
+    hz: 0.40, hr0: 8, hr1: 13, hlen: 18, hk: 4,
+    pillow: 1.5, groove: 1.2, beadS: 1, pinS: 1, lgap: 0,
+    band_z: null, rim_k: 2.6,
+    pins: [ { zf: 0.14, pat: "quin", s: 3.4, r: 1.3, phase: "c" } ],
+    beads: [ { zf: 0.86, r: 4.2 } ],
+  },
+};
+for (const p of Object.values(PRESETS_KRONE)) p.kind = "krone";
+
+/* grind: grafbyggjaren (mm, som grind.py) */
+const PRESETS_GRIND = {
+  "Tromme": { n: 8, L: 2, H: 84, R: 64, f_bot: 1, f_top: 1, buk: 0,
+    twist: 0, bow: 12, tube: 7.2, diag: 0, rings: 2, spokes: 1,
+    ball: 9, nub: 4.2, candle: 1, mlen: 0, tilt: 0, k: 5 },
+  "Stjerne": { n: 5, L: 1, H: 36, R: 84, f_bot: 1, f_top: 1, buk: 0,
+    twist: 0, bow: 0, tube: 7, diag: 0, rings: 2, spokes: 1,
+    ball: 13, nub: 0, candle: 2, mlen: 0, tilt: 0, k: 6 },
+  "Totem": { n: 3, L: 3, H: 170, R: 50, f_bot: 1.1, f_top: 0.85, buk: 0,
+    twist: 0.5, bow: 14, tube: 8, diag: 1, rings: 1, spokes: 0,
+    ball: 9.5, nub: 0, candle: 0, mlen: 20, tilt: 28, k: 6.5 },
+  "Korg": { n: 6, L: 3, H: 148, R: 58, f_bot: 1.18, f_top: 0.92,
+    buk: -0.08, twist: 0.5, bow: 7, tube: 5.6, diag: 1, rings: 2,
+    spokes: 0, ball: 6.5, nub: 3.2, candle: 0, mlen: 0, tilt: 0, k: 4.5 },
+  "Krabbe": { n: 5, L: 1, H: 52, R: 62, f_bot: 1, f_top: 1, buk: 0,
+    twist: 0, bow: 0, tube: 6.8, diag: 0, rings: 2, spokes: 1,
+    ball: 9, nub: 0, candle: 2, mlen: 18, tilt: 52, k: 6 },
+  "Kløver": { n: 4, L: 1, H: 52, R: 40, f_bot: 1, f_top: 1, buk: 0,
+    twist: 0, bow: 0, tube: 7, diag: 0, rings: 0, spokes: 1,
+    ball: 8.5, nub: 0, candle: 2, mlen: 0, tilt: 0, k: 5.5,
+    loop: 26, loop_out: 50, loop_zf: 0.34, loop_tilt: 56,
+    loop_ell: 0.85 },
+  "Drope": { n: 3, L: 1, H: 150, R: 33, f_bot: 1, f_top: 1, buk: 0,
+    twist: 0, bow: 0, tube: 6.4, diag: 0, rings: 2, spokes: 1,
+    ball: 0, nub: 0, candle: 2, cup_zf: 0.55, mlen: 0, tilt: 0, k: 6.5,
+    loop: 38, loop_out: 58, loop_zf: 0.42, loop_tilt: 6, loop_ell: 1.55,
+    loop_lean: 10, loop_drop: 0.45 },
+};
+for (const p of Object.values(PRESETS_GRIND)) {
+  p.kind = "grind";
+  if (p.loop == null) {
+    p.loop = 0; p.loop_out = 40; p.loop_zf = 0.4;
+    p.loop_tilt = 0; p.loop_ell = 1;
+  }
+  if (p.loop_lean == null) p.loop_lean = 0;
+  if (p.loop_drop == null) p.loop_drop = 0;
+  if (p.cup_zf == null) p.cup_zf = 0;
+  if (p.candle == null) p.candle = 0;
+  if (p.grow == null) p.grow = 1;
+  if (p.zig == null) p.zig = 0;
+}
+
+/* sliderdefinisjonar: [gruppe, nykel, namn, min, maks, steg] */
+const SLIDERS_KRONE = [
+  ["form", "n",      "Segment",   5, 16, 1],
+  ["form", "H",      "Høgd",     30, 220, 1],
+  ["form", "Rb",     "Botn",     40, 160, 1],
+  ["form", "Rt",     "Topp",     40, 160, 1],
+  ["form", "bulge",  "Buk",     -10, 14, 0.5],
+  ["form", "t",      "Gods",      3, 9, 0.1],
+  ["krone", "h1",    "Horn",      0, 40, 0.5],
+  ["krone", "w1",    "Hornbreidd", 4, 18, 0.5],
+  ["krone", "split", "Splitt",    0, 14, 0.5],
+  ["krone", "h2",    "Nabb",      0, 40, 0.5],
+  ["krone", "w2",    "Nabbreidd", 3, 20, 0.5],
+  ["krone", "ck",    "Smelt",     2, 14, 0.5],
+  ["vindauge", "hz",   "Egg pos",  0.08, 0.85, 0.01],
+  ["vindauge", "hr0",  "Egg ned",  0, 24, 0.5],
+  ["vindauge", "hr1",  "Egg opp",  0, 24, 0.5],
+  ["vindauge", "hlen", "Egg lengd", 0, 70, 1],
+  ["vindauge", "hk",   "Egg mjuk", 1, 9, 0.1],
+  ["detalj", "pillow", "Pute",     0, 4, 0.1],
+  ["detalj", "groove", "Rille",    0, 3, 0.1],
+  ["detalj", "beadS",  "Perle",    0, 2, 0.05],
+  ["detalj", "pinS",   "Nålehol",  0, 2.5, 0.05],
+  ["detalj", "lgap",   "Liner",    0, 20, 0.5],
+];
+const SLIDERS_GRIND = [
+  ["form", "n",     "Segment",  3, 12, 1],
+  ["form", "L",     "Nivå",     1, 4, 1],
+  ["form", "H",     "Høgd",    25, 210, 1],
+  ["form", "R",     "Radius",  30, 110, 1],
+  ["form", "f_bot", "Botn",     0.5, 1.5, 0.01],
+  ["form", "f_top", "Topp",     0.5, 1.5, 0.01],
+  ["form", "buk",   "Buk",     -0.4, 0.4, 0.01],
+  ["form", "grow",  "Vekst",    0.6, 1.6, 0.02],
+  ["form", "zig",   "Sikksakk", 0, 20, 0.5],
+  ["stag", "twist", "Twist",    0, 0.5, 0.05],
+  ["stag", "bow",   "Boge",     0, 30, 0.5],
+  ["stag", "tube",  "Rør",      3, 10, 0.1],
+  ["stag", "diag",  "Diagonal", 0, 1.3, 0.05],
+  ["stag", "rings", "Ringar",   0, 2, 1],
+  ["stag", "spokes", "Eiker",   0, 1, 1],
+  ["loop", "loop",      "Loop",       0, 60, 1],
+  ["loop", "loop_out",  "Loop ut",    0, 100, 1],
+  ["loop", "loop_zf",   "Loop høgd",  0, 1.1, 0.01],
+  ["loop", "loop_tilt", "Loop vinkel", 0, 90, 1],
+  ["loop", "loop_lean", "Loop inn",   -30, 40, 1],
+  ["loop", "loop_ell",  "Loop form",  0.6, 2, 0.05],
+  ["loop", "loop_drop", "Loop drope", 0, 0.6, 0.05],
+  ["detalj", "ball", "Kule",    0, 14, 0.5],
+  ["detalj", "nub",  "Knopp",   0, 5, 0.5],
+  ["detalj", "candle", "Lys",   0, 2, 1],
+  ["detalj", "cup_zf", "Kopp høgd", 0, 1.1, 0.01],
+  ["detalj", "mlen", "Munning", 0, 26, 0.5],
+  ["detalj", "tilt", "Munnvinkel", 0, 80, 1],
+  ["detalj", "k",    "Smelt",   1, 9, 0.1],
+];
+const GROUPS = { form: "Form", krone: "Krone", vindauge: "Vindauge",
+                 stag: "Stag", loop: "Loop", detalj: "Detalj" };
+
+function spanKrone(c) {
+  const zc = c.H + c.h1 + c.h2 + c.ck + 10;
+  const rT = c.Rb + (c.Rt - c.Rb) * Math.max(zc / c.H, 1);
+  const rM = Math.max(c.Rb, c.Rt, rT) + Math.abs(c.bulge) + c.t + 8;
+  return Math.max(2 * rM, zc + 4);
+}
+function spanGrind(c) {
+  const lp = c.loop || 0, ell = c.loop_ell || 1;
+  let rM = c.R * Math.max(c.f_bot, c.f_top, 1 + Math.abs(c.buk))
+    + c.bow + c.tube * 2 + c.ball + c.mlen + 10;
+  rM = Math.max(rM, (c.loop_out || 0) + lp * ell + c.tube * 2 + 10);
+  const cupH = c.candle ? 38 : 10;
+  const zTop = Math.max(c.H + cupH + c.ball,
+                        lp > 1 ? c.loop_zf * c.H + lp * ell + 14 : 0);
+  return Math.max(2 * rM, zTop + c.mlen + 16);
+}
+
+const FAMILIES = {
+  "Krone": { presets: PRESETS_KRONE, sliders: SLIDERS_KRONE,
+             span: spanKrone },
+  "Grind": { presets: PRESETS_GRIND, sliders: SLIDERS_GRIND,
+             span: spanGrind },
+};
+
+let fam = "Krone", cfg = null, activePreset = null;
+
+/* ------------------------------------------------------------------ scene */
+const MOBILE = matchMedia("(pointer: coarse)").matches;
+const view = document.getElementById("view");
+const renderer = new THREE.WebGLRenderer({
+  antialias: !MOBILE || devicePixelRatio < 2.5,
+  powerPreference: "high-performance",
+});
+renderer.setPixelRatio(Math.min(devicePixelRatio, MOBILE ? 1.7 : 2));
+renderer.setSize(innerWidth, innerHeight);
+renderer.toneMapping = THREE.ACESFilmicToneMapping;
+renderer.toneMappingExposure = 1.32;
+view.appendChild(renderer.domElement);
+
+const scene = new THREE.Scene();
+scene.background = new THREE.Color(0x000000);
+const camera = new THREE.PerspectiveCamera(
+  36, innerWidth / innerHeight, 1, 4000);
+camera.position.set(0, -420, 150);
+camera.up.set(0, 0, 1);
+const controls = new OrbitControls(camera, renderer.domElement);
+controls.enableDamping = true;
+controls.dampingFactor = 0.08;
+controls.target.set(0, 0, 80);
+
+const key = new THREE.DirectionalLight(0xffffff, 2.5);
+key.position.set(-220, -320, 420);
+scene.add(key);
+const fill = new THREE.DirectionalLight(0xffffff, 0.85);
+fill.position.set(360, -160, 80);
+scene.add(fill);
+const rim = new THREE.DirectionalLight(0xffffff, 1.25);
+rim.position.set(60, 420, 160);
+scene.add(rim);
+scene.add(new THREE.HemisphereLight(0xffffff, 0x111111, 0.35));
+
+const bulb = new THREE.PointLight(0xffc890, 0, 900, 1.6);
+scene.add(bulb);
+
+// golv med hard skugge, berre i lys modus (moerk modus: ikkje noko golv)
+renderer.shadowMap.enabled = true;
+renderer.shadowMap.type = THREE.BasicShadowMap;
+key.castShadow = true;
+key.shadow.mapSize.set(2048, 2048);
+key.shadow.bias = -0.0004;
+const ground = new THREE.Mesh(
+  new THREE.PlaneGeometry(3000, 3000),
+  new THREE.ShadowMaterial({ opacity: 0.22 }));
+ground.receiveShadow = true;
+ground.visible = false;
+scene.add(ground);
+let lightMode = false;
+
+const material = new THREE.MeshPhysicalMaterial({
+  color: 0xffffff, roughness: 0.30, metalness: 0.0,
+  clearcoat: 0.55, clearcoatRoughness: 0.35,
+  side: THREE.DoubleSide,
+});
+const group = new THREE.Group();
+scene.add(group);
+let meshObj = null;
+
+let spinning = true;
+renderer.setAnimationLoop(() => {
+  if (spinning) group.rotation.z += 0.0035;
+  controls.update();
+  renderer.render(scene, camera);
+});
+addEventListener("resize", () => {
+  camera.aspect = innerWidth / innerHeight;
+  camera.updateProjectionMatrix();
+  renderer.setSize(innerWidth, innerHeight);
+});
+
+/* ----------------------------------------------------------------- worker */
+const worker = new Worker("worker.js");
+let jobId = 0, lastShown = 0, pendingSTL = false, needFit = true;
+const busy = document.getElementById("busy");
+
+worker.onmessage = (ev) => {
+  const { positions, indices, stl, job } = ev.data;
+  if (stl) {
+    const blob = new Blob([stl], { type: "model/stl" });
+    const a = document.createElement("a");
+    a.href = URL.createObjectURL(blob);
+    a.download = (fam + "-" + (activePreset || "eigen")).toLowerCase()
+      + ".stl";
+    a.click();
+    URL.revokeObjectURL(a.href);
+    pendingSTL = false;
+    busy.style.opacity = 0;
+    return;
+  }
+  if (job < lastShown) return;
+  lastShown = job;
+  const geo = new THREE.BufferGeometry();
+  geo.setAttribute("position", new THREE.BufferAttribute(positions, 3));
+  geo.setIndex(new THREE.BufferAttribute(indices, 1));
+  geo.computeVertexNormals();
+  if (meshObj) { meshObj.geometry.dispose(); meshObj.geometry = geo; }
+  else {
+    meshObj = new THREE.Mesh(geo, material);
+    meshObj.castShadow = true;
+    group.add(meshObj);
+  }
+  geo.computeBoundingBox();
+  const bb = geo.boundingBox;
+  const cz = (bb.min.z + bb.max.z) / 2;
+  meshObj.position.set(0, 0, -cz);
+  bulb.position.set(0, 0, 0);
+  ground.position.set(0, 0, bb.min.z - cz - 0.3);
+  const Rs = Math.max(bb.max.x - bb.min.x, bb.max.y - bb.min.y,
+                      bb.max.z - bb.min.z);
+  const sc = key.shadow.camera;
+  sc.left = -Rs; sc.right = Rs; sc.top = Rs; sc.bottom = -Rs;
+  sc.near = 10; sc.far = 2000;
+  sc.updateProjectionMatrix();
+  if (needFit) {
+    needFit = false;
+    const w = Math.max(bb.max.x - bb.min.x, bb.max.y - bb.min.y);
+    const h = bb.max.z - bb.min.z;
+    const R = Math.max(w, h) / 2;
+    const tanF = Math.tan(camera.fov * Math.PI / 360);
+    const d = R / tanF * 2.05;
+    // modellen skal sitje i oevre del av skjermen, over botnarket:
+    // loeft mot 25 prosent fraa toppen, men klipp aldri toppen av
+    const halfH = d * tanF;
+    const lift = Math.min(0.5 * halfH, halfH - h / 2 - 0.12 * halfH);
+    controls.target.set(0, 0, -Math.max(lift, 0));
+    const dir = new THREE.Vector3(0, -1, 0.30).normalize();
+    camera.position.copy(dir.multiplyScalar(d));
+  }
+  busy.style.opacity = 0;
+};
+
+let timer = null, refineTimer = null;
+function spanOf(c) { return FAMILIES[fam].span(c); }
+const PREVIEW_RES = MOBILE ? 72 : 96;
+const REFINE_CAP = MOBILE ? 150 : 270;
+const REFINE_PITCH = MOBILE ? 1.7 : 1.25;
+function rebuild(res = 100) {
+  busy.style.opacity = 1;
+  worker.postMessage({ cfg, res, job: ++jobId });
+}
+function queueRebuild() {
+  clearTimeout(timer); clearTimeout(refineTimer);
+  timer = setTimeout(() => rebuild(PREVIEW_RES), 60);
+  const res2 = Math.min(REFINE_CAP,
+    Math.max(120, Math.round(spanOf(cfg) / REFINE_PITCH)));
+  refineTimer = setTimeout(() => rebuild(res2), MOBILE ? 500 : 700);
+  history.replaceState(null, "",
+    "#" + btoa(unescape(encodeURIComponent(JSON.stringify(
+      { fam, cfg })))));
+}
+
+/* --------------------------------------------------------------------- UI */
+const rowsEl = document.getElementById("rows");
+const famEl = document.getElementById("families");
+const presetsEl = document.getElementById("chips");
+let inputs = {};
+
+function buildRows() {
+  rowsEl.innerHTML = "";
+  inputs = {};
+  let g0 = null;
+  for (const [g, key, name, mn, mx, st] of FAMILIES[fam].sliders) {
+    if (g !== g0) {
+      const h = document.createElement("h3");
+      h.textContent = GROUPS[g];
+      rowsEl.appendChild(h);
+      g0 = g;
+    }
+    const row = document.createElement("div");
+    row.className = "row";
+    const lab = document.createElement("label");
+    lab.textContent = name;
+    const inp = document.createElement("input");
+    inp.type = "range"; inp.min = mn; inp.max = mx; inp.step = st;
+    inp.value = cfg[key];
+    const out = document.createElement("output");
+    out.textContent = fmt(cfg[key], st, key);
+    inp.addEventListener("input", () => {
+      cfg[key] = parseFloat(inp.value);
+      out.textContent = fmt(cfg[key], st, key);
+      setPreset(null);
+      queueRebuild();
+    });
+    inputs[key] = { inp, out, st };
+    row.append(lab, inp, out);
+    rowsEl.appendChild(row);
+  }
+}
+function fmt(v, st, key) {
+  if (key === "candle") return ["ingen", "telys", "krone"][Math.round(v)];
+  return st >= 1 ? String(Math.round(v))
+    : (st >= 0.1 ? v.toFixed(1) : v.toFixed(2));
+}
+
+function syncRows() {
+  for (const [, key] of FAMILIES[fam].sliders) {
+    if (!inputs[key]) continue;
+    inputs[key].inp.value = cfg[key];
+    inputs[key].out.textContent = fmt(cfg[key], inputs[key].st, key);
+  }
+}
+
+function setPreset(name) {
+  activePreset = name;
+  [...presetsEl.children].forEach(b =>
+    b.classList.toggle("on", b.textContent === name));
+}
+
+function buildChips() {
+  presetsEl.innerHTML = "";
+  for (const name of Object.keys(FAMILIES[fam].presets)) {
+    const b = document.createElement("button");
+    b.className = "chip";
+    b.textContent = name;
+    b.addEventListener("click", () => {
+      cfg = structuredClone(FAMILIES[fam].presets[name]);
+      setPreset(name);
+      syncRows();
+      needFit = true;
+      queueRebuild();
+    });
+    presetsEl.appendChild(b);
+  }
+}
+
+function setFamily(name, preset) {
+  fam = name;
+  [...famEl.children].forEach(b =>
+    b.classList.toggle("on", b.textContent === name));
+  const first = preset || Object.keys(FAMILIES[fam].presets)[0];
+  cfg = structuredClone(FAMILIES[fam].presets[first]);
+  buildChips();
+  buildRows();
+  setPreset(first);
+  needFit = true;
+  queueRebuild();
+}
+for (const name of Object.keys(FAMILIES)) {
+  const b = document.createElement("button");
+  b.textContent = name;
+  b.addEventListener("click", () => setFamily(name));
+  famEl.appendChild(b);
+}
+
+document.getElementById("fold").addEventListener("click", () =>
+  document.getElementById("sheet").classList.toggle("closed"));
+const spinBtn = document.getElementById("spin");
+spinBtn.classList.add("on");
+spinBtn.addEventListener("click", () => {
+  spinning = !spinning;
+  spinBtn.classList.toggle("on", spinning);
+});
+const themeBtn = document.getElementById("theme");
+themeBtn.addEventListener("click", () => {
+  lightMode = !lightMode;
+  document.body.classList.toggle("light", lightMode);
+  scene.background.set(lightMode ? 0xf2f1ef : 0x000000);
+  ground.visible = lightMode;      // moerk modus: ikkje noko golv
+  themeBtn.classList.toggle("on", lightMode);
+});
+const lampBtn = document.getElementById("lamp");
+lampBtn.addEventListener("click", () => {
+  const on = bulb.intensity === 0;
+  bulb.intensity = on ? 60000 : 0;
+  key.intensity = on ? 1.1 : 2.5;
+  fill.intensity = on ? 0.35 : 0.85;
+  rim.intensity = on ? 0.5 : 1.25;
+  lampBtn.classList.toggle("on", on);
+});
+document.getElementById("shuffle").addEventListener("click", () => {
+  const r = (a, b) => a + Math.random() * (b - a);
+  const P = FAMILIES[fam].presets;
+  const base = structuredClone(P[activePreset] || Object.values(P)[0]);
+  if (fam === "Krone") {
+    Object.assign(base, {
+      n: Math.round(r(6, 14)), H: r(36, 200), Rb: r(46, 150),
+      Rt: r(46, 150), bulge: r(-6, 12), t: r(4, 8),
+      h1: r(0, 34), w1: r(5, 16), split: r(0, 12), h2: r(0, 32),
+      w2: r(4, 18), ck: r(3, 12),
+      hz: r(0.15, 0.7), hr0: r(4, 22), hr1: r(4, 22), hlen: r(0, 60),
+      hk: r(2, 7), pillow: r(0, 3.5), groove: r(0, 2.5),
+      beadS: r(0, 1.6), pinS: r(0, 1.8),
+      lgap: Math.random() < 0.5 ? 0 : r(9, 18),
+    });
+  } else {
+    Object.assign(base, {
+      n: Math.round(r(3, 10)), L: Math.round(r(1, 4)),
+      H: r(30, 190), R: r(40, 100),
+      f_bot: r(0.7, 1.3), f_top: r(0.7, 1.3), buk: r(-0.3, 0.3),
+      twist: Math.random() < 0.5 ? 0 : 0.5, bow: r(0, 24),
+      tube: r(4.5, 9), diag: Math.random() < 0.5 ? 0 : r(0.6, 1.2),
+      rings: Math.round(r(0, 2)), spokes: Math.random() < 0.6 ? 1 : 0,
+      ball: r(0, 12), nub: Math.random() < 0.5 ? 0 : r(2, 4.5),
+      candle: Math.random() < 0.7 ? (Math.random() < 0.5 ? 1 : 2) : 0,
+      cup_zf: 0,
+      mlen: Math.random() < 0.4 ? r(10, 24) : 0, tilt: r(15, 65),
+      k: r(3, 8), grow: r(0.75, 1.4),
+      zig: Math.random() < 0.35 ? r(4, 14) : 0,
+      loop: Math.random() < 0.4 ? r(18, 55) : 0,
+      loop_out: r(30, 70), loop_zf: r(0.25, 0.6),
+      loop_tilt: r(0, 70), loop_ell: r(0.8, 1.6),
+      loop_lean: r(-10, 30), loop_drop: Math.random() < 0.5 ? 0 : r(0.2, 0.55),
+    });
+  }
+  cfg = base;
+  setPreset(null);
+  syncRows();
+  needFit = true;
+  queueRebuild();
+});
+document.getElementById("save").addEventListener("click", () => {
+  if (pendingSTL) return;
+  pendingSTL = true;
+  busy.style.opacity = 1;
+  worker.postMessage({ cfg, res: MOBILE ? 240 : 320, job: ++jobId,
+                       want: "stl" });
+});
+
+/* ------------------------------------------------------------------ start */
+let start = null;
+if (location.hash.length > 8) {
+  try {
+    start = JSON.parse(decodeURIComponent(escape(atob(
+      location.hash.slice(1)))));
+    if (start && !start.cfg) start = { fam: "Krone", cfg: start };
+    if (start && start.cfg && start.cfg.candle == null
+        && (start.cfg.cup || 0) > 0.5)
+      start.cfg.candle = start.cfg.cup < 19 ? 2 : 1;
+    if (start && !FAMILIES[start.fam]) start = null;
+  } catch (e) { start = null; }
+}
+if (start) {
+  fam = start.fam;
+  [...famEl.children].forEach(b =>
+    b.classList.toggle("on", b.textContent === fam));
+  cfg = start.cfg;
+  buildChips();
+  buildRows();
+  setPreset(null);
+  queueRebuild();
+} else {
+  setFamily("Krone", "Tårn");
+}
+</script>
+</body>
+</html>

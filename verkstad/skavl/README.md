@@ -59,6 +59,28 @@ Tre medvitne avvik frå pseudokoden, alle grunngjevne:
   spenningspunkt i print); regelen «ingen diagonalkontakt» er no del av
   grammatikken.
 
+## v0.3: slissar i lagretninga (køyr `python3 skavl.py --v03`)
+
+v0.2-funnet sa at bru-budsjettet (≤ 8 mm per lag) kapslar porøsiteten, men
+at spennet er per lag, så høgda er gratis. v0.3 opnar difor lange, tynne
+slissar i lagretninga: same kropp (`grow()` er urørt, same frø/amp/bulge),
+men vindaugsstøyen får lang vertikal bølgjelengd så opne celler stiller
+seg opp i vertikale striper, høgdeklemma er løfta, og web er sett til
+minimum (3 mm). Same tre søsken, ny vindaugsstrategi. Filene ligg som
+`print/skavl-*-v03.3mf`, rapport i `validering-v0.3.md`.
+
+**Funn v0.3, den nye bindande skranken er optikk, ikkje print.** Med
+slissar og minimale web trippel-doblar opningsgraden (v0.2 6-8 %, v0.3
+opp til 18 % på b-open), men han når ikkje 30 %-målet. Årsaka er
+blendbandet: inga opning får ha siktline til LED-en i elevasjon −5° til
+60°, og det fjernar heile den øvre halvdelen av lo-sida (over z ~ 124 mm,
+der auget ser kjelda). Slissane må difor stå i det nedre bandet.
+30 % krev anten at ein godtek blending, eller ei slankare/høgare form som
+flyttar meir lo-side under blendlina. Skranken er no synleg i geometrien
+(traktat 2.1): slissane «rid» på blendlina slik v0.2-skalet reid på
+overheng-klemma. Hoop-stivleiken går ned med slissane; testprint av
+b-open avgjer om 3 mm web held.
+
 ## Slicing (frå briefen + implementasjonsnotatet)
 
 PrusaSlicer: 2 perimeter à 0,5 mm (= vegg 1,0 mm), 0 % infill (veggen er
@@ -70,6 +92,15 @@ dokumentasjonskravet frå briefen.
 **Mål før print:** E27-kragen er sett til r = 22,3 mm (22 + 0,3 toleranse)
 og pæresenteret til z = 130 mm, mål den faktiske fatninga og pæra, og
 juster `R_SOKKEL`/`Z_LED` før fyrste print.
+
+## Render (produktbilete)
+
+`../render.py` byggjer studioframstillingar av dei tre 3MF-søskena på
+saumlaus kvit botn: to retningslys, ingen ambient eller miljølys, mjuk
+kontaktskugge. Lampa er rendra tend: innerskalet lyser varmt, så
+toppopninga og den porøse lo-sida les som ei lyskjelde, ikkje svarte hol.
+Bileta ligg i `../renders/skavl-*.png`. Køyr `python3 render.py` (treng
+`numpy`, `trimesh`, `pillow`; sjå `../requirements.txt`).
 
 ## Traktat-kopling
 

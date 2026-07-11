@@ -1,3 +1,6 @@
 __pycache__/
 *.pyc
 *.notion.svg
+
+# scratch iteration renders
+verkstad/renders/_*.png

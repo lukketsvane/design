@@ -98,8 +98,52 @@ to-farge kant-hoeglys);
 Sekundaert: Fjordfiesta (#4);
 Case #3 Helsenorge.
 
+## Parallell branch: `claude/generative-design-finalize-wwmnl6` (PR #2)
+
+Ei sideøkt køyrde samstundes på denne branchen (ikkje main) og gjorde eit
+eige spor. Merga inn hit; iterasjonsnummer kolliderte med main sine 27-31,
+så branch-arbeidet er lista her i staden for i hovudtabellen:
+
+- **Renderpipeline** `verkstad/render.py`: eigen NumPy z-buffer-rasteriser
+  (headless OSMesa gav berre spekulær). Produktbilete på kvit botn for knagg
+  + skavl; seinare porselen-rig (mjuk trelys + grå gradient) for Ribbe.
+- **Skavl v0.3 slissar** via `skavl.py --v03` (modifiserer generator A).
+  NB: overlappar main sitt it. 28 `skavl_vase.py` (uavhengig v0.3-slisse-
+  implementasjon). To parallelle svar på same porøsitets-funn.
+- **Reparasjonssett** `verkstad/repsett/repsett.py`: skøytehylse-familie
+  (bøying/torsjon), vasstett, kintsugi-render.
+- **Turntables** (`render.py --turntable`) for alle modellar.
+- **Ribbe** `verkstad/radial/`: etter Ivers celadon-referanse. To feilspor
+  (skjel på kule) før rett tolking `lattice.py`: eit vove gitter av runda
+  rør med augehol (motfase-ribber, spline-glatta, organisk variasjon,
+  krone/fot). Tre søsken korall/rev/søyle. **Overlappar main sitt generator
+  B-spor** (skavl_b/skavl_lampe): begge tolkar referansen som radial/vove
+  lampeform, ulik geometri. Konsolidering treng Iver.
+- **Lykt** `verkstad/lykt/` (2026-07-08): Ivers fem keramikk-referansar
+  (smultring, kuppel, ball, krone, terning) som boolsk generator, fem
+  grunnformer, eitt regelverk. Utforskinga som fann grammatikken.
+- **Krone** `verkstad/krone/` (2026-07-08, Ivers styring «fully
+  parametric, merge and smoothen breps, same parameters different
+  values»): EITT implisitt felt (smin/smax, marching cubes) med tre
+  verdisett (taarn, krans, skaal), vasstette 3MF. Og **Krone Studio**
+  `verkstad/krone/studio/`: interaktivt web-grensesnitt i same formspråk
+  som parametric.iverfinne.no (botnark, presets, slidere, shuffle,
+  lampelys-modus, STL-eksport, delbar URL); JS-feltet paritetstesta mot
+  python (maks avvik 0,04 mm).
+- **Grind** `verkstad/grind/` (2026-07-08, Ivers styring «builder for
+  creating all these generative parametrical structures», sju
+  referansar): grafbyggjar for skjelett-strukturar (nivå, stag, ringar,
+  eiker, kopp, kuler, munningar, loops) som eitt smelta felt; sju
+  verdisett (tromme, stjerne, totem, korg, krabbe, kløver, drope).
+  Krone Studio er no FLEIRFAMILIE (Krone, Grind) med familieveljar og
+  preset-chips, akkurat som Ring/Vessel/Fin på parametric.iverfinne.no.
+  Paritetstest eksakt (identisk elementgeometri i JS og python).
+
 ## Blokkert / treng Iver, VIKTIGAST FYRST
 
+0. **To parallelle lampe-tolkingar av referansen** (branch-Ribbe vove gitter
+   vs main generator B rib/lamell): kva retning skal førast vidare, eller
+   skal begge leve? Konsolidering flagga.
 1. **Namneval** (Skavl/Fonn/Morene/Skare/Formlære), står i Salone-skjemaet.
 2. **Start knaggen denne veka** (kortast printsyklus; kritisk sti til 20. aug).
 3. **Stadfest formreferansen:** er bileta Steven Edwards? (attribusjon

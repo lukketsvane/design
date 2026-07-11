@@ -1,8 +1,13 @@
-# Verkstad-generatorane (skavl.py, skavl_b.py, knagg.py)
+# Verkstad-generatorane og renderaren. Deterministiske; same parametrar og
+# frø gjev same geometri og same bilete.
 numpy
 trimesh
-shapely        # skavl_b.py: lamell-profil som polygon
-manifold3d     # skavl_b.py: boolsk union av lameller + ringar
-rtree          # skavl_b.py: strålecasting for blend-måling
-networkx       # 3MF-eksport
-lxml           # 3MF-eksport
+shapely         # polygon-profilar (knagg-plate, skavl_b-lamell, repsett)
+manifold3d      # boolske operasjonar (union av lameller/ringar, kutt)
+rtree           # skavl_b.py: strålecasting for blend-måling
+lxml            # 3MF-eksport
+networkx        # trimesh fix_normals / 3MF-eksport
+scipy           # trimesh normal-glatting og reparasjon
+pillow          # render.py: PNG-utskrift og nedskalering
+scikit-image    # krone.py: marching cubes over det implisitte feltet
+fast_simplification  # krone.py: desimering av MC-nettet
